@@ -6,3 +6,6 @@ __pycache__/
 
 # Ignore environment files
 .env
+
+# Ignore trained model artifacts (generated during training)
+models/
