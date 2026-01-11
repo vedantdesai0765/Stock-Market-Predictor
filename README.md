@@ -95,6 +95,9 @@ This project focuses on predicting whether a stock’s price will **increase or 
 
 ## 📂 Project Structure
 
+## 📂 Project Structure
+
+```text
 Stock-Market-Predictor/
 │
 ├── data/
@@ -118,6 +121,7 @@ Stock-Market-Predictor/
 ├── requirements.txt             # Project dependencies
 ├── .gitignore                   # Ignored files and folders
 └── README.md                    # Project documentation
+```
 
 ---
 
