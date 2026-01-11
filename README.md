@@ -98,25 +98,26 @@ This project focuses on predicting whether a stock’s price will **increase or 
 Stock-Market-Predictor/
 │
 ├── data/
-│ ├── raw/ # Raw stock market data
-│ └── processed/ # Processed data (generated, ignored in Git)
+│   ├── raw/                     # Raw stock market data
+│   └── processed/               # Processed data (generated, ignored in Git)
 │
 ├── notebooks/
-│ ├── 01_data_collection.ipynb
-│ ├── 02_eda.ipynb
-│ ├── 03_feature_engineering.ipynb
-│ └── 04_model_experiments.ipynb
+│   ├── 01_data_collection.ipynb # Data collection
+│   ├── 02_eda.ipynb             # Exploratory Data Analysis
+│   ├── 03_feature_engineering.ipynb # Feature engineering
+│   └── 04_model_experiments.ipynb   # Model experimentation
 │
 ├── src/
-│ ├── data_preprocessing.py # Data cleaning & preprocessing pipeline
-│ └── train_model.py # Model training, evaluation & persistence
+│   ├── data_preprocessing.py    # Data cleaning & preprocessing pipeline
+│   └── train_model.py           # Model training, evaluation & persistence
 │
-├── models/ # Trained models (generated, ignored in Git)
-├── app/ # Streamlit dashboard (to be implemented)
+├── models/                      # Trained models (generated, ignored in Git)
 │
-├── requirements.txt # Project dependencies
-├── .gitignore # Ignored files and folders
-└── README.md
+├── app/                         # Streamlit dashboard (to be implemented)
+│
+├── requirements.txt             # Project dependencies
+├── .gitignore                   # Ignored files and folders
+└── README.md                    # Project documentation
 
 ---
 
