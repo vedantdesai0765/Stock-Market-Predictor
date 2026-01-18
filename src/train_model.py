@@ -4,6 +4,7 @@ import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import classification_report, confusion_matrix
 
 
 def load_data(filepath):
@@ -52,6 +53,12 @@ def train_model(df):
 
     # Evaluate
     y_pred = model.predict(X_test)
+    # Week-1 evaluation metrics (baseline verification)
+    print("\nConfusion Matrix:")
+    print(confusion_matrix(y_test, y_pred))
+
+    print("\nClassification Report:")
+    print(classification_report(y_test, y_pred))
     accuracy = accuracy_score(y_test, y_pred)
 
     print(f"Model Accuracy: {accuracy:.2f}")
