@@ -1,6 +1,21 @@
+# src/data_preprocessing.py
 import pandas as pd
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
+analyzer = SentimentIntensityAnalyzer()
 
+def add_sentiment(df):
+    df["sentiment"] = df["title"].fillna("").apply(
+        lambda x: analyzer.polarity_scores(x)["compound"]
+    )
+    return df
+
+def preprocess_news(input_path, output_path):
+    df = pd.read_csv(input_path)
+    df = add_sentiment(df)
+    daily = df.groupby("date")["sentiment"].mean().reset_index()
+    daily.to_csv(output_path, index=False)
+    
 def load_raw_data(filepath):
     """
     Load raw stock market data from a CSV file.

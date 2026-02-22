@@ -6,6 +6,11 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import classification_report, confusion_matrix
 
+df = pd.read_csv("data/processed/TCS_features.csv")
+X = df[["sentiment"]]
+y = df["target"]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y)
 
 def load_data(filepath):
     """
