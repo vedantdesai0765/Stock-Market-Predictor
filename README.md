@@ -111,11 +111,15 @@ This project focuses on predicting whether a stock’s price will **increase or 
 ---
 
 ## 📂 Project Structure
+
+## 📂 Project Structure
+
+```text
 Stock-Market-Predictor/
 │
 ├── data/
 │   ├── raw/                     # Raw stock market data
-│   └── processed/               # Processed data (generated)
+│   └── processed/               # Processed ML-ready datasets
 │
 ├── notebooks/
 │   ├── 01_data_collection.ipynb
@@ -124,12 +128,12 @@ Stock-Market-Predictor/
 │   └── 04_model_training.ipynb
 │
 ├── src/
-│   ├── data_preprocessing.py
-│   └── train_model.py
+│   ├── data_preprocessing.py    # Data cleaning & preprocessing
+│   └── train_model.py           # Model training & evaluation
 │
-├── models/                      # Trained models (ignored in Git)
+├── models/                      # Saved trained models (ignored in Git)
 │
-├── app/                         # Streamlit dashboard (to be implemented)
+├── app/                         # Streamlit dashboard (planned)
 │
 ├── requirements.txt
 ├── .gitignore
