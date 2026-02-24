@@ -112,8 +112,6 @@ This project focuses on predicting whether a stock’s price will **increase or 
 
 ## 📂 Project Structure
 
-## 📂 Project Structure
-
 ```text
 Stock-Market-Predictor/
 │
