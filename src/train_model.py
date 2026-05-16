@@ -6,11 +6,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import classification_report, confusion_matrix
 
-df = pd.read_csv("data/processed/TCS_features.csv")
-X = df[["sentiment"]]
-y = df["target"]
-
-X_train, X_test, y_train, y_test = train_test_split(X, y)
+# Removed loose global variables
 
 def load_data(filepath):
     """
@@ -68,11 +64,19 @@ def train_model(df):
 
     print(f"Model Accuracy: {accuracy:.2f}")
 
+    # Feature Importance
+    print("\nFeature Importances:")
+    importances = model.feature_importances_
+    feature_names = X.columns
+    feature_importance_df = pd.DataFrame({'Feature': feature_names, 'Importance': importances})
+    feature_importance_df = feature_importance_df.sort_values(by='Importance', ascending=False)
+    print(feature_importance_df.to_string(index=False))
+
     return model
 
 
 if __name__ == "__main__":
-    data_path = "data/processed/TCS_processed.csv"
+    data_path = "data/processed/TCS_features_sentiment.csv"
     model_path = "models/random_forest_model.pkl"
 
     # Load and prepare data
