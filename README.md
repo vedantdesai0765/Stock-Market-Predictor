@@ -111,6 +111,7 @@ Feature Engineering
 LSTM / GRU Models
       ↓
 Stock Trend Prediction
+```
 
 # 🧪 Technologies Used
 
