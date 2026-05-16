@@ -99,6 +99,7 @@ Implemented VADER sentiment analysis on financial news headlines.
 
 # 🔗 Hybrid NLP + Deep Learning Pipeline
 
+```text
 Financial News
       ↓
 VADER Sentiment Analysis
