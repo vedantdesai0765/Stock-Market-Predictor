@@ -1,183 +1,207 @@
-# 📈 Stock Price Movement Prediction using Machine Learning
+# 📈 Stock Trend Prediction using NLP and Deep Learning
 
-## 📌 Project Overview
-This project aims to predict **stock price movement (Up/Down)** using Machine Learning by analyzing historical stock market data and technical indicators.  
-The system follows a **modular and scalable pipeline** including data collection, preprocessing, feature engineering, and model training.  
+## 📌 Overview
+This project focuses on predicting stock market trends using a hybrid approach combining:
 
-It is developed as a **B.Tech Final Year (Mega) Project** and demonstrates the application of **Machine Learning techniques in financial market analysis**.
+- Machine Learning
+- Deep Learning
+- NLP-based Sentiment Analysis
+- Technical Indicators
 
----
+The system analyzes historical stock prices and financial news to predict stock movement trends.
 
-## 🎯 Objectives
-- Collect and analyze historical stock market data  
-- Perform exploratory data analysis (EDA) to identify trends  
-- Clean and preprocess raw time-series data  
-- Apply feature engineering using technical indicators  
-- Build and evaluate Machine Learning models  
-- Predict next-day stock price movement (Up/Down)  
-- Validate performance across multiple stocks  
-- Prepare the system for deployment via an interactive dashboard  
+Developed as a **B.Tech Final Year Project**, this project demonstrates the application of AI techniques in financial market prediction.
 
 ---
 
-## 🧠 Problem Statement
-Stock market prices are volatile and influenced by multiple factors, making prediction challenging.  
+# 🚀 Features Implemented
 
-This project focuses on predicting whether a stock’s price will **increase or decrease on the next trading day** using historical price data and derived technical indicators.
+## ✅ Data Collection
+- Historical stock data using Yahoo Finance API
+- Financial news collection using News API
 
----
-
-## ⚙️ Methodology
-
-### 1️⃣ Data Collection
-- Historical stock price data collected from **Yahoo Finance**
-- Stocks implemented:
-  - TCS (Tata Consultancy Services)
-  - Reliance Industries
-- Data stored in CSV format for reproducibility
+### Stocks Used
+- TCS
+- Reliance Industries
 
 ---
 
-### 2️⃣ Exploratory Data Analysis (EDA)
-- Performed using Jupyter notebooks  
-- Analysis includes:
-  - Price trends  
-  - Volume behavior  
-  - Moving averages  
-  - Volatility patterns  
+## ✅ Data Preprocessing
+- Missing value handling
+- Datetime conversion
+- Dataset cleaning
+- Time-series formatting
 
 ---
 
-### 3️⃣ Data Cleaning & Preprocessing
-- Implemented as a reusable pipeline in `src/data_preprocessing.py`
-- Steps include:
-  - Date parsing and chronological sorting  
-  - Removal of corrupted rows  
-  - Handling missing values  
-  - Structuring time-series data  
-  - Saving cleaned output for downstream tasks  
+## ✅ Exploratory Data Analysis (EDA)
+Performed analysis and visualization of:
+- Stock price trends
+- Volume trends
+- Moving averages
+- Historical market behavior
 
 ---
 
-### 4️⃣ Feature Engineering
-- Implemented and validated in notebooks  
-- Technical indicators used:
-  - Simple Moving Average (SMA 20, SMA 50)  
-  - Exponential Moving Average (EMA 20)  
-  - Relative Strength Index (RSI 14)  
-  - MACD & Signal Line  
-  - Daily Returns  
-
-- Binary Target Variable:
-  - **1 → Price goes UP next day**
-  - **0 → Price goes DOWN next day**
+## ✅ Feature Engineering
+Implemented technical indicators:
+- SMA 20 & SMA 50
+- EMA 20
+- RSI
+- MACD
+- Daily Returns
 
 ---
 
-### 5️⃣ Model Training & Evaluation
-- Implemented in `src/train_model.py`
-- Key steps:
-  - Time-series–aware train-test split (no shuffling)  
-  - 80% training, 20% testing (chronological split)  
-  - Training a baseline **Random Forest classifier**  
-  - Evaluation using accuracy metric and classification report  
+# 🤖 Machine Learning
+
+## Random Forest Classifier
+Implemented a baseline ML model for stock movement prediction.
+
+### Results
+| Stock | Accuracy |
+| TCS | ~53% |
+| Reliance | ~50% |
 
 ---
 
-## 📊 Current Results
+# 🧠 Deep Learning Models
 
-| Stock      | Accuracy |
-|------------|----------|
-| TCS        | ~50%     |
-| Reliance   | ~49–50%  |
+## LSTM (Long Short-Term Memory)
+Implemented sequence-based stock prediction using TensorFlow/Keras.
 
-### 🔎 Observation
-- Accuracy is close to random baseline (~50%)  
-- Stock direction prediction is highly noisy  
-- Technical indicators alone are weak predictors  
-- This motivates integrating sentiment analysis in the next phase  
+### Result
+- RMSE ≈ 0.0297
 
 ---
 
-## 🧠 Technologies Used
-- **Programming Language:** Python  
-- **Data Analysis:** Pandas, NumPy  
-- **Visualization (EDA):** Matplotlib, Seaborn  
-- **Machine Learning:** Scikit-learn  
-- **Deep Learning (Planned):** TensorFlow / Keras (LSTM)  
-- **Data Source:** Yahoo Finance  
-- **Dashboard (Planned):** Streamlit  
+## GRU (Gated Recurrent Unit)
+Implemented GRU-based sequential stock prediction model.
+
+### Result
+- RMSE ≈ 0.0219
+
+### Observation
+GRU achieved better performance than LSTM for the current dataset.
 
 ---
 
-## 📂 Project Structure
+# 🧠 NLP Sentiment Analysis
+Implemented VADER sentiment analysis on financial news headlines.
+
+### Completed Work
+- News preprocessing
+- Sentiment score generation
+- Sentiment-enhanced features
+- Integration with LSTM and GRU models
+
+---
+
+# 🔗 Hybrid NLP + Deep Learning Pipeline
+
+Financial News
+      ↓
+VADER Sentiment Analysis
+      ↓
+Sentiment Scores
+      ↓
+Feature Engineering
+      ↓
+LSTM / GRU Models
+      ↓
+Stock Trend Prediction
+
+# 🧪 Technologies Used
+
+## Programming
+- Python
+
+## Libraries
+- Pandas
+- NumPy
+- Scikit-learn
+- TensorFlow
+- Keras
+- Matplotlib
+- Seaborn
+- vaderSentiment
+
+## Tools
+- VS Code
+- Jupyter Notebook
+- GitHub
+
+---
+
+# 📂 Project Structure
 
 ```text
 Stock-Market-Predictor/
 │
 ├── data/
-│   ├── raw/                     # Raw stock market data
-│   └── processed/               # Processed ML-ready datasets
-│
 ├── notebooks/
-│   ├── 01_data_collection.ipynb
-│   ├── 02_eda.ipynb
-│   ├── 03_feature_engineering.ipynb
-│   └── 04_model_training.ipynb
-│
 ├── src/
-│   ├── data_preprocessing.py    # Data cleaning & preprocessing
-│   └── train_model.py           # Model training & evaluation
-│
-├── models/                      # Saved trained models (ignored in Git)
-│
-├── app/                         # Streamlit dashboard (planned)
-│
+├── models/
+├── app/
 ├── requirements.txt
-├── .gitignore
 └── README.md
+```
 
 ---
 
-### ▶️ How to Run the Project
-1️⃣ Install Dependencies
-- pip install -r requirements.txt
-2️⃣ Run Data Preprocessing
-- python src/data_preprocessing.py
-3️⃣ Train the Machine Learning Model
-- python src/train_model.py
+# ▶️ How to Run
 
-## Current Project Status
-✅ Completed
-- Data collection (TCS & Reliance)
-- Exploratory Data Analysis (EDA)
-- Feature engineering using technical indicators
-- Modular data preprocessing pipeline
-- Baseline Machine Learning model training
-- Multi-stock validation
-- Clean Git workflow
+## Install Dependencies
 
-## ⏳ In Progress / Planned
-- Sentiment analysis integration
-- Deep Learning model (LSTM)
-- Hyperparameter tuning
-- Streamlit-based interactive dashboard
-- Final report and presentation
+```bash
+pip install -r requirements.txt
+```
 
-## 🚀 Future Work
-- Merge financial news sentiment with stock data
-- Compare ML vs LSTM performance
-- Improve model generalization
-- Deploy an interactive dashboard
+## Run Preprocessing
 
+```bash
+python src/data_preprocessing.py
+```
 
+## Train Baseline Model
 
+```bash
+python src/train_model.py
+```
 
+## Run Deep Learning Notebook
 
+Open:
 
+```text
+notebooks/05_deep_learning_models.ipynb
+```
 
+---
 
+# ✅ Current Progress
 
+- Data collection completed
+- Feature engineering completed
+- Random Forest implemented
+- LSTM implemented
+- GRU implemented
+- VADER sentiment analysis integrated
+- Hybrid NLP + Deep Learning pipeline completed
+- Comparative evaluation completed
 
+---
 
+# 🚀 Future Enhancements
 
+- Streamlit dashboard
+- FinBERT integration
+- Multi-stock deep learning support
+- Hyperparameter optimization
+- Real-time prediction system
+
+---
+
+# 📌 Conclusion
+
+This project successfully combines Machine Learning, Deep Learning, and NLP-based sentiment analysis for stock trend prediction. Comparative evaluation showed that GRU performed better than LSTM for the current dataset.
