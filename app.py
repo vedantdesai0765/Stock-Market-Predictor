@@ -610,7 +610,7 @@ if run_btn:
             domain=dict(x=[0, 1], y=[0, 1])
         ))
         gauge.update_layout(
-            paper_bgcolor='#0a0e1a', font=dict(color='#7090b0'),
+            paper_bgcolor='#0a0e1a', font=dict(color="#d8e0e9"),
             height=280, margin=dict(l=20, r=20, t=20, b=20)
         )
         st.plotly_chart(gauge, use_container_width=True)
