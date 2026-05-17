@@ -181,6 +181,10 @@ notebooks/05_deep_learning_models.ipynb
 
 ---
 
+## Run app.py on streamlit
+### Run on Terminal-
+pip install streamlit plotly scikit-learn pandas numpy
+streamlit run app.py
 # ✅ Current Progress
 
 - Data collection completed
@@ -191,7 +195,7 @@ notebooks/05_deep_learning_models.ipynb
 - VADER sentiment analysis integrated
 - Hybrid NLP + Deep Learning pipeline completed
 - Comparative evaluation completed
-
+- Implemented streamlit based dashboard to visualize the results of the Project 
 ---
 
 # 🚀 Future Enhancements
