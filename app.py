@@ -60,19 +60,19 @@ st.markdown("""
     font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #6b7fa3;
+    color: #a8bcd8;
     margin-bottom: 8px;
     font-family: 'Space Mono', monospace;
   }
   .metric-value {
     font-size: 28px;
     font-weight: 700;
-    color: #e0e6f0;
+    color: #f0f4ff;
     font-family: 'Space Mono', monospace;
   }
   .metric-sub {
     font-size: 12px;
-    color: #4a6080;
+    color: #8aaac8;
     margin-top: 4px;
   }
   .pill-bullish {
@@ -119,8 +119,8 @@ st.markdown("""
     font-size: 11px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: #3a5080;
-    border-bottom: 1px solid #1e2d4a;
+    color: #7eb8d4;
+    border-bottom: 1px solid #2a4060;
     padding-bottom: 8px;
     margin-bottom: 16px;
   }
@@ -130,7 +130,7 @@ st.markdown("""
     border-radius: 0 8px 8px 0;
     padding: 12px 16px;
     font-size: 13px;
-    color: #7090b0;
+    color: #b0cce8;
     margin-top: 8px;
   }
   div[data-testid="stSidebar"] {
@@ -138,7 +138,7 @@ st.markdown("""
     border-right: 1px solid #1a2540;
   }
   div[data-testid="stSidebar"] label {
-    color: #7090b0 !important;
+    color: #b0c8e0 !important;
     font-family: 'Space Mono', monospace;
     font-size: 11px;
     letter-spacing: 1px;
@@ -333,7 +333,7 @@ def price_chart(df, stock_name):
     fig.update_layout(
         paper_bgcolor='#0a0e1a',
         plot_bgcolor='#0f1829',
-        font=dict(family='DM Sans', color='#7090b0', size=12),
+        font=dict(family='DM Sans', color='#a8bcd8', size=12),
         title=dict(text=f"{stock_name} · Historical Price", font=dict(family='Space Mono', color='#e0e6f0', size=14)),
         xaxis=dict(gridcolor='#1a2540', rangeslider_visible=False),
         yaxis=dict(gridcolor='#1a2540', title="Price (₹)"),
@@ -356,7 +356,7 @@ def rsi_chart(df):
     fig.add_hline(y=30, line=dict(color='#00ff88', dash='dash', width=1))
     fig.update_layout(
         paper_bgcolor='#0a0e1a', plot_bgcolor='#0f1829',
-        font=dict(family='DM Sans', color='#7090b0'),
+        font=dict(family='DM Sans', color='#a8bcd8'),
         title=dict(text="RSI Indicator", font=dict(family='Space Mono', color='#e0e6f0', size=12)),
         xaxis=dict(gridcolor='#1a2540'),
         yaxis=dict(gridcolor='#1a2540', range=[0, 100]),
@@ -374,7 +374,7 @@ def dl_pred_chart(y_true, y_pred_lstm, y_pred_gru, title):
     fig.add_trace(go.Scatter(x=x, y=y_pred_gru, line=dict(color='#7b61ff', width=1.5, dash='dash'), name="GRU"))
     fig.update_layout(
         paper_bgcolor='#0a0e1a', plot_bgcolor='#0f1829',
-        font=dict(family='DM Sans', color='#7090b0'),
+        font=dict(family='DM Sans', color='#a8bcd8'),
         title=dict(text=title, font=dict(family='Space Mono', color='#e0e6f0', size=12)),
         xaxis=dict(gridcolor='#1a2540', title="Test Samples"),
         yaxis=dict(gridcolor='#1a2540', title="Price (₹)"),
@@ -392,7 +392,7 @@ def feature_importance_chart(importances):
     )
     fig.update_layout(
         paper_bgcolor='#0a0e1a', plot_bgcolor='#0f1829',
-        font=dict(family='DM Sans', color='#7090b0'),
+        font=dict(family='DM Sans', color='#a8bcd8'),
         title=dict(text="Feature Importances (RF)", font=dict(family='Space Mono', color='#e0e6f0', size=12)),
         coloraxis_showscale=False,
         xaxis=dict(gridcolor='#1a2540'),
@@ -406,7 +406,7 @@ def feature_importance_chart(importances):
 
 with st.sidebar:
     st.markdown("## 📈 STOCK PREDICTOR")
-    st.markdown("<div style='color:#3a5080;font-size:11px;letter-spacing:2px;margin-bottom:20px'>SENTIMENT-ENHANCED ML</div>", unsafe_allow_html=True)
+    st.markdown("<div style='color:#7eb8d4;font-size:11px;letter-spacing:2px;margin-bottom:20px'>SENTIMENT-ENHANCED ML</div>", unsafe_allow_html=True)
     st.markdown("---")
 
     stock_choice = st.selectbox(
@@ -420,7 +420,7 @@ with st.sidebar:
 
     st.markdown("---")
     st.markdown("""
-    <div style='font-size:11px;color:#3a5080;line-height:1.8;font-family:Space Mono,monospace'>
+    <div style='font-size:11px;color:#8ab4cc;line-height:1.8;font-family:Space Mono,monospace'>
     MODELS<br>
     ├─ Random Forest<br>
     ├─ LSTM (simulated)<br>
@@ -441,7 +441,7 @@ st.markdown("""
   <div style='font-family:Space Mono,monospace;font-size:24px;font-weight:700;color:#e0e6f0;letter-spacing:2px'>
     STOCK MARKET PREDICTOR
   </div>
-  <div style='font-size:13px;color:#3a5080;letter-spacing:2px;margin-top:4px'>
+  <div style='font-size:13px;color:#7eb8d4;letter-spacing:2px;margin-top:4px'>
     MACHINE LEARNING · SENTIMENT ANALYSIS · TECHNICAL INDICATORS
   </div>
 </div>
@@ -492,7 +492,7 @@ if run_btn:
         ))
         fig_vol.update_layout(
             paper_bgcolor='#0a0e1a', plot_bgcolor='#0f1829',
-            font=dict(family='DM Sans', color='#7090b0'),
+            font=dict(family='DM Sans', color='#a8bcd8'),
             xaxis=dict(gridcolor='#1a2540'),
             yaxis=dict(gridcolor='#1a2540'),
             height=200, margin=dict(l=0, r=0, t=8, b=0), showlegend=False
@@ -594,7 +594,7 @@ if run_btn:
             value=round(sentiment_score * 100, 1),
             number=dict(suffix="%", font=dict(color='#e0e6f0', family='Space Mono')),
             gauge=dict(
-                axis=dict(range=[-100, 100], tickcolor='#3a5080'),
+                axis=dict(range=[-100, 100], tickcolor='#7eb8d4'),
                 bar=dict(color='#00d4ff' if sentiment_label == "Positive" else (
                     '#ff5050' if sentiment_label == "Negative" else '#f0c040')),
                 bgcolor='#12192e',
@@ -606,11 +606,11 @@ if run_btn:
                 ],
                 threshold=dict(line=dict(color='white', width=2), thickness=0.75, value=0)
             ),
-            title=dict(text="Sentiment Score", font=dict(family='Space Mono', color='#7090b0')),
+            title=dict(text="Sentiment Score", font=dict(family='Space Mono', color='#a8bcd8')),
             domain=dict(x=[0, 1], y=[0, 1])
         ))
         gauge.update_layout(
-            paper_bgcolor='#0a0e1a', font=dict(color="#d8e0e9"),
+            paper_bgcolor='#0a0e1a', font=dict(color='#a8bcd8'),
             height=280, margin=dict(l=20, r=20, t=20, b=20)
         )
         st.plotly_chart(gauge, use_container_width=True)
@@ -636,7 +636,7 @@ else:
       <div style='font-family:Space Mono,monospace;font-size:18px;color:#e0e6f0;margin-top:20px'>
         Select a stock and click <span style='color:#00d4ff'>▶ RUN ANALYSIS</span>
       </div>
-      <div style='color:#3a5080;margin-top:12px;font-size:14px'>
+      <div style='color:#7eb8d4;margin-top:12px;font-size:14px'>
         TCS · Reliance &nbsp;|&nbsp; Random Forest · LSTM · GRU · Sentiment
       </div>
     </div>
