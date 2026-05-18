@@ -320,7 +320,7 @@ def price_chart(df, stock_name):
     if 'SMA_20' in df.columns:
         fig.add_trace(go.Scatter(
             x=df['Date'], y=df['SMA_20'],
-            line=dict(color='#7b61ff', width=1, dash='dot'),
+            line=dict(color="#13dce6", width=1, dash='dot'),
             name="SMA 20", opacity=0.7
         ))
     if 'SMA_50' in df.columns:
