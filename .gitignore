@@ -3,9 +3,14 @@ data/processed/
 
 # Ignore Python cache
 __pycache__/
+*.pyc
 
 # Ignore environment files
 .env
 
 # Ignore trained model artifacts (generated during training)
 models/
+
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
