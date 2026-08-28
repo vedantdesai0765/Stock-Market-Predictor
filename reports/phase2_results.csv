@@ -1,0 +1,5 @@
+stock,feature_set,n_rows,n_features,accuracy_mean,accuracy_std,f1_mean,roc_auc_mean,best_baseline,edge
+RELIANCE,RAW (Phase 1 features),383,20,0.5429,0.0765,0.4676,0.5126,0.5561,-0.0132
+RELIANCE,STATIONARY,383,52,0.5474,0.0571,0.4114,0.4577,0.5561,-0.0087
+TCS,RAW (Phase 1 features),2354,20,0.5131,0.0339,0.4635,0.5364,0.5242,-0.0111
+TCS,STATIONARY,2354,52,0.5183,0.0383,0.5437,0.529,0.5242,-0.006
