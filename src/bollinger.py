@@ -10,7 +10,8 @@ Bollinger Band Theory
 Developed by John Bollinger (1980s):
   - Middle Band  : N-period SMA of Close          (default N=20)
   - Upper Band   : Middle + (k × N-period std)    (default k=2)
-  - Lower Band   : Middle - (k × N-period std)    (default k=2)
+  - Lower Band   : Middle - (k × N    squeeze_threshold        = df['bb_bandwidth'].quantile(squeeze_pct / 100)
+    df['bb_squeeze']         = (df['bb_bandwidth'] <= squeeze_threshold).astype(int)-period std)    (default k=2)
 
 Key properties:
   - Bands widen during high volatility, contract during low volatility.
@@ -105,9 +106,14 @@ def add_bollinger_ml_features(df: pd.DataFrame,
     df['bb_below_lower']     = (df['Close'] < df['bb_lower']).astype(int)
 
     # Squeeze: bandwidth in the bottom squeeze_pct-th percentile
-    squeeze_threshold        = df['bb_bandwidth'].quantile(squeeze_pct / 100)
-    df['bb_squeeze']         = (df['bb_bandwidth'] <= squeeze_threshold).astype(int)
-
+    # Expanding quantile: at row t, uses only bandwidth history up to t.
+    # The original computed this over the whole series, including future
+    # bandwidth values - a lookahead leak in a module whose docstring
+    # explicitly claims to be leakage-free.
+    squeeze_threshold = (df['bb_bandwidth']
+                         .expanding(min_periods=60)
+                         .quantile(squeeze_pct / 100))
+    df['bb_squeeze'] = (df['bb_bandwidth'] <= squeeze_threshold).fillna(False).astype(int)
     # Rate of change of %B (1-period delta)
     df['bb_pct_b_delta']     = df['bb_pct_b'].diff()
 
