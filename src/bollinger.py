@@ -10,8 +10,7 @@ Bollinger Band Theory
 Developed by John Bollinger (1980s):
   - Middle Band  : N-period SMA of Close          (default N=20)
   - Upper Band   : Middle + (k × N-period std)    (default k=2)
-  - Lower Band   : Middle - (k × N    squeeze_threshold        = df['bb_bandwidth'].quantile(squeeze_pct / 100)
-    df['bb_squeeze']         = (df['bb_bandwidth'] <= squeeze_threshold).astype(int)-period std)    (default k=2)
+  - Lower Band   : Middle - (k × N-period std)    (default k=2)
 
 Key properties:
   - Bands widen during high volatility, contract during low volatility.

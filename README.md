@@ -1,213 +1,156 @@
-# 📈 Stock Trend Prediction using NLP and Deep Learning
+# Stock Market Predictor
 
-## 📌 Overview
-This project focuses on predicting stock market trends using a hybrid approach combining:
+Next-move direction prediction for Indian equities, built on technical
+indicators with a rigorously validated machine-learning pipeline.
 
-- Machine Learning
-- Deep Learning
-- NLP-based Sentiment Analysis
-- Technical Indicators
-
-The system analyzes historical stock prices and financial news to predict stock movement trends.
-
-Developed as a **B.Tech Final Year Project**, this project demonstrates the application of AI techniques in financial market prediction.
+A B.Tech final-year project. The emphasis is on **methodological
+correctness over headline accuracy**: every claim below is backed by
+walk-forward validation, permutation testing, and seed/offset robustness
+checks, and results that failed those checks were discarded rather than
+reported.
 
 ---
 
-# 🚀 Features Implemented
+## Headline result
 
-## ✅ Data Collection
-- Historical stock data using Yahoo Finance API
-- Financial news collection using News API
+| Stock | Rows | Accuracy | Baseline | Edge | Permutation |
+|---|---|---|---|---|---|
+| TCS | 780 | 0.5333 ± 0.0525 | 0.5179 | **+0.0154** | SIGNAL |
+| RELIANCE | 372 | 0.4679 ± 0.0685 | 0.5111 | −0.0432 | NO SIGNAL |
 
-### Stocks Used
-- TCS
-- Reliance Industries
+The honest summary: **one-day price direction is not predictable in
+aggregate.** Restricting to independent labels at a three-day horizon
+yields a small edge on TCS (~1.5 percentage points) that survives
+permutation testing and holds across all random seeds and sampling
+offsets. Reliance shows no signal at any configuration — it has only two
+years of history.
 
----
-
-## ✅ Data Preprocessing
-- Missing value handling
-- Datetime conversion
-- Dataset cleaning
-- Time-series formatting
-
----
-
-## ✅ Exploratory Data Analysis (EDA)
-Performed analysis and visualization of:
-- Stock price trends
-- Volume trends
-- Moving averages
-- Historical market behavior
+This is the expected outcome under the efficient-market hypothesis. The
+contribution is the measurement apparatus that establishes it credibly.
 
 ---
 
-## ✅ Feature Engineering
-Implemented technical indicators:
-- SMA 20 & SMA 50
-- EMA 20
-- RSI
-- MACD
-- Daily Returns
+## What makes this rigorous
+
+| Technique | What it prevents |
+|---|---|
+| Walk-forward validation | A single train/test split's accuracy swings 5.9 points depending only on where the line is drawn |
+| 52-day embargo | Rolling-window features straddling the train/test boundary |
+| Permutation testing | Leakage. Shuffled labels must collapse to ~0.50 |
+| Stationary features | Models memorising price levels instead of patterns |
+| Non-overlapping labels | Target autocorrelation of 0.81 inflating the persistence baseline to 0.88 |
+| Seed averaging | Reporting the luckiest of seven random seeds |
+| Offset testing | Edges that depend on an arbitrary sampling choice |
+
+### Three false positives this apparatus caught
+
+**Phase 1 reported TCS at 59.31%, +8.9 points over baseline, permutation-
+clean.** Sliding the same 565-row window across the decade showed that
+window was the only one of ten with a positive edge; the other nine
+averaged −2.2 points. Permutation testing detects leakage but cannot
+detect an unrepresentative slice of history.
+
+**The LSTM appeared to beat its baseline.** It beat *persistence*, but
+loses to simply predicting zero — and its outputs carry only 9.6% of the
+volatility of real returns. It had collapsed to predicting a constant.
+
+**Gradient boosting looked like the best model** at +2.8 points, until the
+offset test showed it flipping to −3.9 points on one of three equally
+valid sampling offsets. Logistic regression, at a smaller +1.5 points, was
+positive on all three and became the default.
 
 ---
 
-# 🤖 Machine Learning
-
-## Random Forest Classifier
-Implemented a baseline ML model for stock movement prediction.
-
-### Results
-| Stock | Accuracy |
-| TCS | ~53% |
-| Reliance | ~50% |
-
----
-
-# 🧠 Deep Learning Models
-
-## LSTM (Long Short-Term Memory)
-Implemented sequence-based stock prediction using TensorFlow/Keras.
-
-### Result
-- RMSE ≈ 0.0297
-
----
-
-## GRU (Gated Recurrent Unit)
-Implemented GRU-based sequential stock prediction model.
-
-### Result
-- RMSE ≈ 0.0219
-
-### Observation
-GRU achieved better performance than LSTM for the current dataset.
-
----
-
-# 🧠 NLP Sentiment Analysis
-Implemented VADER sentiment analysis on financial news headlines.
-
-### Completed Work
-- News preprocessing
-- Sentiment score generation
-- Sentiment-enhanced features
-- Integration with LSTM and GRU models
-
----
-
-# 🔗 Hybrid NLP + Deep Learning Pipeline
-
-```text
-Financial News
-      ↓
-VADER Sentiment Analysis
-      ↓
-Sentiment Scores
-      ↓
-Feature Engineering
-      ↓
-LSTM / GRU Models
-      ↓
-Stock Trend Prediction
-```
-
-# 🧪 Technologies Used
-
-## Programming
-- Python
-
-## Libraries
-- Pandas
-- NumPy
-- Scikit-learn
-- TensorFlow
-- Keras
-- Matplotlib
-- Seaborn
-- vaderSentiment
-
-## Tools
-- VS Code
-- Jupyter Notebook
-- GitHub
-
----
-
-# 📂 Project Structure
-
-```text
-Stock-Market-Predictor/
-│
-├── data/
-├── notebooks/
-├── src/
-├── models/
-├── app/
-├── requirements.txt
-└── README.md
-```
-
----
-
-# ▶️ How to Run
-
-## Install Dependencies
+## Quick start
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Run Preprocessing
+```bash
+python src/validate.py          # health check
+```
+
+Then, in order:
+
+| Notebook | Purpose |
+|---|---|
+| `01_data_collection.ipynb` | Download price history |
+| `00_setup_and_build.ipynb` | Build feature datasets |
+| `04_model_training_and_artifacts.ipynb` | Train and save models |
 
 ```bash
-python src/data_preprocessing.py
+streamlit run app.py            # dashboard
 ```
 
-## Train Baseline Model
-
-```bash
-python src/train_model.py
-```
-
-## Run Deep Learning Notebook
-
-Open:
-
-```text
-notebooks/05_deep_learning_models.ipynb
-```
+To add a stock, run `05_add_new_stock.ipynb` and follow
+[docs/ADDING_A_STOCK.md](docs/ADDING_A_STOCK.md).
 
 ---
 
-## Run app.py on streamlit
-### Run on Terminal-
-pip install streamlit plotly scikit-learn pandas numpy
-streamlit run app.py
-# ✅ Current Progress
+## Project structure
 
-- Data collection completed
-- Feature engineering completed
-- Random Forest implemented
-- LSTM implemented
-- GRU implemented
-- VADER sentiment analysis integrated
-- Hybrid NLP + Deep Learning pipeline completed
-- Comparative evaluation completed
-- Implemented streamlit based dashboard to visualize the results of the Project 
----
+```
+src/
+  config.py       Stock registry — the ONLY place stocks are defined
+  collect.py      Registry-driven data download
+  dataio.py       Robust CSV loading
+  features.py     Technical indicators (single source of truth)
+  stationary.py   Scale-free feature transforms
+  targets.py      Label engineering, non-overlapping sampling
+  evaluation.py   Walk-forward CV, baselines, permutation test
+  abstention.py   Confidence gating, coverage/accuracy curves
+  modeling.py     Model zoo, seed/offset robustness harness
+  sequence_models.py  LSTM / GRU in PyTorch
+  pipeline.py     Train and save artifacts
+  validate.py     Project health check
+  ichimoku.py     Ichimoku Cloud features
+  bollinger.py    Bollinger Band features
+```
 
-# 🚀 Future Enhancements
-
-- Streamlit dashboard
-- FinBERT integration
-- Multi-stock deep learning support
-- Hyperparameter optimization
-- Real-time prediction system
+Analysis notebooks 02, 03, 06, 07 document the experiments behind each
+design decision and are worth reading before changing anything.
 
 ---
 
-# 📌 Conclusion
+## Sentiment analysis
 
-This project successfully combines Machine Learning, Deep Learning, and NLP-based sentiment analysis for stock trend prediction. Comparative evaluation showed that GRU performed better than LSTM for the current dataset.
+The project implements VADER and FinBERT scoring, but **sentiment is
+excluded from the model**.
+
+The available corpus is Reddit r/worldnews (2008–2016), not company news.
+Measured as a predictor of TCS direction its ROC-AUC was **0.47** — below
+chance. The machinery is correct; the input data was wrong for the task.
+The dashboard displays these scores with that caveat attached.
+
+Using them properly requires a historical company-news archive. The free
+NewsAPI tier serves only ~30 days, far too little to train on.
+
+---
+
+## Known limitations
+
+- **Reliance has insufficient history** (493 raw rows, ~2 years). Its
+  registry entry starts in 2022; extending it to 2014 would likely change
+  its verdict.
+- **Probabilities are not calibrated.** The Brier score sits near 0.25.
+  Treat confidence as a relative ranking, not a literal probability.
+- **No transaction costs or slippage** are modelled. A 1.5-point edge would
+  likely not survive them.
+- **Effect sizes are near the noise floor.** Report them as such.
+
+---
+
+## Future work
+
+- Live news integration via the `collect_news` interface
+- Historical company-news corpus to test sentiment properly
+- Triple-barrier labelling (López de Prado)
+- Longer histories for all stocks
+
+---
+
+## Not investment advice
+
+This is an academic project. The measured edge is small, unvalidated on
+live data, and ignores transaction costs. Do not trade on it.
