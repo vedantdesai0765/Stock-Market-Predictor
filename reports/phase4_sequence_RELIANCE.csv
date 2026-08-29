@@ -1,0 +1,3 @@
+model,rmse_mean,rmse_std,directional_mean,persistence_rmse,zero_rmse,beats_persistence,beats_zero,shrinkage
+LSTM,0.009109,2.6e-05,0.5022,0.012354,0.00893,True,False,0.1849
+GRU,0.009133,7.8e-05,0.5065,0.012354,0.00893,True,False,0.1926

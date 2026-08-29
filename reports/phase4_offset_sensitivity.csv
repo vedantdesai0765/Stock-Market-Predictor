@@ -1,0 +1,10 @@
+model,offset,edge
+random_forest,0,0.0385
+random_forest,1,0.0333
+random_forest,2,-0.0128
+gradient_boosting,0,0.0282
+gradient_boosting,1,0.0385
+gradient_boosting,2,-0.0385
+logistic,0,0.0154
+logistic,1,0.0333
+logistic,2,0.0103
