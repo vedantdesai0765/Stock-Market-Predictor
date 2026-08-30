@@ -454,7 +454,7 @@ def compare_feature_sets(df: pd.DataFrame,
 def permutation_test(df: pd.DataFrame,
                      feature_cols: Sequence[str],
                      model,
-                     n_permutations: int = 8,
+                     n_permutations: int = 100,
                      target_col: str = "Target",
                      random_state: int = config.RANDOM_STATE,
                      verbose: bool = True,
@@ -501,7 +501,8 @@ def permutation_test(df: pd.DataFrame,
     #
     # A model can be leak-free and still have no signal (gap ~ 0). Reporting
     # that as "leakage" sends you hunting a bug that does not exist.
-    leak_free = bool(shuffled.mean() < 0.55)
+    se_shuffled = shuffled.std() / np.sqrt(len(shuffled))
+    leak_free = bool((shuffled.mean() - 1.96 * se_shuffled) < 0.53)
     has_signal = bool(gap > 2 * shuffled.std())
 
     if not leak_free:
