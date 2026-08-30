@@ -1,0 +1,4 @@
+stock,horizon,model,rows,accuracy,std,baseline,edge,permutation
+INFY,3,logistic,780,0.5077,0.0605,0.5615,-0.0538,NO SIGNAL
+RELIANCE,1,logistic,372,0.4679,0.0685,0.5111,-0.0432,NO SIGNAL
+TCS,3,logistic,780,0.5333,0.0525,0.5179,0.0154,SIGNAL

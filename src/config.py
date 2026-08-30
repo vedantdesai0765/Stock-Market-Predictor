@@ -111,6 +111,16 @@ STOCKS: dict[str, StockConfig] = {
         sentiment_filename=None,
         notes="No news data collected yet.",
     ),
+    "INFY": StockConfig(
+        key="INFY",
+        ticker="INFY.NS",
+        display_name="Infosys",
+        raw_filename="INFY_raw.csv",
+        start="2014-01-01",
+        end="2024-01-01",
+        sentiment_filename=None,
+        notes="Added 2026-08-30.",
+    ),
 }
 
 
