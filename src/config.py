@@ -93,7 +93,7 @@ STOCKS: dict[str, StockConfig] = {
         display_name="Tata Consultancy Services",
         raw_filename="TCS_raw.csv",
         start="2014-01-01",
-        end="2024-01-01",
+        end="2026-09-01",
         sentiment_filename="TCS_news_sentiment.csv",
         notes=(
             "Sentiment file is currently derived from the Combined_News_DJIA "
@@ -107,7 +107,7 @@ STOCKS: dict[str, StockConfig] = {
         display_name="Reliance Industries",
         raw_filename="Reliance_raw.csv",
         start="2022-01-01",
-        end="2024-01-01",
+        end="2026-09-01",
         sentiment_filename=None,
         notes="No news data collected yet.",
     ),
@@ -117,7 +117,7 @@ STOCKS: dict[str, StockConfig] = {
         display_name="Infosys",
         raw_filename="INFY_raw.csv",
         start="2014-01-01",
-        end="2024-01-01",
+        end="2026-09-01",
         sentiment_filename=None,
         notes="Added 2026-08-30.",
     ),
@@ -127,7 +127,7 @@ STOCKS: dict[str, StockConfig] = {
         display_name="HDFC Bank",
         raw_filename="HDFCBANK_raw.csv",
         start="2014-01-01",
-        end="2024-01-01",
+        end="2026-09-01",
         sentiment_filename=None,
         notes="Added 2026-08-30.",
     ),
@@ -137,7 +137,7 @@ STOCKS: dict[str, StockConfig] = {
         display_name="State Bank of India",
         raw_filename="SBI_raw.csv",
         start="2014-01-01",
-        end="2024-01-01",
+        end="2026-09-01",
         sentiment_filename=None,
         notes="Added 2026-08-30.",
     ),
@@ -147,7 +147,7 @@ STOCKS: dict[str, StockConfig] = {
         display_name="ITC",
         raw_filename="ITC_raw.csv",
         start="2014-01-01",
-        end="2024-01-01",
+        end="2026-09-01",
         sentiment_filename=None,
         notes="Added 2026-08-30.",
     ),
@@ -157,7 +157,7 @@ STOCKS: dict[str, StockConfig] = {
         display_name="Adani Enterprises",
         raw_filename="ADANIENT_raw.csv",
         start="2014-01-01",
-        end="2024-01-01",
+        end="2026-09-01",
         sentiment_filename=None,
         notes="Added 2026-08-30. High-volatility stock.",
     ),
@@ -167,7 +167,7 @@ STOCKS: dict[str, StockConfig] = {
         display_name="Vedanta",
         raw_filename="VEDL_raw.csv",
         start="2014-01-01",
-        end="2024-01-01",
+        end="2026-09-01",
         sentiment_filename=None,
         notes="Added 2026-08-30. High-volatility stock.",
     ),
@@ -177,7 +177,7 @@ STOCKS: dict[str, StockConfig] = {
         display_name="Eternal Limited",
         raw_filename="ETERNAL_raw.csv",
         start="2021-01-01",
-        end="2026-01-01",
+        end="2026-09-01",
         sentiment_filename=None,
         notes="Eternal Limited (formerly Zomato Limited). No news data collected yet.",
     ),
@@ -187,7 +187,7 @@ STOCKS: dict[str, StockConfig] = {
         display_name="Adani Green Energy",
         raw_filename="ADANIGREEN_raw.csv",
         start="2018-01-01",
-        end="2024-01-01",
+        end="2026-09-01",
         sentiment_filename=None,
         notes="Added 2026-08-30. High-volatility stock.",
     ),
@@ -209,8 +209,8 @@ MACD_FAST: int = 12
 MACD_SLOW: int = 26
 MACD_SIGNAL: int = 9
 
-# Prediction horizon in trading days (Phase 3 will experiment with 3 and 5)
-TARGET_HORIZON: int = 1
+# Prediction horizon in trading days (default Phase 3/4 standard is 3 days)
+TARGET_HORIZON: int = 3
 
 # The feature set used by the current baseline models.
 # Phase 2 will replace these with stationary equivalents.

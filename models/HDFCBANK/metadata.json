@@ -3,7 +3,7 @@
   "stock_key": "HDFCBANK",
   "ticker": "HDFCBANK.NS",
   "display_name": "HDFC Bank",
-  "trained_at": "2026-08-30T13:43:13",
+  "trained_at": "2026-08-30T15:42:07",
   "config": {
     "model_name": "logistic",
     "horizon": 3,
@@ -11,11 +11,11 @@
     "non_overlapping": true,
     "n_splits": 5,
     "embargo": 17,
-    "confidence_threshold": 0.0,
+    "confidence_threshold": 0.1428,
     "min_rows": 200
   },
-  "n_full_rows": 2354,
-  "n_modelling_rows": 780,
+  "n_full_rows": 3010,
+  "n_modelling_rows": 998,
   "n_features": 52,
   "features": [
     "close_vs_sma20",
@@ -73,46 +73,46 @@
   ],
   "date_range": [
     "2014-06-11",
-    "2023-12-28"
+    "2026-08-27"
   ],
-  "walk_forward_accuracy": 0.5154,
-  "walk_forward_std": 0.0278,
-  "baseline": 0.5128,
-  "edge": 0.0026,
+  "walk_forward_accuracy": 0.4873,
+  "walk_forward_std": 0.056,
+  "baseline": 0.5739,
+  "edge": -0.0866,
   "seed_robustness": {
     "model": "logistic",
-    "mean_accuracy": 0.5154,
+    "mean_accuracy": 0.4873,
     "seed_std": 0.0,
-    "mean_edge": 0.0026,
-    "min_edge": 0.0026,
-    "max_edge": 0.0026,
-    "baseline": 0.5128,
+    "mean_edge": -0.0866,
+    "min_edge": -0.0866,
+    "max_edge": -0.0866,
+    "baseline": 0.5739,
     "n_seeds": 7,
-    "deterministic": true,
-    "all_seeds_positive": true,
+    "deterministic": false,
+    "all_seeds_positive": false,
     "offsets_tested": false,
-    "verdict": "POSITIVE (offsets untested)"
+    "verdict": "NO EDGE"
   },
   "permutation": {
-    "real_accuracy": 0.5154,
-    "shuffled_mean": 0.5188,
-    "shuffled_std": 0.0185,
-    "shuffled_min": 0.4974,
-    "shuffled_max": 0.5487,
-    "gap": -0.0034,
-    "p_value": 0.5714,
+    "real_accuracy": 0.4873,
+    "shuffled_mean": 0.5174,
+    "shuffled_std": 0.0069,
+    "shuffled_min": 0.5083,
+    "shuffled_max": 0.5251,
+    "gap": -0.0301,
+    "p_value": 1.0,
     "leak_free": true,
     "has_signal": false,
     "verdict": "NO SIGNAL"
   },
   "operating_point": {
-    "confidence_threshold": 0.0,
-    "coverage": 1.0,
-    "n_committed": 390,
-    "accuracy": 0.5154,
-    "subset_majority": 0.5051,
-    "edge": 0.0103,
-    "abstention_useful": false,
-    "selection_reason": "abstention gained only +0.0089, below 0.01"
+    "confidence_threshold": 0.1428,
+    "coverage": 0.2986,
+    "n_committed": 149,
+    "accuracy": 0.5168,
+    "subset_majority": 0.5101,
+    "edge": 0.0067,
+    "abstention_useful": true,
+    "selection_reason": "edge improves -0.0200 -> +0.0133 at 30% coverage"
   }
 }

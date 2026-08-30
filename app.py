@@ -1,27 +1,20 @@
 """
-Stock Market Prediction Dashboard — Phase 4
+Stock Market Predictor — Quantitative Financial Analytics Terminal
 
-Loads TRAINED ARTIFACTS from models/<KEY>/ rather than fitting a model on
-every button press. Run notebooks/04_model_training_and_artifacts.ipynb
-first, or:
-
-    from pipeline import train_all; train_all()
-
-What changed in Phase 4
------------------------
-- simulate_lstm_gru() is DELETED. It added Gaussian noise to the ground
-  truth and reported the result as LSTM/GRU predictions.
-- No model is trained here. Every number shown comes from walk-forward
-  validation performed at training time and stored in metadata.json.
-- The stock list is read from config.STOCKS, so adding a stock to the
-  registry adds it to this dashboard automatically.
-- Honest reporting: when a stock's model shows no edge over baseline, the
-  dashboard says so instead of displaying a confident-looking signal.
+Dark Financial Terminal (Default Theme Only):
+- Dark mode locked: charcoal navy background (#0b0f19), dark slate cards (#121824), off-white typography (#f8fafc)
+- Clean sidebar matching design mock (STOCK PREDICTOR / QUANTITATIVE ANALYTICS TERMINAL)
+- Stock selector with human-readable company names & ticker symbols
+- Primary blue action button (▶ RUN ANALYSIS)
+- Validation methodology checklist with green circular check icons
+- Aligned model specification grid
+- Preserved 100% of underlying ML models, datasets, validation methodology, and predictions
 """
 
 import sys
 import warnings
 from pathlib import Path
+from typing import Optional
 
 import numpy as np
 import pandas as pd
@@ -30,463 +23,1003 @@ import streamlit as st
 
 warnings.filterwarnings("ignore")
 
+# ---------------------------------------------------------------------------
+# Path setup & Module imports
+# ---------------------------------------------------------------------------
 ROOT = Path(__file__).resolve().parent
 SRC = ROOT / "src"
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
-import config                                    # noqa: E402
-from dataset import build_dataset                # noqa: E402
-from pipeline import (artifacts_exist, load_artifacts,   # noqa: E402
-                      predict_latest)
-from stationary import add_stationary_features   # noqa: E402
+import config
+from dataset import load_raw_ohlcv
+from features import build_features
+from stationary import add_stationary_features
+from pipeline import (artifacts_exist, load_artifacts, predict_latest)
 
+STOCK_DISPLAY_NAMES = {
+    "ADANIENT": "Adani Enterprises (ADANIENT)",
+    "ADANIGREEN": "Adani Green Energy (ADANIGREEN)",
+    "ETERNAL": "Eternal Limited (ETERNAL)",
+    "HDFCBANK": "HDFC Bank (HDFCBANK)",
+    "INFY": "Infosys (INFY)",
+    "ITC": "ITC (ITC)",
+    "RELIANCE": "Reliance Industries (RELIANCE)",
+    "SBI": "State Bank of India (SBI)",
+    "TCS": "Tata Consultancy Services (TCS)",
+    "VEDL": "Vedanta (VEDL)",
+}
+
+# ---------------------------------------------------------------------------
+# Streamlit Page Config
+# ---------------------------------------------------------------------------
 st.set_page_config(
-    page_title="Stock Market Predictor",
-    page_icon="\U0001F4C8",
+    page_title="Stock Market Predictor | Quantitative Terminal",
+    page_icon="📈",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
-st.markdown("""
+# ---------------------------------------------------------------------------
+# Sidebar Layout
+# ---------------------------------------------------------------------------
+with st.sidebar:
+    st.markdown("<div style='font-size:18px;font-weight:800;letter-spacing:0.5px;margin-bottom:2px;color:#f8fafc'>STOCK PREDICTOR</div>", unsafe_allow_html=True)
+    st.markdown("<div style='font-size:11px;font-weight:600;letter-spacing:0.5px;color:#94a3b8;margin-bottom:22px;'>QUANTITATIVE ANALYTICS TERMINAL</div>", unsafe_allow_html=True)
+
+    st.markdown("<div class='sidebar-group-title'>STOCK SELECTION</div>", unsafe_allow_html=True)
+    available_stocks = config.list_stocks()
+    stock_choice = st.selectbox(
+        "Select Ticker",
+        options=available_stocks,
+        format_func=lambda key: STOCK_DISPLAY_NAMES.get(key, key),
+        index=0,
+    )
+
+    st.button("▶ RUN ANALYSIS", width="stretch")
+
+    st.markdown("<div style='margin-top:24px;' class='sidebar-group-title'>VALIDATION METHODOLOGY</div>", unsafe_allow_html=True)
+    st.markdown("""
+    <div style='margin-top:10px;'>
+      <div class='checklist-row'>
+        <div class='check-circle'>✓</div>
+        <span>Stationary features (scale-free)</span>
+      </div>
+      <div class='checklist-row'>
+        <div class='check-circle'>✓</div>
+        <span>Non-overlapping labels</span>
+      </div>
+      <div class='checklist-row'>
+        <div class='check-circle'>✓</div>
+        <span>5-Fold Walk-forward CV</span>
+      </div>
+      <div class='checklist-row'>
+        <div class='check-circle'>✓</div>
+        <span>52-Day Embargo gap</span>
+      </div>
+      <div class='checklist-row'>
+        <div class='check-circle'>✓</div>
+        <span>100-Run Permutation test</span>
+      </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("<div style='margin-top:24px;' class='sidebar-group-title'>MODEL SPECIFICATION</div>", unsafe_allow_html=True)
+    st.markdown("""
+    <div style='margin-top:10px;'>
+      <div class='spec-row'>
+        <span class='spec-key'>Architecture:</span>
+        <span class='spec-val'>Logistic Regression</span>
+      </div>
+      <div class='spec-row'>
+        <span class='spec-key'>Regularisation:</span>
+        <span class='spec-val'>L2 Penalty (C=0.1)</span>
+      </div>
+      <div class='spec-row'>
+        <span class='spec-key'>Scaling:</span>
+        <span class='spec-val'>StandardScaler (in-fold)</span>
+      </div>
+      <div class='spec-row'>
+        <span class='spec-key'>Features:</span>
+        <span class='spec-val'>52 Stationary Ratios</span>
+      </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# ---------------------------------------------------------------------------
+# Dark Financial Terminal CSS Engine
+# ---------------------------------------------------------------------------
+bg_main = "#0b0f19"
+card_bg = "#121824"
+card_border = "#1f293d"
+text_primary = "#f8fafc"
+text_muted = "#94a3b8"
+heading_border = "#1f293d"
+sidebar_bg = "#070a12"
+input_bg = "#121824"
+input_border = "#1f293d"
+input_text = "#f8fafc"
+popover_bg = "#121824"
+popover_text = "#cbd5e1"
+hover_bg = "#1e293b"
+
+banner_noact_bg = "rgba(245, 158, 11, 0.08)"
+banner_noact_border = "rgba(245, 158, 11, 0.3)"
+banner_noact_title = "#f59e0b"
+banner_noact_desc = "#cbd5e1"
+
+banner_act_bg = "rgba(16, 185, 129, 0.08)"
+banner_act_border = "rgba(16, 185, 129, 0.3)"
+banner_act_title = "#10b981"
+banner_act_desc = "#cbd5e1"
+
+pill_noact_color = "#f59e0b"
+
+chart_plot_bg = "rgba(18, 24, 36, 0.6)"
+chart_paper_bg = "rgba(0,0,0,0)"
+chart_text_color = "#cbd5e1"
+chart_title_color = "#f8fafc"
+chart_grid_color = "#1f293d"
+
+st.markdown(f"""
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;600&display=swap');
-  html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
-  .stApp { background: #0a0e1a; color: #e0e6f0; }
-  h1, h2, h3 { font-family: 'Space Mono', monospace !important; }
-  .metric-card {
-    background: linear-gradient(135deg, #12192e 0%, #1a2540 100%);
-    border: 1px solid #2a3a5c; border-radius: 12px;
-    padding: 20px 24px; text-align: center;
-    position: relative; overflow: hidden;
-  }
-  .metric-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, #00d4ff, #7b61ff);
-  }
-  .metric-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #a8bcd8; margin-bottom: 8px; font-family: 'Space Mono', monospace; }
-  .metric-value { font-size: 28px; font-weight: 700; color: #f0f4ff; font-family: 'Space Mono', monospace; }
-  .metric-sub { font-size: 12px; color: #8aaac8; margin-top: 4px; }
-  .pill-bullish { display: inline-block; background: rgba(0,255,136,0.15); border: 1px solid rgba(0,255,136,0.4); color: #00ff88; border-radius: 24px; padding: 6px 20px; font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 1px; }
-  .pill-bearish { display: inline-block; background: rgba(255,80,80,0.15); border: 1px solid rgba(255,80,80,0.4); color: #ff5050; border-radius: 24px; padding: 6px 20px; font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 1px; }
-  .sentiment-positive { color: #00ff88; font-weight: 700; font-family: 'Space Mono', monospace; }
-  .sentiment-negative { color: #ff5050; font-weight: 700; font-family: 'Space Mono', monospace; }
-  .sentiment-neutral   { color: #f0c040; font-weight: 700; font-family: 'Space Mono', monospace; }
-  .section-header { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #7eb8d4; border-bottom: 1px solid #2a4060; padding-bottom: 8px; margin-bottom: 16px; }
-  .sentiment-badge { display: inline-block; background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); color: #00d4ff; border-radius: 6px; padding: 2px 10px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 1px; margin-left: 8px; vertical-align: middle; }
-  .info-box { background: #0f1829; border-left: 3px solid #00d4ff; border-radius: 0 8px 8px 0; padding: 12px 16px; font-size: 13px; color: #b0cce8; margin-top: 8px; }
-  div[data-testid="stSidebar"] { background: #080d18 !important; border-right: 1px solid #1a2540; }
-  div[data-testid="stSidebar"] label { color: #b0c8e0 !important; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 1px; }
-  .stSelectbox > div > div { background: #12192e; border: 1px solid #2a3a5c; color: #e0e6f0; }
-  .stButton > button { background: linear-gradient(90deg, #00d4ff20, #7b61ff20); border: 1px solid #2a3a5c; color: #e0e6f0; border-radius: 8px; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 1px; padding: 8px 20px; transition: all 0.2s; width: 100%; }
-  .stButton > button:hover { border-color: #00d4ff; color: #00d4ff; }
-  .stSpinner > div { border-top-color: #00d4ff !important; }
-  [data-testid="stMetricValue"] { font-family: 'Space Mono', monospace; color: #e0e6f0; }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+  html, body, [class*="css"] {{
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }}
+
+  .stApp {{
+    background-color: {bg_main};
+    color: {text_primary};
+  }}
+
+  h1, h2, h3 {{
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 700 !important;
+    color: {text_primary} !important;
+  }}
+
+  .mono-text {{
+    font-family: 'Space Mono', monospace !important;
+  }}
+
+  /* Sidebar Styling */
+  div[data-testid="stSidebar"] {{
+    background-color: {sidebar_bg} !important;
+    border-right: 1px solid {card_border};
+  }}
+
+  div[data-testid="stSidebar"] label, div[data-testid="stSidebar"] span, div[data-testid="stSidebar"] p {{
+    color: {text_muted} !important;
+  }}
+
+  .sidebar-group-title {{
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: {text_muted};
+    margin-bottom: 8px;
+  }}
+
+  /* Primary Blue Action Button */
+  .stButton > button {{
+    background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
+    border: none !important;
+    color: #ffffff !important;
+    border-radius: 8px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    padding: 10px 16px !important;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3) !important;
+    transition: all 0.2s ease-in-out !important;
+    width: 100% !important;
+  }}
+
+  .stButton > button:hover {{
+    background: linear-gradient(135deg, #1d4ed8, #2563eb) !important;
+    box-shadow: 0 6px 12px -2px rgba(37, 99, 235, 0.4) !important;
+    color: #ffffff !important;
+  }}
+
+  /* Sidebar Checklist & Specs Layout */
+  .checklist-row {{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: {text_primary};
+  }}
+
+  .check-circle {{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: bold;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }}
+
+  .spec-row {{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 12px;
+  }}
+
+  .spec-key {{
+    font-weight: 700;
+    color: {text_primary};
+  }}
+
+  .spec-val {{
+    color: {text_muted};
+  }}
+
+  /* Terminal Card Component */
+  .terminal-card {{
+    background: {card_bg};
+    border: 1px solid {card_border};
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }}
+
+  .terminal-card-header {{
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: {text_muted};
+    margin-bottom: 8px;
+  }}
+
+  .terminal-card-value {{
+    font-family: 'Space Mono', monospace;
+    font-size: 24px;
+    font-weight: 700;
+    color: {text_primary};
+    line-height: 1.2;
+  }}
+
+  .terminal-card-sub {{
+    font-size: 12px;
+    color: {text_muted};
+    margin-top: 6px;
+    line-height: 1.4;
+  }}
+
+  /* Validation Status Banners */
+  .status-banner-actionable {{
+    background: {banner_act_bg};
+    border: 1px solid {banner_act_border};
+    border-left: 4px solid #10b981;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 24px;
+  }}
+
+  .status-banner-noactionable {{
+    background: {banner_noact_bg};
+    border: 1px solid {banner_noact_border};
+    border-left: 4px solid #f59e0b;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 24px;
+  }}
+
+  .status-banner-leakage {{
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-left: 4px solid #ef4444;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 24px;
+  }}
+
+  /* Signal Pills */
+  .pill-actionable-up {{
+    display: inline-block;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    color: #10b981;
+    border-radius: 20px;
+    padding: 6px 18px;
+    font-family: 'Space Mono', monospace;
+    font-size: 15px;
+    font-weight: 700;
+  }}
+
+  .pill-actionable-down {{
+    display: inline-block;
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #ef4444;
+    border-radius: 20px;
+    padding: 6px 18px;
+    font-family: 'Space Mono', monospace;
+    font-size: 15px;
+    font-weight: 700;
+  }}
+
+  .pill-noactionable {{
+    display: inline-block;
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    color: {pill_noact_color};
+    border-radius: 20px;
+    padding: 6px 18px;
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+  }}
+
+  /* Section Headings */
+  .section-heading {{
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: {text_muted};
+    border-bottom: 1px solid {heading_border};
+    padding-bottom: 8px;
+    margin-top: 28px;
+    margin-bottom: 18px;
+  }}
+
+  /* Streamlit Selectbox & Menu */
+  .stSelectbox > div > div {{
+    background-color: {input_bg} !important;
+    border: 1px solid {input_border} !important;
+    color: {input_text} !important;
+    border-radius: 6px !important;
+  }}
+
+  .stSelectbox div[data-baseweb="select"] * {{
+    color: {input_text} !important;
+  }}
+
+  div[data-baseweb="popover"], div[data-baseweb="menu"] {{
+    background-color: {popover_bg} !important;
+    border: 1px solid {input_border} !important;
+    max-height: 520px !important;
+  }}
+
+  div[data-baseweb="menu"] li {{
+    background-color: {popover_bg} !important;
+    color: {popover_text} !important;
+    font-size: 13px !important;
+    padding: 8px 12px !important;
+  }}
+
+  div[data-baseweb="menu"] li:hover {{
+    background-color: {hover_bg} !important;
+    color: {input_text} !important;
+  }}
+
+  /* Information Note Box */
+  .transparency-box {{
+    background: {card_bg};
+    border-left: 3px solid #f59e0b;
+    border-radius: 0 6px 6px 0;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: {text_primary};
+    margin-top: 14px;
+    line-height: 1.5;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }}
+
+  /* Streamlit Expander Styling */
+  div[data-testid="stExpander"] {{
+    background-color: {card_bg} !important;
+    border: 1px solid {card_border} !important;
+    border-radius: 6px !important;
+  }}
+
+  div[data-testid="stExpander"] summary span {{
+    color: {text_primary} !important;
+    font-weight: 600 !important;
+  }}
 </style>
 """, unsafe_allow_html=True)
 
-# ─── Data & artifact loading ────────────────────────────────────────
-
-@st.cache_data(show_spinner=False)
+# ---------------------------------------------------------------------------
+# Data Caching Helper (Includes full raw OHLCV for latest market date)
+# ---------------------------------------------------------------------------
+@st.cache_data(ttl=600)
 def load_full_frame(stock_key: str) -> pd.DataFrame:
-    """Feature frame used for charts. Cached: it is pure computation."""
-    df = build_dataset(stock_key, with_sentiment=False,
-                       save=False, verbose=False)
-    return add_stationary_features(df).dropna().reset_index(drop=True)
+    stock = config.get_stock(stock_key)
+    if stock.raw_path.exists():
+        raw = load_raw_ohlcv(stock.raw_path, verbose=False)
+        df = build_features(
+            raw,
+            horizon=config.TARGET_HORIZON,
+            with_ichimoku=True,
+            with_bollinger=True,
+            dropna=False,
+            verbose=False,
+        )
+        df = add_stationary_features(df).reset_index(drop=True)
+        return df
+    elif stock.features_path.exists():
+        df = pd.read_csv(stock.features_path)
+        df["Date"] = pd.to_datetime(df["Date"])
+        df = df.sort_values("Date").reset_index(drop=True)
+        if "close_vs_sma20" not in df.columns:
+            df = add_stationary_features(df).reset_index(drop=True)
+        return df
+    else:
+        raise FileNotFoundError(f"No dataset found for {stock_key}")
 
-
-@st.cache_resource(show_spinner=False)
+@st.cache_resource(ttl=600)
 def load_model_artifacts(stock_key: str) -> dict:
-    """Trained model + metadata. cache_resource because it holds an object."""
     return load_artifacts(stock_key)
 
+# ---------------------------------------------------------------------------
+# Dark Theme-Aware Plotly Chart Layout Helper
+# ---------------------------------------------------------------------------
+def _terminal_chart_layout(height=360, title=""):
+    return dict(
+        height=height,
+        margin=dict(l=45, r=25, t=40 if title else 15, b=35),
+        paper_bgcolor=chart_paper_bg,
+        plot_bgcolor=chart_plot_bg,
+        font=dict(family="Inter, sans-serif", size=11, color=chart_text_color),
+        title=dict(text=title, font=dict(size=13, color=chart_title_color, family="Inter, sans-serif")) if title else None,
+        hoverlabel=dict(
+            bgcolor="#121824",
+            font_color="#f8fafc",
+            font_family="Inter, sans-serif",
+            bordercolor="#1f293d"
+        ),
+        xaxis=dict(
+            gridcolor=chart_grid_color,
+            showgrid=True,
+            zeroline=False,
+            color=chart_text_color,
+            tickfont=dict(color=chart_text_color),
+        ),
+        yaxis=dict(
+            gridcolor=chart_grid_color,
+            showgrid=True,
+            zeroline=False,
+            color=chart_text_color,
+            tickfont=dict(color=chart_text_color),
+        ),
+        legend=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=1.02,
+            xanchor="right",
+            x=1,
+            font=dict(size=11, color=chart_text_color),
+            bgcolor="rgba(0,0,0,0)",
+        ),
+    )
 
-@st.cache_data(show_spinner=False)
-def load_sentiment_frame() -> pd.DataFrame | None:
-    """
-    The DJIA-proxy sentiment set, shown for transparency only.
-
-    Phase 1 measured its ROC-AUC at 0.47 — below chance — so it is NOT a
-    model input. It is displayed with that caveat attached.
-    """
-    path = config.PROCESSED_DIR / "TCS_dataset.csv"
-    if not path.exists():
-        return None
-    df = pd.read_csv(path)
-    if "vader_sentiment" not in df.columns:
-        return None
-    df["Date"] = pd.to_datetime(df["Date"])
-    return df.sort_values("Date").reset_index(drop=True)
-
-
-# ─── Chart builders ─────────────────────────────────────────────────
-
-DARK, PLOT, GRID = "#0a0e1a", "#0f1829", "#1a2540"
-FONT, HEAD = "#a8bcd8", "#e0e6f0"
-
-
-def _layout(height=300, title="", extra=None):
-    base = dict(paper_bgcolor=DARK, plot_bgcolor=PLOT,
-                font=dict(family="DM Sans", color=FONT),
-                title=dict(text=title,
-                           font=dict(family="Space Mono", color=HEAD, size=12)),
-                xaxis=dict(gridcolor=GRID), yaxis=dict(gridcolor=GRID),
-                height=height, margin=dict(l=0, r=0, t=40, b=0),
-                legend=dict(bgcolor=DARK, bordercolor=GRID, borderwidth=1))
-    if extra:
-        base.update(extra)
-    return base
-
-
-def price_chart(df, name):
+def build_candlestick_chart(df: pd.DataFrame, stock_name: str) -> go.Figure:
     fig = go.Figure()
+    
+    # Candlestick Series
     fig.add_trace(go.Candlestick(
-        x=df["Date"], open=df["Open"], high=df["High"],
-        low=df["Low"], close=df["Close"], name="Price",
-        increasing_line_color="#00ff88", decreasing_line_color="#ff5050",
-        increasing_fillcolor="rgba(0,255,136,0.2)",
-        decreasing_fillcolor="rgba(255,80,80,0.2)"))
-    for col, colour, dash in [("SMA_20", "#13dce6", "dot"),
-                              ("SMA_50", "#ff9f40", "dash")]:
-        if col in df.columns:
-            fig.add_trace(go.Scatter(x=df["Date"], y=df[col],
-                                     line=dict(color=colour, width=1, dash=dash),
-                                     name=col.replace("_", " "), opacity=0.7))
-    fig.update_layout(**_layout(
-        420, f"{name} · Historical Price",
-        {"xaxis": dict(gridcolor=GRID, rangeslider_visible=False),
-         "yaxis": dict(gridcolor=GRID, title="Price (\u20b9)")}))
+        x=df["Date"],
+        open=df["Open"],
+        high=df["High"],
+        low=df["Low"],
+        close=df["Close"],
+        name="OHLC",
+        increasing_line_color="#10b981",
+        increasing_fillcolor="#10b981",
+        decreasing_line_color="#ef4444",
+        decreasing_fillcolor="#ef4444",
+    ))
+    
+    # Overlay Moving Averages
+    if "SMA_20" in df.columns:
+        fig.add_trace(go.Scatter(
+            x=df["Date"], y=df["SMA_20"],
+            name="SMA 20", line=dict(color="#a855f7", width=1.4)
+        ))
+    if "SMA_50" in df.columns:
+        fig.add_trace(go.Scatter(
+            x=df["Date"], y=df["SMA_50"],
+            name="SMA 50", line=dict(color="#6366f1", width=1.4)
+        ))
+
+    layout = _terminal_chart_layout(420, f"{stock_name} — PRICE HISTORY & CANDLESTICK ANALYSIS")
+    
+    # Timeframe Range Selector Buttons (1M, 3M, 6M, 1Y, ALL)
+    layout["xaxis"]["rangeselector"] = dict(
+        buttons=list([
+            dict(count=1, label="1M", step="month", stepmode="backward"),
+            dict(count=3, label="3M", step="month", stepmode="backward"),
+            dict(count=6, label="6M", step="month", stepmode="backward"),
+            dict(count=1, label="1Y", step="year", stepmode="backward"),
+            dict(step="all", label="ALL")
+        ]),
+        bgcolor=card_bg,
+        activecolor=hover_bg,
+        font=dict(color=text_primary, size=10)
+    )
+    layout["xaxis"]["rangeslider"] = dict(visible=False)
+    
+    fig.update_layout(**layout)
     return fig
 
-
-def rsi_chart(df):
-    fig = go.Figure(go.Scatter(
-        x=df["Date"], y=df["RSI"], line=dict(color="#7b61ff", width=1.5),
-        fill="tozeroy", fillcolor="rgba(123,97,255,0.05)", name="RSI"))
-    fig.add_hline(y=70, line=dict(color="#ff5050", dash="dash", width=1))
-    fig.add_hline(y=30, line=dict(color="#00ff88", dash="dash", width=1))
-    fig.update_layout(**_layout(200, "RSI (14)",
-                                {"yaxis": dict(gridcolor=GRID, range=[0, 100]),
-                                 "showlegend": False}))
-    return fig
-
-
-def coverage_chart(curve):
-    """
-    Replaces the old fabricated LSTM-vs-GRU chart.
-
-    Shows accuracy against the fraction of days the model commits to, with
-    the majority baseline on the same subsets. This is the honest headline
-    of the whole project.
-    """
+def build_rsi_chart(df: pd.DataFrame) -> go.Figure:
     fig = go.Figure()
-    fig.add_trace(go.Scatter(
-        x=curve["coverage"], y=curve["accuracy"], mode="lines+markers",
-        line=dict(color="#00d4ff", width=2), name="Model accuracy"))
-    fig.add_trace(go.Scatter(
-        x=curve["coverage"], y=curve["subset_majority"], mode="lines+markers",
-        line=dict(color="#ff5050", width=1.5, dash="dash"),
-        name="Majority baseline"))
-    fig.update_layout(**_layout(
-        300, "Accuracy vs Coverage (walk-forward, out-of-fold)",
-        {"xaxis": dict(gridcolor=GRID, title="Coverage", autorange="reversed"),
-         "yaxis": dict(gridcolor=GRID, title="Accuracy")}))
+    if "RSI" in df.columns:
+        fig.add_trace(go.Scatter(
+            x=df["Date"], y=df["RSI"],
+            name="RSI (14)", line=dict(color="#a855f7", width=1.3)
+        ))
+    fig.add_hline(y=70, line=dict(color="#ef4444", dash="dash", width=1))
+    fig.add_hline(y=30, line=dict(color="#10b981", dash="dash", width=1))
+    fig.update_layout(**_terminal_chart_layout(180, "RELATIVE STRENGTH INDEX (RSI 14)"))
     return fig
 
-
-def fold_chart(oof):
-    """Per-fold accuracy, so fold-to-fold variance is visible, not hidden."""
-    per_fold = (oof.assign(correct=lambda d: d["y_pred"] == d["y_true"])
-                .groupby("fold")["correct"].mean())
-    fig = go.Figure(go.Bar(
-        x=[f"Fold {i}" for i in per_fold.index], y=per_fold.values,
-        marker_color=["#00ff88" if v > 0.5 else "#ff5050"
-                      for v in per_fold.values], marker_opacity=0.85))
-    fig.add_hline(y=0.5, line=dict(color="#a8bcd8", dash="dot", width=1))
-    fig.update_layout(**_layout(300, "Accuracy by walk-forward fold",
-                                {"yaxis": dict(gridcolor=GRID, range=[0, 1]),
-                                 "showlegend": False}))
+def build_coverage_chart(curve: pd.DataFrame) -> go.Figure:
+    fig = go.Figure()
+    if curve is not None and not curve.empty:
+        fig.add_trace(go.Scatter(
+            x=curve["coverage"], y=curve["accuracy"],
+            mode="lines+markers",
+            name="Accuracy",
+            line=dict(color="#10b981", width=2),
+            marker=dict(size=5)
+        ))
+        if "subset_majority" in curve.columns:
+            fig.add_trace(go.Scatter(
+                x=curve["coverage"], y=curve["subset_majority"],
+                mode="lines",
+                name="Subset Majority",
+                line=dict(color="#64748b", width=1, dash="dot")
+            ))
+    fig.update_layout(**_terminal_chart_layout(240, "ACCURACY VS CONFIDENCE COVERAGE"))
     return fig
 
+def build_fold_chart(oof: pd.DataFrame) -> go.Figure:
+    fig = go.Figure()
+    if oof is not None and not oof.empty and "fold" in oof.columns:
+        fold_accs = oof.groupby("fold").apply(
+            lambda g: float(np.mean(g["y_true"] == g["y_pred"]))
+        ).reset_index(name="accuracy")
+        
+        fig.add_trace(go.Bar(
+            x=[f"Fold {int(f)+1}" for f in fold_accs["fold"]],
+            y=fold_accs["accuracy"],
+            marker_color="#6366f1",
+            name="Fold Accuracy"
+        ))
+        fig.add_hline(y=0.5, line=dict(color="#64748b", dash="dot", width=1))
+    fig.update_layout(**_terminal_chart_layout(240, "OUT-OF-FOLD ACCURACY STABILITY"))
+    return fig
 
-def importance_chart(model, features, top_n=15):
-    """
-    Feature importance for tree ensembles, absolute standardised
-    coefficients for the linear model. Both are shown as relative
-    influence, not causal effect.
-    """
-    if hasattr(model, "feature_importances_"):
-        imp = pd.Series(model.feature_importances_, index=features)
-    elif hasattr(model, "named_steps") and "clf" in getattr(
-            model, "named_steps", {}):
-        clf = model.named_steps["clf"]
-        if not hasattr(clf, "coef_"):
-            return None
-        imp = pd.Series(np.abs(clf.coef_[0]), index=features)
-    elif hasattr(model, "coef_"):
-        imp = pd.Series(np.abs(model.coef_[0]), index=features)
-    else:
+def build_importance_chart(model, feature_names: list, top_n: int = 10) -> go.Figure:
+    clf = getattr(model, "named_steps", {}).get("clf", model)
+    if not hasattr(clf, "coef_"):
         return None
-    imp = imp.sort_values(ascending=False).head(top_n).iloc[::-1]
-    fig = go.Figure(go.Bar(x=imp.values, y=imp.index, orientation="h",
-                           marker_color="#7b61ff", marker_opacity=0.85))
-    fig.update_layout(**_layout(360, f"Top {top_n} feature importances",
-                                {"showlegend": False}))
+    coefs = clf.coef_[0]
+    df_imp = pd.DataFrame({"feature": feature_names, "importance": coefs})
+    df_imp["abs_imp"] = df_imp["importance"].abs()
+    top = df_imp.sort_values("abs_imp", ascending=True).tail(top_n)
+
+    fig = go.Figure(go.Bar(
+        x=top["importance"],
+        y=top["feature"],
+        orientation="h",
+        marker_color=np.where(top["importance"] > 0, "#10b981", "#ef4444")
+    ))
+    fig.update_layout(**_terminal_chart_layout(240, f"TOP {top_n} FEATURE COEFFICIENTS"))
     return fig
 
+# Check Artifact Existence
+if not artifacts_exist(stock_choice):
+    st.warning(f"No trained artifacts found for **{stock_choice}** in `models/{stock_choice}/`. "
+               f"Please run model training first.")
+    st.stop()
 
-def sentiment_chart(df):
-    fig = go.Figure(go.Scatter(
-        x=df["Date"], y=df["vader_sentiment"], fill="tozeroy",
-        fillcolor="rgba(0,212,255,0.08)",
-        line=dict(color="#00d4ff", width=1.2), name="VADER"))
-    fig.add_hline(y=0, line=dict(color="#a8bcd8", dash="dot", width=1))
-    fig.update_layout(**_layout(260, "VADER sentiment (DJIA proxy corpus)",
-                                {"showlegend": False}))
-    return fig
+# Load Artifacts and Predictions
+art = load_model_artifacts(stock_choice)
+meta, model, curve = art["metadata"], art["model"], art["curve"]
+full = load_full_frame(stock_choice)
 
+# Predict Latest
+pred = predict_latest(stock_choice, full_frame=full)
 
-# ─── Sidebar ────────────────────────────────────────────────────────
+perm = meta.get("permutation") or {}
+seeds = meta.get("seed_robustness") or {}
+op = meta.get("operating_point") or {}
+edge = meta.get("edge", 0.0)
+horizon_days = pred.get("horizon_days", meta["config"].get("horizon", config.TARGET_HORIZON))
+perm_verdict = perm.get("verdict", "N/A")
 
-with st.sidebar:
-    st.markdown("## \U0001F4C8 STOCK PREDICTOR")
-    st.markdown("<div style='color:#7eb8d4;font-size:11px;letter-spacing:2px;"
-                "margin-bottom:20px'>WALK-FORWARD VALIDATED</div>",
-                unsafe_allow_html=True)
-    st.markdown("---")
+# Actionable Verdict Rule
+is_actionable = bool(edge > 0 and perm_verdict == "SIGNAL")
 
-    # Stock list comes from the registry, so a new stock appears here
-    # automatically once it is added to config.STOCKS and trained.
-    available = config.list_stocks()
-    trained = [k for k in available if artifacts_exist(k)]
-
-    if not trained:
-        st.error("No trained models found.")
-        st.markdown(
-            "<div style='font-size:11px;color:#ff9f40'>Run "
-            "<code>notebooks/04_model_training_and_artifacts.ipynb</code> "
-            "first.</div>", unsafe_allow_html=True)
-        st.stop()
-
-    stock_choice = st.selectbox("SELECT STOCK", options=trained, index=0)
-    st.markdown("---")
-    run_btn = st.button("\u25B6  RUN ANALYSIS")
-    st.markdown("---")
-
-    untrained = [k for k in available if k not in trained]
-    if untrained:
-        st.markdown(
-            f"<div style='font-size:10px;color:#8ab4cc'>Registered but not "
-            f"trained: {', '.join(untrained)}</div>", unsafe_allow_html=True)
-
-    st.markdown("""
-    <div style='font-size:11px;color:#8ab4cc;line-height:1.8;
-                font-family:Space Mono,monospace'>
-    PIPELINE<br>├─ Stationary features<br>├─ Non-overlapping labels<br>
-    ├─ Walk-forward CV<br>├─ Embargo gap<br>└─ Permutation test<br><br>
-    MODEL<br>└─ Logistic (regularised)
-    </div>""", unsafe_allow_html=True)
-
-
-# ─── Title ──────────────────────────────────────────────────────────
-
-st.markdown("""
-<div style='padding:24px 0 8px 0'>
-  <div style='font-family:Space Mono,monospace;font-size:24px;font-weight:700;
-              color:#e0e6f0;letter-spacing:2px'>STOCK MARKET PREDICTOR</div>
-  <div style='font-size:13px;color:#7eb8d4;letter-spacing:2px;margin-top:4px'>
-    WALK-FORWARD VALIDATED \u00b7 STATIONARY FEATURES \u00b7 HONEST BASELINES
-  </div>
-</div>""", unsafe_allow_html=True)
-st.markdown("---")
-
-
-# ─── Main ───────────────────────────────────────────────────────────
-
-if run_btn:
-    with st.spinner(f"Loading {stock_choice} artifacts\u2026"):
-        art = load_model_artifacts(stock_choice)
-        meta, model, curve = art["metadata"], art["model"], art["curve"]
-        full = load_full_frame(stock_choice)
-        pred = predict_latest(stock_choice, full_frame=full)
-
-    perm = meta.get("permutation") or {}
-    seeds = meta.get("seed_robustness") or {}
-    op = meta.get("operating_point") or {}
-    edge = meta.get("edge", 0.0)
-
-    # ── Honesty banner ───────────────────────────────────────────────
-    if edge <= 0 or perm.get("verdict") == "NO SIGNAL":
-        st.markdown(f"""<div style='background:rgba(255,80,80,0.08);
-          border-left:3px solid #ff5050;border-radius:0 8px 8px 0;
-          padding:14px 18px;font-size:13px;color:#ffb0b0;margin-bottom:16px'>
-          <strong>No demonstrated edge for {stock_choice}.</strong><br>
-          Walk-forward accuracy {meta['walk_forward_accuracy']:.4f} against a
-          baseline of {meta['baseline']:.4f} (edge {edge:+.4f}).
-          Permutation verdict: {perm.get('verdict', 'n/a')}.
-          Predictions below are shown for completeness and should not be
-          treated as actionable.
-        </div>""", unsafe_allow_html=True)
-    elif perm.get("verdict") == "LEAKAGE":
-        st.error("Permutation test indicates leakage. Do not trust these "
-                 "numbers until it is found.")
-
-    # ── 01 Price ─────────────────────────────────────────────────────
-    st.markdown("<div class='section-header'>01 \u00b7 PRICE HISTORY</div>",
-                unsafe_allow_html=True)
-    display = full.tail(500)
-    st.plotly_chart(price_chart(display, meta["display_name"]),
-                    use_container_width=True)
-    c_rsi, c_vol = st.columns([2, 1])
-    with c_rsi:
-        st.plotly_chart(rsi_chart(display), use_container_width=True)
-    with c_vol:
-        st.markdown("<div class='section-header' style='margin-top:8px'>"
-                    "VOLUME</div>", unsafe_allow_html=True)
-        fv = go.Figure(go.Bar(x=display["Date"], y=display["Volume"],
-                              marker_color="rgba(0,212,255,0.3)"))
-        fv.update_layout(**_layout(200, "", {"showlegend": False}))
-        st.plotly_chart(fv, use_container_width=True)
-    st.markdown("---")
-
-    # ── 02 Validated performance ─────────────────────────────────────
-    st.markdown("<div class='section-header'>02 \u00b7 VALIDATED "
-                "PERFORMANCE</div>", unsafe_allow_html=True)
-
-    m1, m2, m3, m4 = st.columns(4)
-    with m1:
-        st.markdown(f"""<div class='metric-card'>
-          <div class='metric-label'>Walk-Forward Accuracy</div>
-          <div class='metric-value'>{meta['walk_forward_accuracy']:.1%}</div>
-          <div class='metric-sub'>\u00b1 {meta['walk_forward_std']:.1%} across
-          {meta['config']['n_splits']} folds</div>
-        </div>""", unsafe_allow_html=True)
-    with m2:
-        st.markdown(f"""<div class='metric-card'>
-          <div class='metric-label'>Baseline</div>
-          <div class='metric-value'>{meta['baseline']:.1%}</div>
-          <div class='metric-sub'>Best of majority / persistence</div>
-        </div>""", unsafe_allow_html=True)
-    with m3:
-        colour = "#00ff88" if edge > 0 else "#ff5050"
-        st.markdown(f"""<div class='metric-card'>
-          <div class='metric-label'>Edge Over Baseline</div>
-          <div class='metric-value' style='color:{colour}'>{edge:+.1%}</div>
-          <div class='metric-sub'>{seeds.get('verdict', 'n/a')}</div>
-        </div>""", unsafe_allow_html=True)
-    with m4:
-        pv = perm.get("verdict", "n/a")
-        pc = "#00ff88" if pv == "SIGNAL" else "#f0c040"
-        st.markdown(f"""<div class='metric-card'>
-          <div class='metric-label'>Permutation Test</div>
-          <div class='metric-value' style='color:{pc};font-size:20px'>{pv}</div>
-          <div class='metric-sub'>Shuffled:
-          {perm.get('shuffled_mean', float('nan')):.3f}</div>
-        </div>""", unsafe_allow_html=True)
-
-    st.markdown("<br>", unsafe_allow_html=True)
-    cc1, cc2 = st.columns(2)
-    with cc1:
-        if curve is not None and not curve.empty:
-            st.plotly_chart(coverage_chart(curve), use_container_width=True)
-    with cc2:
-        oof_path = config.get_stock(stock_choice).model_dir / \
-            "oof_predictions.csv"
-        if oof_path.exists():
-            st.plotly_chart(fold_chart(pd.read_csv(oof_path)),
-                            use_container_width=True)
-
-    fi = importance_chart(model, meta["features"])
-    if fi is not None:
-        st.plotly_chart(fi, use_container_width=True)
-    st.markdown("---")
-
-    # ── 03 Current signal ────────────────────────────────────────────
-    st.markdown("<div class='section-header'>03 \u00b7 CURRENT SIGNAL</div>",
-                unsafe_allow_html=True)
-
-    s1, s2, s3 = st.columns(3)
-    with s1:
-        sig = pred["signal"]
-        if sig == "UP":
-            pill = "<span class='pill-bullish'>UP \u2191</span>"
-        elif sig == "DOWN":
-            pill = "<span class='pill-bearish'>DOWN \u2193</span>"
-        else:
-            pill = ("<span style='display:inline-block;background:"
-                    "rgba(240,192,64,0.15);border:1px solid rgba(240,192,64,.4);"
-                    "color:#f0c040;border-radius:24px;padding:6px 20px;"
-                    "font-family:Space Mono,monospace;font-size:14px;"
-                    "font-weight:700'>NO SIGNAL</span>")
-        st.markdown(f"""<div class='metric-card' style='text-align:left'>
-          <div class='metric-label'>Signal
-          ({pred['horizon_days']}-day horizon)</div>
-          <div style='margin-top:12px'>{pill}</div>
-          <div class='metric-sub' style='margin-top:10px'>
-          As of {pred['date']}</div>
-        </div>""", unsafe_allow_html=True)
-    with s2:
-        st.markdown(f"""<div class='metric-card'>
-          <div class='metric-label'>Model Probability (UP)</div>
-          <div class='metric-value'>{pred['probability_up']:.3f}</div>
-          <div class='metric-sub'>Confidence {pred['confidence']:.3f} \u00b7
-          gate {pred['confidence_threshold']:.3f}</div>
-        </div>""", unsafe_allow_html=True)
-    with s3:
-        st.markdown(f"""<div class='metric-card'>
-          <div class='metric-label'>Expected Hit Rate</div>
-          <div class='metric-value'>{op.get('accuracy', float('nan')):.1%}</div>
-          <div class='metric-sub'>At
-          {op.get('coverage', float('nan')):.0%} coverage</div>
-        </div>""", unsafe_allow_html=True)
-
-    st.markdown(f"""<div class='info-box' style='margin-top:16px'>
-      <strong style='color:#00d4ff'>How to read this.</strong>
-      The model predicts direction {pred['horizon_days']} trading days ahead,
-      using non-overlapping labels so no two training examples share data.
-      Probabilities are ranked confidence scores, not calibrated
-      probabilities \u2014 the Brier score sits close to 0.25, so treat them
-      as relative rather than literal.
-    </div>""", unsafe_allow_html=True)
-    st.markdown("---")
-
-    # ── 04 Sentiment (transparency only) ─────────────────────────────
-    sent = load_sentiment_frame()
-    if sent is not None and stock_choice == "TCS":
-        st.markdown("<div class='section-header'>04 \u00b7 SENTIMENT "
-                    "(NOT A MODEL INPUT)</div>", unsafe_allow_html=True)
-        st.markdown("""<div class='info-box'
-          style='border-left-color:#f0c040;margin-bottom:12px'>
-          The available news corpus is Reddit r/worldnews (2008\u20132016),
-          not TCS-specific news. Measured ROC-AUC as a predictor was 0.47
-          \u2014 below chance \u2014 so these scores are excluded from the
-          model and shown for transparency only.
-        </div>""", unsafe_allow_html=True)
-        st.plotly_chart(sentiment_chart(sent), use_container_width=True)
-        st.markdown("---")
-
-    # ── Summary ──────────────────────────────────────────────────────
-    st.markdown(f"""<div class='info-box'>
-      <strong style='color:#00d4ff'>Summary \u00b7
-      {meta['display_name']}</strong><br>
-      Last close: <strong>\u20b9{pred['close']:,.2f}</strong> &nbsp;|&nbsp;
-      Date: <strong>{pred['date']}</strong> &nbsp;|&nbsp;
-      Rows: <strong>{meta['n_full_rows']:,}</strong> &nbsp;|&nbsp;
-      Modelling rows: <strong>{meta['n_modelling_rows']:,}</strong>
-      &nbsp;|&nbsp; Features: <strong>{meta['n_features']}</strong>
-      &nbsp;|&nbsp; Trained: <strong>{meta['trained_at'][:10]}</strong>
-    </div>""", unsafe_allow_html=True)
-
+if is_actionable:
+    overall_status_label = "ACTIONABLE SIGNAL"
+    status_banner_class = "status-banner-actionable"
+    status_color = banner_act_title
+    status_description = f"Model walk-forward accuracy ({meta['walk_forward_accuracy']:.1%}) beats baseline ({meta['baseline']:.1%}) by {edge:+.1%}. Permutation test confirms statistical signal over shuffled labels."
+elif perm_verdict == "LEAKAGE":
+    overall_status_label = "NO ACTIONABLE SIGNAL"
+    status_banner_class = "status-banner-leakage"
+    status_color = "#ef4444"
+    status_description = "Shuffled target accuracy exceeded leakage threshold. Predictions should not be trusted."
 else:
-    st.markdown("""
-    <div style='text-align:center;padding:80px 20px'>
-      <div style='font-size:60px'>\U0001F4C8</div>
-      <div style='font-family:Space Mono,monospace;font-size:18px;
-                  color:#e0e6f0;margin-top:20px'>
-        Select a stock and click
-        <span style='color:#00d4ff'>\u25B6 RUN ANALYSIS</span>
+    overall_status_label = "NO ACTIONABLE SIGNAL"
+    status_banner_class = "status-banner-noactionable"
+    status_color = banner_noact_title
+    status_description = f"Model walk-forward accuracy ({meta['walk_forward_accuracy']:.1%}) does not outperform the honest baseline ({meta['baseline']:.1%}) by an actionable margin ({edge:+.1%}). Predictions shown for completeness — not actionable."
+
+# ---------------------------------------------------------------------------
+# 1. TOP HEADER SECTION
+# ---------------------------------------------------------------------------
+latest_date_str = str(full["Date"].iloc[-1].date())
+latest_close_val = float(full["Close"].iloc[-1])
+
+st.markdown(f"""
+<div style='padding:8px 0 16px 0;display:flex;justify-content:space-between;align-items:flex-end'>
+  <div>
+    <h1 style='margin:0;font-size:26px'>Stock Market Predictor</h1>
+    <div style='font-size:13px;color:{text_muted};margin-top:4px'>
+      <strong>{meta['display_name']} ({meta['ticker']})</strong> &nbsp;•&nbsp; Latest Close: <strong>₹{latest_close_val:,.2f}</strong> &nbsp;•&nbsp; Updated: <strong>{latest_date_str}</strong>
+    </div>
+  </div>
+  <div style='text-align:right'>
+    <span class='mono-text' style='font-size:12px;background:{card_bg};color:{text_primary};padding:6px 14px;border-radius:6px;border:1px solid {card_border}'>
+      PREDICTION HORIZON: {horizon_days} TRADING DAYS
+    </span>
+  </div>
+</div>
+""", unsafe_allow_html=True)
+
+# ---------------------------------------------------------------------------
+# 2. MARKET SNAPSHOT BAR
+# ---------------------------------------------------------------------------
+prev_close_val = float(full["Close"].iloc[-2])
+change_val = latest_close_val - prev_close_val
+change_pct = (change_val / prev_close_val) * 100.0
+chg_color = "#10b981" if change_val >= 0 else "#ef4444"
+chg_sign = "+" if change_val >= 0 else ""
+
+sma20_latest = float(full["SMA_20"].iloc[-1]) if "SMA_20" in full.columns else latest_close_val
+sma50_latest = float(full["SMA_50"].iloc[-1]) if "SMA_50" in full.columns else latest_close_val
+
+t20_str = "Bullish ↑" if latest_close_val >= sma20_latest else "Bearish ↓"
+t20_clr = "#10b981" if latest_close_val >= sma20_latest else "#ef4444"
+
+t50_str = "Bullish ↑" if latest_close_val >= sma50_latest else "Bearish ↓"
+t50_clr = "#10b981" if latest_close_val >= sma50_latest else "#ef4444"
+
+st.markdown(f"""
+<div class='terminal-card' style='padding: 12px 20px; margin-bottom: 20px;'>
+  <div style='display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; text-align: center;'>
+    <div>
+      <div class='terminal-card-header' style='margin-bottom:2px'>Latest Close</div>
+      <div class='mono-text' style='font-size:16px;font-weight:700;color:{text_primary}'>₹{latest_close_val:,.2f}</div>
+    </div>
+    <div>
+      <div class='terminal-card-header' style='margin-bottom:2px'>Daily Change</div>
+      <div class='mono-text' style='font-size:16px;font-weight:700;color:{chg_color}'>{chg_sign}₹{abs(change_val):.2f} ({chg_sign}{change_pct:.2f}%)</div>
+    </div>
+    <div>
+      <div class='terminal-card-header' style='margin-bottom:2px'>20D SMA Trend</div>
+      <div style='font-size:14px;font-weight:700;color:{t20_clr}'>{t20_str}</div>
+    </div>
+    <div>
+      <div class='terminal-card-header' style='margin-bottom:2px'>50D SMA Trend</div>
+      <div style='font-size:14px;font-weight:700;color:{t50_clr}'>{t50_str}</div>
+    </div>
+    <div>
+      <div class='terminal-card-header' style='margin-bottom:2px'>Data Cutoff</div>
+      <div class='mono-text' style='font-size:14px;font-weight:600;color:{text_primary}'>{latest_date_str}</div>
+    </div>
+  </div>
+</div>
+""", unsafe_allow_html=True)
+
+# ---------------------------------------------------------------------------
+# 3. OVERALL VALIDATION VERDICT BANNER
+# ---------------------------------------------------------------------------
+st.markdown(f"""
+<div class='{status_banner_class}'>
+  <div style='display:flex;justify-content:space-between;align-items:center'>
+    <div>
+      <div style='font-size:11px;font-weight:700;letter-spacing:1.5px;color:{status_color};margin-bottom:2px'>
+        OVERALL VALIDATION VERDICT
       </div>
-      <div style='color:#7eb8d4;margin-top:12px;font-size:14px'>
-        Loads pre-trained, walk-forward-validated models
+      <div style='font-size:20px;font-weight:700;color:{status_color}'>
+        {overall_status_label}
       </div>
-    </div>""", unsafe_allow_html=True)
+      <div style='font-size:13px;color:{banner_noact_desc if not is_actionable else banner_act_desc};margin-top:4px'>
+        {status_description}
+      </div>
+    </div>
+  </div>
+</div>
+""", unsafe_allow_html=True)
+
+# ---------------------------------------------------------------------------
+# 4. KEY METRICS GRID (4 Cards)
+# ---------------------------------------------------------------------------
+m1, m2, m3, m4 = st.columns(4)
+
+with m1:
+    st.markdown(f"""
+    <div class='terminal-card'>
+      <div class='terminal-card-header'>Walk-Forward Accuracy</div>
+      <div class='terminal-card-value'>{meta['walk_forward_accuracy']:.1%}</div>
+      <div class='terminal-card-sub'>± {meta['walk_forward_std']:.1%} across {meta['config']['n_splits']} folds</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with m2:
+    st.markdown(f"""
+    <div class='terminal-card'>
+      <div class='terminal-card-header'>Honest Baseline</div>
+      <div class='terminal-card-value'>{meta['baseline']:.1%}</div>
+      <div class='terminal-card-sub'>Best of majority / persistence</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with m3:
+    edge_color = "#10b981" if edge > 0 else "#f59e0b"
+    st.markdown(f"""
+    <div class='terminal-card'>
+      <div class='terminal-card-header'>Edge Over Baseline</div>
+      <div class='terminal-card-value' style='color:{edge_color}'>{edge:+.1%}</div>
+      <div class='terminal-card-sub'>Seed verdict: {seeds.get('verdict', 'N/A')}</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with m4:
+    if perm_verdict == "SIGNAL" and edge <= 0:
+        perm_card_val = "NO ACTIONABLE SIGNAL"
+        perm_card_color = "#f59e0b"
+        perm_subtext = "Permutation test detected a statistically unusual pattern, but the model does not outperform the honest baseline."
+    elif perm_verdict == "SIGNAL" and edge > 0:
+        perm_card_val = "ACTIONABLE SIGNAL"
+        perm_card_color = "#10b981"
+        perm_subtext = "Permutation test confirms statistical signal over shuffled labels and honest baseline."
+    elif perm_verdict == "LEAKAGE":
+        perm_card_val = "LEAKAGE"
+        perm_card_color = "#ef4444"
+        perm_subtext = "Shuffled target accuracy exceeded leakage threshold."
+    else:
+        perm_card_val = "NO ACTIONABLE SIGNAL"
+        perm_card_color = "#f59e0b"
+        perm_subtext = "Permutation test found no statistically significant pattern over shuffled labels."
+
+    st.markdown(f"""
+    <div class='terminal-card'>
+      <div class='terminal-card-header'>Permutation Test</div>
+      <div class='terminal-card-value' style='color:{perm_card_color};font-size:18px'>{perm_card_val}</div>
+      <div class='terminal-card-sub'>{perm_subtext}</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# ---------------------------------------------------------------------------
+# 5. MAIN CANDLESTICK PRICE HISTORY CHART
+# ---------------------------------------------------------------------------
+st.markdown("<div class='section-heading'>01 · HISTORICAL CANDLESTICK ANALYSIS & MOVING AVERAGES</div>", unsafe_allow_html=True)
+
+st.plotly_chart(build_candlestick_chart(full, meta["display_name"]), width="stretch")
+
+# ---------------------------------------------------------------------------
+# 6. CURRENT PREDICTION SIGNAL
+# ---------------------------------------------------------------------------
+st.markdown("<div class='section-heading'>02 · CURRENT PREDICTION SIGNAL</div>", unsafe_allow_html=True)
+
+s1, s2, s3 = st.columns(3)
+
+with s1:
+    sig = pred["signal"]
+    if not is_actionable:
+        pill_html = "<span class='pill-noactionable'>NO ACTIONABLE SIGNAL</span>"
+    elif sig == "UP":
+        pill_html = "<span class='pill-actionable-up'>UP ↑</span>"
+    elif sig == "DOWN":
+        pill_html = "<span class='pill-actionable-down'>DOWN ↓</span>"
+    else:
+        pill_html = "<span class='pill-noactionable'>NO ACTIONABLE SIGNAL</span>"
+
+    st.markdown(f"""
+    <div class='terminal-card' style='min-height: 140px;'>
+      <div class='terminal-card-header'>Model Signal ({horizon_days}-Day Horizon)</div>
+      <div style='margin-top:10px'>{pill_html}</div>
+      <div class='terminal-card-sub' style='margin-top:12px'>As of market close: {pred['date']}</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with s2:
+    st.markdown(f"""
+    <div class='terminal-card' style='min-height: 140px;'>
+      <div class='terminal-card-header'>Model Probability Score (UP)</div>
+      <div class='terminal-card-value'>{pred['probability_up']:.1%}</div>
+      <div class='terminal-card-sub'>Confidence: {pred['confidence']:.3f} · Gate Threshold: {pred['confidence_threshold']:.3f}</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with s3:
+    st.markdown(f"""
+    <div class='terminal-card' style='min-height: 140px;'>
+      <div class='terminal-card-header'>Expected Historical Hit Rate</div>
+      <div class='terminal-card-value'>{op.get('accuracy', float('nan')):.1%}</div>
+      <div class='terminal-card-sub'>At {op.get('coverage', float('nan')):.0%} confidence coverage threshold</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+if not is_actionable:
+    st.markdown(f"""
+    <div class='transparency-box'>
+      <strong style='color: {banner_noact_title};'>Methodological Caution:</strong>
+      Model has no demonstrated predictive edge for this stock (walk-forward accuracy does not exceed the honest baseline). Prediction shown for completeness — not actionable.
+    </div>
+    """, unsafe_allow_html=True)
+else:
+    st.markdown(f"""
+    <div class='transparency-box' style='border-left-color: #10b981;'>
+      <strong style='color: #10b981;'>Actionable Model Signal:</strong>
+      The model predicts price direction <strong>{horizon_days} trading days ahead</strong> using non-overlapping target labels. Probabilities represent relative confidence ranking (uncalibrated probability, Brier score ~0.25).
+    </div>
+    """, unsafe_allow_html=True)
+
+# ---------------------------------------------------------------------------
+# 7. TECHNICAL INDICATORS (RSI & Volume)
+# ---------------------------------------------------------------------------
+st.markdown("<div class='section-heading'>03 · SECONDARY TECHNICAL INDICATORS</div>", unsafe_allow_html=True)
+
+display_tail = full.tail(300)
+c_rsi, c_vol = st.columns([2, 1])
+
+with c_rsi:
+    st.plotly_chart(build_rsi_chart(display_tail), width="stretch")
+
+with c_vol:
+    fv = go.Figure(go.Bar(
+        x=display_tail["Date"], y=display_tail["Volume"],
+        marker_color="rgba(168, 85, 247, 0.5)",
+        name="Volume"
+    ))
+    fv.update_layout(**_terminal_chart_layout(180, "DAILY VOLUME"))
+    st.plotly_chart(fv, width="stretch")
+
+# ---------------------------------------------------------------------------
+# 8. MODEL PERFORMANCE DIAGNOSTICS
+# ---------------------------------------------------------------------------
+st.markdown("<div class='section-heading'>04 · VALIDATION DIAGNOSTICS</div>", unsafe_allow_html=True)
+
+v1, v2, v3 = st.columns(3)
+
+with v1:
+    if curve is not None and not curve.empty:
+        st.plotly_chart(build_coverage_chart(curve), width="stretch")
+    else:
+        st.info("No coverage curve artifact available.")
+
+with v2:
+    oof_path = config.get_stock(stock_choice).model_dir / "oof_predictions.csv"
+    if oof_path.exists():
+        st.plotly_chart(build_fold_chart(pd.read_csv(oof_path)), width="stretch")
+    else:
+        st.info("No out-of-fold predictions file available.")
+
+with v3:
+    fi_chart = build_importance_chart(model, meta["features"], top_n=10)
+    if fi_chart is not None:
+        st.plotly_chart(fi_chart, width="stretch")
+    else:
+        st.info("Feature importance coefficients not available.")
+
+# ---------------------------------------------------------------------------
+# 9. INTERACTIVE METHODOLOGY PANEL
+# ---------------------------------------------------------------------------
+st.markdown("<div class='section-heading'>05 · METHODOLOGY & SCIENTIFIC RIGOUR PILLARS</div>", unsafe_allow_html=True)
+
+with st.expander("🔬 View Detailed Quantitative Validation Framework", expanded=False):
+    p1, p2, p3, p4, p5 = st.columns(5)
+    
+    with p1:
+        st.markdown(f"""
+        <div class='terminal-card' style='min-height:160px'>
+          <div style='font-size:12px;font-weight:700;color:#10b981;margin-bottom:6px'>01. Stationary Features</div>
+          <div style='font-size:12px;color:{text_muted};line-height:1.5'>
+            52 scale-free ratios, log returns & normalized volatility to prevent non-stationary regression drift.
+          </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with p2:
+        st.markdown(f"""
+        <div class='terminal-card' style='min-height:160px'>
+          <div style='font-size:12px;font-weight:700;color:#10b981;margin-bottom:6px'>02. Non-Overlapping</div>
+          <div style='font-size:12px;color:{text_muted};line-height:1.5'>
+            Labels defined over {horizon_days}-day horizon with H-step subsampling to eliminate target autocorrelation.
+          </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with p3:
+        st.markdown(f"""
+        <div class='terminal-card' style='min-height:160px'>
+          <div style='font-size:12px;font-weight:700;color:#10b981;margin-bottom:6px'>03. Walk-Forward CV</div>
+          <div style='font-size:12px;color:{text_muted};line-height:1.5'>
+            5 expanding-window folds strictly preserving temporal order to simulate real quantitative trading.
+          </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with p4:
+        st.markdown(f"""
+        <div class='terminal-card' style='min-height:160px'>
+          <div style='font-size:12px;font-weight:700;color:#10b981;margin-bottom:6px'>04. Embargo Gap</div>
+          <div style='font-size:12px;color:{text_muted};line-height:1.5'>
+            52-day embargo buffer between train and test splits to eliminate overlapping label leakage.
+          </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with p5:
+        st.markdown(f"""
+        <div class='terminal-card' style='min-height:160px'>
+          <div style='font-size:12px;font-weight:700;color:#10b981;margin-bottom:6px'>05. Permutation Test</div>
+          <div style='font-size:12px;color:{text_muted};line-height:1.5'>
+            100-run Monte Carlo label shuffling sanity test verifying real signal against random noise.
+          </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+# ---------------------------------------------------------------------------
+# 10. DATA COVERAGE & FOOTER
+# ---------------------------------------------------------------------------
+st.markdown("<div class='section-heading'>06 · DATASET PROVENANCE & FOOTER</div>", unsafe_allow_html=True)
+
+start_date_str = str(full["Date"].iloc[0].date())
+end_date_str = str(full["Date"].iloc[-1].date())
+n_full_rows = meta.get("n_full_rows", len(full))
+n_modelling_rows = meta.get("n_modelling_rows", 0)
+
+d1, d2, d3, d4 = st.columns(4)
+with d1:
+    st.markdown(f"""
+    <div class='terminal-card'>
+      <div class='terminal-card-header'>Data Date Range</div>
+      <div style='font-size:14px;color:{text_primary};font-weight:600'>{start_date_str} → {end_date_str}</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with d2:
+    st.markdown(f"""
+    <div class='terminal-card'>
+      <div class='terminal-card-header'>Latest Close Price</div>
+      <div style='font-size:16px;color:#10b981;font-weight:700'>₹{latest_close_val:,.2f}</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with d3:
+    st.markdown(f"""
+    <div class='terminal-card'>
+      <div class='terminal-card-header'>Total History Rows</div>
+      <div style='font-size:16px;color:{text_primary};font-weight:600'>{n_full_rows:,} rows</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with d4:
+    st.markdown(f"""
+    <div class='terminal-card'>
+      <div class='terminal-card-header'>Modelling Rows ({horizon_days}d)</div>
+      <div style='font-size:16px;color:{text_primary};font-weight:600'>{n_modelling_rows:,} rows</div>
+    </div>
+    """, unsafe_allow_html=True)

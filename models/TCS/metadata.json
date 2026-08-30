@@ -3,7 +3,7 @@
   "stock_key": "TCS",
   "ticker": "TCS.NS",
   "display_name": "Tata Consultancy Services",
-  "trained_at": "2026-08-29T09:52:13",
+  "trained_at": "2026-08-30T15:43:48",
   "config": {
     "model_name": "logistic",
     "horizon": 3,
@@ -14,8 +14,8 @@
     "confidence_threshold": 0.0,
     "min_rows": 200
   },
-  "n_full_rows": 2354,
-  "n_modelling_rows": 780,
+  "n_full_rows": 3010,
+  "n_modelling_rows": 999,
   "n_features": 52,
   "features": [
     "close_vs_sma20",
@@ -73,46 +73,46 @@
   ],
   "date_range": [
     "2014-06-11",
-    "2023-12-28"
+    "2026-08-27"
   ],
-  "walk_forward_accuracy": 0.5333,
-  "walk_forward_std": 0.0525,
-  "baseline": 0.5179,
-  "edge": 0.0154,
+  "walk_forward_accuracy": 0.484,
+  "walk_forward_std": 0.0654,
+  "baseline": 0.484,
+  "edge": 0.0,
   "seed_robustness": {
     "model": "logistic",
-    "mean_accuracy": 0.5333,
+    "mean_accuracy": 0.484,
     "seed_std": 0.0,
-    "mean_edge": 0.0154,
-    "min_edge": 0.0154,
-    "max_edge": 0.0154,
-    "baseline": 0.5179,
+    "mean_edge": 0.0,
+    "min_edge": 0.0,
+    "max_edge": 0.0,
+    "baseline": 0.484,
     "n_seeds": 7,
-    "deterministic": false,
-    "all_seeds_positive": true,
+    "deterministic": true,
+    "all_seeds_positive": false,
     "offsets_tested": false,
-    "verdict": "POSITIVE (offsets untested)"
+    "verdict": "NO EDGE"
   },
   "permutation": {
-    "real_accuracy": 0.5333,
-    "shuffled_mean": 0.4979,
-    "shuffled_std": 0.0155,
-    "shuffled_min": 0.4795,
-    "shuffled_max": 0.5231,
-    "gap": 0.0355,
-    "p_value": 0.1429,
+    "real_accuracy": 0.484,
+    "shuffled_mean": 0.492,
+    "shuffled_std": 0.0202,
+    "shuffled_min": 0.468,
+    "shuffled_max": 0.528,
+    "gap": -0.008,
+    "p_value": 0.7143,
     "leak_free": true,
-    "has_signal": true,
-    "verdict": "SIGNAL"
+    "has_signal": false,
+    "verdict": "NO SIGNAL"
   },
   "operating_point": {
     "confidence_threshold": 0.0,
     "coverage": 1.0,
-    "n_committed": 390,
-    "accuracy": 0.5333,
-    "subset_majority": 0.5026,
-    "edge": 0.0308,
+    "n_committed": 500,
+    "accuracy": 0.484,
+    "subset_majority": 0.526,
+    "edge": -0.042,
     "abstention_useful": false,
-    "selection_reason": "abstention gained only +0.0000, below 0.01"
+    "selection_reason": "no positive edge at any coverage >= 20%"
   }
 }

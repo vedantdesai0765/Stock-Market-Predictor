@@ -3,7 +3,7 @@
   "stock_key": "ITC",
   "ticker": "ITC.NS",
   "display_name": "ITC",
-  "trained_at": "2026-08-30T13:51:29",
+  "trained_at": "2026-08-30T15:40:46",
   "config": {
     "model_name": "logistic",
     "horizon": 3,
@@ -11,11 +11,11 @@
     "non_overlapping": true,
     "n_splits": 5,
     "embargo": 17,
-    "confidence_threshold": 0.0,
+    "confidence_threshold": 0.0785,
     "min_rows": 200
   },
-  "n_full_rows": 2354,
-  "n_modelling_rows": 778,
+  "n_full_rows": 3011,
+  "n_modelling_rows": 995,
   "n_features": 52,
   "features": [
     "close_vs_sma20",
@@ -73,46 +73,46 @@
   ],
   "date_range": [
     "2014-06-11",
-    "2023-12-28"
+    "2026-08-27"
   ],
-  "walk_forward_accuracy": 0.5475,
-  "walk_forward_std": 0.0247,
-  "baseline": 0.5288,
-  "edge": 0.0187,
+  "walk_forward_accuracy": 0.5523,
+  "walk_forward_std": 0.0472,
+  "baseline": 0.4941,
+  "edge": 0.0582,
   "seed_robustness": {
     "model": "logistic",
-    "mean_accuracy": 0.5475,
+    "mean_accuracy": 0.5523,
     "seed_std": 0.0,
-    "mean_edge": 0.0187,
-    "min_edge": 0.0187,
-    "max_edge": 0.0187,
-    "baseline": 0.5288,
+    "mean_edge": 0.0582,
+    "min_edge": 0.0582,
+    "max_edge": 0.0582,
+    "baseline": 0.4941,
     "n_seeds": 7,
-    "deterministic": false,
+    "deterministic": true,
     "all_seeds_positive": true,
     "offsets_tested": false,
     "verdict": "POSITIVE (offsets untested)"
   },
   "permutation": {
-    "real_accuracy": 0.5475,
-    "shuffled_mean": 0.4939,
-    "shuffled_std": 0.0268,
-    "shuffled_min": 0.468,
-    "shuffled_max": 0.5493,
-    "gap": 0.0535,
-    "p_value": 0.2857,
+    "real_accuracy": 0.5523,
+    "shuffled_mean": 0.4876,
+    "shuffled_std": 0.0173,
+    "shuffled_min": 0.4561,
+    "shuffled_max": 0.5064,
+    "gap": 0.0647,
+    "p_value": 0.1429,
     "leak_free": true,
-    "has_signal": false,
-    "verdict": "NO SIGNAL"
+    "has_signal": true,
+    "verdict": "SIGNAL"
   },
   "operating_point": {
-    "confidence_threshold": 0.0,
-    "coverage": 1.0,
-    "n_committed": 389,
-    "accuracy": 0.5476,
-    "subset_majority": 0.5141,
-    "edge": 0.0334,
-    "abstention_useful": false,
-    "selection_reason": "abstention gained only +0.0095, below 0.01"
+    "confidence_threshold": 0.0785,
+    "coverage": 0.5,
+    "n_committed": 249,
+    "accuracy": 0.5743,
+    "subset_majority": 0.51,
+    "edge": 0.0643,
+    "abstention_useful": true,
+    "selection_reason": "edge improves +0.0422 -> +0.0643 at 50% coverage"
   }
 }
