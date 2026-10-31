@@ -106,10 +106,10 @@ STOCKS: dict[str, StockConfig] = {
         ticker="RELIANCE.NS",
         display_name="Reliance Industries",
         raw_filename="Reliance_raw.csv",
-        start="2022-01-01",
+        start="2014-01-01",
         end="2026-09-01",
         sentiment_filename=None,
-        notes="No news data collected yet.",
+        notes="History extended from 2022-01-01 to 2014-01-01 on 2026-10-31. No news data collected yet.",
     ),
     "INFY": StockConfig(
         key="INFY",
