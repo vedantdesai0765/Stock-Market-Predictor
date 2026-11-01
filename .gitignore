@@ -3,8 +3,9 @@
 __pycache__/
 *.pyc
 
-# Ignore environment files
+# Ignore environment and editor files
 .env
+.vscode/
 
 # Keep processed datasets and model dirs tracked (app.py reads them at startup)
 data/processed/*.png
@@ -15,3 +16,14 @@ models/**/*.h5
 # Ignore Jupyter notebook checkpoints
 .ipynb_checkpoints/
 **/.ipynb_checkpoints/
+# Sentiment study: large or licence-restricted data (recreate with sentiment_study/src/download_data.py)
+sentiment_study/data/interim/
+sentiment_study/data/raw/*
+!sentiment_study/data/raw/sentfin/
+sentiment_study/data/raw/finbert_entity/
+sentiment_study/data/processed/nyt_finance_headlines_scored.parquet
+sentiment_study/data/processed/fnspid_ndx_titles_scored.parquet
+sentiment_study/reports/oof/
+sentiment_study/reports/oof_company/
+*.safetensors
+sentiment_study/reports/logs/

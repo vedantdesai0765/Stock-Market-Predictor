@@ -3,7 +3,7 @@
   "stock_key": "SBI",
   "ticker": "SBIN.NS",
   "display_name": "State Bank of India",
-  "trained_at": "2026-08-30T15:41:21",
+  "trained_at": "2026-11-01T05:21:13",
   "config": {
     "model_name": "logistic",
     "horizon": 3,
@@ -14,8 +14,8 @@
     "confidence_threshold": 0.0,
     "min_rows": 200
   },
-  "n_full_rows": 3010,
-  "n_modelling_rows": 995,
+  "n_full_rows": 6477,
+  "n_modelling_rows": 2150,
   "n_features": 52,
   "features": [
     "close_vs_sma20",
@@ -72,35 +72,35 @@
     "bb_bandwidth_zscore"
   ],
   "date_range": [
-    "2014-06-11",
-    "2026-08-27"
+    "2000-06-12",
+    "2026-08-25"
   ],
-  "walk_forward_accuracy": 0.486,
-  "walk_forward_std": 0.0391,
-  "baseline": 0.5518,
-  "edge": -0.0658,
+  "walk_forward_accuracy": 0.5153,
+  "walk_forward_std": 0.0344,
+  "baseline": 0.5395,
+  "edge": -0.0242,
   "seed_robustness": {
     "model": "logistic",
-    "mean_accuracy": 0.486,
+    "mean_accuracy": 0.5153,
     "seed_std": 0.0,
-    "mean_edge": -0.0658,
-    "min_edge": -0.0658,
-    "max_edge": -0.0658,
-    "baseline": 0.5518,
+    "mean_edge": -0.0242,
+    "min_edge": -0.0242,
+    "max_edge": -0.0242,
+    "baseline": 0.5395,
     "n_seeds": 7,
-    "deterministic": false,
+    "deterministic": true,
     "all_seeds_positive": false,
     "offsets_tested": false,
     "verdict": "NO EDGE"
   },
   "permutation": {
-    "real_accuracy": 0.486,
-    "shuffled_mean": 0.5018,
-    "shuffled_std": 0.0144,
-    "shuffled_min": 0.4863,
-    "shuffled_max": 0.528,
-    "gap": -0.0157,
-    "p_value": 1.0,
+    "real_accuracy": 0.5153,
+    "shuffled_mean": 0.5116,
+    "shuffled_std": 0.0107,
+    "shuffled_min": 0.4958,
+    "shuffled_max": 0.5274,
+    "gap": 0.0037,
+    "p_value": 0.4286,
     "leak_free": true,
     "has_signal": false,
     "verdict": "NO SIGNAL"
@@ -108,10 +108,10 @@
   "operating_point": {
     "confidence_threshold": 0.0,
     "coverage": 1.0,
-    "n_committed": 498,
-    "accuracy": 0.4859,
-    "subset_majority": 0.5522,
-    "edge": -0.0663,
+    "n_committed": 1075,
+    "accuracy": 0.5153,
+    "subset_majority": 0.5395,
+    "edge": -0.0242,
     "abstention_useful": false,
     "selection_reason": "no positive edge at any coverage >= 20%"
   }

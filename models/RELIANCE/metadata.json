@@ -3,7 +3,7 @@
   "stock_key": "RELIANCE",
   "ticker": "RELIANCE.NS",
   "display_name": "Reliance Industries",
-  "trained_at": "2026-10-31T13:40:00",
+  "trained_at": "2026-11-01T05:21:06",
   "config": {
     "model_name": "logistic",
     "horizon": 3,
@@ -11,11 +11,11 @@
     "non_overlapping": true,
     "n_splits": 5,
     "embargo": 17,
-    "confidence_threshold": 0.0351,
+    "confidence_threshold": 0.0,
     "min_rows": 200
   },
-  "n_full_rows": 3009,
-  "n_modelling_rows": 998,
+  "n_full_rows": 6478,
+  "n_modelling_rows": 2151,
   "n_features": 52,
   "features": [
     "close_vs_sma20",
@@ -72,21 +72,21 @@
     "bb_bandwidth_zscore"
   ],
   "date_range": [
-    "2014-06-11",
+    "2000-06-12",
     "2026-08-26"
   ],
-  "walk_forward_accuracy": 0.4994,
-  "walk_forward_std": 0.0981,
-  "baseline": 0.5196,
-  "edge": -0.0202,
+  "walk_forward_accuracy": 0.4972,
+  "walk_forward_std": 0.0121,
+  "baseline": 0.5186,
+  "edge": -0.0214,
   "seed_robustness": {
     "model": "logistic",
-    "mean_accuracy": 0.4994,
+    "mean_accuracy": 0.4972,
     "seed_std": 0.0,
-    "mean_edge": -0.0202,
-    "min_edge": -0.0202,
-    "max_edge": -0.0202,
-    "baseline": 0.5196,
+    "mean_edge": -0.0214,
+    "min_edge": -0.0214,
+    "max_edge": -0.0214,
+    "baseline": 0.5186,
     "n_seeds": 7,
     "deterministic": false,
     "all_seeds_positive": false,
@@ -94,25 +94,25 @@
     "verdict": "NO EDGE"
   },
   "permutation": {
-    "real_accuracy": 0.4994,
-    "shuffled_mean": 0.5159,
-    "shuffled_std": 0.0146,
-    "shuffled_min": 0.5026,
-    "shuffled_max": 0.5466,
-    "gap": -0.0165,
-    "p_value": 1.0,
+    "real_accuracy": 0.4972,
+    "shuffled_mean": 0.5023,
+    "shuffled_std": 0.0124,
+    "shuffled_min": 0.4796,
+    "shuffled_max": 0.5158,
+    "gap": -0.0051,
+    "p_value": 0.7143,
     "leak_free": true,
     "has_signal": false,
     "verdict": "NO SIGNAL"
   },
   "operating_point": {
-    "confidence_threshold": 0.0351,
-    "coverage": 0.6994,
-    "n_committed": 349,
-    "accuracy": 0.51,
-    "subset_majority": 0.5072,
-    "edge": 0.0029,
-    "abstention_useful": true,
-    "selection_reason": "edge improves -0.0080 -> +0.0029 at 70% coverage"
+    "confidence_threshold": 0.0,
+    "coverage": 1.0,
+    "n_committed": 1076,
+    "accuracy": 0.4972,
+    "subset_majority": 0.5186,
+    "edge": -0.0214,
+    "abstention_useful": false,
+    "selection_reason": "no positive edge at any coverage >= 20%"
   }
 }

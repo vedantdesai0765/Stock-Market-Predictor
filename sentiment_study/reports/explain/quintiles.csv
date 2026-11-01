@@ -1,0 +1,91 @@
+scope,variant,q,same_day,next_day,n
+SENSEX,all headlines,1,-0.28249,-0.04874,1024
+SENSEX,all headlines,2,-0.0743,0.08708,1023
+SENSEX,all headlines,3,0.06872,0.05503,1024
+SENSEX,all headlines,4,0.25436,0.14234,1023
+SENSEX,all headlines,5,0.31546,0.03781,1024
+SENSEX,excluding price reports,1,-0.05636,0.06885,1024
+SENSEX,excluding price reports,2,0.01793,-0.02621,1023
+SENSEX,excluding price reports,3,0.04749,0.08749,1024
+SENSEX,excluding price reports,4,0.12923,0.10891,1023
+SENSEX,excluding price reports,5,0.14342,0.03433,1024
+TCS,all headlines,1,-0.06471,0.0337,194
+TCS,all headlines,2,-0.01818,-0.03867,193
+TCS,all headlines,3,0.03282,0.07674,193
+TCS,all headlines,4,0.03345,0.06698,193
+TCS,all headlines,5,0.61186,0.16623,194
+TCS,excluding price reports,1,0.0978,0.08028,190
+TCS,excluding price reports,2,-0.10322,-0.0558,190
+TCS,excluding price reports,3,0.05684,0.06231,189
+TCS,excluding price reports,4,0.0262,0.06698,190
+TCS,excluding price reports,5,0.39749,0.09891,190
+RELIANCE,all headlines,1,-0.23307,0.0686,432
+RELIANCE,all headlines,2,0.07953,0.09904,431
+RELIANCE,all headlines,3,0.13647,0.02671,431
+RELIANCE,all headlines,4,0.13064,0.17203,431
+RELIANCE,all headlines,5,0.27515,-0.12008,431
+RELIANCE,excluding price reports,1,-0.10356,0.02692,419
+RELIANCE,excluding price reports,2,0.14302,0.15616,419
+RELIANCE,excluding price reports,3,0.12211,0.02976,418
+RELIANCE,excluding price reports,4,0.1197,0.08552,419
+RELIANCE,excluding price reports,5,0.08684,-0.09992,419
+INFY,all headlines,1,-0.30868,-0.07408,334
+INFY,all headlines,2,-0.02778,0.05278,333
+INFY,all headlines,3,0.24943,0.02477,333
+INFY,all headlines,4,0.10175,0.05218,333
+INFY,all headlines,5,0.35131,-0.00861,334
+INFY,excluding price reports,1,-0.36482,-0.11251,329
+INFY,excluding price reports,2,0.01262,0.07449,328
+INFY,excluding price reports,3,0.25839,-0.04032,329
+INFY,excluding price reports,4,0.17178,0.13569,328
+INFY,excluding price reports,5,0.2291,-0.02382,329
+HDFCBANK,all headlines,1,-0.35252,-0.27922,65
+HDFCBANK,all headlines,2,-0.16304,-0.16488,64
+HDFCBANK,all headlines,3,0.261,0.25573,65
+HDFCBANK,all headlines,4,0.03067,-0.03267,64
+HDFCBANK,all headlines,5,0.09455,0.01776,65
+HDFCBANK,excluding price reports,1,-0.30867,-0.23536,63
+HDFCBANK,excluding price reports,2,-0.23227,-0.18029,63
+HDFCBANK,excluding price reports,3,0.2002,0.27305,63
+HDFCBANK,excluding price reports,4,0.05731,-0.06453,63
+HDFCBANK,excluding price reports,5,0.11791,-0.03814,63
+SBI,all headlines,1,-0.16306,0.1008,297
+SBI,all headlines,2,-0.09759,-0.0884,297
+SBI,all headlines,3,0.05037,0.2046,297
+SBI,all headlines,4,0.23003,0.14213,297
+SBI,all headlines,5,0.07701,-0.01464,297
+SBI,excluding price reports,1,-0.09823,0.08691,293
+SBI,excluding price reports,2,-0.04238,-0.09588,293
+SBI,excluding price reports,3,-0.10807,0.20172,292
+SBI,excluding price reports,4,0.28504,0.17381,293
+SBI,excluding price reports,5,-0.03606,0.00188,293
+ITC,all headlines,1,0.01893,0.2783,78
+ITC,all headlines,2,-0.06417,-0.18478,77
+ITC,all headlines,3,0.34108,0.14269,77
+ITC,all headlines,4,0.1581,0.09738,77
+ITC,all headlines,5,0.43507,-0.31722,77
+ITC,excluding price reports,1,0.06308,0.27103,75
+ITC,excluding price reports,2,0.0078,-0.00379,75
+ITC,excluding price reports,3,0.18187,-0.04057,75
+ITC,excluding price reports,4,0.29768,0.16788,75
+ITC,excluding price reports,5,0.10347,-0.22534,75
+ADANIENT,all headlines,1,-0.08181,-0.53029,97
+ADANIENT,all headlines,2,0.08969,-0.01525,96
+ADANIENT,all headlines,3,0.1768,0.41489,97
+ADANIENT,all headlines,4,0.45103,0.15901,96
+ADANIENT,all headlines,5,0.50399,0.2634,97
+ADANIENT,excluding price reports,1,-0.14158,-0.4257,96
+ADANIENT,excluding price reports,2,0.1064,0.06563,96
+ADANIENT,excluding price reports,3,0.27135,0.37645,95
+ADANIENT,excluding price reports,4,0.45399,0.22429,96
+ADANIENT,excluding price reports,5,0.49679,0.20481,96
+VEDL,all headlines,1,0.20567,0.02206,82
+VEDL,all headlines,2,-0.73521,0.14287,82
+VEDL,all headlines,3,-0.19042,0.41146,81
+VEDL,all headlines,4,-0.25618,-0.42133,82
+VEDL,all headlines,5,0.55276,0.25742,82
+VEDL,excluding price reports,1,0.22556,-0.03887,82
+VEDL,excluding price reports,2,-0.75437,0.20042,81
+VEDL,excluding price reports,3,-0.19042,0.41146,81
+VEDL,excluding price reports,4,-0.23307,-0.42736,81
+VEDL,excluding price reports,5,0.55957,0.2479,82

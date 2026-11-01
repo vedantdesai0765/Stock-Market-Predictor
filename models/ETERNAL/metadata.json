@@ -3,7 +3,7 @@
   "stock_key": "ETERNAL",
   "ticker": "ETERNAL.NS",
   "display_name": "Eternal Limited",
-  "trained_at": "2026-08-30T15:44:26",
+  "trained_at": "2026-11-01T05:21:20",
   "config": {
     "model_name": "logistic",
     "horizon": 3,
@@ -11,11 +11,11 @@
     "non_overlapping": true,
     "n_splits": 5,
     "embargo": 17,
-    "confidence_threshold": 0.0965,
+    "confidence_threshold": 0.1004,
     "min_rows": 200
   },
-  "n_full_rows": 1147,
-  "n_modelling_rows": 376,
+  "n_full_rows": 1145,
+  "n_modelling_rows": 375,
   "n_features": 52,
   "features": [
     "close_vs_sma20",
@@ -73,46 +73,46 @@
   ],
   "date_range": [
     "2021-12-30",
-    "2026-08-27"
+    "2026-08-25"
   ],
-  "walk_forward_accuracy": 0.5591,
-  "walk_forward_std": 0.054,
-  "baseline": 0.508,
-  "edge": 0.0511,
+  "walk_forward_accuracy": 0.5636,
+  "walk_forward_std": 0.0357,
+  "baseline": 0.542,
+  "edge": 0.0216,
   "seed_robustness": {
     "model": "logistic",
-    "mean_accuracy": 0.5591,
+    "mean_accuracy": 0.5636,
     "seed_std": 0.0,
-    "mean_edge": 0.0511,
-    "min_edge": 0.0511,
-    "max_edge": 0.0511,
-    "baseline": 0.508,
+    "mean_edge": 0.0216,
+    "min_edge": 0.0216,
+    "max_edge": 0.0216,
+    "baseline": 0.542,
     "n_seeds": 7,
-    "deterministic": false,
+    "deterministic": true,
     "all_seeds_positive": true,
     "offsets_tested": false,
     "verdict": "POSITIVE (offsets untested)"
   },
   "permutation": {
-    "real_accuracy": 0.5591,
-    "shuffled_mean": 0.4954,
-    "shuffled_std": 0.0346,
-    "shuffled_min": 0.4468,
-    "shuffled_max": 0.5428,
-    "gap": 0.0637,
+    "real_accuracy": 0.5636,
+    "shuffled_mean": 0.4826,
+    "shuffled_std": 0.0469,
+    "shuffled_min": 0.4139,
+    "shuffled_max": 0.537,
+    "gap": 0.081,
     "p_value": 0.1429,
     "leak_free": true,
     "has_signal": false,
     "verdict": "NO SIGNAL"
   },
   "operating_point": {
-    "confidence_threshold": 0.0965,
+    "confidence_threshold": 0.1004,
     "coverage": 0.6011,
     "n_committed": 113,
-    "accuracy": 0.5664,
-    "subset_majority": 0.5044,
+    "accuracy": 0.5841,
+    "subset_majority": 0.5221,
     "edge": 0.0619,
     "abstention_useful": true,
-    "selection_reason": "edge improves +0.0000 -> +0.0619 at 60% coverage"
+    "selection_reason": "edge improves +0.0106 -> +0.0619 at 60% coverage"
   }
 }

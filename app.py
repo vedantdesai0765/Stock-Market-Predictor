@@ -78,6 +78,15 @@ with st.sidebar:
 
     st.button("▶ RUN ANALYSIS", width="stretch")
 
+    st.markdown("<div style='margin-top:18px;' class='sidebar-group-title'>VIEW</div>", unsafe_allow_html=True)
+    view = st.radio(
+        "View",
+        options=["Prediction terminal", "Why did it move?"],
+        index=0,
+        label_visibility="collapsed",
+        help="'Why did it move?' shows each day's news about the company next to that day's price move.",
+    )
+
     st.markdown("<div style='margin-top:24px;' class='sidebar-group-title'>VALIDATION METHODOLOGY</div>", unsafe_allow_html=True)
     st.markdown("""
     <div style='margin-top:10px;'>
@@ -95,11 +104,11 @@ with st.sidebar:
       </div>
       <div class='checklist-row'>
         <div class='check-circle'>✓</div>
-        <span>52-Day Embargo gap</span>
+        <span>17-Day Embargo gap</span>
       </div>
       <div class='checklist-row'>
         <div class='check-circle'>✓</div>
-        <span>100-Run Permutation test</span>
+        <span>Label-shuffle permutation test</span>
       </div>
     </div>
     """, unsafe_allow_html=True)
@@ -623,6 +632,13 @@ def build_importance_chart(model, feature_names: list, top_n: int = 10) -> go.Fi
     fig.update_layout(**_terminal_chart_layout(240, f"TOP {top_n} FEATURE COEFFICIENTS"))
     return fig
 
+# "Why did it move?" view: news sentiment next to each day's move (explanatory, not a forecast)
+if view == "Why did it move?":
+    from explain_page import render_explain_page
+    render_explain_page(stock_choice, STOCK_DISPLAY_NAMES, _terminal_chart_layout,
+                        {"text_muted": text_muted, "card_bg": card_bg})
+    st.stop()
+
 # Check Artifact Existence
 if not artifacts_exist(stock_choice):
     st.warning(f"No trained artifacts found for **{stock_choice}** in `models/{stock_choice}/`. "
@@ -966,7 +982,7 @@ with st.expander("🔬 View Detailed Quantitative Validation Framework", expande
         <div class='terminal-card' style='min-height:160px'>
           <div style='font-size:12px;font-weight:700;color:#10b981;margin-bottom:6px'>04. Embargo Gap</div>
           <div style='font-size:12px;color:{text_muted};line-height:1.5'>
-            52-day embargo buffer between train and test splits to eliminate overlapping label leakage.
+            17-trading-day embargo between train and test splits to eliminate overlapping label leakage.
           </div>
         </div>
         """, unsafe_allow_html=True)
@@ -976,7 +992,7 @@ with st.expander("🔬 View Detailed Quantitative Validation Framework", expande
         <div class='terminal-card' style='min-height:160px'>
           <div style='font-size:12px;font-weight:700;color:#10b981;margin-bottom:6px'>05. Permutation Test</div>
           <div style='font-size:12px;color:{text_muted};line-height:1.5'>
-            100-run Monte Carlo label shuffling sanity test verifying real signal against random noise.
+            Label-shuffling test (6 shuffles at training time) checking the model beats the same pipeline trained on random labels.
           </div>
         </div>
         """, unsafe_allow_html=True)

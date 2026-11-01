@@ -1,0 +1,478 @@
+trade_date,published,source,entity,text,targeted,plain,label,price_report,day_return_pct
+2018-06-18,2018-01-19,Times of India headline,Adani Group,Adani Group files defamation case against news portal,-0.9022,-0.8597,negative,False,
+2018-06-18,2018-01-19,Times of India headline,Adani Group,Adani Group to invest in UP logistics parks,0.0476,0.1106,neutral,False,
+2018-06-18,2018-02-22,Times of India headline,Adani Group,Adani Group pledges Rs 37;500 crore in 5 years,0.1207,0.0641,neutral,False,
+2018-06-18,2018-03-20,Times of India headline,Adani Group,Adani Group requests more time to complete first phase of the Vizhinjam seaport project,0.0072,0.7175,neutral,False,
+2018-06-18,2018-05-31,Times of India headline,Adani Group,Massive fire guts Adani Group's edible oil warehouse in Modinagar,-0.8138,-0.9314,negative,False,
+2018-07-13,2018-07-12 19:18,NSE filing,Adani Green,"Updates: 'Adani Green Energy Limited (��AGEL��), through its wholly owned subsidiary, Mahoba Solar (UP) Private Limited has won tenders for setting up 300 MWac solar generation projects.'.",0.6147,0.8941,positive,False,1.1191
+2018-07-16,2018-07-16 11:59,NSE filing,Adani Green,"Updates: 'Intimation Under Regulation 47 Of The SEBI (Listing Obligations And Disclosure Requirements) Regulations, 2015'.",0.4763,0.0114,positive,False,-1.1191
+2018-07-16,2018-07-13 18:35,NSE filing,Adani Green,"Updates: 'Adani Green Energy Limited (��AGEL��), through its wholly owned subsidiary, Mahoba Solar (UP) Private Limited has won tender for setting up 300 MWac solar generation project'.",0.6663,0.8976,positive,False,-1.1191
+2018-07-25,2018-07-25 09:53,NSE filing,Adani Green,"Price movement: Significant increase in price has been observed in Adani Green Energy Limited. The Exchange, in order to ensure that investors have latest relevant information about the company and to inform the market place so that the interest of the investors is safeguarded, had written to the co",0.1064,0.1098,neutral,False,9.5018
+2018-07-25,2018-07-24 17:53,NSE filing,Adani Green,"Price movement: Significant increase in price has been observed in Adani Green Energy Limited. The Exchange, in order to ensure that investors have latest relevant information about the company and to inform the market place so that the interest of the investors is safeguarded, has written to the co",0.1658,0.1505,neutral,False,9.5018
+2018-07-30,2018-07-28 17:10,NSE filing,Adani Green,Updates: 'Change in Website and Email ID of the Company'.,0.0673,-0.0858,neutral,False,9.4702
+2018-07-30,2018-07-27 17:11,NSE filing,Adani Green,"Updates: 'The tender of UPNEDA won by Adani Green Energy Limited (��AGEL��), through its wholly owned subsidiary, Mahoba Solar (UP) Private Limited for setting up 250 MWac solar generation project has been annulled by UPNEDA.'.",-0.3056,-0.8802,neutral,False,9.4702
+2018-08-07,2018-08-07 15:01,NSE filing,Adani Green,"Updates: 'Proceedings of the 3rd Annual General Meeting of Adani Green Energy Limited held on 7th August, 2018'.",0.0288,0.0107,neutral,False,-5.1078
+2018-08-09,2018-08-08 19:30,NSE filing,Adani Green,Updates: 'Submission Of Voting Results And Scrutinizer's Report'.,0.0597,-0.0156,neutral,False,-5.1134
+2018-08-10,2018-08-09 20:46,NSE filing,Adani Green,Acquisition: Acquisition of Adani Renewable Energy Park Limited.,0.183,0.0319,neutral,False,4.8109
+2018-08-13,2018-08-11 13:08,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended June 30, 2018.",0.0068,-0.015,neutral,False,-5.1293
+2018-08-14,2018-08-14 14:44,NSE filing,Adani Green,"Updates: 'The tender of SECI won by Adani Green Energy Limited ('AGEL'), through its wholly owned subsidiary, Mahoba Solar (UP) Private Limited for setting up 300 MWac solar generation project has been annulled by SECI.'.",-0.3192,-0.8949,neutral,False,-5.0706
+2018-08-17,2018-08-16 17:03,NSE filing,Adani Green,Updates: 'Intimation for participation in Investor Conference'.,0.5707,0.0781,positive,False,-3.5028
+2018-08-23,2018-08-22 10:04,NSE filing,Adani Green,Updates: 'Incorporation of a Wholly-owned Subsidiary'.,0.7842,0.0533,positive,False,0.175
+2018-08-23,2018-08-21 20:57,NSE filing,Adani Green,"Updates: Subscription of Equity shares of "" Adani Phuoc Minh Wind Power Company Limited.",0.3206,0.0373,neutral,False,0.175
+2018-08-23,2018-08-21 20:48,NSE filing,Adani Green,"Updates: the Company has signed Subscription Agreement on 20th August, 2018 for subscription of 5,100 shares of Adani Solar USA Inc"" USA constituting 51% of the total number of shares of Adani Solar USA Inc,.",0.2687,0.595,neutral,False,0.175
+2018-08-23,2018-08-21 20:16,NSE filing,Adani Green,"Clarification - Financial Results: The Exchange has sought clarification from Adani Green Energy Limited with respect to Non-compliance as per Regulation 33 of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015.  On basis of above the Company is required to clarify the foll",-0.098,-0.0292,neutral,False,0.175
+2018-08-23,2018-08-21 17:30,NSE filing,Adani Green,"Acquisition: the Company has acquired 100% Equity Share Capital of Adani Green Energy Pte Limited (""AGEPteL"") from Adani Global Pte Limited.The said Company was incorporated in March, 2017 for the purpose of investment in international renewable businesses.",0.5531,0.1013,positive,False,0.175
+2018-08-24,2018-08-24 15:17,NSE filing,Adani Green,"Reply to Clarification- Financial results: The Exchange had sought clarification from Adani Green Energy Limited with respect to Non-compliance as per Regulation 33 of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015.  On basis of above the Company was required to clarify",-0.094,-0.0431,neutral,False,-2.927
+2018-09-26,2018-09-25 19:21,NSE filing,Adani Green,Updates: 'Adani Green Energy Limited (��AGEL��) has won tender for setting up 300 MW Wind generation project'.,0.5577,0.8855,positive,False,1.4485
+2018-10-17,2018-10-16 15:44,NSE filing,Adani Green,Updates: 'Incorporation of a Wholly-owned Subsidiary'.,0.7842,0.0533,positive,False,1.7949
+2018-10-29,2018-10-29 13:55,NSE filing,Adani Green,Change in Director(s): Change in Director(s) of the company.,-0.0061,-0.2469,neutral,False,4.8527
+2018-11-01,2018-11-01 12:34,NSE filing,Adani Green,Change in Director(s): Change in Director(s) of the company.,-0.0061,-0.2469,neutral,False,3.47
+2018-11-01,2018-10-31 19:55,NSE filing,Adani Green,"Outcome of Board Meeting: Outcome of Board Meeting held on October 31, 2018.",0.0101,-0.0049,neutral,False,3.47
+2018-11-01,2018-10-31 16:41,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended September 30, 2018.",0.0066,-0.0158,neutral,False,3.47
+2019-01-14,2019-01-14 08:37,NSE filing,Adani Green,Acquisition: 'Acquisition of balance 51% Equity Shares of Kodangal Solar Parks Private Limited'.,0.6797,0.0504,positive,False,-0.3781
+2019-01-29,2019-01-29,Times of India headline,Adani Group,Adani Group stocks dive over market speculation,-0.9749,-0.9198,negative,False,7.1247
+2019-02-06,2019-02-05 17:32,NSE filing,Adani Green,Updates: 'Commissioning of 12 MWac Wind Power Project by and award of 390 MWac Hybrid Project to Wholly-owned Subsidiaries of the Company'.,0.5407,0.0997,positive,False,0.4542
+2019-02-07,2019-02-07 14:03,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended December 31, 2018.",0.0058,-0.0136,neutral,False,3.8523
+2019-02-08,2019-02-07 17:42,NSE filing,Adani Green,"Outcome of Board Meeting: Outcome of Board Meeting held on February 07, 2019.",0.0151,-0.008,neutral,False,-1.4642
+2019-02-25,2019-02-23 12:39,NSE filing,Adani Green,Updates: 'Award of 150 MWac Solar Power Project to Wholly-Owned Subsidiary of the Company'.,0.6913,0.7467,positive,False,0.7616
+2019-04-18,2019-04-16 18:12,NSE filing,Adani Green,"Disc. under Reg.30 of SEBI (SAST) Reg.2011: The Promoter along with PAC has submitted to the Exchange a copy of Annual Disclosure under Regulation 30(1) and 30(2) of SEBI (Substantial Acquisition of Shares and Takeovers), Regulations, 2011 as on March 31, 2019.",0.0184,0.017,neutral,False,1.1173
+2019-04-22,2019-04-18 17:12,NSE filing,Adani Green,"Spurt in Volume: Significant increase in volume has been observed in Adani Green Energy Limited. The Exchange, in order to ensure that investors have latest relevant information about the company and to inform the market place so that the interest of the investors is safeguarded, had written to the ",0.8654,0.7816,positive,False,-0.5571
+2019-04-22,2019-04-18 16:46,NSE filing,Adani Green,"Spurt in Volume: Significant increase in volume has been observed in Adani Green Energy Limited. The Exchange, in order to ensure that investors have latest relevant information about the company and to inform the market place so that the interest of the investors is safeguarded, has written to the ",0.8427,0.6049,positive,False,-0.5571
+2019-05-13,2019-05-10 20:44,NSE filing,Adani Green,Updates: 'Commissioning of 50MWac Solar Power Project in the state of Uttar Pradesh by Adani Green Energy (UP) Limited - a Wholly-owned Subsidiary'.,0.0301,0.065,neutral,False,-3.3813
+2019-05-15,2019-05-15 07:01,NSE filing,Adani Green,Updates: 'Investor Meetings for US$ Bonds by Wholly-owned Subsidiaries'.,0.2178,0.0234,neutral,False,-0.5319
+2019-05-16,2019-05-15 17:50,NSE filing,Adani Green,"Outcome of Board Meeting: Outcome of Board Meeting held on May 15, 2019.",0.0133,-0.0118,neutral,False,-2.4293
+2019-05-16,2019-05-15 17:00,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended March 31, 2019.",0.0058,-0.0146,neutral,False,-2.4293
+2019-05-21,2019-05-20 16:37,NSE filing,Adani Green,"Offer For Sale-Stock Exchange Mechanism: Adani Tradeline LLP and Universal Trade and Investments Ltd has submitted to the Exchange that they propose to sell upto 7,57,13,197 and 1,17,86,803 equity shares,�� respectively (representing up to 4.84% and 0.75% of the paid up equity share capital of the C",-0.3353,0.0436,neutral,True,0.5784
+2019-05-31,2019-05-31 00:54,NSE filing,Adani Green,Updates: 'Issuance of US$500 Million Bonds By Wholly-Owned Subsidiaries'.,0.4694,0.0352,positive,False,-2.9581
+2019-06-12,2019-06-11 16:29,NSE filing,Adani Green,"Offer For Sale-Stock Exchange Mechanism: Gautam S Adani and Priti G Adani ( on behalf of Gautam S Adani Family Trust) and Gautam S Adani and Rajesh S Adani ( on behalf of S B Adani Family Trust) has submitted to the Exchange, an announcement with respect to offer for sale through Stock Exchange Mech",0.0655,0.0199,neutral,True,1.4003
+2019-06-14,2019-06-14,Times of India headline,Adani Group,Will resist attempt to hand over Thiruvananthapuram airport to Adani Group: Kerala CM,-0.2668,0.0249,neutral,False,-1.8605
+2019-06-20,2019-06-20 12:54,NSE filing,Adani Green,Updates: 'Letter Of Award For 130 MW Wind Power Project From SECI'.,0.6179,0.7532,positive,False,2.9742
+2019-06-20,2019-06-19 16:14,NSE filing,Adani Green,Updates: 'Letters of Award for 600 MW Wind-Solar Hybrid Power Projects from SECI'.,0.673,0.7452,positive,False,2.9742
+2019-07-04,2019-07-04,Times of India headline,Adani Group,Adani Group set to run Mangaluru airport for 50 years,0.0098,0.0703,neutral,False,-1.8438
+2019-07-08,2019-07-05 17:48,NSE filing,Adani Green,Updates: 'Provisional operational update: Q1-FY20'.,0.1029,-0.0151,neutral,False,-5.9509
+2019-07-16,2019-07-15 18:12,NSE filing,Adani Green,"Updates: 'Intimation Under Regulation 47 Of The SEBI (Listing Obligations And Disclosure Requirements) Regulations, 2015'.",0.4763,0.0114,positive,False,1.433
+2019-08-05,2019-08-02 20:12,NSE filing,Adani Green,Updates: 'Commissioning of Projects'.,0.5411,0.0116,positive,False,-2.2667
+2019-08-08,2019-08-07 21:10,NSE filing,Adani Green,Shareholders meeting: voting results.,0.0517,-0.0194,neutral,False,-0.9459
+2019-08-08,2019-08-07 18:26,NSE filing,Adani Green,"Outcome of Board Meeting: Board meeting held on August 07, 2019.",0.0189,-0.0183,neutral,False,-0.9459
+2019-08-08,2019-08-07 17:59,NSE filing,Adani Green,Change in Director(s): Change in Director(s) of the company.,-0.0061,-0.2469,neutral,False,-0.9459
+2019-08-08,2019-08-07 17:46,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended June 30, 2019.",0.0069,-0.0148,neutral,False,-0.9459
+2019-08-22,2019-08-22 11:33,NSE filing,Adani Green,"Updates: 'Intimation under Regulation 30 of the SEBI (Listing Obligations andDisclosures Requirements) Regulations, 2015 - Commissioning of Projects'.",0.4227,0.0198,neutral,False,-1.3699
+2019-08-30,2019-08-29 19:36,NSE filing,Adani Green,Press Release: Adani Green Energy Limited signs agreement to acquire 205 MW solar assets,0.0259,0.8757,neutral,False,6.684
+2019-08-30,2019-08-29 17:58,NSE filing,Adani Green,Acquisition: Acquisition of 100% equity interest in Ten Companies and execution of Securities Purchase Agreement for the same,0.6887,0.1954,positive,False,6.684
+2019-10-07,2019-10-04 15:43,NSE filing,Adani Green,Updates: 'Issuance of US$ 362.50 Million Green Bonds By Wholly-Owned Subsidiaries'.,0.1533,0.043,neutral,False,4.355
+2019-10-09,2019-10-07 16:43,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: reason for encumbrance vide letter dated October 04, 2019 under SEBI ( SAST) Regulations, 2011.",-0.0063,0.0102,neutral,False,4.8755
+2019-10-14,2019-10-14 09:12,NSE filing,Adani Green,"Price movement: Significant movement in price has been observed in Adani Green Energy Limited. The Exchange, in order to ensure that investors have latest relevant information about the company and to inform the market place so that the interest of the investors is safeguarded, had written to the co",0.0074,-0.0858,neutral,False,0.5067
+2019-10-14,2019-10-11 20:06,NSE filing,Adani Green,"Price movement: Significant movement in price has been observed in Adani Green Energy Limited. The Exchange, in order to ensure that investors have latest relevant information about the company and to inform the market place so that the interest of the investors is safeguarded, has written to the co",0.0071,-0.0229,neutral,False,0.5067
+2019-10-16,2019-10-15 21:38,NSE filing,Adani Green,Updates: 'Provisional operational update: Q2 and H1 FY20'.,0.0936,-0.0221,neutral,False,0.3745
+2019-10-22,2019-10-21 12:49,NSE filing,Adani Green,Updates: 'Commissioning of 50 MW Wind Project and Evacuation Infrastructure for 725 MW of wind capacity'.,0.6971,0.1126,positive,False,-3.4056
+2019-11-13,2019-11-13 14:22,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended September 30, 2019.",0.0067,-0.0157,neutral,False,2.265
+2019-11-25,2019-11-25 13:36,NSE filing,Adani Green,"Resignation: Resignation of Mr Ashish Garg as Chief Financial Officer of the company w.e.f. November 25, 2019.",-0.0177,-0.4076,neutral,False,6.8805
+2020-01-01,2019-12-31 16:52,NSE filing,Adani Green,Updates: 'Commissioning of 75 MW Wind Power Project'.,0.805,0.0885,positive,False,4.8661
+2020-01-07,2020-01-07 10:51,NSE filing,Adani Green,"Price movement: Significant movement in price has been observed in Adani Green Energy Limited. The Exchange, in order to ensure that investors have latest relevant information about the company and to inform the market place so that the interest of the investors is safeguarded, had written to the co",0.0074,-0.0858,neutral,False,4.8648
+2020-01-07,2020-01-06 19:17,NSE filing,Adani Green,"Price movement: Significant movement in price has been observed in Adani Green Energy Limited. The Exchange, in order to ensure that investors have latest relevant information about the company and to inform the market place so that the interest of the investors is safeguarded, has written to the co",0.0071,-0.0229,neutral,False,4.8648
+2020-01-09,2020-01-08 20:51,NSE filing,Adani Green,Updates: 'Provisional Operational Update: Q3 and 9M FY20'.,0.1179,-0.0175,neutral,False,4.8769
+2020-02-04,2020-02-04 13:31,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended December 31, 2019.",0.0059,-0.0133,neutral,False,0.9387
+2020-02-06,2020-02-06 14:04,NSE filing,Adani Green,Press Release: Media Release regarding ,-0.0212,-1e-04,neutral,False,4.8729
+2020-02-10,2020-02-09,Times of India headline,Gautam Adani,Gautam Adani meets Naveen Patnaik; talks about Dhamra Port expansion,0.0123,0.0643,neutral,False,0.1642
+2020-02-14,2020-02-13 19:49,NSE filing,Adani Green,"Updates: 'Disclosure / Intimation pursuant to Regulation 30 of the SEBI (ListingObligations and Disclosure Requirements) Regulation, 2015'.",0.3139,0.0123,neutral,False,3.3685
+2020-03-04,2020-03-04 13:38,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: Oasis Trade & Investment Ltd has submitted to the Exchange a copy of disclosure under Regulation 10(5) in respect of acquisition under Regulation 10(1)(a) of SEBI (Substantial Acquisition of Shares & Takeovers) Regulations, 2011",-0.0043,0.0279,neutral,False,-4.8163
+2020-03-04,2020-03-04 13:37,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: Dome Trade & Investment Ltd has submitted to the Exchange a copy of disclosure under Regulation 10(5) in respect of acquisition under Regulation 10(1)(a) of SEBI (Substantial Acquisition of Shares & Takeovers) Regulations, 2011.",-0.0023,0.0242,neutral,False,-4.8163
+2020-03-06,2020-03-06 12:39,NSE filing,Adani Green,Updates: 'Commissioning of 50 MW Wind Power Project'.,0.7991,0.0869,positive,False,-5.1121
+2020-03-23,2020-03-21 17:14,NSE filing,Adani Green,"Outcome of Board Meeting: Outcome of Board Meeting held on March 21, 2020.",0.0164,-0.0007,neutral,False,-5.1164
+2020-04-07,2020-04-07 14:30,NSE filing,Adani Green,"Press Release: Adani Green Energy Limited (AGEL)consummates 2.148 GW joint venture with TOTAL, Receives INR 3,707 Crores",0.0391,0.5337,neutral,False,4.5367
+2020-04-08,2020-04-07 15:56,NSE filing,Adani Green,"Press Release (Revised): Adani Green Energy Limited (AGEL) consummates 2.148GW joint venture with TOTAL, Receives INR 3,707 Crores",0.0239,0.5629,neutral,False,4.6105
+2020-04-09,2020-04-09 14:17,NSE filing,Adani Green,Updates: 'Provisional operational update of the Company for the Financial Year 2019-20'.,0.0606,0.0051,neutral,False,4.8661
+2020-04-15,2020-04-15 15:15,NSE filing,Adani Green,Updates: 'Commissioning of 50MW Solar Power Project'.,0.7805,0.0887,positive,False,2.3981
+2020-05-04,2020-05-04 14:19,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended March 31, 2020.",0.0067,-0.0114,neutral,False,-0.4286
+2020-05-13,2020-05-13 08:54,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: Disclosure under Regulation 30 and Regulation 31(4) of SEBI (Substantial Acquisition of Shares and Takeovers) Regulations, 2011",0.0372,0.0257,neutral,False,2.1661
+2020-06-08,2020-06-05 20:35,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: Disclosure under Regulation 10(6) of SEBI (SAST) Regulations, 2011",0.0612,0.0161,neutral,False,4.64
+2020-06-09,2020-06-09 10:04,NSE filing,Adani Green,Press Release: Adani Green Energy wins the world s largest solar award; Leapfrogs towards goal of 25 GW of installed capacity by 2025,0.9823,0.929,positive,False,4.867
+2020-06-09,2020-06-09 09:54,NSE filing,Adani Green,Press Release: Adani Green Energy wins the world s largest solar award; Leapfrogs towards goal of 25 GW of installed capacity by 2025,0.9823,0.929,positive,False,4.867
+2020-06-29,2020-06-26 23:45,NSE filing,Adani Green,Shareholders meeting: voting results.,0.0517,-0.0194,neutral,False,-5.122
+2020-07-02,2020-07-02 11:49,NSE filing,Adani Green,Updates: 'Intimation for Shifting of Registered of office of the Company'.,0.0239,0.0109,neutral,False,4.8657
+2020-07-13,2020-07-10 18:02,NSE filing,Adani Green,Change in Director(s): Change in Director(s) of the company.,-0.0061,-0.2469,neutral,False,-1.7125
+2020-07-13,2020-07-10 17:59,NSE filing,Adani Green,"Outcome of Board Meeting: Outcome of Board Meeting held on July 10, 2020.",0.0162,-0.0012,neutral,False,-1.7125
+2020-07-14,2020-07-13 18:18,NSE filing,Adani Green,Updates: 'Provisional operational update of the Company for the Q1-FY21'.,0.0492,-0.0022,neutral,False,-4.6722
+2020-09-02,2020-09-01 16:15,NSE filing,Adani Green,Press Release: Adani ranked as the largest solar power generation owner in the world,0.8527,0.7229,positive,False,9.5283
+2020-09-04,2020-09-04 13:46,NSE filing,Adani Green,"Price movement: Significant movement in price has been observed in Adani Green Energy Limited. The Exchange, in order to ensure that investors have latest relevant information about the company and to inform the market place so that the interest of the investors is safeguarded, had written to the co",0.0074,-0.0858,neutral,False,-5.1266
+2020-09-04,2020-09-03 17:56,NSE filing,Adani Green,"Price movement: Significant movement in price has been observed in Adani Green Energy Limited. The Exchange, in order to ensure that investors have latest relevant information about the company and to inform the market place so that the interest of the investors is safeguarded, has written to the co",0.0071,-0.0229,neutral,False,-5.1266
+2020-09-11,2020-09-11 13:45,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended June 30, 2020.",0.0077,-0.0119,neutral,False,4.8646
+2020-10-01,2020-10-01 09:41,NSE filing,Adani Green,Press Release: Adani Green Energy Completes Acquisition of 205 MW Operating Solar Assets,0.0336,0.3778,neutral,False,1.2797
+2020-10-15,2020-10-15 11:47,NSE filing,Adani Green,"Press Release: Adani Green Energy Limited expands TOTAL JV with INR 1,632 Cr solar assets acquisition",0.623,0.5825,positive,False,-2.9659
+2020-10-15,2020-10-15 11:46,NSE filing,Adani Green,Updates: 'Joint Venture Amendment agreement with Total to expand Joint Venture by 205 MW operating solar assets'.,0.8734,0.9113,positive,False,-2.9659
+2020-10-16,2020-10-16,Times of India headline,Adani Green,Adani Green transfers 3 solar assets to Total JV for Rs 1;632cr,0.0645,0.0713,neutral,False,0.1561
+2020-10-19,2020-10-19 10:33,NSE filing,Adani Green,Updates: 'Provisional operational update: H1 - FY21'.,0.1365,-0.0113,neutral,False,-0.3622
+2020-11-04,2020-11-04 14:46,NSE filing,Adani Green,Updates: 'Intimation of post results conference calls'.,0.2464,-0.0053,neutral,False,1.2565
+2020-11-05,2020-11-04 17:20,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended September 30, 2020.",0.0075,-0.0124,neutral,False,1.6161
+2020-11-06,2020-11-05 16:36,NSE filing,Adani Green,Updates: 'Commissioning of 50 MW Solar Power Project'.,0.797,0.0912,positive,False,0.6299
+2020-11-06,2020-11-06,Times of India headline,Adani Group,Congress ups ante against handing over of Mangaluru International Airport to Adani Group,-0.0393,-0.3754,neutral,False,0.6299
+2020-11-06,2020-11-06,Times of India headline,Adani Group,No stake in Goa's road; rail projects; says Adani Group,0.0036,0.0318,neutral,False,0.6299
+2020-12-11,2020-12-11 14:48,NSE filing,Adani Green,Updates: 'Link To Operational Excellence Video On Website Of The Company '.,0.7461,0.121,positive,False,0.4619
+2020-12-30,2020-12-30,Times of India headline,Adani Group,AAI; Adani Group to ink agreement,0.0082,0.5851,neutral,False,1.3626
+2020-12-31,2020-12-30 16:12,NSE filing,Adani Green,"Press Release: AGEL commissions 100 MWac solar power plant at Khirsara, Gujarat, ahead of schedule",0.1205,0.1603,neutral,False,-0.0332
+2021-01-01,2020-12-31 18:36,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: Promoter of Adani Green Energy Limited has submitted to the Exchange a copy of disclosure under Regulation 10(6) of SEBI (Substantial Acquisition of Shares & Takeover) Regulations, 2011",0.0051,0.0404,neutral,False,1.2603
+2021-01-04,2021-01-01 17:06,NSE filing,Adani Green,Press Release: AGEL receives LOA for 600 MW Wind-Solar Hybrid Power Project,0.4951,0.5313,positive,False,1.5176
+2021-01-05,2021-01-04 18:05,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: Promoter of Adani Green Energy Limited has submitted to the Exchange a copy of disclosure under Regulation 10(5) of SEBI (Substantial Acquisition of Shares & Takeover) Regulations, 2011",0.0051,0.0411,neutral,False,1.3035
+2021-01-06,2021-01-05 20:12,NSE filing,Adani Green,Change in Director(s): Change in Director(s) of the company.,-0.0061,-0.2469,neutral,False,0.9802
+2021-01-07,2021-01-06 19:25,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: Promoter of Adani Green Energy Limited has submitted to the Exchange a copy of disclosure under Regulation 10(6) of SEBI (Substantial Acquisition of Shares & Takeover) Regulations, 2011",0.0051,0.0404,neutral,False,-4.069
+2021-01-11,2021-01-11 12:16,NSE filing,Adani Green,"Press Release: AGEL commissions 25 MW Solar Power Plant at Chitrakoot, Uttar Pradesh",0.1845,0.0606,neutral,False,-4.7003
+2021-01-12,2021-01-12 10:58,NSE filing,Adani Green,Updates: 'Provisional operational update: 9M - FY21'.,0.158,-0.0093,neutral,False,-4.6668
+2021-01-19,2021-01-18 20:14,NSE filing,Adani Green,"Updates: '100% shares of Universal Trade and Investments Limited (""UT"") (which holds 16.4% equity shares of Company) acquired by Total Renewables SAS, France. UT becomes part of Total Group'.",0.7529,0.0188,positive,False,4.4381
+2021-01-20,2021-01-20 10:23,NSE filing,Adani Green,"Press Release: AGEL commissions 150 MW Solar Power Plant at Kutchh, Gujarat, 3 months ahead of schedule",0.0659,0.2575,neutral,False,2.7125
+2021-01-25,2021-01-23 16:45,NSE filing,Adani Green,Updates: 'Securities Purchase Agreement for 20 MW operational Solar Asset'.,0.6974,0.2242,positive,False,-1.6114
+2021-01-25,2021-01-23 14:13,NSE filing,Adani Green,"Updates: '100% shares of Acme Trade and Investment Limited (""AT"") (which holds 3.6% equity shares of Company) acquired by Total Renewables SAS, France. AT becomes part of Total Group'.",0.823,0.0195,positive,False,-1.6114
+2021-02-01,2021-02-01 10:36,NSE filing,Adani Green,"Press Release: AGEL commissions 100 MW Solar Power Plants in Uttar Pradesh, ahead of schedule",0.2962,0.2134,neutral,False,1.9073
+2021-02-04,2021-02-03 17:00,NSE filing,Adani Green,Change in Director(s): Change in Director(s) of the company.,-0.0061,-0.2469,neutral,False,4.8758
+2021-02-04,2021-02-03 16:56,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended December 31, 2020.",0.0066,-0.0102,neutral,False,4.8758
+2021-03-04,2021-03-04,Times of India headline,Adani Group,Adani Group to buy stake in Gangavaram Port in AP,0.0277,0.0742,neutral,False,0.7073
+2021-03-08,2021-03-08 10:29,NSE filing,Adani Green,Press Release: AGEL commissions 100 MW Gujarat Wind Power Project 5 months before schedule,-0.0602,-0.0718,neutral,False,-0.0981
+2021-03-18,2021-03-18 13:24,NSE filing,Adani Green,Press Release: Adani Green Energy raises USD 1.35 billion in one of Asia s largest project financing deals,0.976,0.9182,positive,False,-2.4739
+2021-03-22,2021-03-22 08:39,NSE filing,Adani Green,Press Release: Adani Green Energy receives LOA for 300 MW Wind Power Project,0.1472,0.368,neutral,False,4.8766
+2021-03-22,2021-03-20 10:10,NSE filing,Adani Green,Press Release: Adani Green Energy to acquire 50 MW Solar Asset from SkyPower Global,0.0506,0.2058,neutral,False,4.8766
+2021-03-22,2021-03-20 10:07,NSE filing,Adani Green,Updates: 'Securities Purchase Agreement For 50 MW Operational Solar Asset'.,0.6961,0.2325,positive,False,4.8766
+2021-03-22,2021-03-21,Times of India headline,Adani Green,Adani Green to acquire 50MW solar asset from SkyPower,0.0153,0.1933,neutral,False,4.8766
+2021-03-24,2021-03-24 09:03,NSE filing,Adani Green,Press Release: Adani Green Energy to acquire 74.94 MW Solar Projects from Sterling & Wilson at Rs. 446 Cr,0.0934,0.2288,neutral,False,-1.7121
+2021-03-24,2021-03-24 08:58,NSE filing,Adani Green,Updates: 'Securities Purchase Agreement for 74.94 MW operational Solar Assets'.,0.6488,0.1433,positive,False,-1.7121
+2021-03-30,2021-03-27 11:52,NSE filing,Adani Green,Updates: 'Adani Green Energy Limited Has Completed Acquisition Of 100% Of The Share Capital And All The Securities Of Spinel Energy & Infrastructure Limited'.,0.1964,0.368,neutral,False,-4.6168
+2021-03-30,2021-03-27 11:51,NSE filing,Adani Green,Updates: 'Adani Green Energy Limited Has Completed Acquisition Of 100% Of The Share Capital And All The Securities Of Spinel Energy & Infrastructure Limited'.,0.1964,0.368,neutral,False,-4.6168
+2021-03-30,2021-03-26 17:16,NSE filing,Adani Green,Updates: 'Adani Green Energy Limited has completed acquisition of 100% of the share capital and all the securities of Surajkiran Solar Technologies Private Limited and Dinkar Technologies Private Limited'.,0.2476,0.3556,neutral,False,-4.6168
+2021-04-01,2021-03-31 18:16,NSE filing,Adani Green,Updates: 'Adani Green Energy Limited has completed acquisition of 100% of the share capital and all the securities of Surajkiran Renewable Resources Private Limited'.,0.2288,0.3579,neutral,False,4.8754
+2021-04-05,2021-04-05 13:43,NSE filing,Adani Green,Updates: 'Project Development Excellence Video'.,0.8643,0.0919,positive,False,0.3571
+2021-04-05,2021-04-05 10:56,NSE filing,Adani Green,Updates: 'Presentation for the Project DevelopmentExcellence'.,0.566,0.0334,positive,False,0.3571
+2021-04-05,2021-04-03,Times of India headline,Adani Group,Adani Group to benefit from KSEB's power purchase deal: Chennithala,0.9873,0.2646,positive,False,0.3571
+2021-04-13,2021-04-13 11:06,NSE filing,Adani Green,Updates: 'Commissioning of 50 MW Solar Power Plant'.,0.8196,0.1039,positive,False,2.7617
+2021-04-13,2021-04-13 10:48,NSE filing,Adani Green,Updates: 'Provisional operational update: FY21'.,0.1147,-0.0217,neutral,False,2.7617
+2021-04-13,2021-04-13,Times of India headline,Adani Group,Flipkart partners with Adani Group for data centre in Chennai,0.0035,0.4947,neutral,False,2.7617
+2021-04-19,2021-04-17 10:48,NSE filing,Adani Green,Updates: 'Letter of Award for 150 MW Solar power project'.,0.7921,0.5522,positive,False,-4.8278
+2021-04-23,2021-04-23 00:02,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: disclosure under Regulation 30 and Regulation 31(4) of SEBI SAST Regulations 2011 as on March 31, 2021",0.0534,0.0054,neutral,False,2.1078
+2021-04-26,2021-04-26,Times of India headline,Adani Group,Ahmedabad: Adani Group joins efforts to secure medical oxygen,0.0274,0.6985,neutral,False,-0.2998
+2021-05-03,2021-05-01,Times of India headline,Adani Group,Adani Group to set up Covid care centre in Ahmedabad,0.0094,0.1093,neutral,False,1.7077
+2021-05-06,2021-05-05 18:19,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended March 31, 2021.",0.0052,-0.0143,neutral,False,3.2394
+2021-05-07,2021-05-06 19:52,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: Infinite Trade and Investment Ltd has submitted to��the Exchange disclosure under Regulation 10(5) of the SEBI (Substantial Acquisition of shares and Takeovers) Regulations, 2011.",0.009,0.0276,neutral,False,0.2997
+2021-05-10,2021-05-09,Times of India headline,Adani Group,Adani Group procures 51 cryogenic oxygen tanks in Ahmedabad,0.0671,0.3788,neutral,False,-0.0045
+2021-05-11,2021-05-11 12:13,NSE filing,Adani Green,"Updates: 'Meeting of the Board of Directors will be held on Thursday, 13th May, 2021 to consider appointment of new Joint Statutory Auditors of the Company in place of M/s. B S R & Co. LLP, subject to approval of shareholders'.",0.012,0.0148,neutral,False,-2.2837
+2021-05-11,2021-05-10 19:23,NSE filing,Adani Green,Change in Auditors: Change in Auditors of the company.,-0.0071,-0.298,neutral,False,-2.2837
+2021-05-14,2021-05-13 13:42,NSE filing,Adani Green,Change in Auditors: Change in Auditors of the company.,-0.0071,-0.298,neutral,False,3.5787
+2021-05-14,2021-05-13 13:42,NSE filing,Adani Green,Updates: 'Outcome of Board Meeting'.,0.101,-0.0055,neutral,False,3.5787
+2021-05-18,2021-05-18 12:51,NSE filing,Adani Green,News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned Adani Green in talks to acquire SB Energy.  The response from the Company is awaited.,-0.017,0.0174,neutral,False,4.8104
+2021-05-18,2021-05-18 08:51,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: ��Infinite Trade and Investment Ltd��has submitted to the Exchange a copy of disclosure under Regulation 10(6) of SEBI (Substantial Acquisition of Shares & Takeover) Regulations, 2011.",0.0116,0.0286,neutral,False,4.8104
+2021-05-19,2021-05-19 08:23,NSE filing,Adani Green,Press Release: Adani Green Energy to acquire SB Energy s 5 GW India renewable power portfolio for a fully completed EV of USD 3.5 billion - India s largest renewables M&A transaction,0.0241,0.4203,neutral,False,3.6771
+2021-05-19,2021-05-19 08:20,NSE filing,Adani Green,Acquisition: Acquisition,0.0405,-0.0108,neutral,False,3.6771
+2021-05-19,2021-05-18 15:45,NSE filing,Adani Green,News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned Adani Green in talks to acquire SB Energy.  The response from the Company is attached.,-0.0133,-0.0054,neutral,False,3.6771
+2021-05-24,2021-05-22 15:24,NSE filing,Adani Green,Updates: 'Intimation for transfer of 74% shareholding of Mundra Solar Energy Limited ( MSEL )'.,0.7843,0.065,positive,False,4.6434
+2021-05-25,2021-05-24 19:18,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: Infinite Trade and Investment Ltd��has submitted to the Exchange a copy of Revised disclosure under Regulation 10(5) of SEBI (Substantial Acquisition of Shares & Takeovers) Regulations, 2011.",-0.0009,0.0257,neutral,False,-3.4917
+2021-06-02,2021-06-02 12:56,NSE filing,Adani Green,"Updates: 'Commissioning of 150 MW Wind Power Project, 9 months before Schedule'.",0.2986,0.0149,neutral,False,2.2367
+2021-06-14,2021-06-14 15:02,NSE filing,Adani Green,Updates: 'Clarification on news article published in economic times - A/c s of 3 FPI s OwningAdani Shares Frozen'.,-0.22,-0.7164,neutral,False,-0.395
+2021-06-15,2021-06-15 07:43,NSE filing,Adani Green,"News Verification: This has reference to the Clarification issued by the company on a news article published in Economic Times headlined as - A/c's of 3 FPl's Owning Adani Shares Frozen. In this regard, all the market participants are requested to note the clarification issued by NSDL to Adani Group",-0.0113,-0.0414,neutral,False,-0.0577
+2021-07-12,2021-07-12 13:56,NSE filing,Adani Green,Updates: 'Provisional operational update: Q1 - FY22'.,0.1483,-0.0166,neutral,False,-1.5023
+2021-07-14,2021-07-14 12:28,NSE filing,Adani Green,"Updates: 'Regulation 44(3) of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015 - Details of voting results of the 6th Annual General Meeting of the Company'.",0.3746,0.0112,neutral,False,-0.965
+2021-07-20,2021-07-20,Times of India headline,Adani Group,Sebi; DRI probing Adani Group cos; govt tells LS,-0.0359,0.0476,neutral,False,-3.5394
+2021-07-20,2021-07-20,Times of India headline,Adani Group,Sebi; DRI probing Adani Group companies; government tells Lok Sabha,-0.0186,0.0127,neutral,False,-3.5394
+2021-08-02,2021-08-01,Times of India headline,Adani Group,Adani Group to gather details on Jaipur airport before takeover in October,0.0046,0.0152,neutral,False,-0.6995
+2021-08-04,2021-08-04 13:48,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended June 30, 2021.",0.0063,-0.0143,neutral,False,0.8105
+2021-08-06,2021-08-06,Times of India headline,Adani Group,Adani Group set to take over Guwahati airport by October,0.0109,0.045,neutral,False,2.3221
+2021-08-23,2021-08-22,Times of India headline,Adani Group,No message from Sebi on Wilmar IPO: Adani Group,0.001,-0.0161,neutral,False,-0.2354
+2021-08-27,2021-08-27 12:24,NSE filing,Adani Green,Credit Rating: Credit Rating,-0.0013,0.0324,neutral,False,0.2529
+2021-08-27,2021-08-27 06:50,NSE filing,Adani Green,"Updates: 'Outcome of Management Committee Meeting held on August 27, 2021'.",0.1639,-0.0003,neutral,False,0.2529
+2021-08-27,2021-08-26 21:54,NSE filing,Adani Green,Updates: 'Clarification With Respect To Rating Actions For RG1 And RG 2 Issuance'.,-0.0662,0.0,neutral,False,0.2529
+2021-08-27,2021-08-26 18:00,NSE filing,Adani Green,"Updates: 'Outcome of Management Committee Meeting Held On August 26, 2021'.",0.1695,0.0006,neutral,False,0.2529
+2021-09-02,2021-09-02 12:47,NSE filing,Adani Green,Press Release: Adani Green Energy Continues to Ramp Up Focus On ESG: Raises USD 750 Mn to fully fund equity needs for its under construction pipeline,0.8877,0.9274,positive,False,0.5127
+2021-09-02,2021-09-02 12:44,NSE filing,Adani Green,Updates: 'issuance of USD denominated senior secured notes aggregating to US$ 750 million'.,-0.3899,0.4027,negative,False,0.5127
+2021-09-13,2021-09-12,Times of India headline,Adani Group,Adani Group name dropped from M'luru airport boards,-0.9531,-0.5406,negative,False,-2.5614
+2021-09-20,2021-09-20 10:33,NSE filing,Adani Green,Change in Director(s): Change in Director(s) of the company.,-0.0061,-0.2469,neutral,False,-1.9349
+2021-09-22,2021-09-22 11:41,NSE filing,Adani Green,Updates: 'Confirmation with respect to appointment of Director'.,0.0144,0.0162,neutral,False,1.8434
+2021-09-27,2021-09-25,Times of India headline,Adani Group,Govt; Adani Group in collusion; says oppn,-0.4051,-0.7757,neutral,False,0.1431
+2021-09-30,2021-09-30 08:57,NSE filing,Adani Green,Press Release: Adani Green Energy to acquire 40 MW operational Solar Asset in Odisha,0.0687,0.1493,neutral,False,0.6958
+2021-09-30,2021-09-30 08:54,NSE filing,Adani Green,Updates: 'Securities Purchase Agreement to acquire 40 MW Operational Solar asset in Odisha'.,0.7239,0.6771,positive,False,0.6958
+2021-10-01,2021-09-30 18:58,NSE filing,Adani Green,Updates: 'Completion Of Acquisition Of Vento Energy Infra Private Limited'.,0.8304,0.1678,positive,False,0.3874
+2021-10-04,2021-10-04 09:21,NSE filing,Adani Green,Press Release (Revised): Adani Green Energy closes India s largest renewables M&A deal for USD 3.5 Billion; a 46% increase in operational capacity,0.1219,0.9314,neutral,False,2.1529
+2021-10-04,2021-10-04 09:01,NSE filing,Adani Green,Press Release: Adani Green Energy closes India s largest renewables M&A deal for USD 3.5 Billion; a 46% increase in operational capacity,0.2159,0.9326,neutral,False,2.1529
+2021-10-11,2021-10-10,Times of India headline,Adani Group,Adani Group will take over Jaipur International Airport from tonight,0.0118,0.0474,neutral,False,-1.2358
+2021-10-12,2021-10-11 17:21,NSE filing,Adani Green,Updates: 'Provisional operational update: Q2 - FY22'.,0.1272,-0.0177,neutral,False,3.9027
+2021-10-12,2021-10-12,Times of India headline,Adani Group,Adani Group likely to take over Trivandrum International Airport operations this week,0.0071,0.0199,neutral,False,3.9027
+2021-10-12,2021-10-12,Times of India headline,Adani Group,Adani Group begins operations at Jaipur International Airport,0.0135,0.0363,neutral,False,3.9027
+2021-10-22,2021-10-22 10:33,NSE filing,Adani Green,Updates: 'Letter of Award (LOA) from SECI to set-up 450 MW Wind Power Project'.,0.7331,0.7749,positive,False,0.2666
+2021-10-28,2021-10-28 14:18,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended September 30, 2021.",0.0061,-0.015,neutral,False,-5.0111
+2021-11-10,2021-11-09 18:37,NSE filing,Adani Green,Press Release: Adani companies AGEL & ATLdeclare Energy Compact Goals as part of COP26,0.0926,0.1233,neutral,False,-0.1586
+2021-11-17,2021-11-17 14:49,NSE filing,Adani Green,Press Release: Adani Green Energy ramps up its ESG score; Scores 66 in S&P Global Corporate Sustainability Assessment ahead of global average of 38,0.9875,0.9314,positive,False,-0.0647
+2021-12-03,2021-12-03,Times of India headline,Adani Group,Uttar Pradesh: Ganga expressway to be built by Adani Group; IRB Infrastructure,0.0072,0.1247,neutral,False,3.5189
+2021-12-14,2021-12-14 09:09,NSE filing,Adani Green,"Press Release: Adani Signs World s Largest Green PPA with SECI; Adani Green Energy to Supply 4,667 MW",0.2619,0.268,neutral,False,3.5719
+2021-12-21,2021-12-21,Times of India headline,Adani Group,Uttar Pradesh: Adani Group set to build country's longest e-way; Ganga expressway; for Rs 17;000 crore,0.0146,0.5531,neutral,False,0.9918
+2021-12-27,2021-12-27 11:18,NSE filing,Adani Green,Press Release: Adani Green wins Global Sponsor of the Year award,0.9648,0.8738,positive,False,-0.7172
+2022-01-11,2022-01-11 12:26,NSE filing,Adani Green,Updates: 'Provisional operational update: Q3 - FY22'.,0.1332,-0.02,neutral,False,8.589
+2022-02-02,2022-02-02 14:54,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended December 31, 2021.",0.0053,-0.0123,neutral,False,0.6439
+2022-02-03,2022-02-03,Times of India headline,Adani Green,Adani Green Energy's Q3 net rises 20%,0.9901,0.9208,positive,False,-0.1959
+2022-02-04,2022-02-04 13:15,NSE filing,Adani Green,Press Release: Adani Green Energy raises Rs 612.30 Cr for debt refinancing,0.9833,0.6384,positive,False,1.9571
+2022-02-07,2022-02-07 13:46,NSE filing,Adani Green,Press Release: Adani Green first in India to achieve GRI South Asia charter member status,0.7671,0.8403,positive,False,3.7388
+2022-03-15,2022-03-15,Times of India headline,Adani Group,Adani Group; Greenko ink pact,0.2942,0.0207,neutral,False,-1.3062
+2022-03-21,2022-03-21 09:20,NSE filing,Adani Green,Press Release: press release dated 21-Mar-2022 titled Adani Green raises USD 288 Mn Construction Facility; Increases the construction revolver pool to USD 1.64 Bn,0.553,0.9224,positive,False,-1.3317
+2022-03-29,2022-03-29,Times of India headline,Adani Group,Adani Group inks multi-year partnership with Google,0.0426,0.9097,neutral,False,-0.3918
+2022-03-30,2022-03-30,Times of India headline,Adani Group,Adani Group completes financial closure of Navi Mumbai airport,0.0018,-0.8089,neutral,False,-3.4999
+2022-04-06,2022-04-05 16:04,NSE filing,Adani Green,Disclosure under SEBI Takeover Regulations: Promoter/Promoter Group of Adani Green Energy Limited has submitted a disclosure under Regulation 31(4) of SEBI Takeover Regulations for the year ended 31-Mar-2022,0.0036,0.0438,neutral,False,0.3465
+2022-04-08,2022-04-08 11:46,NSE filing,Adani Green,Press Release: press release dated 08-Apr-2022 titled International Holding Company to invest USD 2 billion in Adani Group���s green portfolio,0.1371,0.1082,neutral,False,6.9482
+2022-04-08,2022-04-08 11:27,NSE filing,Adani Green,Outcome of Board Meeting: Board Meeting held on 08-Apr-2022 to consider Fund raising,0.0444,0.0209,neutral,False,6.9482
+2022-04-11,2022-04-08 16:07,NSE filing,Adani Green,Extra Ordinary Meeting: Notice of Extra Ordinary General Meeting to be held on 03-May-2022,0.0403,-0.0181,neutral,False,13.7896
+2022-04-12,2022-04-12 10:33,NSE filing,Adani Green,General updates: Provisional operational update: Q4 - FY22,0.0548,-0.0824,neutral,False,4.6641
+2022-05-04,2022-05-04 13:39,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended March 31, 2022.",0.0064,-0.0158,neutral,False,-5.7816
+2022-05-04,2022-05-03 18:54,NSE filing,Adani Green,Extra Ordinary Meeting: Scrutinizer report of Extra Ordinary General Meeting held on 03-May-2022,-0.007,-0.0314,neutral,False,-5.7816
+2022-05-04,2022-05-03 13:35,NSE filing,Adani Green,Extra Ordinary Meeting: Proceedings of Extra Ordinary General Meeting held on 03-May-2022,0.0202,-0.0291,neutral,False,-5.7816
+2022-05-12,2022-05-12 10:04,NSE filing,Adani Green,General updates: Allotment of equity shares of face value of Rs. 10 to Green Energy Investment Holding RSG Limited on preferential issue basis,0.3867,0.0326,neutral,False,-8.3138
+2022-05-17,2022-05-17 11:57,NSE filing,Adani Green,"Press Release: press release dated 17-May-2022 titled Adani Portfolio Companies complete INR 15,400 Cr primary equity transaction with IHC",0.0077,0.1089,neutral,False,0.1795
+2022-05-30,2022-05-28 10:43,NSE filing,Adani Green,Press Release: press release dated 28-May-2022 titled Adani Green switches on India���s first hybrid power plant,0.0091,0.1406,neutral,False,-0.6855
+2022-06-20,2022-06-18 21:54,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: Disclosure under Regulation 31 under SEBI (SAST) Regulations, 2011 has been submitted.",0.0214,0.0115,neutral,False,1.8757
+2022-06-20,2022-06-18 21:54,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: Disclosure under Regulation 31 under SEBI (SAST) Regulations, 2011 has been submitted.",0.0214,0.0115,neutral,False,1.8757
+2022-06-20,2022-06-18 21:51,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: Disclosure under Regulation 31 under SEBI (SAST) Regulations, 2011 has been submitted.",0.0214,0.0115,neutral,False,1.8757
+2022-06-20,2022-06-18 21:50,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: Disclosure under Regulation 31 under SEBI (SAST) Regulations, 2011 has been submitted.",0.0214,0.0115,neutral,False,1.8757
+2022-06-20,2022-06-18 21:47,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: Disclosure under Regulation 31 under SEBI (SAST) Regulations, 2011 has been submitted.",0.0214,0.0115,neutral,False,1.8757
+2022-06-20,2022-06-18 21:45,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: Disclosure under Regulation 31 under SEBI (SAST) Regulations, 2011 has been submitted.",0.0214,0.0115,neutral,False,1.8757
+2022-06-21,2022-06-20 17:03,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: Disclosure under Regulation 31 under SEBI (SAST) Regulations, 2011 has been submitted.",0.0214,0.0115,neutral,False,3.6849
+2022-07-05,2022-07-04 23:42,NSE filing,Adani Green,Annual General Meeting: Notice of Annual General Meeting to be held on 27-Jul-2022,0.0316,-0.0254,neutral,False,-0.383
+2022-07-13,2022-07-13 08:35,NSE filing,Adani Green,General updates: Provisional operational update: Q1 - FY23,0.0519,-0.0811,neutral,False,-8.6427
+2022-07-27,2022-07-27 14:34,NSE filing,Adani Green,Annual General Meeting: Proceedings of Annual General Meeting held on 27-Jul-2022,0.0248,-0.0254,neutral,False,-0.2118
+2022-07-28,2022-07-27 19:19,NSE filing,Adani Green,Annual General Meeting: Voting results and  Scrutinizer report of Annual General Meeting held on 27-Jul-2022,0.0078,-0.0345,neutral,False,2.1094
+2022-07-28,2022-07-27 16:49,NSE filing,Adani Green,Appointment: appointment of Ahlem Friga Noy as Nominee Director of the company w.e.f. 27-Jul-2022,0.0069,0.0047,neutral,False,2.1094
+2022-07-28,2022-07-27 16:47,NSE filing,Adani Green,Cessation: cessation of Jos�� Ignacio Sanz Saiz as Nominee Director of the company w.e.f. 27-Jul-2022,-0.0095,-0.0463,neutral,False,2.1094
+2022-08-03,2022-08-02 17:52,NSE filing,Adani Green,Outcome of Board Meeting: Board Meeting held on 02-Aug-2022 to consider financial statements for the period ended June 2022,0.0053,-0.0191,neutral,False,-4.0688
+2022-08-18,2022-08-18 11:57,NSE filing,Adani Green,News Verification: ADANIGREEN : The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned Adani group gets provisional approvals for renewable energy projects in SL.  The response from the Company is attached.,-0.0006,0.0298,neutral,False,3.0643
+2022-08-18,2022-08-17 17:32,NSE filing,Adani Green,News Verification: ADANIGREEN : The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned Adani group gets provisional approvals for renewable energy projects in SL.  The response from the Company is awaited.,-0.0019,0.0816,neutral,False,3.0643
+2022-09-19,2022-09-19 12:47,NSE filing,Adani Green,"General updates: Media Release: AGEL commissions 325 MW Wind Power Plant, largest in Madhya Pradesh",0.7504,0.2544,positive,False,1.276
+2022-09-29,2022-09-29 10:27,NSE filing,Adani Green,Press Release: press release dated 29-Sep-2022 titled Adani Green Commissions World���s Largest Hybrid Power Plant,0.2364,0.1986,neutral,False,-2.3182
+2022-10-06,2022-10-04 21:07,NSE filing,Adani Green,Extra Ordinary Meeting: Notice of Extra Ordinary General Meeting to be held on 26-Oct-2022,0.0457,-0.0189,neutral,False,3.1138
+2022-10-11,2022-10-10 20:14,NSE filing,Adani Green,"Acquisition: completion of acquisition of 3 entities, housing 150 MW operational wind power projects",0.6903,0.0607,positive,False,-1.265
+2022-10-17,2022-10-14 22:18,NSE filing,Adani Green,General updates: Provisional operational update: H1 - FY23,0.056,-0.0626,neutral,False,5.7949
+2022-10-27,2022-10-26 11:30,NSE filing,Adani Green,Extra Ordinary Meeting: Proceedings of Extra Ordinary General Meeting held on 26-Oct-2022,0.0224,-0.0301,neutral,False,1.7964
+2022-10-28,2022-10-27 16:56,NSE filing,Adani Green,Extra Ordinary Meeting: Voting results and  Scrutinizer report of Extra Ordinary General Meeting held on 26-Oct-2022,0.0063,-0.0283,neutral,False,-0.9037
+2022-11-11,2022-11-10 20:28,NSE filing,Adani Green,Appointment: appointment of Phuntsok Wangyal as Chief Financial Officer of the company w.e.f. 11-Nov-2022,0.0061,0.0032,neutral,False,0.9468
+2022-11-11,2022-11-10 20:27,NSE filing,Adani Green,Resignation: resignation of Kaushal Shah as Chief Financial Officer of the company w.e.f. 10-Nov-2022,-0.0244,-0.2882,neutral,False,0.9468
+2022-11-11,2022-11-10 20:25,NSE filing,Adani Green,Resignation: resignation of Sandeep Singhi as Independent Director of the company w.e.f. 10-Nov-2022,-0.02,-0.2547,neutral,False,0.9468
+2022-11-11,2022-11-10 20:25,NSE filing,Adani Green,Appointment: appointment of Sunil Mehta as Independent Director of the company w.e.f. 10-Nov-2022,0.0063,0.0101,neutral,False,0.9468
+2022-11-11,2022-11-10 20:01,NSE filing,Adani Green,Outcome of Board Meeting: Board Meeting held on 10-Nov-2022 to consider financial statements for the period ended September 2022,0.0057,-0.0194,neutral,False,0.9468
+2022-12-01,2022-12-01 10:42,NSE filing,Adani Green,Press Release: press release dated 01-Dec-2022 titled Adani Green raises Japanese Yen denominated Refinancing Facility; Diversifies the funding pool to raise long-term financing,0.0809,0.8568,neutral,False,-0.1395
+2022-12-05,2022-12-05 11:45,NSE filing,Adani Green,Press Release: press release dated 05-Dec-2022 titled Adani Green Becomes World���s Largest Wind-Solar Hybrid Power Developer,0.7308,0.4962,positive,False,-0.9843
+2022-12-22,2022-12-22 15:07,NSE filing,Adani Green,Press Release: Adani Green Wins Sustainability 4.0 Award Conferred jointly by Frost & Sullivan and TERI,0.9687,0.9237,positive,False,0.6331
+2023-01-18,2023-01-18 11:11,NSE filing,Adani Green,Acquisition: Acquisition,0.0405,-0.0108,neutral,False,-3.2491
+2023-01-23,2023-01-23 11:40,NSE filing,Adani Green,Updates: 'Provisional operational update: 9M - FY23'.,0.1372,-0.0155,neutral,False,-2.2394
+2023-01-23,2023-01-21 17:41,NSE filing,Adani Green,Updates: 'Voting Results and Scrutinizer s Report on the Postal Ballot'.,0.0625,-0.0199,neutral,False,-2.2394
+2023-02-07,2023-02-07 15:26,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended December 31, 2022.",0.0065,-0.0144,neutral,False,-5.1287
+2023-02-13,2023-02-10 18:59,NSE filing,Adani Green,Credit Rating: Credit Rating,-0.0013,0.0324,neutral,False,-5.1275
+2023-02-15,2023-02-14 17:44,NSE filing,Adani Green,Updates: 'Adani Listed Portfolio   9M FY23 Results Compendium and Credit Note '.,0.0439,-0.0009,neutral,False,-5.1241
+2023-02-17,2023-02-17 13:28,NSE filing,Adani Green,"Spurt in Volume: Significant increase in volume has been observed in Adani Green Energy Limited. The Exchange, in order to ensure that investors have latest relevant information about the company and to inform the market place so that the interest of the investors is safeguarded, has written to the ",0.8427,0.6049,positive,False,1.9841
+2023-02-20,2023-02-20 14:14,NSE filing,Adani Green,"Spurt in Volume: Significant increase in volume has been observed in Adani Green Energy Limited. The Exchange, in order to ensure that investors have latest relevant information about the company and to inform the market place so that the interest of the investors is safeguarded, had written to the ",0.8654,0.7816,positive,False,-5.1239
+2023-02-27,2023-02-24 20:30,NSE filing,Adani Green,Resignation of Independent director: Resignation of Independent director.,-0.1864,-0.7496,neutral,False,-5.1239
+2023-02-27,2023-02-24 20:29,NSE filing,Adani Green,Resignation of Independent director: Resignation by Mr. Sunil Mehta (DIN: 00065343),-0.2253,-0.612,neutral,False,-5.1239
+2023-02-28,2023-02-28 14:39,NSE filing,Adani Green,News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned  Adani Group's $442 Million Renewable Energy Projects Approved By Sri Lanka.  The response from the Company is attached.,-0.0154,0.0005,neutral,False,4.877
+2023-02-28,2023-02-27 16:18,NSE filing,Adani Green,News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned  Adani Group's $442 Million Renewable Energy Projects Approved By Sri Lanka.  The response from the Company is awaited.,-0.0199,0.0306,neutral,False,4.877
+2023-03-01,2023-03-01 11:30,NSE filing,Adani Green,News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned Adani gets commitment for $800 million debt facility.  The response from the Company is awaited.,-0.0136,0.0367,neutral,False,4.8761
+2023-03-03,2023-03-02 19:46,NSE filing,Adani Green,"Press Release: Adani Green s Operating Renewable Portfolio reaches 8,024MW, the largest in India",0.7372,0.8032,positive,False,4.879
+2023-03-03,2023-03-02 18:30,NSE filing,Adani Green,"Press Release: Adani Portfolio companies complete INR 15,446 Cr secondary equity transaction with GQG Partners",0.0127,0.1502,neutral,False,4.879
+2023-03-03,2023-03-02 16:09,NSE filing,Adani Green,News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned Adani gets commitment for $800 million debt facility.  The response from the Company is attached.,-0.0082,0.0111,neutral,False,4.879
+2023-04-03,2023-04-01 15:48,NSE filing,Adani Green,"Demise: Demise of Mrs Poornima Advani, Non- Executive Independent Director of the company on April 01, 2023.",-0.205,-0.3091,neutral,False,-5.0866
+2023-04-03,2023-04-01 14:42,NSE filing,Adani Green,Diversification/Disinvestment: Diversification/Disinvestment,-0.1706,0.0472,neutral,False,-5.0866
+2023-04-17,2023-04-14 10:40,NSE filing,Adani Green,Updates: 'Provisional operational update: FY23'.,0.0838,-0.0283,neutral,False,2.2483
+2023-05-02,2023-05-01 21:48,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended March 31, 2023.",0.0064,-0.016,neutral,False,2.4564
+2023-05-18,2023-05-18 15:07,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: S. B. Adani Family Trust has Submitted to the Exchange a copy of Disclosure under Regulation 31(4) of the Securities and Exchange Board of India (Substantial Acquisition of Shares and Takeovers) Regulations, 2011.",0.0006,0.0352,neutral,False,-1.7109
+2023-05-24,2023-05-23 21:46,NSE filing,Adani Green,Board meeting Cancelled: The Board Meeting to be held on 24/05/2023 Stands Cancelled.,-0.0852,-0.8016,neutral,False,-0.4612
+2023-05-26,2023-05-26 09:25,NSE filing,Adani Green,Press Release: AGEL s Operational Wind Generation capacity crosses 1 GW with commissioning of 130 MW Wind Power Plant in Gujarat,0.6477,0.4334,positive,False,-0.7549
+2023-06-28,2023-06-27 23:34,NSE filing,Adani Green,Updates: 'Business Responsibility and Sustainability Report (BRSR) for FY 2022-23'.,0.5492,0.0213,positive,False,-0.3027
+2023-07-06,2023-07-06 14:59,NSE filing,Adani Green,"Outcome of Board Meeting: Board meeting held on July 06, 2023.",0.0188,-0.0136,neutral,False,1.4657
+2023-07-13,2023-07-13 09:29,NSE filing,Adani Green,Updates: 'Provisional operational update: Q1 - FY24'.,0.147,-0.0149,neutral,False,-0.7888
+2023-07-17,2023-07-16 17:08,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: S B Adani Family Trust��has Submitted to the Exchange a copy of Disclosure under Regulation 31(4) of the Securities and Exchange Board of India��(Substantial Acquisition of Shares and Takeovers) Regulations, 2011.��",0.001,0.0428,neutral,False,0.0104
+2023-07-20,2023-07-19 23:17,NSE filing,Adani Green,Shareholders meeting: voting results.,0.0517,-0.0194,neutral,False,0.5446
+2023-07-31,2023-07-31 14:07,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended June 30, 2023.",0.0075,-0.0167,neutral,False,0.0641
+2023-08-09,2023-08-09 13:49,NSE filing,Adani Green,Shareholders meeting: voting results.,0.0517,-0.0194,neutral,False,-1.3295
+2023-08-16,2023-08-14 16:09,NSE filing,Adani Green,Updates: 'Disclosure under Regulation 30 - Ongoing litigation'.,-0.0615,-0.1526,neutral,False,-0.2895
+2023-08-18,2023-08-17 20:56,NSE filing,Adani Green,Updates: 'Commissioning of Manufacturing plant by Mundra Solar Energy Limited'.,0.7165,0.0885,positive,False,6.355
+2023-08-23,2023-08-22 17:53,NSE filing,Adani Green,Updates: 'Imposition of fine by BSE and NSE under Regulation 17(1)'.,-0.377,-0.6212,negative,True,-4.3901
+2023-09-08,2023-09-07 23:07,NSE filing,Adani Green,Change in Director(s): Change in Director(s) of the company.,-0.0061,-0.2469,neutral,False,-0.1447
+2023-09-20,2023-09-20 14:55,NSE filing,Adani Green,"Press Release: AGEL and TotalEnergies to expand partnership, TotalEnergies to invest USD 300m in an AGEL-TotalEnergies JV",0.8953,0.8916,positive,False,0.3972
+2023-09-20,2023-09-20 13:49,NSE filing,Adani Green,"Outcome of Board Meeting: Board meeting held on September 20, 2023.",0.0188,-0.0166,neutral,False,0.3972
+2023-10-09,2023-10-07 08:18,NSE filing,Adani Green,Updates: 'Commissioning of entire 150 MW solar power project'.,0.7289,0.1532,positive,False,-2.3472
+2023-10-16,2023-10-14 15:33,NSE filing,Adani Green,Updates: 'Provisional operational update:H1 - FY24'.,0.1346,-0.0101,neutral,False,-1.0701
+2023-10-23,2023-10-21 18:04,NSE filing,Adani Green,Change in Director(s): Change in Director(s) of the company.,-0.0061,-0.2469,neutral,False,-4.3706
+2023-10-23,2023-10-20 18:22,NSE filing,Adani Green,Change in Director(s): Change in Director(s) of the company.,-0.0061,-0.2469,neutral,False,-4.3706
+2023-10-30,2023-10-30 14:14,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended September 30, 2023.",0.0073,-0.0176,neutral,False,4.967
+2023-10-31,2023-10-30 19:17,NSE filing,Adani Green,"Updates: 'Outcome of Board Meeting held on October 30, 2023 - Typo correction in Auditor's Review Report (Standalone)'.",0.0966,0.0179,neutral,False,-0.3941
+2023-11-01,2023-11-01 11:16,NSE filing,Adani Green,Updates: 'Audio Recording of Post results update call with Fixed Income Investors'.,0.2019,0.0248,neutral,False,-3.505
+2023-12-05,2023-12-05 08:48,NSE filing,Adani Green,Press Release: Adani Green accomplishes its Construction Financing Framework at USD 3 billion,0.1736,0.7776,neutral,False,18.2322
+2023-12-22,2023-12-21 18:40,NSE filing,Adani Green,Shareholders meeting: voting results.,0.0517,-0.0194,neutral,False,0.8878
+2023-12-26,2023-12-26 15:07,NSE filing,Adani Green,"Press Release: Promoters to Invest INR 9,350 crore equity in Adani Green",0.4578,0.068,neutral,False,4.2837
+2023-12-26,2023-12-26 15:05,NSE filing,Adani Green,"Outcome of Board Meeting: Board meeting held on December 26, 2023.",0.0175,-0.0173,neutral,False,4.2837
+2023-12-26,2023-12-25 12:03,NSE filing,Adani Green,"Updates: 'Media Release titled  Adani Green concludes PPA tie-upfor entire 8,000 MW manufacturing-linked SECI tender""'.",0.0139,0.159,neutral,False,4.2837
+2023-12-27,2023-12-27 08:05,NSE filing,Adani Green,"Press Release: Adani Green completes JV with TotalEnergies, raises USD 300 million",0.7373,0.8107,positive,False,0.0562
+2023-12-27,2023-12-27 07:58,NSE filing,Adani Green,Memorandum of Understanding/Agreements: Memorandum of Understanding/Agreements,0.0113,0.4982,neutral,False,0.0562
+2024-01-08,2024-01-08 12:50,NSE filing,Adani Green,Press Release: Adani Green delivers cash backed redemption plan for USD 750 million Holdco bond,0.0076,0.1605,neutral,False,0.3608
+2024-01-16,2024-01-16 11:24,NSE filing,Adani Green,Updates: 'Provisional operational update: 9M - FY24'.,0.1538,-0.0101,neutral,False,-1.6659
+2024-01-19,2024-01-18 16:24,NSE filing,Adani Green,Shareholders meeting: voting results.,0.0517,-0.0194,neutral,False,-1.108
+2024-01-29,2024-01-29 13:19,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended December 31, 2023.",0.0065,-0.0148,neutral,False,3.0
+2024-01-29,2024-01-29 08:49,NSE filing,Adani Green,Updates: 'Media release titled: Adani Green completes funding ofthe reserves for the USD 750 million Holdco Bond'.,0.02,0.5663,neutral,False,3.0
+2024-01-29,2024-01-25 16:23,NSE filing,Adani Green,"Allotment of Securities: allotment of 63143677 securities pursuant to Preferential Issue at its meeting held on January 25, 2024",0.0411,0.0068,neutral,False,3.0
+2024-02-14,2024-02-14 11:08,NSE filing,Adani Green,Press Release: Adani Green begins generation from the world s largest Renewable Energy Park,0.1624,0.2817,neutral,False,2.0013
+2024-02-14,2024-02-14 11:06,NSE filing,Adani Green,Updates: 'Operationalization of Projects'.,0.6364,0.0584,positive,False,2.0013
+2024-02-14,2024-02-13 20:57,NSE filing,Adani Green,Credit Rating: Credit Rating,-0.0013,0.0324,neutral,False,2.0013
+2024-03-05,2024-03-05 11:28,NSE filing,Adani Green,Updates: 'Operationalization ofProjects at Khavda'.,0.5941,0.0468,positive,False,0.3446
+2024-03-05,2024-03-05 07:58,NSE filing,Adani Green,"Updates: 'USD Bond issuance by Subsidiaries, Pricing and other terms of issuance'.",0.3348,-0.0075,neutral,False,0.3446
+2024-03-11,2024-03-11 10:15,NSE filing,Adani Green,"Press Release: Adani Green Energy operationalizes 1,000 MW (1 GW) of the 30,000 MW Khavda renewable energy park",0.011,0.1133,neutral,False,0.0622
+2024-03-11,2024-03-09 15:40,NSE filing,Adani Green,Shareholders meeting: voting results.,0.0517,-0.0194,neutral,False,0.0622
+2024-03-14,2024-03-14 14:58,NSE filing,Adani Green,Press Release: Adani Green Energy completes operationalization of 300 MW wind power project in Gujarat,0.0181,0.742,neutral,False,9.415
+2024-03-14,2024-03-14 14:54,NSE filing,Adani Green,Updates: 'Operationalization of Project'.,0.6017,0.0677,positive,False,9.415
+2024-03-14,2024-03-13 23:48,NSE filing,Adani Green,Updates: 'Power Purchase Agreements with SECI'.,0.7068,0.1183,positive,False,9.415
+2024-03-14,2024-03-13 23:46,NSE filing,Adani Green,Updates: 'Redemption of the 6.25% Senior Secured Notes due 2024 by subsidiaries'.,-0.1124,0.0107,neutral,False,9.415
+2024-03-19,2024-03-19 15:06,NSE filing,Adani Green,News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned All Adani stocks in red on report of US government widening probe.  The response from the Company is attached.,-0.6097,-0.051,negative,False,-2.6197
+2024-03-19,2024-03-18 18:24,NSE filing,Adani Green,News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned All Adani stocks in red on report of US government widening probe.  The response from the Company is awaited.,-0.6606,-0.0442,negative,False,-2.6197
+2024-03-27,2024-03-27 09:27,NSE filing,Adani Green,Press Release: Adani Green operationalizes 180 MW solar power plant in Rajasthan,0.0061,0.1613,neutral,False,-1.983
+2024-03-27,2024-03-27 09:19,NSE filing,Adani Green,Updates: 'Operationalisation of 180 MW solar power project'.,0.6399,0.1032,positive,False,-1.983
+2024-04-01,2024-03-30 23:50,NSE filing,Adani Green,Updates: 'Operationalization of Projects'.,0.6364,0.0584,positive,False,2.8551
+2024-04-01,2024-03-29 18:56,NSE filing,Adani Green,Updates: 'Operationalization ofProjects'.,0.6941,0.0507,positive,False,2.8551
+2024-04-01,2024-03-29 12:00,NSE filing,Adani Green,Updates: 'Operationalization of Projects'.,0.6364,0.0584,positive,False,2.8551
+2024-04-03,2024-04-03 13:11,NSE filing,Adani Green,"Press Release (Revised): Adani Green Energy becomes India s first to surpass 10,000 MW renewable energy",0.9279,0.863,positive,False,-0.7265
+2024-04-03,2024-04-03 08:28,NSE filing,Adani Green,"Press Release: Adani Green Energy becomes India s first to surpass 10,000 MW renewable energy",0.9379,0.8711,positive,False,-0.7265
+2024-04-15,2024-04-15 08:43,NSE filing,Adani Green,Updates: 'Provisional operational update: FY24'.,0.1049,-0.0173,neutral,False,-3.7283
+2024-05-03,2024-05-03 14:21,NSE filing,Adani Green,Updates: 'Presentation on Operational & Financial highlights'.,0.7634,0.0649,positive,False,0.7221
+2024-05-03,2024-05-03 14:17,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended March 31, 2024.",0.0063,-0.0155,neutral,False,0.7221
+2024-05-03,2024-05-03 14:12,NSE filing,Adani Green,"Outcome of Board Meeting: Board meeting held on May 03, 2024.",0.0199,-0.0148,neutral,False,0.7221
+2024-05-03,2024-05-02 19:04,NSE filing,Adani Green,Press Release: Adani Green Secures USD 400 million from international banks for 750 MW power projects,0.0455,0.8869,neutral,False,0.7221
+2024-05-06,2024-05-03 18:12,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: S. B. Adani Family Trust has Submitted to the Exchange a copy of Disclosure under Regulation 31(4) of the Securities and Exchange Board of India (Substantial Acquisition of Shares and Takeovers) Regulations, 2011.",0.0006,0.0352,neutral,False,-1.859
+2024-05-08,2024-05-07 16:39,NSE filing,Adani Green,"Monitoring Agency Report: Pursuant to Regulation 32(6) of SEBI (LODR) Regulations, 2015 read with Regulation 162A(4) of SEBI (ICDR) Regulations, 2018, we submit herewith the Monitoring Agency Report for the quarter ended on March 31, 2024.",0.1074,-0.0061,neutral,False,2.6866
+2024-05-29,2024-05-28 19:33,NSE filing,Adani Green,Updates: 'Business Responsibility and Sustainability Report for FY 2023-24 '.,0.4894,0.0245,positive,False,-0.7447
+2024-05-30,2024-05-29 20:45,NSE filing,Adani Green,Credit Rating: Credit Rating,-0.0013,0.0324,neutral,False,-0.2504
+2024-06-26,2024-06-25 21:13,NSE filing,Adani Green,Shareholders meeting: voting results.,0.0517,-0.0194,neutral,False,-1.2768
+2024-07-18,2024-07-16 21:18,NSE filing,Adani Green,Updates: 'Provisional Operational Update: Q1 FY25'.,0.1516,-0.0197,neutral,False,-0.7071
+2024-07-24,2024-07-24 08:48,NSE filing,Adani Green,Updates: 'Operationalization of Project'.,0.6017,0.0677,positive,False,-0.2503
+2024-07-25,2024-07-25 15:14,NSE filing,Adani Green,"Financial Result Updates: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended June 30, 2024.",0.0075,-0.0161,neutral,False,5.9115
+2024-07-25,2024-07-25 15:05,NSE filing,Adani Green,"Outcome of Board Meeting: Board meeting held on July 25, 2024.",0.019,-0.0159,neutral,False,5.9115
+2024-07-30,2024-07-29 18:47,NSE filing,Adani Green,"Monitoring Agency Report: Monitoring Agency Report for the quarter ended on June 30, 2024",0.0031,-0.0385,neutral,False,-0.2099
+2024-08-12,2024-08-11 11:54,NSE filing,Adani Green,Updates: 'Hindenburg Report - A Red Herring'.,-0.5061,-0.5115,negative,False,0.9751
+2024-08-12,2024-08-11 11:32,NSE filing,Adani Green,Updates: 'Hindenburg Report - A Red Herring'.,-0.5061,-0.5115,negative,False,0.9751
+2024-08-12,2024-08-11 11:12,NSE filing,Adani Green,Updates: 'Hindenburg Report - A Red Herring'.,-0.5061,-0.5115,negative,False,0.9751
+2024-09-03,2024-09-03 09:21,NSE filing,Adani Green,Press Release: Adani Green and TotalEnergies Strengthen Partnership with Strategic Joint Venture,0.5397,0.9333,positive,False,-2.4874
+2024-09-03,2024-09-02 17:42,NSE filing,Adani Green,Updates: 'Intimation for approval of Board of Directors for execution of binding documents with TotalEnergies Renewables Singapore Pte Limited to form a new Joint Venture.'.,0.1166,0.3217,neutral,False,-2.4874
+2024-09-09,2024-09-09 08:30,NSE filing,Adani Green,Press Release: Adani Green Energy fully redeems USD 750 Mn Holdco Notes,0.1124,0.4331,neutral,False,0.1314
+2024-09-16,2024-09-15 11:50,NSE filing,Adani Green,Press Release: Maharashtra State DISCOM issues Letter of Intent for supply of 6600 MW hybrid solar and thermal power by Adani Green and Adani Power,0.0132,0.2871,neutral,False,7.6725
+2024-09-16,2024-09-15 11:45,NSE filing,Adani Green,"Updates: '5GW (5,000 MW) of solar power project to supply power to MSEDCL'.",0.8407,0.1328,positive,False,7.6725
+2024-09-16,2024-09-14 16:27,NSE filing,Adani Green,Updates: 'Change In Senior Management Personnel of the Company'.,-0.0224,-0.6801,neutral,False,7.6725
+2024-09-26,2024-09-25 15:44,NSE filing,Adani Green,"Shareholders meeting: Adani Green Energy Limited has submitted the Exchange the Voting Results of Extraordinary General Meeting held on September 25, 2024 along with Scrutinizer's Report.",0.0057,-0.0065,neutral,False,-0.4316
+2024-09-27,2024-09-26 16:00,NSE filing,Adani Green,General Updates: execution of Joint Venture Agreement with TotalEnergiesfor Adani Renewable Energy Sixty Four Limited,-0.0269,0.2872,neutral,False,-3.7631
+2024-10-03,2024-10-03 12:48,NSE filing,Adani Green,General Updates: General Updates,0.0818,-0.0197,neutral,False,-4.1791
+2024-10-07,2024-10-04 17:35,NSE filing,Adani Green,Updates: 'USD denominated offering by wholly-owned subsidiaries'.,0.4535,0.0347,positive,False,-2.7438
+2024-10-11,2024-10-11 09:39,NSE filing,Adani Green,Updates: 'Provisional operationalupdate: H1 FY25'.,0.4034,-0.0104,neutral,False,0.655
+2024-10-22,2024-10-22 15:28,NSE filing,Adani Green,"Outcome of Board Meeting: Board meeting held on October 22, 2024.",0.0189,-0.017,neutral,False,-1.5522
+2024-10-23,2024-10-22 15:47,NSE filing,Adani Green,"Updates: 'Presentation on operational & financial highlights for the quarter and half year ended September 30, 2024'.",0.4597,-0.0074,neutral,False,1.0424
+2024-10-23,2024-10-22 15:37,NSE filing,Adani Green,"Financial Result Updates:  Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended September 30, 2024.",0.0073,-0.017,neutral,False,1.0424
+2024-10-28,2024-10-25 19:37,NSE filing,Adani Green,"Monitoring Agency Report: We submit herewith the Monitoring Agency Report for the quarter ended September 30, 2024.",0.0234,-0.0287,neutral,False,-1.8943
+2024-10-31,2024-10-30 18:26,NSE filing,Adani Green,Updates: 'Power Purchase Agreements for 5 GW solar power'.,0.6685,0.1471,positive,False,-2.2213
+2024-11-18,2024-11-18 07:23,NSE filing,Adani Green,Updates: 'USD denominated offerings by Wholly-owned Subsidiaries'.,0.3752,0.0256,neutral,False,-2.2632
+2024-11-21,2024-11-21 14:01,NSE filing,Adani Green,News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned Adani Group stocks in focus: Here is what the US SEC said.  The response from the Company is attached.,-0.034,-0.0199,neutral,False,-20.9487
+2024-11-21,2024-11-21 11:17,NSE filing,Adani Green,News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned Adani Group stocks in focus: Here is what the US SEC said.  The response from the Company is awaited.,-0.0354,-0.0063,neutral,False,-20.9487
+2024-11-21,2024-11-21 09:29,NSE filing,Adani Green,Updates: 'Update'.,0.6379,-0.0043,positive,False,-20.9487
+2024-11-22,2024-11-22 10:58,NSE filing,Adani Green,News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned Kenya drops over $2.5 billion of Adani deals after US indictment.  The response from the Company is awaited.,-0.2015,-0.3073,neutral,False,-8.5513
+2024-11-25,2024-11-25 14:20,NSE filing,Adani Green,News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned Kenya drops over $2.5 billion of Adani deals after US indictment.  The response from the Company is attached.,-0.1362,-0.2389,neutral,False,-8.22
+2024-11-25,2024-11-25 10:03,NSE filing,Adani Green,News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned S&P Global revises its outlook on three Adani entities to 'negative'.  The response from the Company is attached.,-0.4025,-0.671,neutral,False,-8.22
+2024-11-25,2024-11-22 17:38,NSE filing,Adani Green,News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned S&P Global revises its outlook on three Adani entities to 'negative'.  The response from the Company is awaited.,-0.4801,-0.8112,neutral,False,-8.22
+2024-11-26,2024-11-26 10:09,NSE filing,Adani Green,News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned Adani Green Energy shares dive 11% as TotalEnergies halts fresh 'financial contribution'.  The response from the Company is attached.,-0.9649,-0.9527,negative,True,-7.5276
+2024-11-26,2024-11-26 10:05,NSE filing,Adani Green,Updates: 'Clarification on news item'.,0.1454,-0.0043,neutral,False,-7.5276
+2024-11-26,2024-11-25 18:11,NSE filing,Adani Green,News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned Adani Green Energy shares dive 11% as TotalEnergies halts fresh 'financial contribution'.  The response from the Company is awaited.,-0.9689,-0.9537,negative,True,-7.5276
+2024-11-27,2024-11-27 01:17,NSE filing,Adani Green,Updates: 'Intimation under regulation 30 - Clarification on media article'.,0.0892,-0.0078,neutral,False,9.5305
+2024-11-27,2024-11-27 01:05,NSE filing,Adani Green,Updates: 'Intimation under regulation 30'.,0.5244,0.0002,positive,False,9.5305
+2024-11-27,2024-11-26 21:21,NSE filing,Adani Green,Credit Rating- Others: Credit Rating- Others,0.0109,-0.0087,neutral,False,9.5305
+2024-11-29,2024-11-28 16:13,NSE filing,Adani Green,Credit Rating: Credit Rating,-0.0013,0.0324,neutral,False,19.6976
+2024-12-06,2024-12-06 10:26,NSE filing,Adani Green,Updates: 'Clarification on news item appearing in media reports'.,0.0992,-0.0273,neutral,False,-1.5531
+2024-12-06,2024-12-05 17:21,NSE filing,Adani Green,"News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned Power regulator questions transfer of Azure's 2,333 MW share to Adani Green Energy Limited.  The response from the Company is awaited.",-0.0074,0.0115,neutral,False,-1.5531
+2024-12-09,2024-12-07 12:10,NSE filing,Adani Green,"News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned Power regulator questions transfer of Azure's 2,333 MW share to Adani Green Energy Limited.  The response from the Company is attached.",-0.0053,-0.0054,neutral,False,0.519
+2024-12-12,2024-12-12 11:33,NSE filing,Adani Green,General Updates: General Updates,0.0818,-0.0197,neutral,False,5.9104
+2024-12-13,2024-12-12 19:55,NSE filing,Adani Green,General Updates: General Updates,0.0818,-0.0197,neutral,False,-1.6182
+2024-12-16,2024-12-13 19:03,NSE filing,Adani Green,General Updates: General Updates,0.0818,-0.0197,neutral,False,-2.5652
+2024-12-30,2024-12-28 20:15,NSE filing,Adani Green,Updates: 'Commissioning of Projects'.,0.5411,0.0116,positive,False,2.0333
+2024-12-31,2024-12-30 19:15,NSE filing,Adani Green,Press Release: Internal Leadership Transition in Adani Portfolio,0.0116,-0.0238,neutral,False,-3.3032
+2024-12-31,2024-12-30 19:09,NSE filing,Adani Green,"Outcome of Board Meeting: Board meeting held on December 30, 2024.",0.0181,-0.0173,neutral,False,-3.3032
+2025-01-15,2025-01-15 10:42,NSE filing,Adani Green,Updates: 'Provisional operationalupdate: 9M FY25'.,0.399,-0.0071,neutral,False,2.7623
+2025-01-15,2025-01-14 15:58,NSE filing,Adani Green,Updates: 'Commissioning of Project'.,0.5276,0.0225,positive,False,2.7623
+2025-01-24,2025-01-23 19:09,NSE filing,Adani Green,Updates: 'Presentation on Operational & Financial highlights'.,0.7634,0.0649,positive,False,-1.7774
+2025-01-24,2025-01-23 19:05,NSE filing,Adani Green,"Financial Result Updates:  Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended December 31, 2024.",0.0065,-0.0141,neutral,False,-1.7774
+2025-01-28,2025-01-27 20:59,NSE filing,Adani Green,"Monitoring Agency Report: Monitoring Agency Report for the quarter ended on December 31, 2024",-0.0082,-0.0334,neutral,False,-1.1731
+2025-01-28,2025-01-27 20:53,NSE filing,Adani Green,"Integrated Filing- Financial: In furtherance to the financial results and outcome of the Board Meeting submitted by the Company on January 23, 2025, we are submitting herewith the Integrated Filing (Financial) for the quarter and nine months ended December 31, 2024, in compliance of the Securities a",0.0157,0.0026,neutral,False,-1.1731
+2025-02-14,2025-02-14 11:14,NSE filing,Adani Green,News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned Adani Green Energy shares surge 3% amid report of Sri Lanka wind power project withdrawal.  The response from the Company is attached.,0.949,-0.8781,positive,True,-3.2648
+2025-02-14,2025-02-13 18:50,NSE filing,Adani Green,Rumour Verification - Regulation 30(11): Rumour Verification - Regulation 30(11),0.0093,-0.0031,neutral,False,-3.2648
+2025-02-14,2025-02-13 15:48,NSE filing,Adani Green,News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned Adani Green Energy shares surge 3% amid report of Sri Lanka wind power project withdrawal.  The response from the Company is awaited.,0.9583,-0.8637,positive,True,-3.2648
+2025-02-24,2025-02-21 16:27,NSE filing,Adani Green,Updates: 'Operationalisation of Project'.,0.5269,0.0592,positive,False,-1.5783
+2025-02-25,2025-02-24 22:09,NSE filing,Adani Green,Updates: 'Operationalization ofProject'.,0.6973,0.0338,positive,False,0.5487
+2025-02-27,2025-02-26 21:54,NSE filing,Adani Green,"Updates: 'Receipt of order from the Office of Assistant Commissioner of State Tax, Ahmedabad'.",0.0494,0.0387,neutral,False,-3.4983
+2025-02-27,2025-02-26 08:32,NSE filing,Adani Green,Updates: ''.,0.7534,0.0179,positive,False,-3.4983
+2025-02-27,2025-02-25 18:30,NSE filing,Adani Green,Bagging/Receiving of orders/contracts: Bagging/Receiving of orders/contracts,0.0015,-0.0509,neutral,False,-3.4983
+2025-02-28,2025-02-28 10:32,NSE filing,Adani Green,Updates: 'Operationalization of Project'.,0.6017,0.0677,positive,False,-4.7104
+2025-02-28,2025-02-27 23:58,NSE filing,Adani Green,"Updates: 'Receipt of order from the Office of Joint Commissioner of Central Tax, Lucknow'.",0.1032,0.0565,neutral,False,-4.7104
+2025-03-03,2025-03-03 08:44,NSE filing,Adani Green,Press Release: Adani Green Energy Achieves Major Milestone in its Capital Management Journey; Refinances USD 1.06 Bn Maiden Construction Facility with Long-Term Financing,0.8896,0.933,positive,False,3.7635
+2025-03-03,2025-03-01 10:50,NSE filing,Adani Green,General Updates: General Updates,0.0818,-0.0197,neutral,False,3.7635
+2025-03-12,2025-03-11 18:34,NSE filing,Adani Green,General Updates: commissioning of project.,0.2827,0.0074,neutral,False,3.4874
+2025-03-20,2025-03-20 12:33,NSE filing,Adani Green,General Updates: commissioning of project,0.313,-0.013,neutral,False,1.33
+2025-03-28,2025-03-28 13:07,NSE filing,Adani Green,General Updates: commissioning of project.,0.2827,0.0074,neutral,False,-1.1789
+2025-03-28,2025-03-28 09:45,NSE filing,Adani Green,Updates: 'Letter of Award from UPPCL'.,0.7235,0.615,positive,False,-1.1789
+2025-03-28,2025-03-27 19:51,NSE filing,Adani Green,General Updates: General Updates,0.0818,-0.0197,neutral,False,-1.1789
+2025-04-01,2025-03-31 22:09,NSE filing,Adani Green,Updates: 'Operationalisation of Project'.,0.5269,0.0592,positive,False,-3.1591
+2025-04-01,2025-03-29 22:31,NSE filing,Adani Green,Updates: 'Operationalization ofProjects'.,0.6941,0.0507,positive,False,-3.1591
+2025-04-01,2025-03-29 08:40,NSE filing,Adani Green,Updates: 'Operationalisation ofProject'.,0.7082,0.0372,positive,False,-3.1591
+2025-04-15,2025-04-15 09:48,NSE filing,Adani Green,Updates: 'Provisional operationalupdate: FY25'.,0.3462,-0.0148,neutral,False,4.6995
+2025-04-21,2025-04-17 21:50,NSE filing,Adani Green,Updates: 'Operationalization ofProject'.,0.6973,0.0338,positive,False,0.9562
+2025-04-22,2025-04-22 13:06,NSE filing,Adani Green,Updates: 'General Updates'.,0.3739,0.0029,neutral,False,-1.3635
+2025-04-24,2025-04-23 18:09,NSE filing,Adani Green,Updates: 'Execution of Power Purchase Agreement (PPA)'.,0.4177,0.0721,neutral,False,1.7123
+2025-04-29,2025-04-28 21:16,NSE filing,Adani Green,Change in Auditors: Change in Auditors of the company.,-0.0071,-0.298,neutral,False,-1.9964
+2025-04-29,2025-04-28 21:12,NSE filing,Adani Green,General Updates: General Updates,0.0818,-0.0197,neutral,False,-1.9964
+2025-04-29,2025-04-28 21:08,NSE filing,Adani Green,Change in Director(s): Change in Director(s) of the company.,-0.0061,-0.2469,neutral,False,-1.9964
+2025-04-29,2025-04-28 21:02,NSE filing,Adani Green,"Outcome of Board Meeting: Outcome of Board Meeting held on April 28, 2025.",0.015,-0.0064,neutral,False,-1.9964
+2025-04-29,2025-04-28 20:54,NSE filing,Adani Green,"Monitoring Agency Report: Monitoring Agency Report for the quarter ended on March 31, 2025",-0.0043,-0.0318,neutral,False,-1.9964
+2025-04-29,2025-04-28 20:48,NSE filing,Adani Green,"Updates: 'presentation on operational & financial highlights for the quarter and financial year ended March 31, 2025'.",0.4207,-0.0107,neutral,False,-1.9964
+2025-04-29,2025-04-28 20:41,NSE filing,Adani Green,"Outcome of Board Meeting: Board meeting held on April 28, 2025.",0.02,-0.0161,neutral,False,-1.9964
+2025-05-05,2025-05-05 15:13,NSE filing,Adani Green,News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned Adani reps meet Trump officials in push to end US bribery cases.  The response from the Company is attached.,-0.0403,-0.0305,neutral,False,6.4145
+2025-05-05,2025-05-05 11:25,NSE filing,Adani Green,News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned Adani reps meet Trump officials in push to end US bribery cases.  The response from the Company is awaited.,-0.0514,-0.0039,neutral,False,6.4145
+2025-05-05,2025-05-03 17:16,NSE filing,Adani Green,Updates: 'Power PurchaseAgreement'.,0.7633,0.0226,positive,False,6.4145
+2025-05-06,2025-05-05 20:05,NSE filing,Adani Green,Credit Rating- Others: Credit Rating- Others,0.0109,-0.0087,neutral,False,-4.4953
+2025-05-14,2025-05-14 08:12,NSE filing,Adani Green,Updates: 'Operationalization ofProject'.,0.6973,0.0338,positive,False,0.9557
+2025-05-21,2025-05-21 08:30,NSE filing,Adani Green,Updates: 'Operationalization of Project '.,0.6017,0.0677,positive,False,1.2674
+2025-05-21,2025-05-20 19:32,NSE filing,Adani Green,General Updates: General Updates,0.0818,-0.0197,neutral,False,1.2674
+2025-05-26,2025-05-23 19:40,NSE filing,Adani Green,"Shareholders meeting: Adani Green Energy Limited has submitted the Exchange Voting Results and Srutinizer's Report of  Extraordinary General Meeting held on May 23, 2025",0.0095,0.0058,neutral,False,2.4916
+2025-05-28,2025-05-27 19:43,NSE filing,Adani Green,General Updates: General Updates,0.0818,-0.0197,neutral,False,-1.1068
+2025-06-02,2025-05-30 22:46,NSE filing,Adani Green,Updates: 'Business Responsibility and Sustainability Report for financial year 2024-25'.,0.5563,0.0386,positive,False,-0.5189
+2025-06-03,2025-06-03 11:43,NSE filing,Adani Green,General Updates: Incorporation of a Step-down Subsidiary Company,-0.1165,-0.0789,neutral,False,-1.6486
+2025-06-04,2025-06-03 19:32,NSE filing,Adani Green,General Updates: Incorporation of step-down subsidiary companies,-0.242,-0.1755,neutral,False,1.2216
+2025-06-09,2025-06-07 23:15,NSE filing,Adani Green,Credit Rating- New: Credit Rating- New,-0.2571,0.0204,neutral,False,1.5099
+2025-06-19,2025-06-18 19:09,NSE filing,Adani Green,"Disclosure under SEBI Takeover Regulations: S. B. Adani Family Trust has Submitted to the Exchange a copy of Disclosure under Regulation 31(4) of the Securities and Exchange Board of India (Substantial Acquisition of Shares and Takeovers) Regulations, 2011.",0.0006,0.0352,neutral,False,-3.6685
+2025-06-26,2025-06-25 19:38,NSE filing,Adani Green,Amendment to AOA/MOA: the Amendment to AOA/MOA of the company.,0.2814,0.0132,neutral,False,1.1049
+2025-06-30,2025-06-30 08:38,NSE filing,Adani Green,"Press Release: Adani Green Energy Sets Record with Over 15,000 MWof Installed Renewable Energy Capacity; India s Largest",0.9438,0.8221,positive,False,0.9798
+2025-06-30,2025-06-30 08:34,NSE filing,Adani Green,Updates: 'Operationalization of Projects'.,0.6364,0.0584,positive,False,0.9798
+2025-07-01,2025-06-30 22:49,NSE filing,Adani Green,Updates: 'Operationalization of Projects'.,0.6364,0.0584,positive,False,-0.97
+2025-07-09,2025-07-09 08:17,NSE filing,Adani Green,Updates: 'Company's ESG Rating Maintains 'Strong' Category'.,0.9464,0.8044,positive,False,0.3221
+2025-07-11,2025-07-11 08:34,NSE filing,Adani Green,Updates: 'Provisional operationalupdate: Q1 FY26'.,0.407,-0.0152,neutral,False,-0.0603
+2025-07-21,2025-07-19 18:57,NSE filing,Adani Green,Updates: 'Update on ESG Rating by SES'.,0.4224,0.0198,neutral,False,0.6193
+2025-07-28,2025-07-28 15:07,NSE filing,Adani Green,"Outcome of Board Meeting: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended Jun 30, 2025.",0.006,-0.0243,neutral,False,2.8288
+2025-07-28,2025-07-28 14:50,NSE filing,Adani Green,Updates: 'Presentation on Operational & Financial highlights'.,0.7634,0.0649,positive,False,2.8288
+2025-07-28,2025-07-28 14:38,NSE filing,Adani Green,"Outcome of Board Meeting: Board meeting held on July 28, 2025.",0.0195,-0.0151,neutral,False,2.8288
+2025-08-08,2025-08-08 08:07,NSE filing,Adani Green,Updates: 'Commissioning of Project'.,0.5276,0.0225,positive,False,-2.4478
+2025-08-18,2025-08-14 17:43,NSE filing,Adani Green,"Monitoring Agency Report: Monitoring Agency Report for the quarter ended on June 30, 2025",0.0052,-0.0361,neutral,False,2.5981
+2025-09-01,2025-09-01 14:43,NSE filing,Adani Green,General Updates: Operationalization of Project,0.4566,0.0259,neutral,False,1.9566
+2025-09-08,2025-09-07 22:15,NSE filing,Adani Green,Updates: 'Operationalization of Projects'.,0.6364,0.0584,positive,False,0.8411
+2025-09-23,2025-09-22 16:11,NSE filing,Adani Green,General Updates: Incorporation of step-down subsidiary company,-0.1309,-0.0646,neutral,False,-1.813
+2025-09-24,2025-09-24 11:02,NSE filing,Adani Green,Updates: 'Chairman s Letter to Shareholders'.,0.5083,0.0371,positive,False,-3.2517
+2025-09-30,2025-09-30 10:37,NSE filing,Adani Green,Updates: 'Operationalization of Projects'.,0.6364,0.0584,positive,False,-0.8244
+2025-10-01,2025-10-01 08:11,NSE filing,Adani Green,Updates: 'Operationalization of Projects'.,0.6364,0.0584,positive,False,3.6197
+2025-10-03,2025-10-01 22:14,NSE filing,Adani Green,Updates: 'Commissioning of Projects'.,0.5411,0.0116,positive,False,0.5246
+2025-10-15,2025-10-15 14:27,NSE filing,Adani Green,Updates: 'Operationalization of Project'.,0.6017,0.0677,positive,False,0.7308
+2025-10-16,2025-10-15 19:32,NSE filing,Adani Green,Updates: 'Provisional Operational Update: H1 FY26'.,0.1413,-0.0175,neutral,False,1.5684
+2025-10-16,2025-10-15 19:24,NSE filing,Adani Green,Updates: 'Incorporation of step down subsidiary'.,-0.5079,-0.0281,negative,False,1.5684
+2025-10-29,2025-10-28 17:43,NSE filing,Adani Green,General Updates: ESG Rating,0.5913,0.0122,positive,False,10.2508
+2025-10-29,2025-10-28 17:04,NSE filing,Adani Green,General Updates: Presentation on Operational & Financial Highlights - H1 FY26,0.5459,0.0004,positive,False,10.2508
+2025-10-29,2025-10-28 16:52,NSE filing,Adani Green,"Outcome of Board Meeting: Adani Green Energy Limited has submitted to the Exchange, the financial results for the period ended September 30, 2025.",0.0062,-0.023,neutral,False,10.2508
+2025-10-29,2025-10-28 16:50,NSE filing,Adani Green,"Outcome of Board Meeting: Board meeting held on October 28, 2025.",0.0189,-0.0157,neutral,False,10.2508
+2025-10-31,2025-10-30 20:29,NSE filing,Adani Green,Updates: 'Power Consumption Agreements for supply of 60 MW solar-wind hybrid power'.,0.4143,0.1195,neutral,False,-0.0088
+2025-11-13,2025-11-13 15:22,NSE filing,Adani Green,"Monitoring Agency Report: We submit herewith the Report of the Monitoring Agency for the quarter ended September 30, 2025.",0.0242,-0.0261,neutral,False,0.5588
+2025-11-13,2025-11-12 15:35,NSE filing,Adani Green,News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned Adani plans India's biggest battery storage in Gujarat.  The response from the Company is awaited.,-0.0292,0.0371,neutral,False,0.5588
+2025-11-14,2025-11-14 10:13,NSE filing,Adani Green,Updates: 'Media Release'.,0.5126,-0.0,positive,False,-0.7457
+2025-11-14,2025-11-14 08:03,NSE filing,Adani Green,General Updates: Receipt of Letter of Award,0.2661,0.054,neutral,False,-0.7457
+2025-11-14,2025-11-13 22:41,NSE filing,Adani Green,News Verification: The Exchange has sought clarification from Adani Green Energy Limited with respect to recent news item captioned Adani plans India's biggest battery storage in Gujarat.  The response from the Company is attached.,-0.0224,-0.0058,neutral,False,-0.7457
+2025-11-24,2025-11-21 17:34,NSE filing,Adani Green,General Updates: Incorporation of step-down subsidiary companies,-0.242,-0.1755,neutral,False,-2.0688
+2025-12-01,2025-12-01 08:29,NSE filing,Adani Green,Updates: 'Operationalization of Projects'.,0.6364,0.0584,positive,False,-0.8238
+2025-12-08,2025-12-08 08:36,NSE filing,Adani Green,Updates: 'Media Release: Adani Green Energy deepens nature-positive leadership with a global biodiversity disclosure framework'.,0.5922,0.8127,positive,False,-2.3765
+2025-12-08,2025-12-05 20:21,NSE filing,Adani Green,General Updates: ESG Rating,0.5913,0.0122,positive,False,-2.3765
+2025-12-08,2025-12-05 19:57,NSE filing,Adani Green,General Updates: ESG Rating,0.5913,0.0122,positive,False,-2.3765
+2025-12-10,2025-12-09 18:12,NSE filing,Adani Green,Updates: ESG Rating by NSE Sustainability Ratings & Analytics Limited,0.3017,0.0462,neutral,True,-0.9152
+2025-12-29,2025-12-26 18:46,NSE filing,Adani Green,General Updates: Incorporation of step-down subsidiary company,-0.1309,-0.0646,neutral,False,-1.604
+2025-12-31,2025-12-31 11:26,NSE filing,Adani Green,General Updates: incorporation of step-down subsidiary company,-0.1309,-0.0646,neutral,False,0.7912
+2025-12-31,2025-12-31 08:18,NSE filing,Adani Green,Updates: 'Operationalization of Projects'.,0.6364,0.0584,positive,False,0.7912

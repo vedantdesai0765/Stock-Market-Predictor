@@ -1,0 +1,235 @@
+scope,date,return_pct,sentiment,headline,headline_score
+TCS,2009-05-18,14.41,0.064,IT Q4: How TCS; Infy; Wipro fared,0.099
+TCS,2009-07-20,14.24,0.671,TCS: Demand rising from banking clients,0.989
+TCS,2008-10-21,12.92,0.978,TCS bets big on telecom vertical,0.978
+TCS,2012-04-24,11.52,0.097,TCS Q4 profit up 23% at Rs 2;932 cr,0.99
+TCS,2008-04-22,-11.31,0.314,TCS profit rises 19%,0.989
+TCS,2009-05-19,-10.49,,,
+TCS,2020-03-12,-9.88,,,
+TCS,2009-03-30,-9.4,,,
+TCS,2020-03-20,9.39,,,
+TCS,2008-10-16,-9.27,,,
+TCS,2008-10-24,-9.27,-0.019,TCS not cutting variable pay,-0.019
+TCS,2014-10-17,-9.26,0.007,TCS revenue grows 6.4% to $3.9bn in Q2,0.988
+TCS,2008-10-29,9.1,,,
+TCS,2008-01-23,8.96,,,
+TCS,2008-10-13,8.76,0.35,Infy; TCS; Satyam bullish on hiring,0.986
+TCS,2008-10-15,-8.74,,,
+TCS,2005-04-19,-8.71,,,
+TCS,2008-10-17,-8.68,,,
+TCS,2008-09-29,-8.68,0.094,TCS may buy Siemens arm,0.094
+TCS,2006-06-16,8.61,,,
+TCS,2008-07-11,-8.38,0.972,'Infosys; TCS; Wipro India's most admired companies',0.974
+TCS,2008-01-21,-8.33,0.072,TCS to set up subsidiary in Moscow by March 2008,0.072
+TCS,2011-10-18,-8.06,0.004,TCS: Job market strong; to hire 45;000,0.984
+TCS,2005-04-20,-7.96,,,
+TCS,2008-10-20,7.94,0.035,Infy pips TCS to bag US bank order,0.035
+RELIANCE,2009-05-18,19.37,,,
+RELIANCE,2006-01-18,17.88,-0.02,RIL loses Rs 29;849 crore in M-cap,-0.965
+RELIANCE,2008-10-24,-17.76,0.99,RIL Q2 net up 7.4% on high crude price,0.99
+RELIANCE,2004-05-17,-16.56,0.166,Reliance best bidder for NTPC gas tender,0.166
+RELIANCE,2020-03-23,-14.1,,,
+RELIANCE,2020-03-25,13.73,0.007,Facebook in talks for 10% in Jio: Report,0.007
+RELIANCE,2008-10-31,13.5,0.15,RIL ready to give higher price for gas: Govt,0.294
+RELIANCE,2008-11-05,-13.44,,,
+RELIANCE,2009-01-07,-13.25,-0.286,Blast kills 2 at Reliance Refinery,-0.286
+RELIANCE,2020-03-09,-13.17,,,
+RELIANCE,2002-10-31,12.46,0.165,Reliance gas find fires energy market,0.354
+RELIANCE,2001-04-19,12.23,,,
+RELIANCE,2020-04-07,11.28,0.006,Reliance to infuse Rs 500cr in ed-tech biz,0.006
+RELIANCE,2006-06-09,11.11,,,
+RELIANCE,2008-10-29,10.96,,,
+RELIANCE,2001-09-14,-10.52,-0.03,RIL not interested in DPC stake,-0.03
+RELIANCE,2017-02-22,10.4,-0.121,1 held for threat calls to blow Reliance Jio office,-0.254
+RELIANCE,2020-03-20,10.37,,,
+RELIANCE,2001-09-21,-10.19,0.013,Reliance to spend Rs 20 cr on infrastructure in 270 villages,0.013
+RELIANCE,2020-04-22,9.72,,,
+RELIANCE,2008-01-21,-9.7,0.046,RIL to invest $1.14 billion in Orissa gas finds,0.046
+RELIANCE,2001-09-26,9.48,0.908,Reliance shines in flat market,0.908
+RELIANCE,2001-11-19,9.33,-0.012,Reliance sells 10% stake in L&T to Grasim,-0.012
+RELIANCE,2008-12-10,9.27,0.489,Mukesh Ambani among world's top 'chemical kings',0.96
+RELIANCE,2019-08-13,9.25,0.277,RIL to become zero net-debt company within 18 months: Mukesh Ambani,0.852
+INFY,2003-04-10,-30.85,0.004,Infosys says the bad times have just begun,0.004
+INFY,2013-04-12,-23.9,-0.009,Infosys quarterly profit up 3 per cent; beats estimates marginally,0.988
+INFY,2019-10-22,-17.66,-0.237,Artificial Intelligence might render doctors defunct; fears Infosys co-founder,-0.847
+INFY,2001-04-11,-17.43,,,
+INFY,2013-01-11,15.52,0.22,Infosys Q3 results: Will it be able to sustain the regained momentum?,0.71
+INFY,2001-04-18,14.84,,,
+INFY,2009-05-19,-14.38,-0.003,Infosys to cancel home loan facility,-0.003
+INFY,2003-04-11,-13.92,-0.966,Infy wounds the market,-0.966
+INFY,2012-04-13,-13.53,-0.188,Infosys accused of H-1B visa abuse,-0.781
+INFY,2001-04-30,13.26,,,
+INFY,2001-03-02,-13.25,,,
+INFY,2001-07-03,-12.55,,,
+INFY,2009-05-18,12.23,0.073,IT Q4: How TCS; Infy; Wipro fared,0.169
+INFY,2001-04-27,-12.12,,,
+INFY,2004-05-17,-11.9,,,
+INFY,2001-03-14,11.89,,,
+INFY,2001-04-12,-11.67,,,
+INFY,2020-03-24,11.36,,,
+INFY,2001-06-15,-11.0,,,
+INFY,2003-07-10,10.93,0.495,Infosys Q1 profit up 28 pc at Rs 278 cr,0.99
+INFY,2020-03-23,-10.58,,,
+INFY,2015-07-21,10.55,0.007,Infosys Q1 revenue rises 4.5%; highest in last 15 quarters,0.988
+INFY,2001-09-17,-10.54,,,
+INFY,2001-09-21,-10.53,0.009,Infosys reiterates revenues estimates,0.009
+INFY,2013-07-12,10.36,0.763,Infosys: Revenue from North America up 4.9%,0.99
+HDFCBANK,2004-05-17,-23.12,,,
+HDFCBANK,2004-05-18,22.97,,,
+HDFCBANK,2009-05-18,15.1,,,
+HDFCBANK,2020-03-23,-13.48,-0.413,HDFC Bank succession process criticised,-0.413
+HDFCBANK,2001-03-13,-12.34,,,
+HDFCBANK,2008-07-15,-11.66,,,
+HDFCBANK,2008-10-13,11.3,,,
+HDFCBANK,2020-03-25,10.97,,,
+HDFCBANK,2007-11-14,10.72,,,
+HDFCBANK,2020-03-18,-10.61,,,
+HDFCBANK,2008-10-24,-9.91,,,
+HDFCBANK,2001-03-14,9.79,,,
+HDFCBANK,2020-04-07,9.63,0.976,HDFC Bank sees 24% growth in deposits,0.976
+HDFCBANK,2003-07-03,9.57,,,
+HDFCBANK,2008-07-29,-9.09,,,
+HDFCBANK,2008-07-23,8.97,,,
+HDFCBANK,2006-06-15,8.8,,,
+HDFCBANK,2020-03-12,-8.67,,,
+HDFCBANK,2009-01-07,-8.65,,,
+HDFCBANK,2009-05-04,8.62,,,
+HDFCBANK,2019-09-20,8.57,,,
+HDFCBANK,2013-08-27,-8.43,,,
+HDFCBANK,2020-03-30,-8.39,,,
+HDFCBANK,2020-05-04,-8.19,,,
+HDFCBANK,2007-10-23,8.14,,,
+SBI,2017-10-25,24.44,,,
+SBI,2009-05-18,18.25,-0.061,Five loot Rs 11 lakh from SBI branch,-0.061
+SBI,2004-05-14,-15.38,,,
+SBI,2020-03-23,-14.46,0.007,SBI to grant special loans to virus-hit borrowers,0.007
+SBI,2004-05-17,-14.23,,,
+SBI,2020-03-12,-14.23,-0.516,SBI FD rates below 6%; lowest since '04,-0.979
+SBI,2008-10-24,-12.98,,,
+SBI,2020-03-13,12.95,-0.348,SBI heist: 3 more men arrested,-0.704
+SBI,2016-03-02,11.14,,,
+SBI,2008-11-03,11.13,,,
+SBI,2009-05-19,10.66,,,
+SBI,2002-02-28,-10.52,0.003,Budget indicates trend towards soft rate: SBI chief,0.003
+SBI,2001-09-17,-10.5,,,
+SBI,2021-02-05,10.17,0.059,SBI posts Rs 5;191cr profit in Dec qtr,0.115
+SBI,2008-10-27,-10.11,,,
+SBI,2008-10-13,10.06,,,
+SBI,2021-02-01,9.66,,,
+SBI,2019-09-20,9.61,,,
+SBI,2002-02-06,9.54,,,
+SBI,2009-03-30,-9.51,0.005,Get Nano loan from any bank: SBI Chairman,0.005
+SBI,2008-07-23,9.5,,,
+SBI,2001-02-28,9.48,,,
+SBI,2008-03-03,-9.4,,,
+SBI,2004-05-18,9.2,,,
+SBI,2013-09-05,9.2,,,
+ITC,2015-03-02,-13.71,,,
+ITC,2017-07-18,-13.34,-0.968,GST: Cigarette makers choke; ITC worst hit,-0.968
+ITC,2020-03-23,-12.87,,,
+ITC,2020-02-03,-12.46,,,
+ITC,2020-03-12,-11.99,,,
+ITC,2001-02-07,-10.71,,,
+ITC,2005-01-20,10.58,,,
+ITC,2009-05-18,10.55,,,
+ITC,2001-09-06,-10.4,0.006,ITC Bhadrachalam may be merged with ITC,0.006
+ITC,2004-05-17,-10.27,,,
+ITC,2008-01-22,-9.86,,,
+ITC,2020-03-16,-9.7,,,
+ITC,2016-03-01,9.57,0.963,ITC surpasses Infosys; HDFC Bank,0.963
+ITC,2004-05-18,9.08,,,
+ITC,2007-07-25,8.62,-0.222,Nepal court revives case against ITC,-0.222
+ITC,2005-09-21,8.61,,,
+ITC,2009-05-04,8.5,,,
+ITC,2001-11-02,-8.41,,,
+ITC,2001-03-13,-8.4,,,
+ITC,2006-06-09,8.34,,,
+ITC,2009-05-19,-8.21,,,
+ITC,2020-03-20,8.1,,,
+ITC,2007-11-16,7.94,,,
+ITC,2011-02-28,7.81,,,
+ITC,2020-03-31,7.56,,,
+ADANIENT,2019-05-20,24.19,,,
+ADANIENT,2011-07-29,-24.03,,,
+ADANIENT,2017-04-26,-23.5,,,
+ADANIENT,2020-08-25,21.24,,,
+ADANIENT,2014-04-10,20.61,0.243,Gautam Adani; the baron to watch out for if Narendra Modi becomes king,0.483
+ADANIENT,2006-05-02,19.82,,,
+ADANIENT,2018-09-06,19.02,,,
+ADANIENT,2020-03-12,-18.83,,,
+ADANIENT,2010-11-26,-18.64,,,
+ADANIENT,2006-05-03,18.27,,,
+ADANIENT,2006-05-04,18.24,,,
+ADANIENT,2017-04-18,16.1,,,
+ADANIENT,2004-12-02,15.87,,,
+ADANIENT,2008-10-08,-15.84,,,
+ADANIENT,2019-02-04,-14.98,,,
+ADANIENT,2008-10-06,-14.93,,,
+ADANIENT,2004-12-03,14.73,,,
+ADANIENT,2008-10-29,14.63,,,
+ADANIENT,2017-01-27,14.63,,,
+ADANIENT,2015-06-08,-14.44,0.029,Reliance Power; Adani in $4.5bn power play in Bangladesh,0.042
+ADANIENT,2015-08-24,-14.03,,,
+ADANIENT,2018-04-05,13.93,-0.332,Delhi HC seeks CBI report on Adani case closure,-0.332
+ADANIENT,2009-04-24,13.35,,,
+ADANIENT,2015-10-15,13.18,0.784,Adani's coal mine project gets re-approval in Australia,0.784
+ADANIENT,2008-10-10,-12.88,,,
+VEDL,2008-01-21,-25.5,,,
+VEDL,2020-10-12,-22.86,-0.481,Vedanta fails to find enough shares to get itself delisted,-0.974
+VEDL,2019-02-01,-19.65,,,
+VEDL,2005-09-19,19.45,,,
+VEDL,2020-03-23,-18.59,,,
+VEDL,2016-02-15,17.04,0.066,Vedanta Group's Anil Agarwal to set up India's first LCD facility,0.066
+VEDL,2002-06-04,16.89,,,
+VEDL,2020-03-09,-15.72,,,
+VEDL,2015-08-24,-15.4,,,
+VEDL,2002-06-06,15.25,,,
+VEDL,2013-08-20,15.16,,,
+VEDL,2002-06-18,14.47,,,
+VEDL,2009-05-18,14.39,,,
+VEDL,2020-03-12,-14.16,,,
+VEDL,2009-06-09,14.0,,,
+VEDL,2008-01-23,13.8,,,
+VEDL,2020-02-28,-13.56,,,
+VEDL,2008-07-23,13.55,,,
+VEDL,2009-10-27,-13.41,,,
+VEDL,2003-11-06,13.1,0.362,Vedanta to raise $700 mn,0.362
+VEDL,2006-06-15,12.96,,,
+VEDL,2003-08-18,12.95,,,
+VEDL,2013-08-29,12.91,,,
+VEDL,2006-05-15,-12.79,,,
+VEDL,2005-10-31,12.7,,,
+ETERNAL,2022-01-24,-21.84,,,
+ETERNAL,2021-07-26,11.0,0.013,Zomato market cap crosses Coal India; M&M on debut,0.013
+ETERNAL,2022-01-27,-10.43,,,
+ETERNAL,2022-01-21,-9.68,,,
+ETERNAL,2022-01-25,9.5,,,
+ETERNAL,2021-08-23,-9.05,,,
+ETERNAL,2021-09-03,8.46,,,
+ETERNAL,2022-03-30,8.4,,,
+ETERNAL,2021-11-12,8.24,,,
+ADANIGREEN,2018-07-23,18.16,,,
+ADANIGREEN,2018-07-20,17.56,,,
+ADANIGREEN,2019-04-16,17.25,,,
+ADANIGREEN,2019-05-20,14.19,,,
+ADANIGREEN,2019-09-26,11.83,,,
+ADANIGREEN,2018-07-04,11.63,,,
+ADANIGREEN,2019-10-17,10.18,,,
+ADANIGREEN,2019-07-09,10.07,,,
+ADANIGREEN,2019-09-16,10.03,,,
+ADANIGREEN,2019-07-02,9.83,,,
+ADANIGREEN,2019-11-22,9.53,,,
+ADANIGREEN,2020-08-24,9.53,,,
+ADANIGREEN,2020-09-02,9.53,,,
+ADANIGREEN,2018-07-25,9.5,,,
+ADANIGREEN,2018-07-30,9.47,,,
+ADANIGREEN,2018-07-24,9.43,,,
+ADANIGREEN,2019-11-27,8.93,,,
+ADANIGREEN,2020-09-01,8.85,,,
+ADANIGREEN,2022-01-11,8.59,,,
+ADANIGREEN,2020-08-07,8.11,,,
+ADANIGREEN,2019-10-03,7.99,,,
+ADANIGREEN,2019-11-11,7.92,,,
+ADANIGREEN,2019-03-12,7.84,,,
+ADANIGREEN,2022-01-17,7.78,,,
+ADANIGREEN,2019-01-28,-7.7,,,

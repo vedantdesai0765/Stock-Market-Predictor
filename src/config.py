@@ -46,6 +46,18 @@ def ensure_dirs() -> None:
 # Stock registry
 # ---------------------------------------------------------------------------
 
+# Market-wide news sentiment shared by every stock (no free 20-year company-level
+# Indian news archive exists). Produced by sentiment_study/src/export_to_main.py.
+# The main pipeline trains with with_sentiment=False; this file is used only when a
+# dataset is built with with_sentiment=True (and trims it to 2001-2022).
+MARKET_SENTIMENT_FILE = "IN_market_news_sentiment.csv"   # old: one market-wide score shared by all stocks
+
+
+def company_sentiment_file(key: str) -> str:
+    """Per-stock, company-targeted sentiment (entity-level FinBERT; see sentiment_study/src/export_company_sentiment.py)."""
+    return f"{key}_company_sentiment.csv"
+
+
 @dataclass(frozen=True)
 class StockConfig:
     """Everything the pipeline needs to know about one stock."""
@@ -92,13 +104,14 @@ STOCKS: dict[str, StockConfig] = {
         ticker="TCS.NS",
         display_name="Tata Consultancy Services",
         raw_filename="TCS_raw.csv",
-        start="2014-01-01",
+        start="2004-08-25",
         end="2026-09-01",
-        sentiment_filename="TCS_news_sentiment.csv",
+        sentiment_filename=company_sentiment_file("TCS"),
         notes=(
-            "Sentiment file is currently derived from the Combined_News_DJIA "
-            "corpus (world news, 2008-2016), NOT from TCS-specific news. "
-            "Treated as a proof-of-concept for the sentiment machinery only."
+            "Sentiment: company-targeted (entity-level FinBERT) scores of Times of India "
+            "headlines naming TCS (2001-2022) and TCS's NSE filings (2008-2025), built by "
+            "sentiment_study/src/export_company_sentiment.py. Earlier sources kept for reference: "
+            "IN_market_news_sentiment.csv (market-wide) and TCS_news_sentiment.csv (Reddit proxy)."
         ),
     ),
     "RELIANCE": StockConfig(
@@ -106,19 +119,19 @@ STOCKS: dict[str, StockConfig] = {
         ticker="RELIANCE.NS",
         display_name="Reliance Industries",
         raw_filename="Reliance_raw.csv",
-        start="2014-01-01",
+        start="2000-01-01",
         end="2026-09-01",
-        sentiment_filename=None,
-        notes="History extended from 2022-01-01 to 2014-01-01 on 2026-10-31. No news data collected yet.",
+        sentiment_filename=company_sentiment_file("RELIANCE"),
+        notes="History extended from 2022-01-01 to 2014-01-01 on 2026-10-31. Uses its own company-targeted sentiment file.",
     ),
     "INFY": StockConfig(
         key="INFY",
         ticker="INFY.NS",
         display_name="Infosys",
         raw_filename="INFY_raw.csv",
-        start="2014-01-01",
+        start="2000-01-01",
         end="2026-09-01",
-        sentiment_filename=None,
+        sentiment_filename=company_sentiment_file("INFY"),
         notes="Added 2026-08-30.",
     ),
     "HDFCBANK": StockConfig(
@@ -126,9 +139,9 @@ STOCKS: dict[str, StockConfig] = {
         ticker="HDFCBANK.NS",
         display_name="HDFC Bank",
         raw_filename="HDFCBANK_raw.csv",
-        start="2014-01-01",
+        start="2000-01-01",
         end="2026-09-01",
-        sentiment_filename=None,
+        sentiment_filename=company_sentiment_file("HDFCBANK"),
         notes="Added 2026-08-30.",
     ),
     "SBI": StockConfig(
@@ -136,9 +149,9 @@ STOCKS: dict[str, StockConfig] = {
         ticker="SBIN.NS",
         display_name="State Bank of India",
         raw_filename="SBI_raw.csv",
-        start="2014-01-01",
+        start="2000-01-01",
         end="2026-09-01",
-        sentiment_filename=None,
+        sentiment_filename=company_sentiment_file("SBI"),
         notes="Added 2026-08-30.",
     ),
     "ITC": StockConfig(
@@ -146,9 +159,9 @@ STOCKS: dict[str, StockConfig] = {
         ticker="ITC.NS",
         display_name="ITC",
         raw_filename="ITC_raw.csv",
-        start="2014-01-01",
+        start="2000-01-01",
         end="2026-09-01",
-        sentiment_filename=None,
+        sentiment_filename=company_sentiment_file("ITC"),
         notes="Added 2026-08-30.",
     ),
     "ADANIENT": StockConfig(
@@ -156,9 +169,9 @@ STOCKS: dict[str, StockConfig] = {
         ticker="ADANIENT.NS",
         display_name="Adani Enterprises",
         raw_filename="ADANIENT_raw.csv",
-        start="2014-01-01",
+        start="2004-07-01",
         end="2026-09-01",
-        sentiment_filename=None,
+        sentiment_filename=company_sentiment_file("ADANIENT"),
         notes="Added 2026-08-30. High-volatility stock.",
     ),
     "VEDL": StockConfig(
@@ -166,9 +179,9 @@ STOCKS: dict[str, StockConfig] = {
         ticker="VEDL.NS",
         display_name="Vedanta",
         raw_filename="VEDL_raw.csv",
-        start="2014-01-01",
+        start="2000-01-01",
         end="2026-09-01",
-        sentiment_filename=None,
+        sentiment_filename=company_sentiment_file("VEDL"),
         notes="Added 2026-08-30. High-volatility stock.",
     ),
     "ETERNAL": StockConfig(
@@ -176,19 +189,19 @@ STOCKS: dict[str, StockConfig] = {
         ticker="ETERNAL.NS",
         display_name="Eternal Limited",
         raw_filename="ETERNAL_raw.csv",
-        start="2021-01-01",
+        start="2021-07-23",
         end="2026-09-01",
-        sentiment_filename=None,
-        notes="Eternal Limited (formerly Zomato Limited). No news data collected yet.",
+        sentiment_filename=company_sentiment_file("ETERNAL"),
+        notes="Eternal Limited (formerly Zomato Limited). Uses its own company-targeted sentiment file.",
     ),
     "ADANIGREEN": StockConfig(
         key="ADANIGREEN",
         ticker="ADANIGREEN.NS",
         display_name="Adani Green Energy",
         raw_filename="ADANIGREEN_raw.csv",
-        start="2018-01-01",
+        start="2018-06-18",
         end="2026-09-01",
-        sentiment_filename=None,
+        sentiment_filename=company_sentiment_file("ADANIGREEN"),
         notes="Added 2026-08-30. High-volatility stock.",
     ),
 }
