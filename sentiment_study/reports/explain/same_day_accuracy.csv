@@ -1,0 +1,13 @@
+scope,model,sentiment,rows,n,acc_without,acc_with,majority,p_mcnemar,gain_pts
+SENSEX,LogReg,sentiment (all headlines),all days,3742,0.57696,0.60877,0.52859,0.0,3.18012
+SENSEX,LogReg,sentiment (no price reports),all days,3742,0.57696,0.58231,0.52859,0.23497,0.53447
+SENSEX,LightGBM,sentiment (all headlines),all days,3742,0.58204,0.58498,0.52859,0.71771,0.29396
+SENSEX,LightGBM,sentiment (no price reports),all days,3742,0.58204,0.57643,0.52859,0.31427,-0.5612
+ALL10,LogReg,targeted sentiment (all headlines),all days,30767,0.55709,0.55865,0.51341,0.10482,0.15601
+ALL10,LogReg,targeted sentiment (all headlines),news days,6770,0.55731,0.56307,0.51773,0.12044,0.57607
+ALL10,LogReg,targeted sentiment (no price reports),all days,30767,0.55709,0.55807,0.51341,0.21116,0.09751
+ALL10,LogReg,targeted sentiment (no price reports),news days,6770,0.55731,0.561,0.51773,0.2127,0.36928
+ALL10,LightGBM,targeted sentiment (all headlines),all days,30767,0.55443,0.55404,0.51341,0.80299,-0.039
+ALL10,LightGBM,targeted sentiment (all headlines),news days,6770,0.5582,0.55879,0.51773,0.90517,0.05908
+ALL10,LightGBM,targeted sentiment (no price reports),all days,30767,0.55443,0.55387,0.51341,0.71293,-0.05525
+ALL10,LightGBM,targeted sentiment (no price reports),news days,6770,0.5582,0.55894,0.51773,0.86117,0.07386

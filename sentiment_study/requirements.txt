@@ -1,0 +1,14 @@
+numpy
+pandas
+pyarrow
+scipy
+scikit-learn
+xgboost
+lightgbm
+torch
+transformers
+vaderSentiment
+pysentiment2
+yfinance
+requests
+huggingface_hub

@@ -1,0 +1,22 @@
+{
+ "test_entity_model": {
+  "acc": 0.8771,
+  "macro_f1": 0.8783,
+  "n": 1440
+ },
+ "test_multi_entity_headlines": {
+  "acc": 0.8534,
+  "macro_f1": 0.8527,
+  "n": 614
+ },
+ "test_plain_finbert": {
+  "acc": 0.6854,
+  "macro_f1": 0.687,
+  "n": 1440
+ },
+ "test_plain_finbert_multi_entity": {
+  "acc": 0.6156,
+  "macro_f1": 0.6122,
+  "n": 614
+ }
+}

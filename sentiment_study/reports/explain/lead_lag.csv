@@ -1,0 +1,265 @@
+scope,variant,lag,rho,p,n
+SENSEX,all headlines,-5,0.02988,0.03253,5119
+SENSEX,all headlines,-4,0.02424,0.08284,5119
+SENSEX,all headlines,-3,0.04427,0.00154,5119
+SENSEX,all headlines,-2,0.04875,0.00048,5119
+SENSEX,all headlines,-1,0.11524,0.0,5119
+SENSEX,all headlines,0,0.17203,0.0,5119
+SENSEX,all headlines,1,0.02048,0.14301,5118
+SENSEX,all headlines,2,0.0236,0.09145,5117
+SENSEX,all headlines,3,0.0133,0.34147,5116
+SENSEX,all headlines,4,-0.00175,0.90023,5115
+SENSEX,all headlines,5,-0.00398,0.7762,5114
+SENSEX,excluding price reports,-5,0.03127,0.02526,5119
+SENSEX,excluding price reports,-4,0.02169,0.12067,5119
+SENSEX,excluding price reports,-3,0.04125,0.00316,5119
+SENSEX,excluding price reports,-2,0.04352,0.00184,5119
+SENSEX,excluding price reports,-1,0.05728,4e-05,5119
+SENSEX,excluding price reports,0,0.05623,6e-05,5119
+SENSEX,excluding price reports,1,0.00697,0.61795,5118
+SENSEX,excluding price reports,2,0.02704,0.0531,5117
+SENSEX,excluding price reports,3,0.00662,0.63609,5116
+SENSEX,excluding price reports,4,0.00698,0.6179,5115
+SENSEX,excluding price reports,5,0.00221,0.87433,5114
+TCS,all headlines,-5,0.00928,0.77315,967
+TCS,all headlines,-4,0.03379,0.29389,967
+TCS,all headlines,-3,0.02105,0.51316,967
+TCS,all headlines,-2,0.01642,0.61003,967
+TCS,all headlines,-1,0.09831,0.00221,967
+TCS,all headlines,0,0.0689,0.03218,967
+TCS,all headlines,1,0.02592,0.42057,968
+TCS,all headlines,2,-0.00332,0.91783,968
+TCS,all headlines,3,-0.0579,0.07176,968
+TCS,all headlines,4,-0.06334,0.04884,968
+TCS,all headlines,5,-0.03313,0.30311,968
+TCS,excluding price reports,-5,-0.00363,0.91111,949
+TCS,excluding price reports,-4,0.02322,0.47486,949
+TCS,excluding price reports,-3,0.03616,0.26584,949
+TCS,excluding price reports,-2,-0.00086,0.97881,949
+TCS,excluding price reports,-1,0.09774,0.00258,949
+TCS,excluding price reports,0,0.03399,0.2955,949
+TCS,excluding price reports,1,0.01691,0.60275,950
+TCS,excluding price reports,2,-0.00116,0.97142,950
+TCS,excluding price reports,3,-0.07315,0.02414,950
+TCS,excluding price reports,4,-0.05754,0.07627,950
+TCS,excluding price reports,5,-0.02891,0.37345,950
+RELIANCE,all headlines,-5,0.01698,0.43072,2156
+RELIANCE,all headlines,-4,0.05435,0.0116,2156
+RELIANCE,all headlines,-3,0.04299,0.04593,2156
+RELIANCE,all headlines,-2,0.03078,0.15304,2156
+RELIANCE,all headlines,-1,0.06386,0.00301,2156
+RELIANCE,all headlines,0,0.06812,0.00155,2156
+RELIANCE,all headlines,1,-0.01342,0.53356,2156
+RELIANCE,all headlines,2,0.003,0.88934,2156
+RELIANCE,all headlines,3,0.01196,0.57897,2156
+RELIANCE,all headlines,4,-0.00245,0.90963,2156
+RELIANCE,all headlines,5,-0.00165,0.93896,2156
+RELIANCE,excluding price reports,-5,0.00326,0.88152,2094
+RELIANCE,excluding price reports,-4,0.07052,0.00124,2094
+RELIANCE,excluding price reports,-3,0.06113,0.00514,2094
+RELIANCE,excluding price reports,-2,0.03887,0.07534,2094
+RELIANCE,excluding price reports,-1,0.03339,0.12667,2094
+RELIANCE,excluding price reports,0,0.01605,0.4628,2094
+RELIANCE,excluding price reports,1,-0.02253,0.30282,2094
+RELIANCE,excluding price reports,2,-0.00445,0.83867,2094
+RELIANCE,excluding price reports,3,0.01782,0.41505,2094
+RELIANCE,excluding price reports,4,0.00984,0.65257,2094
+RELIANCE,excluding price reports,5,-0.00282,0.89754,2094
+INFY,all headlines,-5,-0.00393,0.87255,1667
+INFY,all headlines,-4,0.01578,0.51966,1667
+INFY,all headlines,-3,0.03208,0.19051,1667
+INFY,all headlines,-2,-0.00015,0.99512,1667
+INFY,all headlines,-1,0.06742,0.00589,1667
+INFY,all headlines,0,0.06356,0.00944,1667
+INFY,all headlines,1,0.02698,0.271,1667
+INFY,all headlines,2,0.01825,0.45661,1667
+INFY,all headlines,3,-0.0501,0.04085,1667
+INFY,all headlines,4,-0.02763,0.2595,1667
+INFY,all headlines,5,0.01705,0.48676,1667
+INFY,excluding price reports,-5,-0.01426,0.56345,1643
+INFY,excluding price reports,-4,0.01494,0.54519,1643
+INFY,excluding price reports,-3,0.03169,0.19913,1643
+INFY,excluding price reports,-2,-0.00482,0.84527,1643
+INFY,excluding price reports,-1,0.05316,0.0312,1643
+INFY,excluding price reports,0,0.05127,0.03771,1643
+INFY,excluding price reports,1,0.03301,0.18112,1643
+INFY,excluding price reports,2,0.0236,0.33908,1643
+INFY,excluding price reports,3,-0.05308,0.03146,1643
+INFY,excluding price reports,4,-0.02487,0.31364,1643
+INFY,excluding price reports,5,0.01648,0.50442,1643
+HDFCBANK,all headlines,-5,0.08503,0.12727,323
+HDFCBANK,all headlines,-4,0.17986,0.00117,323
+HDFCBANK,all headlines,-3,0.06298,0.25904,323
+HDFCBANK,all headlines,-2,0.01528,0.78444,323
+HDFCBANK,all headlines,-1,-0.00426,0.93924,323
+HDFCBANK,all headlines,0,0.04788,0.39111,323
+HDFCBANK,all headlines,1,0.03183,0.56865,323
+HDFCBANK,all headlines,2,0.14884,0.00737,323
+HDFCBANK,all headlines,3,0.01257,0.8219,323
+HDFCBANK,all headlines,4,-0.00605,0.91373,323
+HDFCBANK,all headlines,5,0.07554,0.17565,323
+HDFCBANK,excluding price reports,-5,0.09244,0.1015,315
+HDFCBANK,excluding price reports,-4,0.19206,0.00061,315
+HDFCBANK,excluding price reports,-3,0.0723,0.2006,315
+HDFCBANK,excluding price reports,-2,0.03179,0.57403,315
+HDFCBANK,excluding price reports,-1,-0.01673,0.76745,315
+HDFCBANK,excluding price reports,0,0.03683,0.51486,315
+HDFCBANK,excluding price reports,1,0.01232,0.82762,315
+HDFCBANK,excluding price reports,2,0.15396,0.00618,315
+HDFCBANK,excluding price reports,3,0.01439,0.79917,315
+HDFCBANK,excluding price reports,4,-0.01446,0.7983,315
+HDFCBANK,excluding price reports,5,0.06189,0.27345,315
+SBI,all headlines,-5,0.01281,0.62193,1485
+SBI,all headlines,-4,0.07298,0.0049,1485
+SBI,all headlines,-3,0.02435,0.34844,1485
+SBI,all headlines,-2,0.02283,0.37929,1485
+SBI,all headlines,-1,0.09212,0.00038,1485
+SBI,all headlines,0,0.03944,0.12869,1485
+SBI,all headlines,1,0.01963,0.44975,1485
+SBI,all headlines,2,0.03993,0.12404,1485
+SBI,all headlines,3,0.07545,0.00362,1485
+SBI,all headlines,4,-0.0067,0.79653,1485
+SBI,all headlines,5,0.03365,0.19495,1485
+SBI,excluding price reports,-5,0.02561,0.32739,1464
+SBI,excluding price reports,-4,0.082,0.00169,1464
+SBI,excluding price reports,-3,0.02927,0.263,1464
+SBI,excluding price reports,-2,0.01949,0.45612,1464
+SBI,excluding price reports,-1,0.09029,0.00054,1464
+SBI,excluding price reports,0,0.01798,0.4917,1464
+SBI,excluding price reports,1,0.02296,0.37997,1464
+SBI,excluding price reports,2,0.04954,0.0581,1464
+SBI,excluding price reports,3,0.07252,0.0055,1464
+SBI,excluding price reports,4,-0.00855,0.74375,1464
+SBI,excluding price reports,5,0.02212,0.3976,1464
+ITC,all headlines,-5,0.07208,0.15755,386
+ITC,all headlines,-4,-0.08065,0.11368,386
+ITC,all headlines,-3,0.02285,0.65452,386
+ITC,all headlines,-2,0.00535,0.9166,386
+ITC,all headlines,-1,0.11037,0.03016,386
+ITC,all headlines,0,0.02529,0.62032,386
+ITC,all headlines,1,-0.06272,0.21886,386
+ITC,all headlines,2,0.07334,0.15038,386
+ITC,all headlines,3,-0.0417,0.41396,386
+ITC,all headlines,4,-0.01374,0.78783,386
+ITC,all headlines,5,-0.04505,0.37747,386
+ITC,excluding price reports,-5,0.05657,0.27449,375
+ITC,excluding price reports,-4,-0.09033,0.08063,375
+ITC,excluding price reports,-3,0.00736,0.88699,375
+ITC,excluding price reports,-2,0.00953,0.85414,375
+ITC,excluding price reports,-1,0.10358,0.04502,375
+ITC,excluding price reports,0,-0.01059,0.83801,375
+ITC,excluding price reports,1,-0.05654,0.27482,375
+ITC,excluding price reports,2,0.05573,0.28175,375
+ITC,excluding price reports,3,-0.06198,0.23118,375
+ITC,excluding price reports,4,-0.00129,0.98015,375
+ITC,excluding price reports,5,-0.04427,0.39264,375
+ADANIENT,all headlines,-5,-0.00243,0.95751,483
+ADANIENT,all headlines,-4,0.09897,0.02965,483
+ADANIENT,all headlines,-3,0.07932,0.0816,483
+ADANIENT,all headlines,-2,0.08337,0.06714,483
+ADANIENT,all headlines,-1,0.05346,0.24094,483
+ADANIENT,all headlines,0,0.06667,0.14343,483
+ADANIENT,all headlines,1,0.13545,0.00283,484
+ADANIENT,all headlines,2,0.04309,0.34419,484
+ADANIENT,all headlines,3,0.01205,0.79137,484
+ADANIENT,all headlines,4,0.06191,0.1739,484
+ADANIENT,all headlines,5,0.05693,0.21121,484
+ADANIENT,excluding price reports,-5,0.00256,0.95549,479
+ADANIENT,excluding price reports,-4,0.09245,0.04314,479
+ADANIENT,excluding price reports,-3,0.08062,0.07794,479
+ADANIENT,excluding price reports,-2,0.07659,0.09405,479
+ADANIENT,excluding price reports,-1,0.0395,0.38836,479
+ADANIENT,excluding price reports,0,0.06425,0.16032,479
+ADANIENT,excluding price reports,1,0.12571,0.00582,480
+ADANIENT,excluding price reports,2,0.04826,0.29135,480
+ADANIENT,excluding price reports,3,0.00827,0.8566,480
+ADANIENT,excluding price reports,4,0.06809,0.1363,480
+ADANIENT,excluding price reports,5,0.05408,0.23696,480
+VEDL,all headlines,-5,0.00901,0.85579,409
+VEDL,all headlines,-4,-0.02055,0.67856,409
+VEDL,all headlines,-3,0.02835,0.56751,409
+VEDL,all headlines,-2,0.08317,0.09301,409
+VEDL,all headlines,-1,0.10383,0.03581,409
+VEDL,all headlines,0,0.04311,0.38449,409
+VEDL,all headlines,1,0.02314,0.64084,409
+VEDL,all headlines,2,-0.03312,0.50419,409
+VEDL,all headlines,3,-0.01695,0.73255,409
+VEDL,all headlines,4,0.03179,0.52145,409
+VEDL,all headlines,5,-0.02681,0.58882,409
+VEDL,excluding price reports,-5,0.01268,0.79868,407
+VEDL,excluding price reports,-4,-0.01997,0.68792,407
+VEDL,excluding price reports,-3,0.02677,0.59018,407
+VEDL,excluding price reports,-2,0.08482,0.08745,407
+VEDL,excluding price reports,-1,0.09518,0.05502,407
+VEDL,excluding price reports,0,0.0462,0.35257,407
+VEDL,excluding price reports,1,0.02171,0.66228,407
+VEDL,excluding price reports,2,-0.03273,0.5102,407
+VEDL,excluding price reports,3,-0.01637,0.74191,407
+VEDL,excluding price reports,4,0.02558,0.60688,407
+VEDL,excluding price reports,5,-0.02814,0.57138,407
+ETERNAL,all headlines,-5,,,10
+ETERNAL,all headlines,-4,,,10
+ETERNAL,all headlines,-3,,,10
+ETERNAL,all headlines,-2,,,10
+ETERNAL,all headlines,-1,,,10
+ETERNAL,all headlines,0,,,11
+ETERNAL,all headlines,1,,,12
+ETERNAL,all headlines,2,,,12
+ETERNAL,all headlines,3,,,12
+ETERNAL,all headlines,4,,,12
+ETERNAL,all headlines,5,,,12
+ETERNAL,excluding price reports,-5,,,10
+ETERNAL,excluding price reports,-4,,,10
+ETERNAL,excluding price reports,-3,,,10
+ETERNAL,excluding price reports,-2,,,10
+ETERNAL,excluding price reports,-1,,,10
+ETERNAL,excluding price reports,0,,,11
+ETERNAL,excluding price reports,1,,,12
+ETERNAL,excluding price reports,2,,,12
+ETERNAL,excluding price reports,3,,,12
+ETERNAL,excluding price reports,4,,,12
+ETERNAL,excluding price reports,5,,,12
+ADANIGREEN,all headlines,-5,,,28
+ADANIGREEN,all headlines,-4,,,28
+ADANIGREEN,all headlines,-3,,,28
+ADANIGREEN,all headlines,-2,,,28
+ADANIGREEN,all headlines,-1,,,28
+ADANIGREEN,all headlines,0,,,28
+ADANIGREEN,all headlines,1,,,29
+ADANIGREEN,all headlines,2,,,29
+ADANIGREEN,all headlines,3,,,29
+ADANIGREEN,all headlines,4,,,29
+ADANIGREEN,all headlines,5,,,29
+ADANIGREEN,excluding price reports,-5,,,28
+ADANIGREEN,excluding price reports,-4,,,28
+ADANIGREEN,excluding price reports,-3,,,28
+ADANIGREEN,excluding price reports,-2,,,28
+ADANIGREEN,excluding price reports,-1,,,28
+ADANIGREEN,excluding price reports,0,,,28
+ADANIGREEN,excluding price reports,1,,,29
+ADANIGREEN,excluding price reports,2,,,29
+ADANIGREEN,excluding price reports,3,,,29
+ADANIGREEN,excluding price reports,4,,,29
+ADANIGREEN,excluding price reports,5,,,29
+ALL10,all headlines,-5,0.01506,0.18027,7914
+ALL10,all headlines,-4,0.04436,8e-05,7914
+ALL10,all headlines,-3,0.03783,0.00076,7914
+ALL10,all headlines,-2,0.02446,0.02958,7914
+ALL10,all headlines,-1,0.07239,0.0,7914
+ALL10,all headlines,0,0.059,0.0,7915
+ALL10,all headlines,1,0.01547,0.16864,7919
+ALL10,all headlines,2,0.02411,0.03194,7919
+ALL10,all headlines,3,0.00052,0.96308,7919
+ALL10,all headlines,4,-0.00471,0.67539,7919
+ALL10,all headlines,5,0.01192,0.28902,7919
+ALL10,excluding price reports,-5,0.01021,0.36823,7764
+ALL10,excluding price reports,-4,0.04766,3e-05,7764
+ALL10,excluding price reports,-3,0.045,7e-05,7764
+ALL10,excluding price reports,-2,0.02341,0.03912,7764
+ALL10,excluding price reports,-1,0.05852,0.0,7764
+ALL10,excluding price reports,0,0.03235,0.00435,7765
+ALL10,excluding price reports,1,0.01308,0.24884,7769
+ALL10,excluding price reports,2,0.02474,0.02922,7769
+ALL10,excluding price reports,3,-0.00253,0.82343,7769
+ALL10,excluding price reports,4,-0.00041,0.97127,7769
+ALL10,excluding price reports,5,0.01004,0.37644,7769

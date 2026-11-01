@@ -1,0 +1,25 @@
+test,model,set,n,acc,base
+A India gap,LogReg,T,3239,0.7076,0.7135
+A India gap,LogReg,T+S,3239,0.7052,0.7135
+A India gap,LogReg,T+G,3239,0.7657,0.7135
+A India gap,LogReg,T+G+S,3239,0.766,0.7135
+A India gap,LightGBM,T,3239,0.7015,0.7135
+A India gap,LightGBM,T+S,3239,0.6863,0.7135
+A India gap,LightGBM,T+G,3239,0.7651,0.7135
+A India gap,LightGBM,T+G+S,3239,0.7629,0.7135
+A India gap,RandomForest,T,3239,0.7089,0.7135
+A India gap,RandomForest,T+S,3239,0.7113,0.7135
+A India gap,RandomForest,T+G,3239,0.774,0.7135
+A India gap,RandomForest,T+G+S,3239,0.7752,0.7135
+C IN vol up,LogReg,T+G,3244,0.6384,0.5875
+C IN vol up,LogReg,T+G+S,3244,0.6403,0.5875
+C IN vol up,LightGBM,T+G,3244,0.6433,0.5875
+C IN vol up,LightGBM,T+G+S,3244,0.6526,0.5875
+C IN vol up,RandomForest,T+G,3244,0.656,0.5875
+C IN vol up,RandomForest,T+G+S,3244,0.6544,0.5875
+C US vol up,LogReg,T+G,7037,0.6719,0.5924
+C US vol up,LogReg,T+G+S,7037,0.6715,0.5924
+C US vol up,LightGBM,T+G,7037,0.6713,0.5924
+C US vol up,LightGBM,T+G+S,7037,0.6676,0.5924
+C US vol up,RandomForest,T+G,7037,0.6611,0.5924
+C US vol up,RandomForest,T+G+S,7037,0.6607,0.5924

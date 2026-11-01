@@ -1,0 +1,45 @@
+scope,category,count,share
+SENSEX,News sentiment matches the move,120,0.45802
+SENSEX,Neutral news,23,0.08779
+SENSEX,News sentiment opposite to the move,103,0.39313
+SENSEX,No news that day,16,0.06107
+TCS,News sentiment matches the move,24,0.1106
+TCS,Neutral news,34,0.15668
+TCS,News sentiment opposite to the move,17,0.07834
+TCS,No news that day,142,0.65438
+RELIANCE,News sentiment matches the move,34,0.12928
+RELIANCE,Neutral news,64,0.24335
+RELIANCE,News sentiment opposite to the move,26,0.09886
+RELIANCE,No news that day,139,0.52852
+INFY,News sentiment matches the move,39,0.14829
+INFY,Neutral news,43,0.1635
+INFY,News sentiment opposite to the move,16,0.06084
+INFY,No news that day,165,0.62738
+HDFCBANK,News sentiment matches the move,4,0.01521
+HDFCBANK,Neutral news,2,0.0076
+HDFCBANK,News sentiment opposite to the move,2,0.0076
+HDFCBANK,No news that day,255,0.96958
+SBI,News sentiment matches the move,12,0.04563
+SBI,Neutral news,48,0.18251
+SBI,News sentiment opposite to the move,12,0.04563
+SBI,No news that day,191,0.72624
+ITC,News sentiment matches the move,6,0.02281
+ITC,Neutral news,7,0.02662
+ITC,News sentiment opposite to the move,10,0.03802
+ITC,No news that day,240,0.91255
+ADANIENT,News sentiment matches the move,8,0.03653
+ADANIENT,Neutral news,13,0.05936
+ADANIENT,News sentiment opposite to the move,6,0.0274
+ADANIENT,No news that day,192,0.87671
+VEDL,News sentiment matches the move,7,0.02662
+VEDL,Neutral news,7,0.02662
+VEDL,News sentiment opposite to the move,3,0.01141
+VEDL,No news that day,246,0.93536
+ETERNAL,News sentiment matches the move,0,0.0
+ETERNAL,Neutral news,1,0.11111
+ETERNAL,News sentiment opposite to the move,0,0.0
+ETERNAL,No news that day,8,0.88889
+ADANIGREEN,News sentiment matches the move,0,0.0
+ADANIGREEN,Neutral news,0,0.0
+ADANIGREEN,News sentiment opposite to the move,1,0.02128
+ADANIGREEN,No news that day,46,0.97872

@@ -3,7 +3,7 @@
   "stock_key": "ADANIENT",
   "ticker": "ADANIENT.NS",
   "display_name": "Adani Enterprises",
-  "trained_at": "2026-08-30T15:40:10",
+  "trained_at": "2026-11-01T05:21:17",
   "config": {
     "model_name": "logistic",
     "horizon": 3,
@@ -11,11 +11,11 @@
     "non_overlapping": true,
     "n_splits": 5,
     "embargo": 17,
-    "confidence_threshold": 0.0169,
+    "confidence_threshold": 0.0544,
     "min_rows": 200
   },
-  "n_full_rows": 3010,
-  "n_modelling_rows": 995,
+  "n_full_rows": 5340,
+  "n_modelling_rows": 1773,
   "n_features": 52,
   "features": [
     "close_vs_sma20",
@@ -72,47 +72,47 @@
     "bb_bandwidth_zscore"
   ],
   "date_range": [
-    "2014-06-11",
-    "2026-08-27"
+    "2004-12-07",
+    "2026-08-25"
   ],
-  "walk_forward_accuracy": 0.5282,
-  "walk_forward_std": 0.0407,
-  "baseline": 0.5343,
-  "edge": -0.0061,
+  "walk_forward_accuracy": 0.531,
+  "walk_forward_std": 0.0199,
+  "baseline": 0.532,
+  "edge": -0.001,
   "seed_robustness": {
     "model": "logistic",
-    "mean_accuracy": 0.5282,
+    "mean_accuracy": 0.531,
     "seed_std": 0.0,
-    "mean_edge": -0.0061,
-    "min_edge": -0.0061,
-    "max_edge": -0.0061,
-    "baseline": 0.5343,
+    "mean_edge": -0.001,
+    "min_edge": -0.001,
+    "max_edge": -0.001,
+    "baseline": 0.532,
     "n_seeds": 7,
-    "deterministic": true,
+    "deterministic": false,
     "all_seeds_positive": false,
     "offsets_tested": false,
     "verdict": "NO EDGE"
   },
   "permutation": {
-    "real_accuracy": 0.5282,
-    "shuffled_mean": 0.4989,
-    "shuffled_std": 0.014,
-    "shuffled_min": 0.4756,
-    "shuffled_max": 0.5116,
-    "gap": 0.0293,
+    "real_accuracy": 0.531,
+    "shuffled_mean": 0.5077,
+    "shuffled_std": 0.0153,
+    "shuffled_min": 0.4893,
+    "shuffled_max": 0.5298,
+    "gap": 0.0233,
     "p_value": 0.1429,
     "leak_free": true,
-    "has_signal": true,
-    "verdict": "SIGNAL"
+    "has_signal": false,
+    "verdict": "NO SIGNAL"
   },
   "operating_point": {
-    "confidence_threshold": 0.0169,
-    "coverage": 0.8996,
-    "n_committed": 448,
-    "accuracy": 0.5357,
-    "subset_majority": 0.5312,
-    "edge": 0.0045,
+    "confidence_threshold": 0.0544,
+    "coverage": 0.6009,
+    "n_committed": 533,
+    "accuracy": 0.546,
+    "subset_majority": 0.5216,
+    "edge": 0.0244,
     "abstention_useful": true,
-    "selection_reason": "edge improves -0.0060 -> +0.0045 at 90% coverage"
+    "selection_reason": "edge improves +0.0034 -> +0.0244 at 60% coverage"
   }
 }

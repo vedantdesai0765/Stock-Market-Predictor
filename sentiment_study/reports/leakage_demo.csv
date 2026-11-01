@@ -1,0 +1,13 @@
+study,setup,valid,metric,value,note
+IN,"Next-day direction, walk-forward, T+G+S",True,accuracy,0.5724,the honest number
+IN,Sign of FinBERT on 'Sensex ...' headlines vs SAME-day return,False,accuracy,0.7696,2270 days; headlines describe the move
+IN,Same rule vs NEXT-day return,True,accuracy,0.5502,base rate of up days ~0.53
+IN,"LightGBM, lagged prices + same-day news -> SAME-day direction (wrap days)",False,accuracy,0.7131,2677 test days with a Sensex/Nifty headline
+IN,"LightGBM, lagged prices + same-day news -> SAME-day direction (all days)",False,accuracy,0.6894,
+IN,"5-day direction (overlapping labels), SHUFFLED 5-fold CV",False,accuracy,0.6095,neighbouring days share 4 of 5 return days
+IN,"5-day direction, walk-forward with 10-day embargo",True,accuracy,0.5529,majority ~0.56
+IN,"Direction of the 10-day moving average tomorrow, walk-forward, T+G",False,accuracy,0.8643,"valid CV, trivial target: 9 of 10 prices already known"
+IN,"Same, T+G+S",False,accuracy,0.8658,sentiment adds little even here
+IN,"Next-day Sensex LEVEL, linear regression: R^2",False,R2,0.998,'99% accuracy' headline
+IN,Same model: 1 - MAPE,False,1-MAPE,0.9925,tomorrow's price ~ today's price
+IN,Same model: direction implied by the level forecast,True,accuracy,0.5254,what it is worth
