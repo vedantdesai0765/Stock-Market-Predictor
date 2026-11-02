@@ -88,14 +88,17 @@ with st.sidebar:
         default_view_idx = 1
     if "view" in st.query_params and st.query_params["view"] in ("forecast", "next_morning"):
         default_view_idx = 2
+    if "view" in st.query_params and st.query_params["view"] in ("signals", "actionable_signals"):
+        default_view_idx = 3
 
     view = st.radio(
         "View",
-        options=["Prediction terminal", "Why did it move?", "Next-morning forecast"],
+        options=["Prediction terminal", "Why did it move?", "Next-morning forecast", "Actionable Signals"],
         index=default_view_idx,
         label_visibility="collapsed",
         help="'Why did it move?' shows each day's news next to that day's price move. "
-             "'Next-morning forecast' shows how well tomorrow's direction is predicted using overnight world markets.",
+             "'Next-morning forecast' shows how well tomorrow's direction is predicted using overnight world markets. "
+             "'Actionable Signals' shows multi-factor BUY/SELL/HOLD signals and walk-forward backtests.",
     )
 
     st.markdown("<div style='margin-top:24px;' class='sidebar-group-title'>VALIDATION METHODOLOGY</div>", unsafe_allow_html=True)
@@ -755,6 +758,15 @@ if view == "Next-morning forecast":
     importlib.reload(forecast_page)
     forecast_page.render_forecast_page(stock_choice, STOCK_DISPLAY_NAMES, _terminal_chart_layout,
                                        {"text_muted": text_muted, "card_bg": card_bg})
+    st.stop()
+
+# "Actionable Signals" view: systematic multi-factor signal engine with transaction friction and walk-forward backtest
+if view == "Actionable Signals":
+    import importlib
+    import signals_page
+    importlib.reload(signals_page)
+    signals_page.render_signals_page(stock_choice, STOCK_DISPLAY_NAMES, _terminal_chart_layout,
+                                     {"text_muted": text_muted, "card_bg": card_bg})
     st.stop()
 
 # Check Artifact Existence
