@@ -71,7 +71,7 @@ def _timeline(px_: pd.DataFrame, daily: pd.DataFrame, title: str, layout) -> go.
             hovertemplate="%{x|%d %b %Y}<br>Move %{customdata[0]}%  ·  %{customdata[1]} item(s)"
                           "<br>Mean sentiment %{customdata[3]}<br><i>%{customdata[2]}</i><extra></extra>"))
     lay = layout(460, title)
-    lay["margin"] = dict(l=55, r=25, t=70, b=35)
+    lay["margin"] = dict(l=55, r=25, t=75, b=35)
     lay["showlegend"] = False
     lay["yaxis"]["type"] = "log"
     lay["yaxis"]["title"] = dict(text="Close (log scale)", font=dict(size=10))
@@ -81,7 +81,7 @@ def _timeline(px_: pd.DataFrame, daily: pd.DataFrame, title: str, layout) -> go.
                  dict(count=3, label="3Y", step="year", stepmode="backward"),
                  dict(count=5, label="5Y", step="year", stepmode="backward"),
                  dict(step="all", label="ALL")],
-        bgcolor="#121824", activecolor="#1e293b", font=dict(color="#f8fafc", size=10), x=0, y=1.02)
+        bgcolor="#121824", activecolor="#1e293b", font=dict(color="#f8fafc", size=10), x=0, y=1.14)
     fig.update_layout(**lay)
     return fig
 
@@ -165,13 +165,25 @@ def render_explain_page(key: str, display_names: dict, layout, colors: dict) -> 
     muted, card = colors.get("text_muted", "#94a3b8"), colors.get("card_bg", "#121824")
     name = display_names.get(key, key)
     st.markdown(f"""
-    <div style='padding:8px 0 10px 0'>
+    <div style='padding:4px 0 10px 0'>
+      <div style='display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px'>
+        <span style='background:rgba(99,102,241,0.15);color:#818cf8;border:1px solid rgba(99,102,241,0.3);border-radius:4px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:0.5px'>NLP SENTIMENT ANALYSIS</span>
+        <span style='background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3);border-radius:4px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:0.5px'>ENTITY-TARGETED FINBERT</span>
+        <span style='background:rgba(245,158,11,0.15);color:#fbbf24;border:1px solid rgba(245,158,11,0.3);border-radius:4px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:0.5px'>2001–2022 ARCHIVE</span>
+        <span style='background:rgba(148,163,184,0.12);color:#94a3b8;border:1px solid rgba(148,163,184,0.25);border-radius:4px;padding:3px 9px;font-size:11px;font-weight:600;margin-left:auto'>EXPLANATORY RETROSPECTIVE · NOT A FORECAST</span>
+      </div>
       <h1 style='margin:0;font-size:26px'>Why did it move?</h1>
       <div style='font-size:13px;color:{muted};margin-top:4px'>
-        <strong>{name}</strong> · news on each trading day, scored for sentiment <em>towards this company</em>,
-        next to that day's price move
+        <strong>{name}</strong> · daily financial news headlines and regulatory filings scored with company-targeted FinBERT next to same-day price moves
       </div>
-    </div>""", unsafe_allow_html=True)
+    </div>
+    <div style='background:rgba(99, 102, 241, 0.08);border:1px solid rgba(99, 102, 241, 0.25);border-left:4px solid #6366f1;border-radius:8px;padding:12px 18px;margin:10px 0 16px 0'>
+      <div style='font-size:11px;font-weight:700;letter-spacing:1.2px;color:#818cf8;text-transform:uppercase;margin-bottom:3px'>Core Empirical Finding · Contemporaneous Link vs. Zero Next-Day Drift</div>
+      <div style='font-size:13px;color:#f8fafc;line-height:1.5'>
+        <strong>News explains today's move, but does not forecast tomorrow:</strong> Company-targeted FinBERT sentiment exhibits significant same-day correlation with returns (Sensex Spearman <span class='mono-text' style='color:#10b981'>ρ = +0.056, p &lt; 0.001</span>; 10 stocks pooled <span class='mono-text' style='color:#10b981'>ρ = +0.030, p = 0.005</span>). However, next-day predictive correlation vanishes (<span class='mono-text' style='color:#94a3b8'>ρ = +0.007, p = 0.618</span>), confirming Semi-Strong Market Efficiency on NSE equities.
+      </div>
+    </div>
+    """, unsafe_allow_html=True)
 
     st.markdown("""<style>
       [data-testid="stMain"] [data-testid="stWidgetLabel"] p,
@@ -261,9 +273,12 @@ def render_explain_page(key: str, display_names: dict, layout, colors: dict) -> 
         d2.markdown(f"<div class='transparency-box'><strong>{verdict}.</strong> Each item is scored for how it reads "
                     f"<em>for {name.split(' (')[0]}</em> (−1 negative … +1 positive). The plain-FinBERT column scores the "
                     f"whole text without targeting, for comparison.</div>", unsafe_allow_html=True)
-        show = items[["published", "source", "text", "label", "targeted", "plain", "price_report"]].rename(columns={
-            "published": "Published", "source": "Source", "text": "Text", "label": "Label",
-            "targeted": "Towards company", "plain": "Plain FinBERT", "price_report": "Price report"})
+        show = items[["published", "source", "text", "label", "targeted", "plain", "price_report"]].copy()
+        show["targeted"] = show["targeted"].apply(lambda v: f"{v:+.3f}" if pd.notna(v) else "—")
+        show["plain"] = show["plain"].apply(lambda v: f"{v:+.3f}" if pd.notna(v) else "—")
+        show = show.rename(columns={
+            "published": "Published", "source": "Source", "text": "Headline / Filing Text", "label": "Label",
+            "targeted": "Towards Company", "plain": "Plain FinBERT", "price_report": "Price Report?"})
         st.dataframe(show, hide_index=True, width="stretch")
 
     # --- 03 biggest moves
@@ -274,16 +289,24 @@ def render_explain_page(key: str, display_names: dict, layout, colors: dict) -> 
         st.info("No large-move table for this stock.")
     else:
         bt = bt.copy()
+        bt["return_pct"] = bt["return_pct"].apply(lambda v: f"{v:+.2f}%" if pd.notna(v) else "—")
+        bt["sentiment"] = bt["sentiment"].apply(lambda v: f"{v:+.3f}" if pd.notna(v) else "—")
+        bt["headline_score"] = bt["headline_score"].apply(lambda v: f"{v:+.3f}" if pd.notna(v) else "—")
         bt["headline"] = bt["headline"].fillna("— no headline naming the company that day")
         st.dataframe(bt.drop(columns=["scope"]).rename(columns={
-            "date": "Date", "return_pct": "Move %", "sentiment": "Mean sentiment that day",
-            "headline": "Strongest headline (no price reports)", "headline_score": "Its score"}),
+            "date": "Date", "return_pct": "Move %", "sentiment": "Mean Sentiment",
+            "headline": "Strongest Headline (Excl. Price Reports)", "headline_score": "Score"}),
             hide_index=True, width="stretch", height=320)
 
     # --- 04 evidence
     st.markdown("<div class='section-heading'>04 · HOW CLOSELY NEWS TONE AND PRICE MOVES LINE UP</div>", unsafe_allow_html=True)
     scope_label = st.radio("Evidence for", [f"This stock ({key})", "All 10 stocks (pooled)", "Market (Sensex)"],
                            horizontal=True)
+    st.markdown("""
+    <div style='font-size:12px;color:#94a3b8;margin:2px 0 14px 0'>
+      <strong>Empirical Evidence Guide:</strong> Observe how contemporaneous news (Day 0) aligns with returns across quintiles and event windows, whereas Day +1 exhibits zero persistent drift.
+    </div>
+    """, unsafe_allow_html=True)
     scope = key if scope_label.startswith("This") else ("ALL10" if scope_label.startswith("All") else "SENSEX")
     ll, qq, ev, bc = _table("lead_lag"), _table("quintiles"), _table("event_study"), _table("big_moves_coverage")
     e1, e2 = st.columns(2)

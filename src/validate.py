@@ -203,31 +203,32 @@ def check_secrets() -> list[Check]:
     """No API keys committed anywhere in the tree."""
     import config
 
+    import os
+    import re
+
     checks = []
     suspicious = []
 
-    for path in config.PROJECT_ROOT.rglob("*"):
-        if not path.is_file():
-            continue
-        if any(p in path.parts for p in
-               (".git", "__pycache__", ".ipynb_checkpoints", "data")):
-            continue
-        if path.suffix not in (".py", ".ipynb", ".md", ".txt", ".json"):
-            continue
-        if path.name == ".env":
-            continue
-        try:
-            text = path.read_text(errors="ignore")
-        except Exception:
-            continue
-        for marker in ("apiKey", "API_KEY", "api_key"):
-            if marker in text:
-                # A 32-char hex string next to an api key marker is a real key
-                import re
-                if re.search(r"[\"'][0-9a-f]{32}[\"']", text):
-                    suspicious.append(str(path.relative_to(
-                        config.PROJECT_ROOT)))
-                break
+    for root, dirs, files in os.walk(config.PROJECT_ROOT):
+        dirs[:] = [d for d in dirs if d not in (
+            ".git", "__pycache__", ".ipynb_checkpoints", "data", ".venv", "venv", "env"
+        )]
+        for fname in files:
+            path = Path(root) / fname
+            if path.suffix not in (".py", ".ipynb", ".md", ".txt", ".json"):
+                continue
+            if path.name == ".env":
+                continue
+            try:
+                text = path.read_text(errors="ignore")
+            except Exception:
+                continue
+            for marker in ("apiKey", "API_KEY", "api_key"):
+                if marker in text:
+                    # A 32-char hex string next to an api key marker is a real key
+                    if re.search(r"[\"'][0-9a-f]{32}[\"']", text):
+                        suspicious.append(str(path.relative_to(config.PROJECT_ROOT)))
+                    break
 
     if suspicious:
         checks.append(Check("committed secrets", FAIL,

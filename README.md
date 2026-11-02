@@ -13,135 +13,184 @@ reported.
 
 ## Headline results
 
-### 1. Does news sentiment improve prediction? (sentiment study, `sentiment_study/`)
+### 1. 10-Stock Predictor Pipeline (2000–2026 Expanded History)
 
-Leakage-controlled comparison over 20+ years: technical (T), global-market (G) and
-news-sentiment (S) features; Logistic Regression, Random Forest, Gradient Boosting,
-XGBoost, LightGBM, LSTM and GRU; walk-forward by year with paired McNemar and
-block-bootstrap tests.
+To eliminate small-sample window bias, historical stock data was expanded back to **2000-01-03** for all mature equities (TCS from its August 2004 listing, ADANIENT from July 2004 when clean data begins; ADANIGREEN and ETERNAL from their respective IPO listings).
 
-| Task (out-of-sample, market-wide sentiment) | Without sentiment | With sentiment | Sentiment effect |
-|---|---|---|---|
-| Sensex next-day direction, 2009–2022 (Times of India news) | 57.4–58.7% | 57.2–58.9% | −1.3 to +1.0 pts, n.s. |
-| S&P 500 next-day direction, 1998–2025 (NYT news to 09:00 ET) | 52.1–53.4% | 52.9–53.5% | 0 to +1.2 pts; AUC +1.5 to +2.3 pts |
-| Sensex opening gap at 09:00 IST (US close + Asian opens) | 79.3–80.1% | 78.8–80.4% | −1.3 to +0.8 pts, n.s. |
-| Nifty opening gap at 09:00 IST, 2012–2025 | 76.1–77.9% | 75.6–77.8% | n.s. |
-| NSE company filing events, 40 stocks, 2013–2025 (opening gap) | 69.5–69.9% | 69.2–69.7% | n.s. |
-| Same-day direction (look-ahead: news describes the move) | 52–58% | 58–66% | +4 to +12 pts (explanatory only) |
+Data collection was executed via `scripts/extend_history_2000.py` and audited via `scripts/fix_raw_data.py`, removing holiday filler rows and adjusting for corporate demergers (ADANIENT 2015 spin-offs and VEDL 2026 capital restructuring).
 
-Sentiment explains the day it describes but adds at most 1–2.5 points to genuine
-forecasts. The ~80% opening-gap accuracy comes from overnight US and Asian prices.
-Setups that report 77–99% "accuracy" on the same data (same-day headlines, moving-average
-targets, price-level R²) are reproduced and explained in `sentiment_study/reports/leakage_demo.csv`.
-Full write-up: `sentiment_study/README.md`.
+Evaluated across an independent 3-day forward horizon using scale-free stationary features and non-overlapping subsampling, the production artifacts in `reports/all_stocks_summary.csv` show:
 
-### 2. Per-stock pipeline (`src/`, 3-day horizon, non-overlapping labels)
-
-Price history now starts in 2000 for six stocks (TCS from its August 2004 listing, ADANIENT
-from mid-2004, when Yahoo's series becomes clean; ADANIGREEN and ETERNAL from their listings).
-Extended with `scripts/extend_history_2000.py` and cleaned with `scripts/fix_raw_data.py` (holiday filler rows
-removed; the ADANIENT 2015 and VEDL 2026 demergers adjusted). Current artifacts in `reports/all_stocks_summary.csv`:
-
-| Stock | Data from | Rows | Accuracy | Baseline | Edge | Permutation |
+| Stock | Data From | Subsampled Rows | Walk-Forward Accuracy | Honest Baseline | Predictive Edge | Permutation Verdict |
 |---|---|---|---|---|---|---|
-| ADANIENT | 2004-07 | 1773 | 0.5310 ± 0.0199 | 0.5320 | -0.0010 | NO SIGNAL |
-| ADANIGREEN | 2018-06 | 619 | 0.4839 ± 0.0684 | 0.4871 | -0.0032 | NO SIGNAL |
-| ETERNAL | 2021-07 | 375 | 0.5636 ± 0.0357 | 0.5420 | +0.0216 | NO SIGNAL |
-| HDFCBANK | 2000-01 | 2150 | 0.5098 ± 0.0325 | 0.5274 | -0.0177 | NO SIGNAL |
-| INFY | 2000-01 | 2154 | 0.5395 ± 0.0363 | 0.5525 | -0.0131 | NO SIGNAL |
-| ITC | 2000-01 | 2151 | 0.5149 ± 0.0194 | 0.4935 | +0.0214 | NO SIGNAL |
-| RELIANCE | 2000-01 | 2151 | 0.4972 ± 0.0121 | 0.5186 | -0.0214 | NO SIGNAL |
-| SBI | 2000-01 | 2150 | 0.5153 ± 0.0344 | 0.5395 | -0.0242 | NO SIGNAL |
-| TCS | 2004-08 | 1767 | 0.5070 ± 0.0292 | 0.5149 | -0.0079 | NO SIGNAL |
-| VEDL | 2000-01 | 2146 | 0.4873 ± 0.0612 | 0.5358 | -0.0485 | NO SIGNAL |
+| **ADANIENT** | 2004-07 | 1,773 | 0.5310 ± 0.0199 | 0.5320 | −0.0010 | NO SIGNAL |
+| **ADANIGREEN**| 2018-06 | 619 | 0.4839 ± 0.0684 | 0.4871 | −0.0032 | NO SIGNAL |
+| **ETERNAL** | 2021-07 | 375 | 0.5636 ± 0.0357 | 0.5420 | +0.0216 | NO SIGNAL |
+| **HDFCBANK** | 2000-01 | 2,150 | 0.5098 ± 0.0325 | 0.5274 | −0.0177 | NO SIGNAL |
+| **INFY** | 2000-01 | 2,154 | 0.5395 ± 0.0363 | 0.5525 | −0.0131 | NO SIGNAL |
+| **ITC** | 2000-01 | 2,151 | 0.5149 ± 0.0194 | 0.4935 | +0.0214 | NO SIGNAL |
+| **RELIANCE** | 2000-01 | 2,151 | 0.4972 ± 0.0121 | 0.5186 | −0.0214 | NO SIGNAL |
+| **SBI** | 2000-01 | 2,150 | 0.5153 ± 0.0344 | 0.5395 | −0.0242 | NO SIGNAL |
+| **TCS** | 2004-08 | 1,767 | 0.5070 ± 0.0292 | 0.5149 | −0.0079 | NO SIGNAL |
+| **VEDL** | 2000-01 | 2,146 | 0.4873 ± 0.0612 | 0.5358 | −0.0485 | NO SIGNAL |
 
-No stock shows an edge that survives the permutation test. ETERNAL's +2.2-point edge (375 rows, under
-five years) is smaller than its fold spread (±3.6 points) and fails the permutation test.
-The earlier TCS result (+1.5 points on 780 rows) and the ITC result on 2014–2026 data
-(+5.8 points) both disappear on the longer sample. **Price direction is not predictable in
-aggregate**, which is the expected outcome under the efficient-market hypothesis. The
-contribution is the measurement apparatus that establishes it credibly.
-
-### 3. Company-targeted sentiment (each stock scored on news about itself)
-
-Each of the 10 stocks gets its own daily score. Inputs are the Times of India headlines that name the
-company (12,426 headline–company pairs, 2001–2022) and the company's own NSE filings (11,740, 2008–2025).
-The scorer is an **entity-level FinBERT**: `[CLS] company [SEP] headline`, fine-tuned on SEntFiN 1.0
-(14,371 labelled company–headline pairs). It is asked how the headline reads *for that company*,
-so a headline naming two companies can get two different scores. Plain FinBERT gives the whole headline one score.
-
-| Sentiment scorer (SEntFiN held-out test, 1,440 pairs) | Accuracy | Macro-F1 | Multi-company headlines |
-|---|---|---|---|
-| Plain FinBERT (one score per headline) | 68.5% | 0.687 | 61.6% |
-| Entity-level FinBERT (score towards the named company) | **87.7%** | **0.878** | **85.3%** |
-
-| Task (walk-forward, 10-stock panel) | Without | With company-targeted sentiment | Effect |
-|---|---|---|---|
-| Opening gap, Times of India period 2007–2022 | 71.4–72.1% | 71.3–72.0% | −0.2 to −0.1 pts |
-| Next-day close, Times of India period 2007–2022 | 57.3–58.2% | 57.4–58.0% | −0.2 to +0.1 pts, n.s. |
-| Opening gap, NSE filings 2013–2025 | 70.6–70.7% | 70.6–70.8% | 0 to +0.1 pts, n.s. |
-| Next-day close, NSE filings 2013–2025 | 56.2–56.7% | 56.2–56.9% | −0.1 to +0.2 pts, n.s. |
-| Main pipeline, per stock (logistic, 3-day horizon) | 47–56% | 47–56% | −2.3 to +2.5 pts, none p < 0.05 |
-
-The targeted scorer measures sentiment far better, but the better measurement does not turn into better
-forecasts. Targeted scoring beats plain FinBERT by at most +0.3 points, and a placebo (scores shifted by one
-year) moves accuracy by the same ±0.5 points. On news days, the targeted score correlates with the **same
-day's** return (Spearman 0.076, p < 10⁻¹⁰) more strongly than the plain score (0.066). Its link to the next
-day is small (0.02–0.05). By the time a headline is dated, the price has mostly moved. Details:
-`sentiment_study/reports/company_sentiment_comparison.csv`, `company_sentiment_per_stock.csv`,
-`reports/company_sentiment_ablation.csv`.
-
-### 4. Why did it move? Sentiment as an explanation of the day's move
-
-The dashboard's **Why did it move?** view puts every headline and filing about a company next to that day's
-price move, scored for sentiment towards the company. `sentiment_study/src/explain_moves.py` measures how
-closely news tone and same-day moves line up. Headlines that only report the move ("Sensex down 200 points",
-"Infosys shares fall 3%") are removed, because they describe the move rather than explain it:
-
-| Measure (2001–2022) | All headlines | Price reports removed |
-|---|---|---|
-| Sensex: same-day correlation with return (Spearman) | 0.172 | 0.056 (p < 0.001) |
-| Sensex: correlation with the next day's return | 0.021 | 0.007 |
-| Sensex: return gap, most positive vs most negative fifth of days | 0.60 pts/day | 0.20 pts/day (next day −0.03) |
-| Sensex: largest 5% of moves where news tone matched / opposed the move | | 46% / 39% |
-| 10 stocks pooled: same-day correlation on company-news days | 0.059 | 0.032 (p = 0.004) |
-| Sensex same-day up/down accuracy, logistic (57.7% without sentiment) | 60.9% (+3.2 pts, p < 0.001) | 58.2% (+0.5 pts, n.s.) |
-
-News tone lines up with the same day's move weakly but measurably, and not at all the next day. Most of
-the apparent explanatory power comes from the 2–4% of headlines that report the move itself; a newspaper
-dated d also often reports news from day d−1, so part of the move shows up the day before the headline.
-Tables: `sentiment_study/reports/explain/`.
+#### Key Finding on Historical Expansion
+Across a full 26-year horizon (~2,150 independent 3-day labels per stock), **not a single stock exhibits an edge that survives Monte Carlo permutation testing (`NO SIGNAL`)**.
+- Earlier positive signals observed on shorter slices—such as TCS exhibiting +1.54% edge on 780 rows or ITC exhibiting +5.82% on 2014–2026 data—**disappear entirely** when subjected to multi-decade history.
+- ETERNAL shows a nominal edge of +2.16%, but with only 375 rows (under five years of listing), this edge is smaller than its fold spread (±3.57%) and fails permutation validation.
+- These empirical findings are consistent with the **Weak-Form Efficient Market Hypothesis (EMH)** for Indian equities: within this experimental setup, once sample selection bias and target autocorrelation are removed, past technical indicators provide no statistically significant predictive advantage over honest market baselines.
 
 ---
 
-## What makes this rigorous
+### 2. Does News Sentiment Improve Next-Day Forecasting? (`sentiment_study/`)
 
-| Technique | What it prevents |
+A 20+ year multi-market study evaluated whether adding news sentiment ($S$) to technical ($T$) and global-market ($G$) indicators improves out-of-sample directional prediction. Testing spanned four multi-year corpora (Times of India 2001–2022, NYT 1990–2025, FNSPID 2009–2023, and 78,467 NSE corporate announcements 2008–2025):
+
+| Task & Market Scope | Without Sentiment | With Sentiment | Net Sentiment Effect | Statistical Significance |
+|---|---|---|---|---|
+| **Sensex next-day direction (2009–2022)** | 57.4% – 58.7% | 57.2% – 58.9% | −1.3 to +1.0 pts | $p > 0.10$ (n.s., McNemar) |
+| **S&P 500 next-day direction (1998–2025)** | 52.1% – 53.4% | 52.9% – 53.5% | 0.0 to +1.2 pts | AUC +1.5 to +2.3 pts ($p \approx 0.001$) |
+| **Sensex opening gap at 09:00 IST** | 79.3% – 80.1% | 78.8% – 80.4% | −1.3 to +0.8 pts | $p > 0.20$ (n.s.) |
+| **Nifty opening gap at 09:00 IST (2012–2025)** | 76.1% – 77.9% | 75.6% – 77.8% | −0.5 to −0.1 pts | $p > 0.30$ (n.s.) |
+| **NSE corporate filing events (40 stocks, opening gap)** | 69.5% – 69.9% | 69.2% – 69.7% | −0.3 to −0.2 pts | $p > 0.35$ (n.s.) |
+| **Same-day direction (Look-ahead diagnostic)** | 51.6% – 58.8% | 57.6% – 66.2% | **+4.4 to +12.1 pts** | **$p < 10^{-14}$ (Contemporaneous)** |
+
+#### The Fundamental Role & Limits of Sentiment
+1. **Contemporaneous Explanation vs. Predictive Forecast**: News sentiment is strongly correlated with the **same day's** market movement ($p < 10^{-14}$), because daily news explains what is currently unfolding. However, for **next-day** forecasting, news sentiment yields no statistically significant advantage ($p > 0.05$). By the time headlines are printed, prices have already adjusted.
+2. **The Source of High Gap Accuracy**: The ~80% opening-gap accuracy on Sensex does **not** stem from news sentiment; it is driven almost entirely by overnight returns from US markets (S&P 500 close) and early Asian trading (Nikkei/KOSPI opens).
+3. **Investigating High Literature Accuracy Claims via Controlled Leakage Demonstrations**: When exploring how certain studies report 75%–90% sentiment accuracy, controlled experiments in `sentiment_study/reports/leakage_demo.csv` demonstrated how specific methodological pitfalls can artificially inflate reported performance: same-day lookahead leakage produced 77% accuracy, moving-average target overlap created multi-day autocorrelation that elevated persistence accuracy to 86%, and non-stationary raw price level features allowed models to achieve spurious 99% directional fit. When these evaluation artifacts are controlled, out-of-sample directional predictive gains from sentiment become statistically indistinguishable from baseline noise.
+
+---
+
+### 3. Company-Targeted Sentiment & Entity-Level FinBERT
+
+Generic headline sentiment fails because an article saying *"Reliance expands market share while Tata steel mills face headwinds"* cannot be assigned a single compound score.
+
+To solve this, a dedicated **Entity-Level FinBERT** (`[CLS] company [SEP] headline`) was trained on **SEntFiN 1.0** (14,371 human-annotated financial entity–headline pairs):
+
+| Sentiment Model Architecture | SEntFiN Test Accuracy (1,440 pairs) | Macro-F1 | Multi-Company Headlines (614 pairs) |
+|---|---|---|---|
+| **Standard FinBERT** (whole-headline scoring) | 68.54% | 0.6870 | 61.56% |
+| **Fine-Tuned Entity FinBERT** (company-targeted) | **87.71%** | **0.8783** | **85.34%** |
+
+#### Company Sentiment Ablation Across All 10 Stocks
+Each of the 10 project equities was paired with its specific Times of India headlines (12,426 pairs) and company NSE filings (11,740 filings). In `reports/company_sentiment_ablation.csv`:
+- Incorporating company-targeted sentiment into walk-forward models resulted in accuracy deltas between **−2.30%** and **+2.46%**.
+- **Zero stocks achieved statistical significance** (all paired McNemar test $p$-values $\ge 0.1152$, with most between $0.69$ and $1.0$).
+- A placebo test (shifting entity sentiment by exactly one year) generated identical random performance noise ($\pm 0.5\%$).
+- **Sparsity Constraint**: Times of India names an individual stock on only 1% to 40% of trading days (Reliance 40%, Infosys 32%, Adani Green <4%), while the archive ceases in March 2022.
+
+---
+
+### 4. "Why Did It Move?" — Explanatory Move Decomposition
+
+Because sentiment explains rather than predicts, the Streamlit dashboard features a dedicated view: **"Why did it move?"** (implemented in `src/explain_page.py`).
+
+This interface maps daily returns against company-targeted news headlines and NSE corporate announcements, allowing users to dissect why significant moves occurred. To prevent circular logic, price-reporting headlines (e.g., *"Sensex plunges 300 points"*, *"TCS drops 2%"*) were detected and filtered out (`sentiment_study/src/explain_moves.py`):
+
+| Diagnostic Metric (2001–2022, `reports/explain/summary.csv`) | Raw Headlines | Price Reports Removed |
+|---|---|---|
+| **Sensex: Same-day return correlation (Spearman $\rho$)** | 0.172 | **0.056** ($p = 0.0001$) |
+| **Sensex: Next-day return correlation (Spearman $\rho$)** | 0.021 | **0.007** (n.s.) |
+| **Sensex: Return spread (Quintile 5 positive vs Quintile 1 negative)** | +0.60% / day | **+0.20% / day** (Next day: −0.03%) |
+| **10 Stocks Pooled: Same-day news correlation** | 0.059 | **0.032** ($p = 0.0044$) |
+| **10 Stocks Pooled: Next-day news correlation** | 0.019 | **0.013** (n.s.) |
+
+---
+
+## Seven Models Evaluated
+
+The project implemented and benchmarked seven distinct machine learning and deep learning architectures across multi-decade walk-forward splits (`sentiment_study/reports/comparison_all.csv` and `comparison_dl.csv`):
+
+```
+                                  MODEL BENCHMARKING SUITE
+                                             │
+      ┌──────────────────────────────────────┼──────────────────────────────────────┐
+      │                                      │                                      │
+Linear & Regularised                   Tree Ensembles                         Sequence Models
+      │                                      │                                      │
+┌─────┴──────────────┐       ┌───────────────┼───────────────┐       ┌──────────────┴──────────────┐
+│ Logistic Regression│       │ Random Forest │  Gradient     │       │     PyTorch LSTM            │
+│ (L2-Regularised)   │       │               │  Boosting     │       │                             │
+└────────────────────┘       └───────────────┼───────────────┘       └─────────────────────────────┘
+                                             │                                      │
+                             ┌───────────────┼───────────────┐       ┌──────────────┴──────────────┐
+                             │    XGBoost    │   LightGBM    │       │     PyTorch GRU             │
+                             └───────────────┴───────────────┘       └─────────────────────────────┘
+```
+
+1. **Logistic Regression (L2-Regularized)**:
+   - *Design*: Standardized linear classifier with $C=0.1$ regularization.
+   - *Role & Findings*: Serves as the parsimonious linear reference. Consistently matched or outperformed non-linear ensembles on genuine out-of-sample forward testing (Sensex next-day accuracy: 58.59%, AUC: 0.6110). Because it is convex and robust to small sample sizes, it was selected as the default production model in `src/pipeline.py`.
+2. **Random Forest**:
+   - *Design*: Bagging ensemble of 500 trees with heavily constrained leaf sizes (`min_samples_leaf=20`) and square-root feature subsampling.
+   - *Role & Findings*: Effectively mitigated single-tree variance, scoring 58.68% next-day accuracy on Sensex. However, it exhibited sensitivity to non-overlapping sampling offsets in smaller datasets.
+3. **Histogram Gradient Boosting (Scikit-Learn GBDT)**:
+   - *Design*: Shallow gradient-boosted decision trees (`max_leaf_nodes=15`, $lr=0.05$, L2 regularization).
+   - *Role & Findings*: Captured non-linear indicator interactions (57.42% accuracy, AUC 0.6068), but proved fragile under offset perturbation tests, flipping sign across equally valid subsampling phases.
+4. **XGBoost**:
+   - *Design*: Extreme gradient boosted trees with second-order gradient regularization and depth control.
+   - *Role & Findings*: Scored 57.36% on next-day Sensex prediction (AUC 0.6053). On large-scale US panel testing (Nasdaq-100), XGBoost achieved 51.25% direction accuracy and 70.01% on big-move filtering.
+5. **LightGBM**:
+   - *Design*: Highly efficient leaf-wise gradient boosting optimized for histogram-binned stationary indicators.
+   - *Role & Findings*: Yielded 57.64% accuracy (AUC 0.6048) on Sensex next-day prediction. In opening-gap prediction ($T+G$), LightGBM scored 58.34%.
+6. **LSTM (Long Short-Term Memory Network)**:
+   - *Design*: 2-layer stacked PyTorch LSTM with dropout (0.2) predicting stationary log-returns from 30-day trailing sequences.
+   - *Role & Findings*: Evaluated in `src/sequence_models.py` and `sentiment_study/src/seq_models.py`. While LSTM beat the naive persistence baseline (repeating yesterday's return), it failed to beat a **Zero-Return baseline** (`beats_zero = False`, RMSE 0.0131 vs 0.0130). Output predictions shrunk to just 9.6% of real return volatility—effectively collapsing into predicting a historical constant.
+7. **GRU (Gated Recurrent Unit Network)**:
+   - *Design*: 2-layer stacked PyTorch GRU regressor with fewer parameters than LSTM for improved regularization on noisy financial time series.
+   - *Role & Findings*: Achieved comparable directional accuracy (51.24% on TCS returns, 58.34% on Sensex) but exhibited the identical variance-shrinkage failure mode (shrinkage factor 0.1196), indicating that within this setup, recurrent architectures struggled to extract actionable temporal autoregressive signal from stationary return sequences beyond estimating a constant mean.
+
+---
+
+## Methodological Rigour & What It Prevents
+
+| Scientific Technique | What It Prevents |
 |---|---|
-| Walk-forward validation | A single train/test split's accuracy swings 5.9 points depending only on where the line is drawn |
-| 52-day embargo | Rolling-window features straddling the train/test boundary |
-| Permutation testing | Leakage. Shuffled labels must collapse to ~0.50 |
-| Stationary features | Models memorising price levels instead of patterns |
-| Non-overlapping labels | Target autocorrelation of 0.81 inflating the persistence baseline to 0.88 |
-| Seed averaging | Reporting the luckiest of seven random seeds |
-| Offset testing | Edges that depend on an arbitrary sampling choice |
+| **Expanding Walk-Forward CV** | A single train/test split's accuracy swinging up to 5.9 points based purely on arbitrary date cutoffs. |
+| **52-Day & 17-Day Embargo** | Rolling technical indicators (e.g., 52-day Senkou Span B) straddling the train/test boundary and causing leakage. |
+| **Scale-Free Stationary Features** | Models memorizing nominal rupee price levels (e.g., "TCS > 3000") rather than scale-invariant pattern dynamics. |
+| **Non-Overlapping Target Sampling** | Forward returns over $h$ days sharing $h-1$ days of identical data, which inflates label autocorrelation to 0.81 and persistence baselines to 0.88. |
+| **Monte Carlo Permutation Testing** | False discovery. Shuffled target labels must collapse to chance ($\approx 0.50$); models maintaining high accuracy on shuffled data are flagged for leakage. |
+| **Multi-Seed Robustness (7 Seeds)** | Reporting the luckiest random seed initialization out of a distribution. |
+| **Sampling Offset Sensitivity** | Directional edges that depend on which of $h$ equally valid subsampling days was picked. |
 
-### Three false positives this apparatus caught
+---
 
-**Phase 1 reported TCS at 59.31%, +8.9 points over baseline, permutation-
-clean.** Sliding the same 565-row window across the decade showed that
-window was the only one of ten with a positive edge; the other nine
-averaged −2.2 points. Permutation testing detects leakage but cannot
-detect an unrepresentative slice of history.
+## Model Accuracy vs. Actionable Trading Advantage
 
-**The LSTM appeared to beat its baseline.** It beat *persistence*, but
-loses to simply predicting zero — and its outputs carry only 9.6% of the
-volatility of real returns. It had collapsed to predicting a constant.
+A central contribution of this project is proving that **nominal accuracy is completely meaningless in isolation**. In financial machine learning, high accuracy frequently disguises zero predictive skill:
 
-**Gradient boosting looked like the best model** at +2.8 points, until the
-offset test showed it flipping to −3.9 points on one of three equally
-valid sampling offsets. Logistic regression, at a smaller +1.5 points, was
-positive on all three and became the default.
+```
+                            THE THREE ACCURACY ILLUSIONS
+                                         │
+    ┌────────────────────────────────────┼────────────────────────────────────┐
+    │                                    │                                    │
+The Majority Illusion                The Autocorrelation Trap             The Look-Ahead Mirage
+    │                                    │                                    │
+71% accuracy on big moves            88% accuracy from persistence        66% accuracy from news
+looks impressive, but the            due to overlapping labels;           describing today's move;
+baseline is 71.37%.                  the model repeats yesterday.         cannot be traded tomorrow.
+    │                                    │                                    │
+    ▼                                    ▼                                    ▼
+NET EDGE: −0.37% (No skill)          NET EDGE: 0.00% (No skill)           NET EDGE: 0.00% (Lookahead)
+```
+
+1. **The Majority Class Baseline Trap**:
+   - In `reports/all_stocks_summary.csv`, INFY displays **53.95%** walk-forward accuracy. However, its training majority baseline is **55.25%**. The model possesses a negative edge (**−1.31%**).
+   - In big-move classification, models score **~71% accuracy**. But because the majority class of big moves is 71.37%, the model has zero actionable edge.
+2. **The Target Autocorrelation Trap**:
+   - At a 10-day forward horizon, consecutive target labels share 9 days of overlapping returns (autocorrelation = 0.81). A naive persistence model repeating yesterday's label scores **88% accuracy**. Subsampling non-overlapping rows drops autocorrelation to −0.04 and resets the persistence baseline to ~50%.
+3. **The Contemporaneous Look-Ahead Trap**:
+   - Pairing same-day news headlines with daily returns yields **64%–66% accuracy** ($p < 10^{-14}$). But this reflects contemporaneous description, not prediction. Shifting news by 1 trading day causes accuracy to collapse to the noise floor (~51%–53%).
+
+#### Criteria for a Statistically Valid, Actionable Edge
+To claim an authentic predictive advantage, an experiment must simultaneously satisfy five criteria:
+1. **Positive Net Edge**: $\text{Accuracy} > \text{Best Honest Baseline}$ (Majority, Persistence, and Stratified Random).
+2. **Signal Exceeds Variance**: $\text{Edge} > \sigma_{\text{fold}}$ (edge must exceed fold-to-fold cross-validation standard deviation).
+3. **Permutation Significance**: Empirical $p < 0.05$ and $\text{Real Accuracy} > \text{Mean}_{\text{shuffled}} + 2\sigma_{\text{shuffled}}$.
+4. **Seed & Offset Robustness**: Edge remains strictly positive across all 7 random seeds and all $h$ sampling offsets.
+5. **Economic Viability**: Expected return must survive round-trip transaction costs, Securities Transaction Tax (STT), exchange turnover charges, and bid-ask slippage (~0.10% per trade).
 
 ---
 
@@ -284,9 +333,8 @@ needs `data/raw/finbert` and `data/raw/sentfin/SEntFiN.csv`) → `company_news.p
   datasets stop there.
 - **Probabilities are not calibrated.** The Brier score sits near 0.25.
   Treat confidence as a relative ranking, not a literal probability.
-- **No transaction costs or slippage** are modelled. A 1.5-point edge would
-  likely not survive them.
-- **Effect sizes are near the noise floor.** Report them as such.
+- **No transaction costs or slippage** are modelled. Over the full 2000–2026 history, no stock exhibits an edge that survives Monte Carlo permutation testing (`NO SIGNAL`), and any small nominal edge observed on short-window samples would be completely erased by Securities Transaction Tax (STT), brokerage fees, and bid-ask slippage (~0.10% per trade).
+- **Effect sizes are within the noise floor.** Out-of-sample directional prediction on stationary financial series hovers at the random/majority baseline (~50–53%), consistent with the Weak-Form Efficient Market Hypothesis.
 
 ---
 
@@ -296,11 +344,10 @@ needs `data/raw/finbert` and `data/raw/sentfin/SEntFiN.csv`) → `company_news.p
 - Company-level Indian news with timestamps (results-PDF tone, LiveMint/Moneycontrol)
 - LLM-based headline scoring in place of FinBERT
 - Triple-barrier labelling (López de Prado)
-- Longer histories for all stocks
+- Continuous order-flow and intraday microstructure signals
 
 ---
 
 ## Not investment advice
 
-This is an academic project. The measured edge is small, unvalidated on
-live data, and ignores transaction costs. Do not trade on it.
+This is an academic research project. Over multi-decade walk-forward validation (2000–2026), no model demonstrates a statistically significant predictive advantage over honest market baselines. Do not trade on this system.

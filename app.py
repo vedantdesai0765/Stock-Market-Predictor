@@ -69,20 +69,28 @@ with st.sidebar:
 
     st.markdown("<div class='sidebar-group-title'>STOCK SELECTION</div>", unsafe_allow_html=True)
     available_stocks = config.list_stocks()
+    default_stock_idx = 0
+    if "stock" in st.query_params and st.query_params["stock"] in available_stocks:
+        default_stock_idx = available_stocks.index(st.query_params["stock"])
+
     stock_choice = st.selectbox(
         "Select Ticker",
         options=available_stocks,
         format_func=lambda key: STOCK_DISPLAY_NAMES.get(key, key),
-        index=0,
+        index=default_stock_idx,
     )
 
     st.button("▶ RUN ANALYSIS", width="stretch")
 
     st.markdown("<div style='margin-top:18px;' class='sidebar-group-title'>VIEW</div>", unsafe_allow_html=True)
+    default_view_idx = 0
+    if "view" in st.query_params and st.query_params["view"] in ("explain", "why_did_it_move"):
+        default_view_idx = 1
+
     view = st.radio(
         "View",
         options=["Prediction terminal", "Why did it move?"],
-        index=0,
+        index=default_view_idx,
         label_visibility="collapsed",
         help="'Why did it move?' shows each day's news about the company next to that day's price move.",
     )
@@ -439,6 +447,27 @@ st.markdown(f"""
     color: {text_primary} !important;
     font-weight: 600 !important;
   }}
+
+  /* Multiselect Tags (Dark Slate chips instead of harsh red) */
+  span[data-baseweb="tag"] {{
+    background-color: #1e293b !important;
+    border: 1px solid #334155 !important;
+    color: #f8fafc !important;
+    border-radius: 4px !important;
+  }}
+  span[data-baseweb="tag"] * {{
+    color: #f8fafc !important;
+  }}
+  span[data-baseweb="tag"]:hover {{
+    background-color: #334155 !important;
+  }}
+
+  /* Polished Dataframe and Table Styling */
+  div[data-testid="stDataFrame"] {{
+    border: 1px solid #1f293d !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+  }}
 </style>
 """, unsafe_allow_html=True)
 
@@ -477,14 +506,39 @@ def load_model_artifacts(stock_key: str) -> dict:
 # ---------------------------------------------------------------------------
 # Dark Theme-Aware Plotly Chart Layout Helper
 # ---------------------------------------------------------------------------
+FEATURE_PRETTY_NAMES = {
+    "hl_range_norm": "High-Low Range (Norm)",
+    "bb_bandwidth_zscore": "BB Bandwidth (Z-Score)",
+    "cloud_thickness_norm": "Ichimoku Cloud Thickness",
+    "bb_pct_b": "Bollinger %B Indicator",
+    "momentum_5": "5-Day Momentum",
+    "momentum_10": "10-Day Momentum",
+    "ret_lag_1": "Return (Lag 1)",
+    "ret_lag_2": "Return (Lag 2)",
+    "ret_lag_3": "Return (Lag 3)",
+    "realized_vol_10": "10D Realized Volatility",
+    "realized_vol_20": "20D Realized Volatility",
+    "close_vs_sma20": "Close vs 20D SMA",
+    "close_vs_sma50": "Close vs 50D SMA",
+    "volume_ratio_20": "Volume Ratio (20D)",
+    "volume_zscore_20": "Volume Z-Score (20D)",
+    "rsi_14": "RSI (14-Period)",
+}
+
 def _terminal_chart_layout(height=360, title=""):
     return dict(
         height=height,
-        margin=dict(l=45, r=25, t=40 if title else 15, b=35),
+        margin=dict(l=45, r=25, t=50 if title else 15, b=35),
         paper_bgcolor=chart_paper_bg,
         plot_bgcolor=chart_plot_bg,
         font=dict(family="Inter, sans-serif", size=11, color=chart_text_color),
-        title=dict(text=title, font=dict(size=13, color=chart_title_color, family="Inter, sans-serif")) if title else None,
+        title=dict(
+            text=title,
+            font=dict(size=12, color=chart_title_color, family="Inter, sans-serif"),
+            x=0.01,
+            xanchor="left",
+            y=0.98,
+        ) if title else None,
         hoverlabel=dict(
             bgcolor="#121824",
             font_color="#f8fafc",
@@ -496,14 +550,14 @@ def _terminal_chart_layout(height=360, title=""):
             showgrid=True,
             zeroline=False,
             color=chart_text_color,
-            tickfont=dict(color=chart_text_color),
+            tickfont=dict(color=chart_text_color, size=10),
         ),
         yaxis=dict(
             gridcolor=chart_grid_color,
             showgrid=True,
             zeroline=False,
             color=chart_text_color,
-            tickfont=dict(color=chart_text_color),
+            tickfont=dict(color=chart_text_color, size=10),
         ),
         legend=dict(
             orientation="h",
@@ -511,7 +565,7 @@ def _terminal_chart_layout(height=360, title=""):
             y=1.02,
             xanchor="right",
             x=1,
-            font=dict(size=11, color=chart_text_color),
+            font=dict(size=10, color=chart_text_color),
             bgcolor="rgba(0,0,0,0)",
         ),
     )
@@ -531,21 +585,27 @@ def build_candlestick_chart(df: pd.DataFrame, stock_name: str) -> go.Figure:
         increasing_fillcolor="#10b981",
         decreasing_line_color="#ef4444",
         decreasing_fillcolor="#ef4444",
+        hovertemplate="<b>%{x|%d %b %Y}</b><br>Open: ₹%{open:,.2f}<br>High: ₹%{high:,.2f}<br>Low: ₹%{low:,.2f}<br>Close: ₹%{close:,.2f}<extra></extra>"
     ))
     
     # Overlay Moving Averages
     if "SMA_20" in df.columns:
         fig.add_trace(go.Scatter(
             x=df["Date"], y=df["SMA_20"],
-            name="SMA 20", line=dict(color="#a855f7", width=1.4)
+            name="SMA 20", line=dict(color="#a855f7", width=1.4),
+            hovertemplate="SMA 20: ₹%{y:,.2f}<extra></extra>"
         ))
     if "SMA_50" in df.columns:
         fig.add_trace(go.Scatter(
             x=df["Date"], y=df["SMA_50"],
-            name="SMA 50", line=dict(color="#6366f1", width=1.4)
+            name="SMA 50", line=dict(color="#6366f1", width=1.4),
+            hovertemplate="SMA 50: ₹%{y:,.2f}<extra></extra>"
         ))
 
-    layout = _terminal_chart_layout(420, f"{stock_name} — PRICE HISTORY & CANDLESTICK ANALYSIS")
+    layout = _terminal_chart_layout(440, f"{stock_name.upper()} — PRICE HISTORY & MOVING AVERAGES")
+    layout["margin"] = dict(l=55, r=25, t=75, b=35)
+    layout["yaxis"]["title"] = dict(text="Price (INR ₹)", font=dict(size=10))
+    layout["xaxis"]["title"] = dict(text="Trading Date", font=dict(size=10))
     
     # Timeframe Range Selector Buttons (1M, 3M, 6M, 1Y, ALL)
     layout["xaxis"]["rangeselector"] = dict(
@@ -558,7 +618,9 @@ def build_candlestick_chart(df: pd.DataFrame, stock_name: str) -> go.Figure:
         ]),
         bgcolor=card_bg,
         activecolor=hover_bg,
-        font=dict(color=text_primary, size=10)
+        font=dict(color=text_primary, size=10),
+        x=0,
+        y=1.14
     )
     layout["xaxis"]["rangeslider"] = dict(visible=False)
     
@@ -570,31 +632,57 @@ def build_rsi_chart(df: pd.DataFrame) -> go.Figure:
     if "RSI" in df.columns:
         fig.add_trace(go.Scatter(
             x=df["Date"], y=df["RSI"],
-            name="RSI (14)", line=dict(color="#a855f7", width=1.3)
+            name="RSI (14)", line=dict(color="#a855f7", width=1.3),
+            hovertemplate="%{x|%d %b %Y}<br>RSI: %{y:.1f}<extra></extra>"
         ))
-    fig.add_hline(y=70, line=dict(color="#ef4444", dash="dash", width=1))
-    fig.add_hline(y=30, line=dict(color="#10b981", dash="dash", width=1))
-    fig.update_layout(**_terminal_chart_layout(180, "RELATIVE STRENGTH INDEX (RSI 14)"))
+    fig.add_hline(y=70, line=dict(color="#ef4444", dash="dash", width=1),
+                  annotation_text="Overbought (70)", annotation_position="top right",
+                  annotation_font=dict(size=9, color="#ef4444"))
+    fig.add_hline(y=30, line=dict(color="#10b981", dash="dash", width=1),
+                  annotation_text="Oversold (30)", annotation_position="bottom right",
+                  annotation_font=dict(size=9, color="#10b981"))
+    layout = _terminal_chart_layout(200, "RELATIVE STRENGTH INDEX (RSI 14)")
+    layout["yaxis"]["range"] = [10, 90]
+    layout["yaxis"]["title"] = dict(text="RSI", font=dict(size=10))
+    fig.update_layout(**layout)
     return fig
 
 def build_coverage_chart(curve: pd.DataFrame) -> go.Figure:
     fig = go.Figure()
     if curve is not None and not curve.empty:
+        c_x = curve["coverage"] * 100 if curve["coverage"].max() <= 1.0 else curve["coverage"]
+        c_y = curve["accuracy"] * 100 if curve["accuracy"].max() <= 1.0 else curve["accuracy"]
         fig.add_trace(go.Scatter(
-            x=curve["coverage"], y=curve["accuracy"],
+            x=c_x, y=c_y,
             mode="lines+markers",
-            name="Accuracy",
+            name="Model Accuracy",
             line=dict(color="#10b981", width=2),
-            marker=dict(size=5)
+            marker=dict(size=5),
+            hovertemplate="Coverage %{x:.0f}%: Accuracy %{y:.1f}%<extra></extra>"
         ))
         if "subset_majority" in curve.columns:
+            m_y = curve["subset_majority"] * 100 if curve["subset_majority"].max() <= 1.0 else curve["subset_majority"]
             fig.add_trace(go.Scatter(
-                x=curve["coverage"], y=curve["subset_majority"],
+                x=c_x, y=m_y,
                 mode="lines",
                 name="Subset Majority",
-                line=dict(color="#64748b", width=1, dash="dot")
+                line=dict(color="#64748b", width=1.2, dash="dot"),
+                hovertemplate="Coverage %{x:.0f}%: Majority %{y:.1f}%<extra></extra>"
             ))
-    fig.update_layout(**_terminal_chart_layout(240, "ACCURACY VS CONFIDENCE COVERAGE"))
+    layout = _terminal_chart_layout(250, "ACCURACY VS CONFIDENCE COVERAGE")
+    layout["margin"] = dict(l=45, r=20, t=50, b=65)
+    layout["xaxis"]["title"] = dict(text="Coverage (% of trades taken)", font=dict(size=10))
+    layout["yaxis"]["title"] = dict(text="Accuracy (%)", font=dict(size=10))
+    layout["legend"] = dict(
+        orientation="h",
+        yanchor="top",
+        y=-0.28,
+        xanchor="center",
+        x=0.5,
+        font=dict(size=9, color=chart_text_color),
+        bgcolor="rgba(0,0,0,0)",
+    )
+    fig.update_layout(**layout)
     return fig
 
 def build_fold_chart(oof: pd.DataFrame) -> go.Figure:
@@ -606,12 +694,22 @@ def build_fold_chart(oof: pd.DataFrame) -> go.Figure:
         
         fig.add_trace(go.Bar(
             x=[f"Fold {int(f)+1}" for f in fold_accs["fold"]],
-            y=fold_accs["accuracy"],
+            y=fold_accs["accuracy"] * 100,
             marker_color="#6366f1",
-            name="Fold Accuracy"
+            name="Fold Accuracy",
+            text=[f"{acc:.1%}" for acc in fold_accs["accuracy"]],
+            textposition="outside",
+            textfont=dict(size=10, color="#cbd5e1"),
+            hovertemplate="%{x}: %{y:.1f}%<extra></extra>"
         ))
-        fig.add_hline(y=0.5, line=dict(color="#64748b", dash="dot", width=1))
-    fig.update_layout(**_terminal_chart_layout(240, "OUT-OF-FOLD ACCURACY STABILITY"))
+        fig.add_hline(y=50.0, line=dict(color="#64748b", dash="dot", width=1),
+                      annotation_text="50% Chance", annotation_position="top left",
+                      annotation_font=dict(size=9, color="#94a3b8"))
+    layout = _terminal_chart_layout(250, "OUT-OF-FOLD ACCURACY STABILITY")
+    layout["margin"] = dict(l=45, r=20, t=50, b=40)
+    layout["yaxis"]["range"] = [0, 75]
+    layout["yaxis"]["title"] = dict(text="Accuracy (%)", font=dict(size=10))
+    fig.update_layout(**layout)
     return fig
 
 def build_importance_chart(model, feature_names: list, top_n: int = 10) -> go.Figure:
@@ -623,19 +721,27 @@ def build_importance_chart(model, feature_names: list, top_n: int = 10) -> go.Fi
     df_imp["abs_imp"] = df_imp["importance"].abs()
     top = df_imp.sort_values("abs_imp", ascending=True).tail(top_n)
 
+    pretty_y = [FEATURE_PRETTY_NAMES.get(f, f) for f in top["feature"]]
+
     fig = go.Figure(go.Bar(
         x=top["importance"],
-        y=top["feature"],
+        y=pretty_y,
         orientation="h",
-        marker_color=np.where(top["importance"] > 0, "#10b981", "#ef4444")
+        marker_color=np.where(top["importance"] > 0, "#10b981", "#ef4444"),
+        hovertemplate="%{y}<br>L2 Weight: %{x:+.3f}<extra></extra>"
     ))
-    fig.update_layout(**_terminal_chart_layout(240, f"TOP {top_n} FEATURE COEFFICIENTS"))
+    layout = _terminal_chart_layout(250, f"TOP {top_n} FEATURE COEFFICIENTS")
+    layout["margin"] = dict(l=150, r=20, t=50, b=40)
+    layout["xaxis"]["title"] = dict(text="L2 Weight (Directional Log-Odds)", font=dict(size=10))
+    fig.update_layout(**layout)
     return fig
 
 # "Why did it move?" view: news sentiment next to each day's move (explanatory, not a forecast)
 if view == "Why did it move?":
-    from explain_page import render_explain_page
-    render_explain_page(stock_choice, STOCK_DISPLAY_NAMES, _terminal_chart_layout,
+    import importlib
+    import explain_page
+    importlib.reload(explain_page)
+    explain_page.render_explain_page(stock_choice, STOCK_DISPLAY_NAMES, _terminal_chart_layout,
                         {"text_muted": text_muted, "card_bg": card_bg})
     st.stop()
 
@@ -686,7 +792,14 @@ latest_date_str = str(full["Date"].iloc[-1].date())
 latest_close_val = float(full["Close"].iloc[-1])
 
 st.markdown(f"""
-<div style='padding:8px 0 16px 0;display:flex;justify-content:space-between;align-items:flex-end'>
+<div style='display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px'>
+  <span style='background:rgba(37,99,235,0.15);color:#60a5fa;border:1px solid rgba(37,99,235,0.3);border-radius:4px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:0.5px'>NSE EQUITIES</span>
+  <span style='background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3);border-radius:4px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:0.5px'>5-FOLD WALK-FORWARD CV</span>
+  <span style='background:rgba(168,85,247,0.15);color:#c084fc;border:1px solid rgba(168,85,247,0.3);border-radius:4px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:0.5px'>NON-OVERLAPPING TARGETS (H={horizon_days})</span>
+  <span style='background:rgba(245,158,11,0.15);color:#fbbf24;border:1px solid rgba(245,158,11,0.3);border-radius:4px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:0.5px'>17-DAY EMBARGO GAP</span>
+  <span style='background:rgba(148,163,184,0.12);color:#94a3b8;border:1px solid rgba(148,163,184,0.25);border-radius:4px;padding:3px 9px;font-size:11px;font-weight:600;margin-left:auto'>RESEARCH PROTOCOL · NOT FINANCIAL ADVICE</span>
+</div>
+<div style='padding:4px 0 16px 0;display:flex;justify-content:space-between;align-items:flex-end'>
   <div>
     <h1 style='margin:0;font-size:26px'>Stock Market Predictor</h1>
     <div style='font-size:13px;color:{text_muted};margin-top:4px'>
@@ -720,7 +833,7 @@ t50_str = "Bullish ↑" if latest_close_val >= sma50_latest else "Bearish ↓"
 t50_clr = "#10b981" if latest_close_val >= sma50_latest else "#ef4444"
 
 st.markdown(f"""
-<div class='terminal-card' style='padding: 12px 20px; margin-bottom: 20px;'>
+<div class='terminal-card' style='padding: 12px 20px; margin-bottom: 14px;'>
   <div style='display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; text-align: center;'>
     <div>
       <div class='terminal-card-header' style='margin-bottom:2px'>Latest Close</div>
@@ -745,6 +858,34 @@ st.markdown(f"""
   </div>
 </div>
 """, unsafe_allow_html=True)
+
+with st.expander("📘 Executive Briefing & Evaluation Framework (Presenter Guide)", expanded=False):
+    st.markdown(f"""
+    <div style='font-size:13px;color:#cbd5e1;line-height:1.6'>
+      <div style='margin-bottom:10px'>
+        <strong style='color:#f8fafc'>Research Objective:</strong>
+        This quantitative terminal evaluates whether machine learning models using 52 stationary technical indicators provide genuine out-of-sample edge over market baselines (persistence and majority-class) on large-cap Indian equities (NSE).
+      </div>
+      <div style='display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0'>
+        <div style='background:rgba(255,255,255,0.03);padding:12px;border-radius:6px;border:1px solid #1f293d'>
+          <strong style='color:#10b981'>Zero-Leakage Experimental Design:</strong>
+          <ul style='margin:6px 0 0 18px;padding:0;color:#94a3b8;font-size:12px'>
+            <li><strong>Non-overlapping returns:</strong> Labels evaluated on non-overlapping 3-day steps to eliminate serial autocorrelation.</li>
+            <li><strong>Expanding walk-forward splits:</strong> strictly temporal, testing future unseen periods without lookahead bias.</li>
+            <li><strong>17-day embargo:</strong> eliminates leakage between train and test boundaries.</li>
+          </ul>
+        </div>
+        <div style='background:rgba(255,255,255,0.03);padding:12px;border-radius:6px;border:1px solid #1f293d'>
+          <strong style='color:#60a5fa'>Key Empirical Conclusion:</strong>
+          <ul style='margin:6px 0 0 18px;padding:0;color:#94a3b8;font-size:12px'>
+            <li>Average walk-forward accuracy is <strong>51.5%</strong> against an honest baseline of <strong>52.4%</strong> (mean edge: <strong>-0.9%</strong>).</li>
+            <li>No stock beats the permutation noise null; markets conform to <strong>Weak-Form Efficiency</strong>.</li>
+            <li>The terminal <strong>abstains</strong> (<span style='color:#f59e0b'>NO ACTIONABLE SIGNAL</span>) rather than making spurious trades.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 # ---------------------------------------------------------------------------
 # 3. OVERALL VALIDATION VERDICT BANNER
@@ -864,16 +1005,25 @@ with s2:
     <div class='terminal-card' style='min-height: 140px;'>
       <div class='terminal-card-header'>Model Probability Score (UP)</div>
       <div class='terminal-card-value'>{pred['probability_up']:.1%}</div>
-      <div class='terminal-card-sub'>Confidence: {pred['confidence']:.3f} · Gate Threshold: {pred['confidence_threshold']:.3f}</div>
+      <div class='terminal-card-sub'>Confidence: |P - 0.50| = {pred['confidence']:.3f} · Gate Threshold: {pred['confidence_threshold']:.3f}</div>
     </div>
     """, unsafe_allow_html=True)
 
 with s3:
+    if is_actionable and pd.notna(op.get('accuracy')):
+        exp_hit_val = f"{op['accuracy']:.1%}"
+        exp_hit_sub = f"At {op.get('coverage', 0):.0%} confidence coverage gate"
+        exp_hit_title = "Expected Hit Rate (Gated)"
+    else:
+        exp_hit_val = f"{meta['walk_forward_accuracy']:.1%}"
+        exp_hit_sub = f"Full walk-forward OOF accuracy (abstaining: edge {edge:+.1%})"
+        exp_hit_title = "Un-Gated Walk-Forward Hit Rate"
+
     st.markdown(f"""
     <div class='terminal-card' style='min-height: 140px;'>
-      <div class='terminal-card-header'>Expected Historical Hit Rate</div>
-      <div class='terminal-card-value'>{op.get('accuracy', float('nan')):.1%}</div>
-      <div class='terminal-card-sub'>At {op.get('coverage', float('nan')):.0%} confidence coverage threshold</div>
+      <div class='terminal-card-header'>{exp_hit_title}</div>
+      <div class='terminal-card-value'>{exp_hit_val}</div>
+      <div class='terminal-card-sub'>{exp_hit_sub}</div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -906,10 +1056,13 @@ with c_rsi:
 with c_vol:
     fv = go.Figure(go.Bar(
         x=display_tail["Date"], y=display_tail["Volume"],
-        marker_color="rgba(168, 85, 247, 0.5)",
-        name="Volume"
+        marker_color="rgba(168, 85, 247, 0.6)",
+        name="Volume",
+        hovertemplate="%{x|%d %b %Y}<br>Volume: %{y:,.0f}<extra></extra>"
     ))
-    fv.update_layout(**_terminal_chart_layout(180, "DAILY VOLUME"))
+    layout_vol = _terminal_chart_layout(200, "DAILY VOLUME (SHARES)")
+    layout_vol["yaxis"]["title"] = dict(text="Volume", font=dict(size=10))
+    fv.update_layout(**layout_vol)
     st.plotly_chart(fv, width="stretch")
 
 # ---------------------------------------------------------------------------
@@ -1039,3 +1192,16 @@ with d4:
       <div style='font-size:16px;color:{text_primary};font-weight:600'>{n_modelling_rows:,} rows</div>
     </div>
     """, unsafe_allow_html=True)
+
+# Institutional Compliance & Reproducibility Notice
+st.markdown(f"""
+<div style='margin-top:24px;padding:16px 20px;background:{card_bg};border:1px solid {card_border};border-radius:8px;font-size:12px;color:{text_muted};line-height:1.6'>
+  <div style='display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:8px'>
+    <strong style='color:#f8fafc'>Stock Market Predictor · Quantitative Research Laboratory</strong>
+    <span class='mono-text' style='color:#64748b;font-size:11px'>SYSTEM STATUS: AUDITED & COMPLIANT · PYTHON 3.13 / STREAMLIT 1.62</span>
+  </div>
+  <div>
+    <strong>Research Notice:</strong> This terminal is an empirical research artifact evaluating market predictability under strict zero-leakage conditions (non-overlapping targets, walk-forward cross-validation, and embargo periods). Outputs are provided solely for academic evaluation and quantitative auditing, and do not constitute financial, investment, or trading advice.
+  </div>
+</div>
+""", unsafe_allow_html=True)

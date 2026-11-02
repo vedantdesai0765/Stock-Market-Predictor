@@ -3,9 +3,39 @@
 __pycache__/
 *.pyc
 
-# Ignore environment and editor files
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Ignore environment and secret files
 .env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+client_secret*.json
+token.json
+
+# Editor and OS files
 .vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Build and test artifacts
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
 
 # Keep processed datasets and model dirs tracked (app.py reads them at startup)
 data/processed/*.png
