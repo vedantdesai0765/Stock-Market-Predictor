@@ -96,6 +96,20 @@ This interface maps daily returns against company-targeted news headlines and NS
 | **10 Stocks Pooled: Same-day news correlation** | 0.059 | **0.032** ($p = 0.0044$) |
 | **10 Stocks Pooled: Next-day news correlation** | 0.019 | **0.013** (n.s.) |
 
+### 5. "Next-Morning Forecast" — Where a Genuine Signal Exists
+
+The third dashboard view (`src/forecast_page.py`, tables from `scripts/build_forecast_results.py`) shows, **stock by stock**,
+how well tomorrow's direction is predicted with information available before 09:15 IST: the stock's own indicators, the Nifty,
+the S&P 500 overnight return, the VIX and the Asian opening moves. All numbers are walk-forward (never-seen years), logistic regression:
+
+| Prediction (2013–2025, 10 stocks) | Model | Simple guess | Gain | Stocks with a significant signal | Adding company news |
+|---|---|---|---|---|---|
+| Next morning's opening price | 70.6% | 63.5% | +7.1 pts (p < 0.001) | 9 of 10 | −0.03 pts (n.s.) |
+| Next day's closing price | 56.2% | 51.6% | +4.7 pts (p < 0.001) | 7 of 10 | −0.07 pts (n.s.) |
+
+The signal comes from overnight world markets, not from news. These are tested historical results, not a live
+forecast, and a forecast made before the open cannot be traded at the previous close.
+
 ---
 
 ## Seven Models Evaluated
@@ -213,7 +227,7 @@ Then, in order:
 | `04_model_training_and_artifacts.ipynb` | Train and save models |
 
 ```bash
-streamlit run app.py            # dashboard: 'Prediction terminal' and 'Why did it move?' views
+streamlit run app.py            # dashboard: 'Prediction terminal', 'Why did it move?' and 'Next-morning forecast' views
 ```
 
 Sentiment study (uses the shipped scored news, no re-download needed):
@@ -254,9 +268,11 @@ src/                  Main pipeline
   sentiment_analysis.py  Legacy NewsAPI/VADER/FinBERT scorer (kept for reference)
   validate.py         Project health check
   explain_page.py     Dashboard view "Why did it move?"
+  forecast_page.py    Dashboard view "Next-morning forecast" (stock by stock)
 scripts/
   extend_history_2000.py      Extend stocks back to 2000, rebuild datasets, retrain
   fix_raw_data.py             Remove holiday filler rows, adjust demergers, retrain
+  build_forecast_results.py   Tables for the "Next-morning forecast" view (reports/forecast/)
   company_sentiment_ablation.py  With vs without each stock's own sentiment
   phase1_audit.py             Data / artifact / config consistency audit
 data/

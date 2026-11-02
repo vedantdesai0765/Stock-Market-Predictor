@@ -86,13 +86,16 @@ with st.sidebar:
     default_view_idx = 0
     if "view" in st.query_params and st.query_params["view"] in ("explain", "why_did_it_move"):
         default_view_idx = 1
+    if "view" in st.query_params and st.query_params["view"] in ("forecast", "next_morning"):
+        default_view_idx = 2
 
     view = st.radio(
         "View",
-        options=["Prediction terminal", "Why did it move?"],
+        options=["Prediction terminal", "Why did it move?", "Next-morning forecast"],
         index=default_view_idx,
         label_visibility="collapsed",
-        help="'Why did it move?' shows each day's news about the company next to that day's price move.",
+        help="'Why did it move?' shows each day's news next to that day's price move. "
+             "'Next-morning forecast' shows how well tomorrow's direction is predicted using overnight world markets.",
     )
 
     st.markdown("<div style='margin-top:24px;' class='sidebar-group-title'>VALIDATION METHODOLOGY</div>", unsafe_allow_html=True)
@@ -743,6 +746,15 @@ if view == "Why did it move?":
     importlib.reload(explain_page)
     explain_page.render_explain_page(stock_choice, STOCK_DISPLAY_NAMES, _terminal_chart_layout,
                         {"text_muted": text_muted, "card_bg": card_bg})
+    st.stop()
+
+# "Next-morning forecast" view: next-day / opening-price direction from overnight world markets (stock by stock)
+if view == "Next-morning forecast":
+    import importlib
+    import forecast_page
+    importlib.reload(forecast_page)
+    forecast_page.render_forecast_page(stock_choice, STOCK_DISPLAY_NAMES, _terminal_chart_layout,
+                                       {"text_muted": text_muted, "card_bg": card_bg})
     st.stop()
 
 # Check Artifact Existence

@@ -1,0 +1,5 @@
+task,n,acc_guess,acc_model,acc_news,edge,p_vs_guess,news_effect,p_news
+Sensex: next morning's opening price (2009–2022),3239,0.71349,0.80086,0.7879,0.08737,0.0,-0.01297,0.00097
+Sensex: next day's closing price (2009–2022),3248,0.5311,0.5859,0.58467,0.0548,0.0,-0.00123,0.88878
+Sensex: will tomorrow be more volatile than today?,3244,0.58755,0.63841,0.64026,0.05086,0.0,0.00185,0.77506
+US Dow Jones: next opening price (news to 09:00 New York),5785,0.54226,0.5433,0.56854,0.00104,0.74897,0.02524,0.00039
