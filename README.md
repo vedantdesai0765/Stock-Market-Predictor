@@ -11,6 +11,36 @@ reported.
 
 ---
 
+## Modern Platform Architecture (Phase 6 Final Release)
+
+The project has evolved into a production-grade financial analytics terminal and risk-free paper trading platform:
+
+- **Next.js 14 Frontend (`http://localhost:3000`):** Institutional UI terminal built with React 19, TypeScript, Tailwind CSS, shadcn/ui, and Recharts. Includes responsive mobile navigation.
+- **FastAPI Backend (`http://127.0.0.1:8000`):** REST API service layer exposing ML predictions, walk-forward forecasting, FinBERT news explainability, and paper trading database operations. Interactive Swagger documentation at `/docs`.
+- **Virtual Portfolio & Paper Trading:** Simulated wallet with ₹1,00,000 virtual capital, 7.5 bps Indian delivery friction, and 2-step order execution modal with atomic reset.
+- **Actionable Trading Signals:** 5 systematic strategy variants (A–E) enforcing a 15 bps round-trip friction hurdle. One-click "Simulate Trade with Signal →" execution.
+- **Legacy Streamlit Terminal (`http://localhost:8501`):** Standalone research dashboard maintained for backward compatibility.
+- **Verified Quality & Security:** 25 passing pytest unit/integration tests and automated Puppeteer browser integration audits with 0 console errors.
+
+### Quick Start Commands (Windows PowerShell)
+
+```powershell
+# 1. Start FastAPI Backend (Terminal 1)
+.venv\Scripts\Activate.ps1
+uvicorn backend.app.main:app --host 127.0.0.1 --port 8000
+
+# 2. Start Next.js Frontend (Terminal 2)
+cd frontend
+npm run start
+
+# 3. Run Backend Test Suite (Terminal 3)
+.venv\Scripts\python.exe -m pytest backend/tests -v
+```
+
+See [FINAL_HANDOVER.md](FINAL_HANDOVER.md) and [reports/deployment_guide.md](reports/deployment_guide.md) for full operational instructions.
+
+---
+
 ## Headline results
 
 ### 1. 10-Stock Predictor Pipeline (2000–2026 Expanded History)

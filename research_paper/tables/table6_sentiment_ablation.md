@@ -1,0 +1,24 @@
+# Table 6: Company-Targeted Sentiment Ablation Across 10 Equities (Times of India & NSE Filings)
+
+| stock | window | model | rows | news_days | acc_without | acc_with | delta | auc_without | auc_with | majority_edge_with | p_mcnemar | note |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| TCS | headlines | logistic | 1405 | 959 | 0.5308 | 0.5306 | -0.0002 | 0.516 | 0.5059 | -0.007 | 1.0 | nan |
+| TCS | filings | logistic | 1492 | 1124 | 0.5095 | 0.5148 | 0.0053 | 0.5216 | 0.5262 | 0.0027 | 0.694 | nan |
+| RELIANCE | headlines | logistic | 1790 | 2127 | 0.5017 | 0.5039 | 0.0022 | 0.4982 | 0.4969 | -0.0179 | 0.8642 | nan |
+| RELIANCE | filings | logistic | 1490 | 784 | 0.4913 | 0.4953 | 0.004 | 0.4893 | 0.4952 | -0.0081 | 0.766 | nan |
+| INFY | headlines | logistic | 1793 | 1682 | 0.5586 | 0.5586 | 0.0 | 0.5596 | 0.5599 | -0.002 | 1.0 | nan |
+| INFY | filings | logistic | 1491 | 918 | 0.5496 | 0.5523 | 0.0027 | 0.5494 | 0.5425 | 0.0107 | 0.8555 | nan |
+| HDFCBANK | headlines | logistic | 1791 | 316 | 0.5156 | 0.5168 | 0.0012 | 0.5182 | 0.5134 | -0.0145 | 1.0 | nan |
+| HDFCBANK | filings | logistic | 1490 | 336 | 0.5302 | 0.5289 | -0.0013 | 0.5159 | 0.5186 | 0.0054 | 1.0 | nan |
+| SBI | headlines | logistic | 1789 | 1479 | 0.495 | 0.5196 | 0.0246 | 0.5075 | 0.5222 | -0.0112 | 0.1152 | nan |
+| SBI | filings | logistic | 1489 | 615 | 0.5235 | 0.5342 | 0.0107 | 0.5468 | 0.5443 | 0.0336 | 0.3409 | nan |
+| ITC | headlines | logistic | 1790 | 377 | 0.5162 | 0.5173 | 0.0011 | 0.5218 | 0.5294 | 0.0101 | 1.0 | nan |
+| ITC | filings | logistic | 1486 | 303 | 0.4806 | 0.4954 | 0.0148 | 0.4991 | 0.5005 | -0.0027 | 0.1352 | nan |
+| ADANIENT | headlines | logistic | 1412 | 470 | 0.5227 | 0.5128 | -0.0099 | 0.5307 | 0.5252 | 0.0764 | 0.2649 | nan |
+| ADANIENT | filings | logistic | 1492 | 510 | 0.492 | 0.4826 | -0.0094 | 0.4916 | 0.491 | -0.0482 | 0.3368 | nan |
+| VEDL | headlines | logistic | 1785 | 407 | 0.4971 | 0.5061 | 0.009 | 0.4928 | 0.4862 | -0.0076 | 0.3742 | nan |
+| VEDL | filings | logistic | 1488 | 611 | 0.5079 | 0.5012 | -0.0067 | 0.4951 | 0.4887 | 0.0082 | 0.653 | nan |
+| ETERNAL | headlines | - | 16 | 4 | nan | nan | nan | nan | nan | nan | nan | too little data/news |
+| ETERNAL | filings | logistic | 375 | 130 | 0.5636 | 0.5586 | -0.005 | 0.5575 | 0.5585 | 0.0449 | 1.0 | nan |
+| ADANIGREEN | headlines | logistic | 263 | 28 | 0.5637 | 0.5407 | -0.023 | 0.4911 | 0.458 | -0.0132 | 0.375 | nan |
+| ADANIGREEN | filings | logistic | 619 | 192 | 0.4839 | 0.4806 | -0.0033 | 0.4934 | 0.4897 | 0.0129 | 1.0 | nan |

@@ -47,3 +47,11 @@ ipython==9.10.0
 jupyter_client==8.8.0
 jupyter_core==5.9.1
 nbformat>=5.10
+
+# --- backend API & database (Phase 1) ---
+fastapi
+uvicorn>=0.30.0
+pydantic>=2.7.0
+sqlalchemy>=2.0.0
+pytest>=8.0.0
+httpx>=0.27.0

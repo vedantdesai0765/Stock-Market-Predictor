@@ -1,0 +1,19 @@
+{
+  "pagesTested": [],
+  "workflowsTested": [
+    {
+      "workflow": "Virtual Portfolio Full Lifecycle (Empty -> Buy Order -> Holdings -> Analytics -> Signals Link -> Mobile)",
+      "status": "PASS"
+    }
+  ],
+  "screenshotsCaptured": [
+    "11_portfolio_dashboard_empty.png",
+    "12_portfolio_buy_modal.png",
+    "13_portfolio_with_holdings.png",
+    "14_portfolio_analytics.png",
+    "15_signals_with_trade_modal.png",
+    "16_portfolio_mobile.png"
+  ],
+  "consoleErrors": [],
+  "pageErrors": []
+}

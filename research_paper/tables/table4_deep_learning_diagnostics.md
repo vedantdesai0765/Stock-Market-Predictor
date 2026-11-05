@@ -1,0 +1,16 @@
+# Table 4: Deep Learning Sequence Model Performance and Diagnostic Failure Analysis
+
+| Scope | Architecture | Formulation | Direction_Acc | Net_Edge | RMSE_Model | RMSE_Persistence | RMSE_ZeroReturn | Shrinkage_Factor | Beats_Zero |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| TCS (2004-2026) | PyTorch LSTM | 3-Day Regressor | 49.33% | -2.46% | 0.013117 | 0.018418 | 0.013069 | 0.0962 | False |
+| TCS (2004-2026) | PyTorch GRU | 3-Day Regressor | 51.24% | -0.55% | 0.013248 | 0.018418 | 0.013069 | 0.1196 | False |
+| RELIANCE (2000-2026) | PyTorch LSTM | 3-Day Regressor | 50.22% | -1.64% | 0.009109 | 0.012354 | 0.008930 | 0.1849 | False |
+| RELIANCE (2000-2026) | PyTorch GRU | 3-Day Regressor | 50.65% | -1.21% | 0.009133 | 0.012354 | 0.008930 | 0.1926 | False |
+| India SENSEX (Next-Day) | PyTorch LSTM | 1-Day Classifier (T) | 51.91% | -1.20% | — | — | — | — | — |
+| India SENSEX (Next-Day) | PyTorch LSTM | 1-Day Classifier (T+S) | 52.16% | -0.95% | — | — | — | — | — |
+| India SENSEX (Next-Day) | PyTorch GRU | 1-Day Classifier (T) | 52.89% | -0.22% | — | — | — | — | — |
+| India SENSEX (Next-Day) | PyTorch GRU | 1-Day Classifier (T+S) | 51.82% | -1.29% | — | — | — | — | — |
+| US S&P 500 (Next-Day) | PyTorch LSTM | 1-Day Classifier (T) | 53.34% | -0.36% | — | — | — | — | — |
+| US S&P 500 (Next-Day) | PyTorch LSTM | 1-Day Classifier (T+S) | 53.36% | -0.34% | — | — | — | — | — |
+| US S&P 500 (Next-Day) | PyTorch GRU | 1-Day Classifier (T) | 53.43% | -0.27% | — | — | — | — | — |
+| US S&P 500 (Next-Day) | PyTorch GRU | 1-Day Classifier (T+S) | 52.51% | -1.19% | — | — | — | — | — |

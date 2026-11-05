@@ -1,0 +1,85 @@
+{
+  "pagesTested": [
+    {
+      "name": "Overview",
+      "path": "/",
+      "status": "PASS"
+    },
+    {
+      "name": "Prediction Terminal",
+      "path": "/prediction",
+      "status": "PASS"
+    },
+    {
+      "name": "Next-Morning Forecast",
+      "path": "/forecast",
+      "status": "PASS"
+    },
+    {
+      "name": "Why Did It Move?",
+      "path": "/explain",
+      "status": "PASS"
+    },
+    {
+      "name": "Actionable Signals",
+      "path": "/signals",
+      "status": "PASS"
+    }
+  ],
+  "stocksTested": [
+    {
+      "stock": "ETERNAL",
+      "status": "PASS",
+      "screenshot": "10_signals_eternal.png"
+    },
+    {
+      "stock": "ADANIGREEN",
+      "status": "PASS",
+      "screenshot": "10_signals_adanigreen.png"
+    },
+    {
+      "stock": "RELIANCE",
+      "status": "PASS",
+      "screenshot": "10_signals_reliance.png"
+    }
+  ],
+  "interactionsTested": [
+    {
+      "action": "Switch to Variant E & 30.0 bps Friction",
+      "variantEClicked": true,
+      "friction30Clicked": true,
+      "status": "PASS"
+    },
+    {
+      "action": "Click Bullish (+) Sentiment Filter Tab",
+      "bullishFilterClicked": true,
+      "status": "PASS"
+    }
+  ],
+  "screenshotsCaptured": [
+    "01_overview_page.png",
+    "02_prediction_terminal.png",
+    "03_forecast_page.png",
+    "04_explain_page.png",
+    "05_signals_page.png",
+    "06_signals_variant_e_30bps.png",
+    "07_explain_bullish_filter.png",
+    "10_signals_eternal.png",
+    "10_signals_adanigreen.png",
+    "10_signals_reliance.png",
+    "08_prediction_mobile.png",
+    "09_signals_mobile.png"
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "responsiveChecks": [
+    {
+      "viewport": "375x667",
+      "pages": [
+        "/prediction",
+        "/signals"
+      ],
+      "status": "PASS"
+    }
+  ]
+}

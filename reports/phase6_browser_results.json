@@ -1,0 +1,95 @@
+{
+  "pagesTested": [
+    {
+      "route": "/",
+      "status": "PASS"
+    },
+    {
+      "route": "/references",
+      "status": "PASS"
+    },
+    {
+      "route": "/settings",
+      "status": "PASS"
+    },
+    {
+      "route": "/prediction",
+      "status": "PASS"
+    },
+    {
+      "route": "/forecast",
+      "status": "PASS"
+    },
+    {
+      "route": "/explain",
+      "status": "PASS"
+    },
+    {
+      "route": "/signals",
+      "status": "PASS"
+    },
+    {
+      "route": "/portfolio",
+      "status": "PASS"
+    }
+  ],
+  "stocksTested": [
+    {
+      "ticker": "TCS",
+      "status": "PASS"
+    },
+    {
+      "ticker": "RELIANCE",
+      "status": "PASS"
+    },
+    {
+      "ticker": "INFY",
+      "status": "PASS"
+    },
+    {
+      "ticker": "HDFCBANK",
+      "status": "PASS"
+    },
+    {
+      "ticker": "SBI",
+      "status": "PASS"
+    },
+    {
+      "ticker": "ITC",
+      "status": "PASS"
+    },
+    {
+      "ticker": "ADANIENT",
+      "status": "PASS"
+    },
+    {
+      "ticker": "VEDL",
+      "status": "PASS"
+    },
+    {
+      "ticker": "ETERNAL",
+      "status": "PASS"
+    },
+    {
+      "ticker": "ADANIGREEN",
+      "status": "PASS"
+    }
+  ],
+  "workflowsTested": [
+    {
+      "workflow": "Full Platform End-to-End Audit (8 Routes, 10 Stocks, Reset Modal, Methodologies)",
+      "status": "PASS"
+    }
+  ],
+  "screenshotsCaptured": [
+    "22_overview_dashboard.png",
+    "17_references_academic.png",
+    "18_references_methodology.png",
+    "19_references_coverage.png",
+    "20_settings_diagnostics.png",
+    "21_settings_reset_modal.png",
+    "23_prediction_terminal_all_stocks.png"
+  ],
+  "consoleErrors": [],
+  "pageErrors": []
+}

@@ -1,0 +1,512 @@
+{
+  "ADANIENT": {
+    "ticker": "ADANIENT",
+    "checks": {
+      "prediction": {
+        "status": "PASS",
+        "close": 3110.0,
+        "date": "2026-08-25",
+        "prob_up": 0.4727,
+        "signal": "NO SIGNAL",
+        "confidence": 0.0273,
+        "features_count": 10
+      },
+      "forecast": {
+        "status": "PASS",
+        "best_model": "XGBoost",
+        "best_accuracy": 0.726,
+        "best_edge": 0.0804,
+        "summaries_count": 11,
+        "annual_count": 158
+      },
+      "news": {
+        "status": "PASS",
+        "total_articles": 1631,
+        "positive_count": 137,
+        "negative_count": 124,
+        "neutral_count": 1370,
+        "average_sentiment": 0.0458,
+        "timeline_points": 100,
+        "lead_lag_points": 30
+      },
+      "signals": {
+        "status": "PASS",
+        "variant_A_signal": "HOLD",
+        "regime": "TRENDING_BEAR",
+        "exp_gross_return": -0.0004,
+        "friction_bps_15": 0.0015,
+        "net_expectancy": 0.0
+      },
+      "backtest": {
+        "status": "PASS",
+        "cagr_strat": 0.4135,
+        "cagr_bh": 0.4866,
+        "sharpe": 0.8779,
+        "max_dd": 0.5115,
+        "profit_factor": 2.5025,
+        "win_rate": 0.5285,
+        "trade_count": 123,
+        "supports_short": true
+      }
+    }
+  },
+  "ADANIGREEN": {
+    "ticker": "ADANIGREEN",
+    "checks": {
+      "prediction": {
+        "status": "PASS",
+        "close": 1330.0,
+        "date": "2026-08-25",
+        "prob_up": 0.4615,
+        "signal": "NO SIGNAL",
+        "confidence": 0.0385,
+        "features_count": 10
+      },
+      "forecast": {
+        "status": "PASS",
+        "best_model": "LogReg",
+        "best_accuracy": 0.7247,
+        "best_edge": 0.0051,
+        "summaries_count": 11,
+        "annual_count": 62
+      },
+      "news": {
+        "status": "PASS",
+        "total_articles": 477,
+        "positive_count": 124,
+        "negative_count": 14,
+        "neutral_count": 339,
+        "average_sentiment": 0.1971,
+        "timeline_points": 100,
+        "lead_lag_points": 30
+      },
+      "signals": {
+        "status": "PASS",
+        "variant_A_signal": "HOLD",
+        "regime": "TRENDING_BEAR",
+        "exp_gross_return": -0.0014,
+        "friction_bps_15": 0.0015,
+        "net_expectancy": 0.0
+      },
+      "backtest": {
+        "status": "PASS",
+        "cagr_strat": 0.177,
+        "cagr_bh": -0.1217,
+        "sharpe": 0.3808,
+        "max_dd": 0.3027,
+        "profit_factor": 3.1762,
+        "win_rate": 0.5,
+        "trade_count": 12,
+        "supports_short": true
+      }
+    }
+  },
+  "ETERNAL": {
+    "ticker": "ETERNAL",
+    "checks": {
+      "prediction": {
+        "status": "PASS",
+        "close": 331.0,
+        "date": "2026-08-25",
+        "prob_up": 0.4097,
+        "signal": "NO SIGNAL",
+        "confidence": 0.0903,
+        "features_count": 10
+      },
+      "forecast": {
+        "status": "PASS",
+        "best_model": "LogReg",
+        "best_accuracy": 0.7063,
+        "best_edge": 0.0392,
+        "summaries_count": 6,
+        "annual_count": 24
+      },
+      "news": {
+        "status": "PASS",
+        "total_articles": 266,
+        "positive_count": 6,
+        "negative_count": 3,
+        "neutral_count": 257,
+        "average_sentiment": 0.0108,
+        "timeline_points": 100,
+        "lead_lag_points": 30
+      },
+      "signals": {
+        "status": "PASS",
+        "variant_A_signal": "HOLD",
+        "regime": "TRENDING_BULL",
+        "exp_gross_return": 0.0,
+        "friction_bps_15": 0.0015,
+        "net_expectancy": 0.0
+      },
+      "backtest": {
+        "status": "PASS",
+        "cagr_strat": 0.2565,
+        "cagr_bh": 0.2665,
+        "sharpe": 0.721,
+        "max_dd": 0.2956,
+        "profit_factor": 1.7516,
+        "win_rate": 0.6296,
+        "trade_count": 27,
+        "supports_short": true
+      }
+    }
+  },
+  "HDFCBANK": {
+    "ticker": "HDFCBANK",
+    "checks": {
+      "prediction": {
+        "status": "PASS",
+        "close": 727.5,
+        "date": "2026-08-25",
+        "prob_up": 0.642,
+        "signal": "UP",
+        "confidence": 0.142,
+        "features_count": 10
+      },
+      "forecast": {
+        "status": "PASS",
+        "best_model": "LightGBM",
+        "best_accuracy": 0.7179,
+        "best_edge": 0.1462,
+        "summaries_count": 11,
+        "annual_count": 158
+      },
+      "news": {
+        "status": "PASS",
+        "total_articles": 1060,
+        "positive_count": 137,
+        "negative_count": 47,
+        "neutral_count": 876,
+        "average_sentiment": 0.1283,
+        "timeline_points": 100,
+        "lead_lag_points": 30
+      },
+      "signals": {
+        "status": "PASS",
+        "variant_A_signal": "HOLD",
+        "regime": "TRENDING_BEAR",
+        "exp_gross_return": 0.0009,
+        "friction_bps_15": 0.0015,
+        "net_expectancy": 0.0
+      },
+      "backtest": {
+        "status": "PASS",
+        "cagr_strat": 0.0572,
+        "cagr_bh": 0.1279,
+        "sharpe": 0.0427,
+        "max_dd": 0.3555,
+        "profit_factor": 1.3687,
+        "win_rate": 0.5,
+        "trade_count": 124,
+        "supports_short": true
+      }
+    }
+  },
+  "INFY": {
+    "ticker": "INFY",
+    "checks": {
+      "prediction": {
+        "status": "PASS",
+        "close": 1144.0,
+        "date": "2026-08-25",
+        "prob_up": 0.5713,
+        "signal": "NO SIGNAL",
+        "confidence": 0.0713,
+        "features_count": 10
+      },
+      "forecast": {
+        "status": "PASS",
+        "best_model": "LightGBM",
+        "best_accuracy": 0.693,
+        "best_edge": 0.1159,
+        "summaries_count": 11,
+        "annual_count": 158
+      },
+      "news": {
+        "status": "PASS",
+        "total_articles": 5285,
+        "positive_count": 850,
+        "negative_count": 453,
+        "neutral_count": 3982,
+        "average_sentiment": 0.0949,
+        "timeline_points": 100,
+        "lead_lag_points": 30
+      },
+      "signals": {
+        "status": "PASS",
+        "variant_A_signal": "BUY",
+        "regime": "SIDEWAYS_CHOPPY",
+        "exp_gross_return": 0.0176,
+        "friction_bps_15": 0.0015,
+        "net_expectancy": 0.0161
+      },
+      "backtest": {
+        "status": "PASS",
+        "cagr_strat": 0.1063,
+        "cagr_bh": 0.1213,
+        "sharpe": 0.2588,
+        "max_dd": 0.3782,
+        "profit_factor": 1.5729,
+        "win_rate": 0.6461,
+        "trade_count": 178,
+        "supports_short": true
+      }
+    }
+  },
+  "ITC": {
+    "ticker": "ITC",
+    "checks": {
+      "prediction": {
+        "status": "PASS",
+        "close": 271.3999938964844,
+        "date": "2026-08-25",
+        "prob_up": 0.4194,
+        "signal": "NO SIGNAL",
+        "confidence": 0.0806,
+        "features_count": 10
+      },
+      "forecast": {
+        "status": "PASS",
+        "best_model": "LightGBM",
+        "best_accuracy": 0.7024,
+        "best_edge": 0.0735,
+        "summaries_count": 11,
+        "annual_count": 158
+      },
+      "news": {
+        "status": "PASS",
+        "total_articles": 1111,
+        "positive_count": 128,
+        "negative_count": 70,
+        "neutral_count": 913,
+        "average_sentiment": 0.0797,
+        "timeline_points": 100,
+        "lead_lag_points": 30
+      },
+      "signals": {
+        "status": "PASS",
+        "variant_A_signal": "HOLD",
+        "regime": "TRENDING_BEAR",
+        "exp_gross_return": 0.0001,
+        "friction_bps_15": 0.0015,
+        "net_expectancy": 0.0
+      },
+      "backtest": {
+        "status": "PASS",
+        "cagr_strat": 0.0454,
+        "cagr_bh": 0.0479,
+        "sharpe": -0.0408,
+        "max_dd": 0.1861,
+        "profit_factor": 1.1249,
+        "win_rate": 0.5481,
+        "trade_count": 104,
+        "supports_short": true
+      }
+    }
+  },
+  "RELIANCE": {
+    "ticker": "RELIANCE",
+    "checks": {
+      "prediction": {
+        "status": "PASS",
+        "close": 1298.0,
+        "date": "2026-08-26",
+        "prob_up": 0.337,
+        "signal": "DOWN",
+        "confidence": 0.163,
+        "features_count": 10
+      },
+      "forecast": {
+        "status": "PASS",
+        "best_model": "XGBoost",
+        "best_accuracy": 0.7426,
+        "best_edge": 0.1041,
+        "summaries_count": 11,
+        "annual_count": 158
+      },
+      "news": {
+        "status": "PASS",
+        "total_articles": 5049,
+        "positive_count": 580,
+        "negative_count": 488,
+        "neutral_count": 3981,
+        "average_sentiment": 0.0394,
+        "timeline_points": 100,
+        "lead_lag_points": 30
+      },
+      "signals": {
+        "status": "PASS",
+        "variant_A_signal": "HOLD",
+        "regime": "TRENDING_BULL",
+        "exp_gross_return": 0.0008,
+        "friction_bps_15": 0.0015,
+        "net_expectancy": 0.0
+      },
+      "backtest": {
+        "status": "PASS",
+        "cagr_strat": 0.0625,
+        "cagr_bh": 0.1627,
+        "sharpe": 0.1094,
+        "max_dd": 0.1632,
+        "profit_factor": 1.2482,
+        "win_rate": 0.5534,
+        "trade_count": 103,
+        "supports_short": true
+      }
+    }
+  },
+  "SBI": {
+    "ticker": "SBI",
+    "checks": {
+      "prediction": {
+        "status": "PASS",
+        "close": 1048.0,
+        "date": "2026-08-25",
+        "prob_up": 0.4929,
+        "signal": "DOWN",
+        "confidence": 0.0071,
+        "features_count": 10
+      },
+      "forecast": {
+        "status": "PASS",
+        "best_model": "XGBoost",
+        "best_accuracy": 0.7652,
+        "best_edge": 0.1189,
+        "summaries_count": 11,
+        "annual_count": 158
+      },
+      "news": {
+        "status": "PASS",
+        "total_articles": 3331,
+        "positive_count": 178,
+        "negative_count": 258,
+        "neutral_count": 2895,
+        "average_sentiment": -0.005,
+        "timeline_points": 100,
+        "lead_lag_points": 30
+      },
+      "signals": {
+        "status": "PASS",
+        "variant_A_signal": "BUY",
+        "regime": "TRENDING_BULL",
+        "exp_gross_return": 0.0023,
+        "friction_bps_15": 0.0015,
+        "net_expectancy": 0.0008
+      },
+      "backtest": {
+        "status": "PASS",
+        "cagr_strat": 0.0735,
+        "cagr_bh": 0.1571,
+        "sharpe": 0.1212,
+        "max_dd": 0.4689,
+        "profit_factor": 1.2558,
+        "win_rate": 0.5176,
+        "trade_count": 199,
+        "supports_short": true
+      }
+    }
+  },
+  "TCS": {
+    "ticker": "TCS",
+    "checks": {
+      "prediction": {
+        "status": "PASS",
+        "close": 2296.199951171875,
+        "date": "2026-08-25",
+        "prob_up": 0.4235,
+        "signal": "NO SIGNAL",
+        "confidence": 0.0765,
+        "features_count": 10
+      },
+      "forecast": {
+        "status": "PASS",
+        "best_model": "LogReg",
+        "best_accuracy": 0.6947,
+        "best_edge": 0.0738,
+        "summaries_count": 11,
+        "annual_count": 158
+      },
+      "news": {
+        "status": "PASS",
+        "total_articles": 4148,
+        "positive_count": 1271,
+        "negative_count": 241,
+        "neutral_count": 2636,
+        "average_sentiment": 0.2492,
+        "timeline_points": 100,
+        "lead_lag_points": 30
+      },
+      "signals": {
+        "status": "PASS",
+        "variant_A_signal": "HOLD",
+        "regime": "HIGH_VOLATILITY",
+        "exp_gross_return": 0.0003,
+        "friction_bps_15": 0.0015,
+        "net_expectancy": 0.0
+      },
+      "backtest": {
+        "status": "PASS",
+        "cagr_strat": 0.0843,
+        "cagr_bh": 0.0897,
+        "sharpe": 0.2062,
+        "max_dd": 0.3797,
+        "profit_factor": 1.4005,
+        "win_rate": 0.5541,
+        "trade_count": 157,
+        "supports_short": true
+      }
+    }
+  },
+  "VEDL": {
+    "ticker": "VEDL",
+    "checks": {
+      "prediction": {
+        "status": "PASS",
+        "close": 275.0,
+        "date": "2026-08-25",
+        "prob_up": 0.5253,
+        "signal": "UP",
+        "confidence": 0.0253,
+        "features_count": 10
+      },
+      "forecast": {
+        "status": "PASS",
+        "best_model": "LightGBM",
+        "best_accuracy": 0.7374,
+        "best_edge": 0.1213,
+        "summaries_count": 11,
+        "annual_count": 158
+      },
+      "news": {
+        "status": "PASS",
+        "total_articles": 1808,
+        "positive_count": 127,
+        "negative_count": 149,
+        "neutral_count": 1532,
+        "average_sentiment": 0.0263,
+        "timeline_points": 100,
+        "lead_lag_points": 30
+      },
+      "signals": {
+        "status": "PASS",
+        "variant_A_signal": "HOLD",
+        "regime": "TRENDING_BEAR",
+        "exp_gross_return": 0.0015,
+        "friction_bps_15": 0.0015,
+        "net_expectancy": 0.0
+      },
+      "backtest": {
+        "status": "PASS",
+        "cagr_strat": 0.0056,
+        "cagr_bh": 0.2305,
+        "sharpe": -0.2866,
+        "max_dd": 0.502,
+        "profit_factor": 0.7279,
+        "win_rate": 0.3721,
+        "trade_count": 43,
+        "supports_short": true
+      }
+    }
+  }
+}

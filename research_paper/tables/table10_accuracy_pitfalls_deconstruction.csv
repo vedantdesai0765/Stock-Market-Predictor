@@ -1,0 +1,10 @@
+Protocol,Valid_Setup,Reported_Metric,Nominal_Value,Mechanism
+Honest Out-of-Sample Walk-Forward (T+G+S),Yes,Direction Accuracy,57.24%,"Rigorous expanding walk-forward CV, non-overlapping labels, strict embargo."
+Same-Day Headline Polarity vs. Return,No,Direction Accuracy,76.96%,"Contemporaneous Lookahead: FinBERT scores headlines describing today's close (N=2,270)."
+Next-Day Implied by Same Headline Rule,Yes,Direction Accuracy,55.02%,Proper alignment resets accuracy to unconditional base rate (~53%).
+5-Day Return Horizon with Shuffled 5-Fold CV,No,Direction Accuracy,60.95%,Data Leakage: Random k-fold CV causes adjacent days to share 4 of 5 return days.
+5-Day Return with Walk-Forward & Embargo,Yes,Direction Accuracy,55.29%,Embargo prevents boundary leakage; accuracy drops to majority base (~56%).
+10-Day Moving Average Direction (Walk-Forward),No,Direction Accuracy,86.43%,Trivial Target: Predicting SMA10(t+1) > SMA10(t) when 9 of 10 prices are already known.
+Next-Day Price Level Linear Regression,No,Coefficient (R^2),0.9980,Non-Stationarity: Regressing Pt+1 on Pt yields near-unity fit due to integrated unit-root drift.
+Next-Day Price Level Linear Regression,No,Metric (1 - MAPE),0.9925,Reported as '99.2% accuracy'; simply reflects that tomorrow's price is close to today's price.
+Direction Implied by Level Regression,Yes,Direction Accuracy,52.54%,The level model that achieved 99.2% 1-MAPE has zero directional predictive power.

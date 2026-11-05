@@ -1,0 +1,11 @@
+# Table 13: Summary of Methodological Disclosures and Research Limitations
+
+| Dimension | Methodological_Implementation | Econometric_Purpose |
+| --- | --- | --- |
+| Target Horizon & Subsampling | h=3 non-overlapping subsampling (step=3) | Eliminates moving-average serial target autocorrelation (rho drops from 0.81 to -0.04). |
+| Walk-Forward Embargo Buffer | 52 trading days (17 subsampled rows) dropped at train seams | Purges forward label overlap and decorrelates transient errors across train/test seams. |
+| Permutation Testing Resolution | n=6 shuffles per fold with Laplace correction (p_min = 1/7 = 0.1429) | Bounded computational diagnostic screening feature leakage; not a high-resolution hypothesis test. |
+| Cross-Sectional Panel Dependence | Concurrent NSE trading across all 10 equities (2000-2026) | Effective degrees of freedom governed by time series length (~2,154 periods), not pooled 17,636 rows. |
+| News Corpora Coverage Window | ToI archive (2001-2022), NSE filings (2008-2025), Cutoff Dec 31, 2025 | 2026 trading sessions evaluated under neutral sentiment; news does not explain 2026 volatility. |
+| Indian Transaction Friction Hurdle | 15 basis points round-trip (STT 0.10%, GST, SEBI fee, slippage) | Enforces realistic break-even hurdle; gross edge must exceed 15 bps to yield net positive CAGR. |
+| Cash Allocation & CAGR | Uninvested capital held in cash (assumed 0% risk-free rate) | Low time-in-market strategies (Variants B, D, E) exhibit lower nominal CAGR due to cash drag. |

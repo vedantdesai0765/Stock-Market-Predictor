@@ -1,0 +1,10 @@
+# Table 8: Daily Mean Returns Across Clean News Sentiment Quintiles on the BSE SENSEX
+
+| Quintile | Sessions_N | SameDay_Mean_Return | NextDay_Mean_Return |
+| --- | --- | --- | --- |
+| Quintile 1 (Most Negative) | 1024 | -0.0564% | +0.0689% |
+| Quintile 2 | 1023 | +0.0179% | -0.0262% |
+| Quintile 3 (Neutral) | 1024 | +0.0475% | +0.0875% |
+| Quintile 4 | 1023 | +0.1292% | +0.1089% |
+| Quintile 5 (Most Positive) | 1024 | +0.1434% | +0.0343% |
+| Spread: Quintile 5 - Quintile 1 | — | +0.1998% / day | -0.0345% / day |

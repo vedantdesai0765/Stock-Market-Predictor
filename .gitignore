@@ -29,13 +29,19 @@ Thumbs.db
 *.swp
 *.swo
 
-# Build and test artifacts
+# Build, database, and test artifacts
 build/
 dist/
 *.egg-info/
 .pytest_cache/
 .coverage
 htmlcov/
+*.db
+*.sqlite3
+node_modules/
+.next/
+frontend/node_modules/
+frontend/.next/
 
 # Keep processed datasets and model dirs tracked (app.py reads them at startup)
 data/processed/*.png
