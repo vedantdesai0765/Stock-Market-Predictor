@@ -1,7 +1,7 @@
 # Research Paper Final Validation and Quality Audit Report
 
 **Audit Target**: Academic Research Manuscript and Associated Deliverables for the Stock Market Predictor Project
-**Author**: Vedant Desai (Department of Computer Engineering, K. J. Somaiya College of Engineering, Somaiya Vidyavihar University, Mumbai, India; `vedant.ud@somaiya.edu`)
+**Authors**: Smit Patil, Vedant Narayan, Vedant Desai (Department of Computer Engineering, K. J. Somaiya College of Engineering, Somaiya Vidyavihar University, Mumbai, India)
 **Date**: November 2026
 **Auditor**: Senior Quantitative Research Auditor
 **Status**: Pre-Submission Working Paper Audit — Rigorously Verified

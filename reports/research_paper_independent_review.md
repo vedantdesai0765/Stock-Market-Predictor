@@ -1,7 +1,7 @@
 # Independent Academic Peer Review Report
 
 **Manuscript Title:** *Predictability, Explainability, and Risk-Aware Trading in Indian Equity Markets: An Empirical Study of Technical Indicators, Financial Sentiment, and Overnight Market Signals*
-**Author:** Vedant Desai (`vedant.ud@somaiya.edu`)
+**Authors:** Smit Patil, Vedant Narayan, Vedant Desai
 **Affiliation:** Department of Computer Engineering, K. J. Somaiya College of Engineering, Somaiya Vidyavihar University, Mumbai, India
 **Audit Type:** Independent Internal Academic Quality and Reproducibility Audit
 **Date:** November 2026

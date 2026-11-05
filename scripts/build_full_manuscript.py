@@ -16,12 +16,12 @@ def build_manuscript():
     # Header & Title
     sections.append(r"""# Predictability, Explainability, and Risk-Aware Trading in Indian Equity Markets: An Empirical Study of Technical Indicators, Financial Sentiment, and Overnight Market Signals
 
-**Vedant Desai**
+**Smit Patil**, **Vedant Narayan**, and **Vedant Desai**
 Department of Computer Engineering
 K. J. Somaiya College of Engineering, Somaiya Vidyavihar University, Mumbai, India
 *Working Paper — Pre-Submission Manuscript*
 *Date: November 2026*
-*Correspondence: Vedant Desai (vedant.ud@somaiya.edu), Department of Computer Engineering, K. J. Somaiya College of Engineering, Somaiya Vidyavihar University, Mumbai, India. All data processing scripts, feature engineering pipelines, model checkpoints, and evaluation harnesses are available for replication in the project repository.*
+*Correspondence: Department of Computer Engineering, K. J. Somaiya College of Engineering, Somaiya Vidyavihar University, Mumbai, India. All data processing scripts, feature engineering pipelines, model checkpoints, and evaluation harnesses are available for replication in the project repository.*
 
 ---
 """)

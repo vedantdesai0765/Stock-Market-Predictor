@@ -145,23 +145,28 @@ def audit_overnight_mcnemar():
 
 def audit_author_metadata():
     print("\n=== 2c. AUDITING AUTHOR & INSTITUTION METADATA ===")
+    authors = ["Smit Patil", "Vedant Narayan", "Vedant Desai"]
     # Check Markdown
     with open("research_paper/research_paper_final.md", "r", encoding="utf-8") as f:
         md_text = f.read()
-    md_author = "Vedant Desai" in md_text
+    md_authors = all(a in md_text for a in authors)
     md_inst = "Somaiya Vidyavihar University" in md_text
+    md_no_email = "@" not in md_text[:500]
+    md_no_roll = "roll" not in md_text[:500].lower()
     fictional_inst = "Antigravity Financial Analytics Laboratory" in md_text
-    print(f"Markdown: Author 'Vedant Desai'={md_author}, Institution 'Somaiya'={md_inst}, Fictional Inst Present={fictional_inst}")
+    print(f"Markdown: All 3 Authors={md_authors}, Somaiya={md_inst}, No Email={md_no_email}, No Roll={md_no_roll}, Fictional Inst Present={fictional_inst}")
 
     # Check PDF
     pdf_path = "research_paper/Stock_Market_Predictor_Research_Paper.pdf"
     if os.path.exists(pdf_path):
         doc_pdf = fitz.open(pdf_path)
         p1 = doc_pdf[0].get_text()
-        pdf_author = "Vedant Desai" in p1
+        pdf_authors = all(a in p1 for a in authors)
         pdf_inst = "Somaiya Vidyavihar University" in p1
+        pdf_no_email = "@" not in p1
+        pdf_no_roll = "roll" not in p1.lower()
         pdf_fictional = "Antigravity Financial Analytics Laboratory" in p1
-        print(f"PDF Page 1: Author 'Vedant Desai'={pdf_author}, Institution 'Somaiya'={pdf_inst}, Fictional Inst Present={pdf_fictional}")
+        print(f"PDF Page 1: All 3 Authors={pdf_authors}, Somaiya={pdf_inst}, No Email={pdf_no_email}, No Roll={pdf_no_roll}, Fictional Inst Present={pdf_fictional}")
         doc_pdf.close()
 
 def audit_reproducibility():

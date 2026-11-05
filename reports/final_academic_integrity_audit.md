@@ -31,14 +31,14 @@
 ## Detailed Check-by-Check Validation
 
 ### Check 1: Author Metadata and Institutional Affiliation
-- **Requirement**: Confirm that the author name is exactly the one specified by the project owner. Confirm official institutional name and department. Eliminate any inferred or fictional entities (such as "Antigravity Financial Analytics Laboratory"). Verify agreement across Markdown, DOCX, PDF, HTML, and validation reports.
+- **Requirement**: Confirm that the author names are exactly the three specified by the project owner (Smit Patil, Vedant Narayan, Vedant Desai). Confirm official institutional name and department. Eliminate any inferred or fictional entities (such as "Antigravity Financial Analytics Laboratory"). Ensure zero email addresses and zero roll numbers are included. Verify agreement across Markdown, DOCX, PDF, HTML, and validation reports.
 - **Verification Findings**:
-  - **Author Name**: `Vedant Desai`
-  - **Email**: `vedant.ud@somaiya.edu`
+  - **Author Names**: `Smit Patil`, `Vedant Narayan`, `Vedant Desai`
+  - **Email & Roll Numbers**: Strictly omitted per user specification (zero occurrences on title page/headers).
   - **Department**: Department of Computer Engineering
   - **Institution**: K. J. Somaiya College of Engineering, Somaiya Vidyavihar University, Mumbai, Maharashtra, India
   - **Cross-File Agreement**:
-    - [research_paper/research_paper_final.md](file:///C:/Users/vedan/Stock-Market-Predictor/research_paper/research_paper_final.md#L4-L8): Verified identical.
+    - [research_paper/research_paper_final.md](file:///C:/Users/vedan/Stock-Market-Predictor/research_paper/research_paper_final.md#L3-L8): Verified identical.
     - [research_paper/Stock_Market_Predictor_Research_Paper.docx](file:///C:/Users/vedan/Stock-Market-Predictor/research_paper/Stock_Market_Predictor_Research_Paper.docx): Title page metadata verified identical.
     - [research_paper/Stock_Market_Predictor_Research_Paper.pdf](file:///C:/Users/vedan/Stock-Market-Predictor/research_paper/Stock_Market_Predictor_Research_Paper.pdf): Page 1 author and affiliation blocks verified identical via `fitz` extraction.
     - `scripts/build_full_manuscript.py`: Author metadata constant verified.

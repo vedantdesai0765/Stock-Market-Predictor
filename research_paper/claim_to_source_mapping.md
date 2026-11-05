@@ -1,7 +1,7 @@
 # Comprehensive Claim-to-Source Mapping and Chain of Custody
 
 **Study Title**: *Predictability, Explainability, and Risk-Aware Trading in Indian Equity Markets: An Empirical Study of Technical Indicators, Financial Sentiment, and Overnight Market Signals*
-**Author**: Vedant Desai (Department of Computer Engineering, K. J. Somaiya College of Engineering, Somaiya Vidyavihar University, Mumbai, India; `vedant.ud@somaiya.edu`)
+**Authors**: Smit Patil, Vedant Narayan, Vedant Desai (Department of Computer Engineering, K. J. Somaiya College of Engineering, Somaiya Vidyavihar University, Mumbai, India)
 **Date**: November 2026
 **Status**: Authoritative Verified Pre-Submission Working Paper Audit
 
