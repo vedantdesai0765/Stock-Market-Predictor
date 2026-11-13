@@ -375,3 +375,124 @@ export interface PortfolioAnalyticsResponse {
   winning_trades: number;
   win_rate: number;
 }
+
+// ---------------------------------------------------------------------------
+// Morning Call (live next-morning opening forecast)
+// ---------------------------------------------------------------------------
+
+export type CallDirection = "HIGHER" | "LOWER";
+
+export interface MorningMarketInput {
+  key: string;
+  label: string;
+  region: string;
+  change_pct: number | null;
+  level: number | null;
+  session: string | null;
+  available: boolean;
+  note?: string | null;
+}
+
+export interface MorningDriver {
+  key: string;
+  label: string;
+  detail: string;
+  direction: "up" | "down";
+  weight: number;
+}
+
+export interface MorningConfidence {
+  level: string;
+  tested_accuracy: number | null;
+  tested_n: number;
+}
+
+export interface MorningCallResult {
+  open_price: number | null;
+  actual: "HIGHER" | "LOWER" | "FLAT" | "VOID" | null;
+  correct: boolean | null;
+  close_price: number | null;
+  close_actual: string | null;
+  close_correct: boolean | null;
+}
+
+export interface MorningStockCall {
+  ticker: string;
+  name: string;
+  available: boolean;
+  reason?: string | null;
+  prev_close?: number | null;
+  prob_up?: number | null;
+  call?: CallDirection | null;
+  baseline_call?: CallDirection | null;
+  confidence?: MorningConfidence | null;
+  drivers: MorningDriver[];
+  result?: MorningCallResult | null;
+}
+
+export interface TestedAccuracy {
+  n: number;
+  accuracy: number;
+  baseline: number;
+  edge: number;
+  years?: string | null;
+  years_beating_guess?: number | null;
+  years_tested?: number | null;
+  from?: string | null;
+  to?: string | null;
+}
+
+export interface MorningCallResponse {
+  status: "ok" | "market_closed" | "unavailable" | "not_started";
+  today: string;
+  server_time: string;
+  is_today: boolean;
+  market_phase: "pre_open" | "open" | "closed" | "holiday";
+  next_call_date: string;
+  target_date: string | null;
+  based_on: string | null;
+  generated_at: string | null;
+  on_time: boolean | null;
+  reason: string | null;
+  next_session: string | null;
+  summary: { higher: number; lower: number; unavailable: number } | null;
+  market: MorningMarketInput[];
+  calls: MorningStockCall[];
+  model: {
+    name: string;
+    trained_through: string | null;
+    tested: TestedAccuracy | null;
+    after_study: TestedAccuracy | null;
+    simple_guess: CallDirection | null;
+    base_rate_up?: number | null;
+  } | null;
+  notes: string[];
+  source: string;
+}
+
+export interface MorningScore {
+  n: number;
+  correct: number;
+  accuracy: number | null;
+  baseline_correct: number;
+  baseline_accuracy: number | null;
+}
+
+export interface MorningScorecardResponse {
+  updated_at: string | null;
+  since: string | null;
+  mornings: number;
+  open: MorningScore;
+  close: MorningScore;
+  days: { date: string; n: number; correct: number }[];
+  per_stock: { ticker: string; name: string; n: number; correct: number; accuracy: number }[];
+  excluded_late: number;
+  recent: {
+    date: string;
+    results: { ticker: string; call: CallDirection; prob_up: number; actual: string | null; correct: boolean | null }[];
+  }[];
+  tested: TestedAccuracy | null;
+  after_study: TestedAccuracy | null;
+  confidence_bands: { from: number; to: number; n: number; share: number; accuracy: number | null }[];
+  source: string;
+}

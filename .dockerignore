@@ -1,0 +1,19 @@
+# Keeps the back-end image small: the API reads only sentiment_study/reports/explain from the study.
+.git
+.github
+**/__pycache__
+**/*.pyc
+.venv
+venv
+.env
+.env.*
+frontend
+notebooks
+research_paper
+screenshots
+docs
+data/app.db
+sentiment_study/data
+sentiment_study/src
+sentiment_study/reports/*.parquet
+reports/screenshots

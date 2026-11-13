@@ -13,6 +13,8 @@ services:
       - ENVIRONMENT=production
       - CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
       - DATABASE_URL=sqlite:////app/data/app.db
+      # Read the daily Morning Call files from GitHub instead of the copy inside the image:
+      # - MORNING_DATA_URL=https://raw.githubusercontent.com/<owner>/<repository>/main/live
     volumes:
       - ./data:/app/data
     healthcheck:

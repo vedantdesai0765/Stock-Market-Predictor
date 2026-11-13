@@ -7,6 +7,7 @@ import { api } from "@/lib/api";
 import { MetricCard } from "@/components/ui/MetricCard";
 import { MetricCardSkeleton } from "@/components/ui/LoadingSkeleton";
 import { ErrorState } from "@/components/ui/ErrorState";
+import { SimulatorNotice } from "@/components/ui/SimulatorNotice";
 import { InfoTooltip } from "@/components/ui/InfoTooltip";
 import { SignalBadge } from "@/components/ui/Badge";
 import { OrderModal } from "@/components/portfolio/OrderModal";
@@ -100,6 +101,12 @@ export default function PortfolioPage() {
 
   return (
     <div className="space-y-6">
+      <SimulatorNotice>
+        This wallet uses virtual money only. Its BUY and SELL suggestions come from the 3-day model, which did not
+        beat a simple guess for any of the 10 stocks in testing, so treat it as practice with orders, costs and
+        record-keeping.
+      </SimulatorNotice>
+
       {/* SECTION 1: HEADER & SIMULATED TRADING NOTICE */}
       <div className="bg-white border border-slate-200/90 rounded-lg p-6 shadow-subtle flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
@@ -117,7 +124,7 @@ export default function PortfolioPage() {
             Virtual Portfolio & Trade Execution
           </h1>
           <p className="mt-1 text-xs text-slate-500 max-w-2xl font-sans">
-            Simulated institutional paper trading environment with realistic Indian statutory delivery charges (7.5 bps one-way / 15 bps round-trip friction).
+            Simulated paper trading environment with realistic Indian statutory delivery charges (7.5 bps one-way / 15 bps round-trip friction).
           </p>
         </div>
 

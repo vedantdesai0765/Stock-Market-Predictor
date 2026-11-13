@@ -7,6 +7,7 @@ import { SignalBadge, RegimeBadge, FreshnessBadge } from "@/components/ui/Badge"
 import { MetricCard } from "@/components/ui/MetricCard";
 import { MetricCardSkeleton } from "@/components/ui/LoadingSkeleton";
 import { ErrorState } from "@/components/ui/ErrorState";
+import { SimulatorNotice } from "@/components/ui/SimulatorNotice";
 import { InfoTooltip } from "@/components/ui/InfoTooltip";
 import {
   BacktestEquityChart,
@@ -105,7 +106,7 @@ export default function SignalsPage() {
     return (
       <ErrorState
         title={`Failed to load trading signals for ${selectedTicker}`}
-        message="Could not generate signals or execute backtest simulation via FastAPI backend. Verify backend is running on http://127.0.0.1:8000."
+        message="Could not generate signals or execute backtest simulation via FastAPI backend. The data service may be starting up. Please try again in a minute."
         onRetry={() => {
           refetchSignal();
           refetchBt();
@@ -142,6 +143,8 @@ export default function SignalsPage() {
 
   return (
     <div className="space-y-6">
+      <SimulatorNotice />
+
       {/* SECTION 1: HEADER & CURRENT SIGNAL BANNER */}
       <div className="bg-white border border-slate-200/90 rounded-lg p-6 shadow-subtle flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>

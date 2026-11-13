@@ -46,7 +46,7 @@ export default function ForecastPage() {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <h1 className="text-xl font-bold text-slate-900 font-sans tracking-tight">
-              Next-Morning Opening Forecast
+              Forecast Track Record: Next-Morning Opening Price
             </h1>
             <span className="font-mono text-xs font-bold text-sky-700 bg-sky-50 px-2 py-0.5 rounded border border-sky-100">
               {selectedTicker} · NSE

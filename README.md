@@ -13,14 +13,15 @@ reported.
 
 ## Modern Platform Architecture (Phase 6 Final Release)
 
-The project has evolved into a production-grade financial analytics terminal and risk-free paper trading platform:
+The project runs as a web application with a paper-trading simulator, and publishes a live forecast every trading morning:
 
-- **Next.js 14 Frontend (`http://localhost:3000`):** Institutional UI terminal built with React 19, TypeScript, Tailwind CSS, shadcn/ui, and Recharts. Includes responsive mobile navigation.
+- **Morning Call (home page):** a forecast of whether each of the 10 stocks will open higher or lower, published before 09:15 IST every trading day and graded against the real opening price. See [The Morning Call](#6-the-morning-call--the-live-forecast) below and [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) to put it online.
+- **Next.js 14 Frontend (`http://localhost:3000`):** Web interface built with React 19, TypeScript, Tailwind CSS, shadcn/ui, and Recharts. Includes responsive mobile navigation.
 - **FastAPI Backend (`http://127.0.0.1:8000`):** REST API service layer exposing ML predictions, walk-forward forecasting, FinBERT news explainability, and paper trading database operations. Interactive Swagger documentation at `/docs`.
 - **Virtual Portfolio & Paper Trading:** Simulated wallet with ₹1,00,000 virtual capital, 7.5 bps Indian delivery friction, and 2-step order execution modal with atomic reset.
 - **Actionable Trading Signals:** 5 systematic strategy variants (A–E) enforcing a 15 bps round-trip friction hurdle. One-click "Simulate Trade with Signal →" execution.
 - **Legacy Streamlit Terminal (`http://localhost:8501`):** Standalone research dashboard maintained for backward compatibility.
-- **Verified Quality & Security:** 25 passing pytest unit/integration tests and automated Puppeteer browser integration audits with 0 console errors.
+- **Verified Quality & Security:** 42 passing pytest unit/integration tests and automated Puppeteer browser integration audits with 0 console errors.
 
 ### Quick Start Commands (Windows PowerShell)
 
@@ -137,8 +138,44 @@ the S&P 500 overnight return, the VIX and the Asian opening moves. All numbers a
 | Next morning's opening price | 70.6% | 63.5% | +7.1 pts (p < 0.001) | 9 of 10 | −0.03 pts (n.s.) |
 | Next day's closing price | 56.2% | 51.6% | +4.7 pts (p < 0.001) | 7 of 10 | −0.07 pts (n.s.) |
 
-The signal comes from overnight world markets, not from news. These are tested historical results, not a live
-forecast, and a forecast made before the open cannot be traded at the previous close.
+The signal comes from overnight world markets, not from news. A forecast made before the open cannot be traded
+at the previous close.
+
+### 6. The Morning Call — the Live Forecast
+
+The tested overnight model now runs live. Every trading day, before the NSE opens, a scheduled job forecasts whether
+each of the 10 stocks will **open** above or below its previous close, and a second job grades the forecast once the
+real opening prices are known.
+
+| Evidence | Model | Simple guess | Calls |
+|---|---|---|---|
+| Walk-forward test, 2013–2025 (reproduces the study) | 70.6% | 63.5% | 27,179 |
+| 2026 data never used for anything (Jan–Oct 2026) | 64.8% | 55.4% | 1,801 |
+| Live record | see the home page | | grows by one morning per trading day |
+
+In testing, confidence was meaningful: calls made with 50–60% confidence were right 56% of the time, 60–70% → 67%,
+70–80% → 76%, above 80% → 86%. Each call on the page shows which group it belongs to.
+
+How it works:
+
+- **Model** (`src/morning/`, `models/morning/model.json`): one logistic regression pooled across the 10 stocks, on the
+  study's feature set "B" (the stock's own indicators, Nifty, last night's S&P 500 and VIX, this morning's opening gaps
+  in Japan, Korea, Taiwan and Hong Kong). The fitted numbers are stored as plain JSON, so the daily job needs no
+  scikit-learn and anyone can read the whole model. `scripts/train_morning_model.py` rebuilds it and first repeats the
+  walk-forward test, which must reproduce the study's result.
+- **Daily jobs** (`.github/workflows/morning-call.yml`): `scripts/morning_call.py` at about 07:45 IST and
+  `scripts/grade_morning_call.py` at about 09:50 and 16:35 IST. They write `live/latest_forecast.json`,
+  `live/forecast_history.csv` and `live/scorecard.json` and commit them, so every forecast has a public timestamp
+  from before the market opened.
+- **Rules that keep the record honest:** only forecasts made before 09:15 IST count; an on-time forecast is never
+  overwritten; a stock that opens exactly at its previous close is not scored (as in the study); a stock whose latest
+  price is missing gets "no forecast" instead of a guess. The tests in `backend/tests/test_morning.py` check, among
+  other things, that changing any price after the forecast time cannot change the forecast.
+- **API and page:** `GET /api/v1/morning-call` and `/api/v1/morning-call/scorecard`, shown on the home page.
+
+Limits: live results over a few weeks swing widely (ten stocks move together, so one morning is closer to one result
+than to ten). Prices come from Yahoo Finance, whose opening prices are occasionally revised. The forecast is a research
+result and cannot be traded at the previous close.
 
 ---
 

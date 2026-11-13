@@ -5,13 +5,18 @@ import { StockSelector } from "@/components/ui/StockSelector";
 import { FreshnessBadge } from "@/components/ui/Badge";
 import { useSelectedStock } from "@/context/StockContext";
 import { useDataStatus } from "@/hooks/useStockData";
+import { usePathname } from "next/navigation";
 import { ExternalLink, Database, Clock, Menu } from "lucide-react";
+import { API_DOCS_URL } from "@/lib/api";
 
 interface HeaderProps {
   onToggleMobileMenu?: () => void;
 }
 
 export function Header({ onToggleMobileMenu }: HeaderProps) {
+  const pathname = usePathname();
+  // The Morning Call covers all 10 stocks at once, so the stock picker is hidden there.
+  const allStocksPage = pathname === "/";
   const { selectedTicker } = useSelectedStock();
   const { data: status } = useDataStatus(selectedTicker);
   const [timeStr, setTimeStr] = useState<string>("");
@@ -47,16 +52,25 @@ export function Header({ onToggleMobileMenu }: HeaderProps) {
           <Menu className="w-5 h-5" />
         </button>
 
-        {/* Global Stock Selector */}
-        <StockSelector />
+        {allStocksPage ? (
+          <div className="leading-tight">
+            <div className="text-sm font-semibold text-slate-900">All 10 stocks</div>
+            <div className="text-[11px] text-slate-500">NSE, opening-price forecast</div>
+          </div>
+        ) : (
+          <>
+            {/* Global Stock Selector */}
+            <StockSelector />
 
-        {/* Data Freshness Indicator */}
-        <div className="hidden sm:block">
-          <FreshnessBadge
-            isLive={status?.is_live_market}
-            date={status?.raw_data_last_date}
-          />
-        </div>
+            {/* Data Freshness Indicator */}
+            <div className="hidden sm:block">
+              <FreshnessBadge
+                isLive={status?.is_live_market}
+                date={status?.raw_data_last_date}
+              />
+            </div>
+          </>
+        )}
       </div>
 
       <div className="flex items-center gap-5 text-xs text-slate-500 font-sans">
@@ -68,14 +82,14 @@ export function Header({ onToggleMobileMenu }: HeaderProps) {
 
         {/* API Docs Link */}
         <a
-          href="http://127.0.0.1:8000/docs"
+          href={API_DOCS_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-1 text-slate-600 hover:text-sky-600 font-medium transition-colors"
-          title="Open FastAPI Swagger Interactive Documentation"
+          title="Open the interactive API documentation"
         >
           <Database className="w-3.5 h-3.5 text-sky-600" />
-          <span>FastAPI Docs</span>
+          <span className="hidden sm:inline">API docs</span>
           <ExternalLink className="w-3 h-3 text-slate-400" />
         </a>
       </div>

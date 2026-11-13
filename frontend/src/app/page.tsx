@@ -1,390 +1,185 @@
 "use client";
 
 import React from "react";
-import { useSelectedStock } from "@/context/StockContext";
-import {
-  useStock,
-  useDataStatus,
-  usePrediction,
-  useForecast,
-  useLatestSignal,
-} from "@/hooks/useStockData";
-import { MetricCard } from "@/components/ui/MetricCard";
-import { SignalBadge, FreshnessBadge, RegimeBadge } from "@/components/ui/Badge";
-import { ModuleCard } from "@/components/ui/ModuleCard";
-import { MetricCardSkeleton } from "@/components/ui/LoadingSkeleton";
+import Link from "next/link";
+import { ArrowRight, CalendarClock, Sunrise } from "lucide-react";
+import { useMorningCall, useMorningScorecard } from "@/hooks/useMorning";
+import { MarketPulse } from "@/components/morning/MarketPulse";
+import { CallCard } from "@/components/morning/CallCard";
+import { TrackRecord } from "@/components/morning/TrackRecord";
 import { ErrorState } from "@/components/ui/ErrorState";
-import { InfoTooltip } from "@/components/ui/InfoTooltip";
-import { formatINR, formatPercent } from "@/lib/utils";
-import {
-  Activity,
-  SunMedium,
-  Compass,
-  Zap,
-  Info,
-  Calendar,
-  Database,
-  TrendingUp,
-  TrendingDown,
-  Pause,
-  MinusCircle,
-  HelpCircle,
-} from "lucide-react";
+import { Skeleton } from "@/components/ui/LoadingSkeleton";
+import { cn, formatDateLong, formatDateShort, formatTimeIST } from "@/lib/utils";
+import { MorningCallResponse } from "@/types/api";
 
-export default function OverviewPage() {
-  const { selectedTicker } = useSelectedStock();
+/** Works out what the top of the page should say for every situation the day can be in. */
+function describe(d: MorningCallResponse) {
+  const showCalls = d.status === "ok" && d.calls.length > 0;
+  const next = `Next call: ${formatDateShort(d.next_call_date)}, about 8:00 am`;
+  const scored = d.calls.filter((c) => c.result?.correct != null);
+  const right = scored.filter((c) => c.result?.correct).length;
+  const n = (d.summary?.higher ?? 0) + (d.summary?.lower ?? 0);
 
-  // Queries
-  const { data: stock, isLoading: isStockLoading, isError: isStockError, refetch: refetchStock } = useStock(selectedTicker);
-  const { data: status, isLoading: isStatusLoading, isError: isStatusError, refetch: refetchStatus } = useDataStatus(selectedTicker);
-  const { data: prediction, isLoading: isPredLoading } = usePrediction(selectedTicker);
-  const { data: forecast, isLoading: isForecastLoading } = useForecast(selectedTicker);
-  const { data: signal, isLoading: isSignalLoading } = useLatestSignal(selectedTicker, "A", 15.0);
+  if (d.status === "not_started") {
+    return {
+      showCalls, chip: "Starting soon", tone: "sky" as const,
+      title: "The first Morning Call is on its way",
+      text: `A forecast for all 10 stocks is published every trading day at about 8:00 am, before the market opens. ${next}.`,
+    };
+  }
 
-  const isLoadingAny = isStockLoading || isStatusLoading;
+  if (d.is_today && d.status === "ok") {
+    const h = d.summary?.higher ?? 0;
+    const l = d.summary?.lower ?? 0;
+    const title =
+      l === 0 ? `All ${h} stocks are expected to open higher today`
+      : h === 0 ? `All ${l} stocks are expected to open lower today`
+      : `${h} expected to open higher, ${l} lower`;
+    const made = `Published at ${formatTimeIST(d.generated_at)}`;
+    const text = d.on_time
+      ? `${made}, before the market opened. It uses ${formatDateShort(d.based_on)}'s closing prices and everything that happened overnight.`
+      : `${made}, after the market had already opened, so today is not counted in the track record.`;
+    const chip =
+      scored.length > 0 ? `${right} of ${scored.length} right so far`
+      : d.market_phase === "pre_open" ? "Before the open"
+      : d.market_phase === "open" ? "Market open" : "Market closed";
+    const tone = scored.length > 0 ? ("emerald" as const) : d.market_phase === "pre_open" ? ("sky" as const) : ("slate" as const);
+    return { showCalls, chip, tone, title, text, n };
+  }
 
-  if (isStockError || isStatusError) {
+  if (d.market_phase === "holiday" || (d.is_today && d.status === "market_closed")) {
+    return {
+      showCalls, chip: "Market closed", tone: "slate" as const,
+      title: `The market is closed today${d.reason && d.reason !== "Weekend" ? ` for ${d.reason}` : ""}`,
+      text: `${next}.${showCalls ? " The most recent call and its results are below." : ""}`,
+    };
+  }
+
+  if (!d.is_today && d.market_phase === "pre_open") {
+    return {
+      showCalls, chip: "Arriving soon", tone: "sky" as const,
+      title: "Today's call arrives at about 8:00 am",
+      text: `It is made once the Asian markets have opened.${showCalls ? " Until then, the previous call and its results are below." : ""}`,
+    };
+  }
+
+  return {
+    showCalls, chip: "No forecast today", tone: "amber" as const,
+    title: "No forecast was published this morning",
+    text: `${d.is_today && d.reason ? d.reason + " " : "The price data could not be collected in time. "}${next}.`,
+  };
+}
+
+const CHIP_TONES = {
+  sky: "bg-sky-50 text-sky-800 border-sky-200",
+  emerald: "bg-emerald-50 text-emerald-800 border-emerald-200",
+  slate: "bg-slate-100 text-slate-700 border-slate-200",
+  amber: "bg-amber-50 text-amber-800 border-amber-200",
+};
+
+export default function MorningCallPage() {
+  const { data, isLoading, isError, refetch } = useMorningCall();
+  const { data: card } = useMorningScorecard(5);
+
+  if (isLoading) {
+    return (
+      <div className="space-y-6">
+        <Skeleton className="h-32 w-full" />
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          {Array.from({ length: 6 }).map((_, i) => <Skeleton key={i} className="h-20" />)}
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {Array.from({ length: 6 }).map((_, i) => <Skeleton key={i} className="h-44" />)}
+        </div>
+      </div>
+    );
+  }
+
+  if (isError || !data) {
     return (
       <ErrorState
-        title={`Failed to load data for ${selectedTicker}`}
-        message="Unable to fetch stock metadata or data status from the FastAPI backend. Ensure the backend server is running on http://127.0.0.1:8000."
-        onRetry={() => {
-          refetchStock();
-          refetchStatus();
-        }}
+        title="The Morning Call could not be loaded"
+        message="The website could not reach its data service. It may be starting up, which takes about a minute. Please try again."
+        onRetry={() => refetch()}
       />
     );
   }
 
-  // Derive latest price and date from available real API data
-  const latestPrice = signal?.close ?? prediction?.close ?? null;
-  const latestDate = signal?.date ?? prediction?.date ?? status?.raw_data_last_date ?? "N/A";
-
-  // Derive signal tones
-  const signalTone =
-    signal?.signal_label === "BUY"
-      ? "buy"
-      : signal?.signal_label === "SELL"
-      ? "sell"
-      : signal?.signal_label === "HOLD"
-      ? "hold"
-      : "neutral";
-
-  const predTone =
-    prediction?.signal === "UP"
-      ? "buy"
-      : prediction?.signal === "DOWN"
-      ? "sell"
-      : "neutral";
+  const view = describe(data);
+  const calls = [...data.calls].sort((a, b) => {
+    const strength = (c: typeof a) => (c.available && c.prob_up != null ? Math.abs(c.prob_up - 0.5) : -1);
+    return strength(b) - strength(a);
+  });
+  const awaiting = data.is_today && data.market_phase !== "pre_open";
 
   return (
-    <div className="space-y-6">
-      {/* Stock Hero Section */}
-      <div className="bg-white border border-slate-200/90 rounded-lg p-6 shadow-subtle flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-            <span className="font-mono text-xs font-bold text-sky-700 bg-sky-50 px-2 py-0.5 rounded border border-sky-100">
-              {selectedTicker} · NSE
-            </span>
-            <span className="text-xs text-slate-500 font-sans">
-              {stock?.symbol || `${selectedTicker}.NS`}
-            </span>
-            <FreshnessBadge isLive={status?.is_live_market} date={status?.raw_data_last_date} />
-          </div>
-
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight font-sans">
-            {stock?.display_name || selectedTicker}
-          </h1>
-
-          <p className="mt-1 text-xs text-slate-500 max-w-2xl font-sans">
-            {stock?.notes ||
-              "Institutional predictive modeling and quantitative strategy evaluation on Indian NSE equity."}
+    <div className="space-y-7">
+      {/* What today looks like, in one sentence */}
+      <section className="bg-white border border-slate-200/90 rounded-lg shadow-subtle p-5 sm:p-6">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+          <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-sky-700">
+            <Sunrise className="w-4 h-4" />
+            Morning Call
+          </span>
+          <span className="text-xs text-slate-500">{formatDateLong(data.today)}</span>
+          <span className={cn("ml-auto inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-semibold", CHIP_TONES[view.tone])}>
+            {view.chip}
+          </span>
+        </div>
+        <h1 className="mt-3 text-xl sm:text-2xl font-bold tracking-tight text-slate-900">{view.title}</h1>
+        <p className="mt-1.5 text-sm text-slate-600 max-w-3xl">{view.text}</p>
+        {data.is_today && data.status === "ok" && (
+          <p className="mt-3 inline-flex items-center gap-1.5 text-xs text-slate-500">
+            <CalendarClock className="w-3.5 h-3.5" />
+            Next call: {formatDateShort(data.next_call_date)}, about 8:00 am
           </p>
-        </div>
-
-        {/* Price & As-of Box */}
-        <div className="flex flex-col md:items-end justify-center bg-slate-50 md:bg-transparent p-3 md:p-0 rounded border md:border-0 border-slate-200">
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-600 font-mono">
-            Latest Close ({latestDate})
-          </span>
-          <div className="text-2xl md:text-3xl font-bold text-slate-900 font-mono tracking-tight my-0.5">
-            {latestPrice !== null ? formatINR(latestPrice) : "Loading..."}
-          </div>
-          <span className="text-[11px] text-slate-600 font-sans flex items-center gap-1">
-            <Calendar className="w-3 h-3 text-slate-600" />
-            As of last available market session
-          </span>
-        </div>
-      </div>
-
-      {/* KPI Grid with Strict Color System & Intuitive Tooltips */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {/* KPI 1: Actionable Trading Signal */}
-        {isSignalLoading ? (
-          <MetricCardSkeleton />
-        ) : signal ? (
-          <MetricCard
-            title="Actionable Signal"
-            value={signal.signal_label}
-            signalTone={signalTone}
-            badge={<SignalBadge signal={signal.signal_label} size="md" />}
-            subtitle={`Net Expectancy: ${signal.net_expectancy >= 0 ? "+" : ""}${formatPercent(signal.net_expectancy)}`}
-            infoTerm="Actionable Trading Signal"
-            infoExplanation="Evidence-based trading signal after deducting 15 bps round-trip statutory costs. BUY (enter long), SELL (exit long), or HOLD (stay in cash because returns do not overcome costs)."
-            technicalNote="Uses isotonic calibrated probabilities and realistic Indian transaction friction (STT, brokerage, stamp duty, slippage)."
-            icon={<Zap className="w-4 h-4 text-amber-500" />}
-          />
-        ) : (
-          <MetricCard title="Actionable Signal" value="Unavailable" subtitle="No signal computed" />
         )}
-
-        {/* KPI 2: Walk-Forward Prediction */}
-        {isPredLoading ? (
-          <MetricCardSkeleton />
-        ) : prediction ? (
-          <MetricCard
-            title="3-Day Direction"
-            value={prediction.signal}
-            signalTone={predTone}
-            badge={<SignalBadge signal={prediction.signal} size="md" />}
-            subtitle={`Conviction: ${formatPercent(prediction.confidence)} (Gate: ${formatPercent(prediction.confidence_threshold)})`}
-            infoTerm="3-Day Directional Forecast"
-            infoExplanation="Predicts whether price will move UP or DOWN over the next 3 trading days. If the model is not confident enough, it outputs NO SIGNAL to protect you from noise."
-            technicalNote="Regularized logistic regression with abstention operating point selected on out-of-sample data."
-            icon={<Activity className="w-4 h-4 text-sky-500" />}
-          />
-        ) : (
-          <MetricCard title="3-Day Direction" value="Unavailable" subtitle="Model not loaded" />
+        {data.notes.length > 0 && data.status === "ok" && (
+          <ul className="mt-3 text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded-md px-3 py-2 space-y-0.5">
+            {data.notes.map((n) => <li key={n}>{n}</li>)}
+          </ul>
         )}
+      </section>
 
-        {/* KPI 3: Next-Morning Forecast */}
-        {isForecastLoading ? (
-          <MetricCardSkeleton />
-        ) : forecast ? (
-          <MetricCard
-            title="Morning Open Drift"
-            value={forecast.best_accuracy ? formatPercent(forecast.best_accuracy) : "N/A"}
-            subtitle={`Model: ${forecast.best_model || "LightGBM"} (${forecast.best_edge !== undefined ? (forecast.best_edge >= 0 ? "+" : "") + formatPercent(forecast.best_edge) : "0%"} edge)`}
-            infoTerm="Next-Morning Forecast"
-            infoExplanation="Predicts tomorrow morning's opening gap direction at 09:15 AM IST using overnight international cues and corporate announcements."
-            technicalNote="Evaluated across 12 years of out-of-sample historical morning sessions (2013-2025)."
-            icon={<SunMedium className="w-4 h-4 text-amber-500" />}
-          />
-        ) : (
-          <MetricCard title="Morning Open Drift" value="Unavailable" subtitle="Evaluation missing" />
-        )}
+      {view.showCalls && <MarketPulse items={data.market} />}
 
-        {/* KPI 4: Market Regime */}
-        {isSignalLoading ? (
-          <MetricCardSkeleton />
-        ) : signal ? (
-          <MetricCard
-            title="Market Regime"
-            value={signal.market_regime.replace(/_/g, " ")}
-            badge={<RegimeBadge regime={signal.market_regime} />}
-            subtitle={`RSI: ${signal.rsi.toFixed(1)} · MACD: ${signal.macd_hist.toFixed(3)}`}
-            infoTerm="Market Regime"
-            infoExplanation="Identifies the prevailing trend and volatility environment: Trending Bull, Trending Bear, High Volatility, or Sideways Choppy."
-            technicalNote="Based on 20/50-day moving averages alignment and expanding historical volatility quantiles without lookahead bias."
-            icon={<Compass className="w-4 h-4 text-teal-500" />}
-          />
-        ) : (
-          <MetricCard title="Market Regime" value="Unavailable" subtitle="Regime filter pending" />
-        )}
-      </div>
-
-      {/* Signal System Explanatory Guide Banner */}
-      <div className="bg-white border border-slate-200/90 rounded-lg p-4 shadow-subtle">
-        <div className="flex items-center gap-1.5 mb-2.5">
-          <HelpCircle className="w-4 h-4 text-sky-600" />
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-800 font-mono">
-            How to Interpret Platform Signals (Accessibility Guide)
-          </h3>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs font-sans">
-          <div className="p-3 rounded-md bg-emerald-50/70 border border-emerald-200">
-            <div className="flex items-center gap-1.5 font-bold text-emerald-800 mb-1">
-              <TrendingUp className="w-4 h-4 text-emerald-600" />
-              <span>BUY / UP (Green)</span>
-            </div>
-            <p className="text-emerald-950 text-[11px] leading-relaxed">
-              Model probability and estimated return exceed transaction costs. A position entry is statistically justified.
-            </p>
-          </div>
-
-          <div className="p-3 rounded-md bg-rose-50/70 border border-rose-200">
-            <div className="flex items-center gap-1.5 font-bold text-rose-800 mb-1">
-              <TrendingDown className="w-4 h-4 text-rose-600" />
-              <span>SELL / DOWN (Red)</span>
-            </div>
-            <p className="text-rose-950 text-[11px] leading-relaxed">
-              Downward price probability indicates exiting existing positions to preserve capital.
-            </p>
-          </div>
-
-          <div className="p-3 rounded-md bg-amber-50/70 border border-amber-200">
-            <div className="flex items-center gap-1.5 font-bold text-amber-800 mb-1">
-              <Pause className="w-4 h-4 text-amber-600" />
-              <span>HOLD (Amber)</span>
-            </div>
-            <p className="text-amber-950 text-[11px] leading-relaxed">
-              Deliberate pause. Expected gross return is smaller than 15 bps friction or indicators conflict. Stay in cash.
-            </p>
-          </div>
-
-          <div className="p-3 rounded-md bg-slate-100/80 border border-slate-300">
-            <div className="flex items-center gap-1.5 font-bold text-slate-800 mb-1">
-              <MinusCircle className="w-4 h-4 text-slate-500" />
-              <span>NO SIGNAL (Grey)</span>
-            </div>
-            <p className="text-slate-900 text-[11px] leading-relaxed">
-              Model conviction is below the operating threshold. The model abstains rather than making a random guess.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Research Modules Navigation Section */}
-      <div>
-        <div className="flex items-center justify-between mb-3">
-          <div>
-            <h2 className="text-base font-bold text-slate-900 font-sans tracking-tight">
-              Research & Analytics Modules
+      {view.showCalls && (
+        <section aria-label="Stock calls">
+          <div className="flex items-baseline justify-between mb-2">
+            <h2 className="text-sm font-semibold text-slate-900">
+              {data.is_today ? "Today's calls" : `Previous call, ${formatDateShort(data.target_date)}`}
             </h2>
-            <p className="text-xs text-slate-600 font-sans">
-              Access the specialized engines powering directional inference, overnight forecasting, and backtested signals.
-            </p>
+            <span className="hidden sm:inline text-[11px] text-slate-500">Will each stock open above or below its last close? Most confident first</span>
           </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {calls.map((c) => (
+              <CallCard key={c.ticker} call={c} awaitingResult={awaiting} baseRateUp={data.model?.base_rate_up} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {card && <TrackRecord card={card} />}
+
+      {/* What this is and what it is not */}
+      <section className="bg-slate-50 border border-slate-200 rounded-lg p-5 text-xs text-slate-600 leading-relaxed">
+        <h2 className="text-sm font-semibold text-slate-900 mb-1.5">How to read this page</h2>
+        <p className="max-w-4xl">
+          The Indian market is shut for almost 18 hours between one close and the next open, while markets in the US
+          and Asia keep trading. Each morning this page uses what they did overnight to forecast one thing: whether
+          each stock will <span className="font-semibold text-slate-800">open</span> above or below its previous
+          closing price. It is a research result, not a trading tip. The opening jump happens the moment trading
+          starts, so nobody can buy at yesterday&rsquo;s price after reading it.
+        </p>
+        <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5">
+          <Link href="/forecast" className="inline-flex items-center gap-1 font-medium text-sky-700 hover:text-sky-900">
+            See the full test results <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+          <Link href="/methodology" className="inline-flex items-center gap-1 font-medium text-sky-700 hover:text-sky-900">
+            How the model works <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Module 1: Prediction Terminal */}
-          <ModuleCard
-            title="Directional Prediction Terminal"
-            tag="Phase 4.1 Model Engine"
-            href="/prediction"
-            icon={<Activity className="w-4 h-4" />}
-            description="3-day non-overlapping directional predictions, confidence-based abstention curve, walk-forward fold evaluations, and feature weight rankings."
-            statusText={
-              prediction
-                ? `Edge: ${prediction.walk_forward_edge ? (prediction.walk_forward_edge >= 0 ? "+" : "") + formatPercent(prediction.walk_forward_edge) : "N/A"} | ${prediction.features_count || 52} features`
-                : "Checking status..."
-            }
-            badge={<SignalBadge signal={prediction?.signal || "NO SIGNAL"} size="sm" />}
-          />
-
-          {/* Module 2: Next-Morning Forecast */}
-          <ModuleCard
-            title="Next-Morning Forecast"
-            tag="Overnight Gap Engine"
-            href="/forecast"
-            icon={<SunMedium className="w-4 h-4" />}
-            description="Predicts overnight market gap direction at market opening using international cues, technical drift, and overnight company news items."
-            statusText={
-              forecast
-                ? `Best: ${forecast.best_model} (${formatPercent(forecast.best_accuracy || 0)} acc)`
-                : "Checking status..."
-            }
-            badge={
-              <span className="text-[10px] font-mono font-medium text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
-                12-Year History
-              </span>
-            }
-          />
-
-          {/* Module 3: Why Did It Move? */}
-          <ModuleCard
-            title="Why Did It Move? (Explainability)"
-            tag="FinBERT Sentiment Engine"
-            href="/explain"
-            icon={<Compass className="w-4 h-4" />}
-            description="Entity-targeted FinBERT sentiment analysis isolating company-specific headlines from market noise, with statistical lead-lag cross-correlations."
-            statusText={
-              status?.news_count
-                ? `${status.news_count} news articles recorded`
-                : "News feed ready"
-            }
-            badge={
-              <span className="text-[10px] font-mono font-medium text-sky-700 bg-sky-50 px-2 py-0.5 rounded border border-sky-200">
-                Entity Targeted
-              </span>
-            }
-          />
-
-          {/* Module 4: Actionable Signals */}
-          <ModuleCard
-            title="Actionable Trading Signals & Backtesting"
-            tag="Quantitative Execution"
-            href="/signals"
-            icon={<Zap className="w-4 h-4" />}
-            description="Evidence-based BUY/SELL/HOLD decision engine combining calibrated probabilities, technical trend filters, and Indian statutory transaction friction."
-            statusText={
-              signal
-                ? `Current: ${signal.signal_label} (Net: ${formatPercent(signal.net_expectancy)})`
-                : "Ready"
-            }
-            badge={<SignalBadge signal={signal?.signal_label || "HOLD"} size="sm" />}
-          />
-        </div>
-      </div>
-
-      {/* Data Lineage & Freshness Transparency Card */}
-      <div className="bg-white border border-slate-200/90 rounded-lg p-5 shadow-subtle">
-        <div className="flex items-center gap-2 mb-3">
-          <Database className="w-4 h-4 text-slate-500" />
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700 font-mono">
-            Data Lineage & Freshness Specifications
-          </h3>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs mb-4">
-          <div className="p-3 rounded bg-slate-50 border border-slate-200">
-            <span className="text-slate-600 block text-[11px] font-medium">Raw Market Dataset</span>
-            <span className="font-mono font-bold text-slate-800 text-sm block mt-0.5">
-              {status?.raw_data_last_date || "N/A"}
-            </span>
-            <span className="text-[11px] text-slate-600">
-              {status?.raw_data_rows ? `${status.raw_data_rows.toLocaleString()} daily records` : "Missing file"}
-            </span>
-          </div>
-
-          <div className="p-3 rounded bg-slate-50 border border-slate-200">
-            <span className="text-slate-600 block text-[11px] font-medium">Out-of-Sample Boundary</span>
-            <span className="font-mono font-bold text-slate-800 text-sm block mt-0.5">
-              {status?.oof_eval_last_date || "N/A"}
-            </span>
-            <span className="text-[11px] text-slate-600">Walk-forward evaluation cutoff</span>
-          </div>
-
-          <div className="p-3 rounded bg-slate-50 border border-slate-200">
-            <span className="text-slate-600 block text-[11px] font-medium">Model Training Timestamp</span>
-            <span className="font-mono font-bold text-slate-800 text-sm block mt-0.5 truncate">
-              {status?.model_trained_at ? status.model_trained_at.replace("T", " ") : "Not trained"}
-            </span>
-            <span className="text-[11px] text-slate-600">Phase 4.1 regularized logistic</span>
-          </div>
-
-          <div className="p-3 rounded bg-slate-50 border border-slate-200">
-            <span className="text-slate-600 block text-[11px] font-medium">News Sentiment Horizon</span>
-            <span className="font-mono font-bold text-slate-800 text-sm block mt-0.5">
-              {status?.news_last_date || "N/A"}
-            </span>
-            <span className="text-[11px] text-slate-600">
-              {status?.news_count ? `${status.news_count.toLocaleString()} articles recorded` : "No articles"}
-            </span>
-          </div>
-        </div>
-
-        <div className="rounded bg-amber-50/70 border border-amber-200/80 p-3 flex items-start gap-2.5 text-xs text-amber-900 font-sans">
-          <Info className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-          <div>
-            <span className="font-bold">Temporal Separation Integrity: </span>
-            {status?.status_summary ||
-              "All signals and predictions shown above are evaluated on rigorous out-of-sample historical test sets with embargo periods. Real-time trading broker API execution is intentionally disabled in this research release."}
-          </div>
-        </div>
-      </div>
+      </section>
     </div>
   );
 }
