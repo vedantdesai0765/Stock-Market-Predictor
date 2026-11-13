@@ -15,9 +15,14 @@ import {
   ExecuteOrderResponse,
   PortfolioAnalyticsResponse,
   TransactionItem,
+  MorningCallResponse,
+  MorningScorecardResponse,
 } from "@/types/api";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api/v1";
+
+/** Address of the interactive API documentation (the API root without /api/v1). */
+export const API_DOCS_URL = API_BASE.replace(/\/api\/v1\/?$/, "") + "/docs";
 
 export class ApiError extends Error {
   statusCode: number;
@@ -69,6 +74,9 @@ async function request<T>(endpoint: string, options?: RequestInit): Promise<T> {
 
 export const api = {
   getHealth: () => request<SystemHealth>("/health"),
+  getMorningCall: () => request<MorningCallResponse>("/morning-call"),
+  getMorningScorecard: (recentDays: number = 5) =>
+    request<MorningScorecardResponse>(`/morning-call/scorecard?recent_days=${recentDays}`),
   getStocks: () => request<StockListResponse>("/stocks"),
   getStock: (ticker: string) => request<StockItem>(`/stocks/${ticker}`),
   getDataStatus: (ticker: string) => request<DataStatusResponse>(`/stocks/${ticker}/data-status`),

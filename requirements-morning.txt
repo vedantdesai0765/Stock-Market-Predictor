@@ -1,0 +1,5 @@
+# The daily Morning Call job (scripts/morning_call.py, scripts/grade_morning_call.py).
+# The model is plain JSON, so the job needs no scikit-learn.
+numpy>=2.0
+pandas>=2.2
+yfinance==1.2.0

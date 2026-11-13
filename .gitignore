@@ -63,3 +63,7 @@ sentiment_study/reports/oof/
 sentiment_study/reports/oof_company/
 *.safetensors
 sentiment_study/reports/logs/
+
+# Front-end build cache
+frontend/tsconfig.tsbuildinfo
+*.tsbuildinfo

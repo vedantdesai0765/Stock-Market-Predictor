@@ -70,6 +70,15 @@ class ForecastService:
                 best_model = item.model
                 best_edge = item.edge
 
+        # Headline figures: the logistic regression on the 2013-2025 opening-price test, which is
+        # the model and test reported in the paper and used by the live Morning Call. Picking the
+        # highest of several models after the fact would overstate the result.
+        headline = [i for i in summaries
+                    if i.model == "LogReg" and "opening" in i.target.lower() and i.period.startswith("2013")]
+        if headline:
+            chosen = max(headline, key=lambda i: i.n)
+            best_model, best_acc, best_edge = chosen.model, chosen.acc_model, chosen.edge
+
         # Load annual breakdown if available
         annual_items: List[AnnualForecastItem] = []
         year_csv = settings.FORECAST_DIR / "stock_by_year.csv"

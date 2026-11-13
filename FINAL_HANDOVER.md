@@ -7,12 +7,23 @@
 
 ---
 
+> **Update, November 2026: Morning Call and online deployment.** The home page is now the **Morning Call**, a live
+> forecast of the opening direction of all 10 stocks, published before 09:15 IST each trading day by a scheduled
+> GitHub Actions job and graded against the real opening prices. The Strategy Signals and Virtual Portfolio pages are
+> labelled as a simulator, because they are built on the 3-day model, which did not beat a simple guess in testing.
+> To put the app online (Vercel + Hugging Face Spaces), follow [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md).
+> New code: `src/morning/`, `scripts/train_morning_model.py`, `scripts/morning_call.py`,
+> `scripts/grade_morning_call.py`, `backend/app/services/morning_service.py`, `frontend/src/app/page.tsx`,
+> `frontend/src/components/morning/`. The back end test suite now has 42 tests.
+> Wording in this document such as "institutional-grade" or "certified for production" describes design intent;
+> this is a final-year research project and nothing in it is investment advice.
+
 ## 1. Project Overview
 
 The **Stock Market Predictor** is an institutional-grade financial analytics and decision-support workstation designed for Indian equities traded on the National Stock Exchange (NSE). The platform evolved from an exploratory machine learning and Streamlit research codebase into a decoupled, high-performance web platform powered by a **FastAPI (Python)** backend and a **Next.js 14 (React 19 / TypeScript / Tailwind CSS)** frontend.
 
 The system is engineered around econometric rigor:
-- **Walk-forward cross-validation** with a **52-day training embargo** to eliminate lookahead bias.
+- **Walk-forward cross-validation** with a **52-trading-day training embargo** (17 rows of the 3-day-step data, `embargo=17` in `src/pipeline.py`) to eliminate lookahead bias.
 - **Isotonic probability calibration** to convert raw model scores into true directional convictions.
 - **Company-targeted FinBERT sentiment analysis** on corporate announcements and financial news.
 - **Indian transaction-cost awareness**, enforcing a **15 bps round-trip friction hurdle** before generating actionable trading signals.

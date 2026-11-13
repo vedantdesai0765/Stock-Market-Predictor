@@ -24,6 +24,16 @@ class Settings:
     FORECAST_DIR: Path = REPORTS_DIR / "forecast"
     EXPLAIN_DIR: Path = ROOT_DIR / "sentiment_study" / "reports" / "explain"
 
+    # Morning Call: the daily forecast files written by the scheduled GitHub Actions job.
+    # LIVE_DIR is the copy shipped with the code. MORNING_DATA_URL, when set, is the public
+    # address of the same folder on GitHub (for example
+    # https://raw.githubusercontent.com/<owner>/<repo>/main/live), so the API always serves the
+    # newest forecast without being redeployed.
+    LIVE_DIR: Path = Path(os.getenv("MORNING_LIVE_DIR", str(ROOT_DIR / "live")))
+    MORNING_MODEL_PATH: Path = MODELS_DIR / "morning" / "model.json"
+    MORNING_DATA_URL: str = os.getenv("MORNING_DATA_URL", "").strip().rstrip("/")
+    MORNING_CACHE_SECONDS: int = int(os.getenv("MORNING_CACHE_SECONDS", "300"))
+
     # Database
     DATABASE_PATH: Path = DATA_DIR / "app.db"
     DATABASE_URL: str = os.getenv("DATABASE_URL", f"sqlite:///{DATABASE_PATH.as_posix()}")

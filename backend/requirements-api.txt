@@ -1,0 +1,20 @@
+# Stock Market Predictor API: everything the deployed back end needs, and nothing else.
+#
+# The full requirements.txt also installs PyTorch, Transformers, Streamlit and Jupyter for the
+# research code (about 3 GB). The API only reads saved files and small scikit-learn models, so this
+# short list keeps the Docker image small and quick to start.
+
+# --- web API ---
+fastapi>=0.110
+uvicorn>=0.30.0
+pydantic>=2.7.0
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9          # only used when DATABASE_URL points at PostgreSQL
+
+# --- numerics (same versions the saved models were made with) ---
+numpy==2.4.2
+pandas==3.0.1
+scipy==1.17.1
+scikit-learn==1.9.1
+joblib==1.5.3
+ta==0.11.0

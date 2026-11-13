@@ -136,7 +136,7 @@ export function Logo({
             isDark ? "text-sky-400" : "text-sky-600"
           )}
         >
-          Institutional Analytics Terminal
+          Final-Year Research Project
         </span>
       </div>
     </div>

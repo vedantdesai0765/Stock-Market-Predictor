@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { API_DOCS_URL } from "@/lib/api";
 import {
   Settings,
   Server,
@@ -110,7 +111,7 @@ export default function SettingsPage() {
             <div className="flex justify-between py-2 border-b border-slate-100">
               <span className="text-slate-500">Interactive Swagger Docs</span>
               <a
-                href="http://127.0.0.1:8000/docs"
+                href={API_DOCS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-mono font-semibold text-sky-600 hover:text-sky-800 inline-flex items-center gap-1"

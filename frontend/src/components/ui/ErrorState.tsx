@@ -11,7 +11,7 @@ interface ErrorStateProps {
 
 export function ErrorState({
   title = "Failed to load data",
-  message = "Could not communicate with the backend API service. Please verify that FastAPI is running on port 8000.",
+  message = "The website could not reach its data service. It may be starting up, which takes about a minute. Please try again.",
   onRetry,
   className,
 }: ErrorStateProps) {
