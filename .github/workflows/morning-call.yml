@@ -1,0 +1,79 @@
+name: Morning Call
+
+on:
+  schedule:
+    # 07:45 IST = 02:15 UTC (forecast)
+    - cron: '15 2 * * 1-5'
+    # 08:15 IST = 02:45 UTC (forecast retry)
+    - cron: '45 2 * * 1-5'
+    # 09:50 IST = 04:20 UTC (grading market open)
+    - cron: '20 4 * * 1-5'
+    # 16:35 IST = 11:05 UTC (grading market close)
+    - cron: '05 11 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      task:
+        description: 'Which job to run'
+        required: true
+        default: 'forecast'
+        type: choice
+        options:
+          - forecast
+          - grade
+          - both
+
+permissions:
+  contents: write
+
+concurrency:
+  group: morning-call
+  cancel-in-progress: false
+
+jobs:
+  morning-call:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: 'requirements-morning.txt'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-morning.txt
+
+      - name: Run morning forecast
+        if: >-
+          (github.event_name == 'workflow_dispatch' && (inputs.task == 'forecast' || inputs.task == 'both')) ||
+          (github.event_name == 'schedule' && (github.event.schedule == '15 2 * * 1-5' || github.event.schedule == '45 2 * * 1-5'))
+        run: python scripts/morning_call.py
+
+      - name: Run grading job
+        if: >-
+          (github.event_name == 'workflow_dispatch' && (inputs.task == 'grade' || inputs.task == 'both')) ||
+          (github.event_name == 'schedule' && (github.event.schedule == '20 4 * * 1-5' || github.event.schedule == '05 11 * * 1-5'))
+        run: python scripts/grade_morning_call.py
+
+      - name: Save the results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add live/
+          if ! git diff --staged --quiet; then
+            git commit -m "chore(live): update morning forecast and scorecard [skip ci]"
+            git push
+          else
+            echo "No changes to commit"
+          fi
+
+      - name: Keep back end awake
+        if: always() && vars.API_URL != ''
+        run: |
+          echo "Pinging back end at ${{ vars.API_URL }}..."
+          curl -s -f "${{ vars.API_URL }}/health" || curl -s -f "${{ vars.API_URL }}/morning-call" || true

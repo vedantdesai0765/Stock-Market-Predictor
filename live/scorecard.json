@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "updated_at": "2026-11-14T23:59:06+05:30",
+  "since": null,
+  "mornings": 0,
+  "open": {
+    "n": 0,
+    "correct": 0,
+    "accuracy": null,
+    "baseline_correct": 0,
+    "baseline_accuracy": null
+  },
+  "close": {
+    "n": 0,
+    "correct": 0,
+    "accuracy": null,
+    "baseline_correct": 0,
+    "baseline_accuracy": null
+  },
+  "days": [],
+  "per_stock": [],
+  "excluded_late": 0
+}

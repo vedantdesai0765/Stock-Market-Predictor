@@ -1,0 +1,98 @@
+name: Deploy back end
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'backend/**'
+      - 'models/**'
+      - 'src/**'
+      - 'data/**'
+      - 'reports/**'
+      - 'sentiment_study/**'
+      - 'live/**'
+      - 'deploy/huggingface/**'
+      - '.github/workflows/deploy-backend.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-backend
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check the setup
+        run: |
+          missing=0
+          if [ -z "${{ secrets.HF_TOKEN }}" ]; then
+            echo "::error::HF_TOKEN secret is missing. Follow Step 3 in docs/DEPLOYMENT.md to add it under Settings -> Secrets and variables -> Actions -> Secrets."
+            missing=1
+          fi
+          if [ -z "${{ vars.HF_SPACE }}" ]; then
+            echo "::error::HF_SPACE variable is missing. Follow Step 3 in docs/DEPLOYMENT.md to add it under Settings -> Secrets and variables -> Actions -> Variables."
+            missing=1
+          fi
+          if [ "$missing" -eq 1 ]; then
+            exit 1
+          fi
+          echo "HF_SPACE is configured as ${{ vars.HF_SPACE }}."
+
+      - name: Clone Hugging Face Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_SPACE: ${{ vars.HF_SPACE }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git clone "https://user:${HF_TOKEN}@huggingface.co/spaces/${HF_SPACE}" hf_space || (mkdir hf_space && cd hf_space && git init -b main && git remote add origin "https://user:${HF_TOKEN}@huggingface.co/spaces/${HF_SPACE}")
+
+      - name: Prepare back-end files
+        run: |
+          # Keep .git and remove all other existing files in hf_space
+          find hf_space -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+
+          # Copy Dockerfile and README for Hugging Face Space
+          cp deploy/huggingface/README.md hf_space/README.md
+          cp backend/Dockerfile hf_space/Dockerfile
+          cp .dockerignore hf_space/.dockerignore
+
+          # Copy backend, model, and source directories
+          cp -r backend hf_space/backend
+          cp -r src hf_space/src
+          cp -r models hf_space/models
+          cp -r data hf_space/data
+          cp -r reports hf_space/reports
+          cp -r sentiment_study hf_space/sentiment_study
+          cp -r live hf_space/live
+
+          # Exclude non-API files to keep repository payload small and below Hugging Face limits
+          rm -rf hf_space/sentiment_study/data
+          rm -rf hf_space/sentiment_study/src
+          rm -f hf_space/sentiment_study/reports/*.parquet
+          rm -rf hf_space/reports/screenshots
+          rm -f hf_space/data/app.db
+          find hf_space -type d -name "__pycache__" -exec rm -rf {} +
+          find hf_space -type f -name "*.pyc" -delete
+
+      - name: Push to Hugging Face Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_SPACE: ${{ vars.HF_SPACE }}
+        run: |
+          cd hf_space
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to deploy to Hugging Face Space."
+          else
+            git commit -m "Deploy back end from GitHub commit ${{ github.sha }} [skip ci]"
+            git push --force "https://user:${HF_TOKEN}@huggingface.co/spaces/${HF_SPACE}" main
+            echo "Successfully pushed to https://huggingface.co/spaces/${HF_SPACE}"
+          fi

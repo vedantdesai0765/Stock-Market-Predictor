@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "status": "market_closed",
+  "target_date": "2026-11-14",
+  "reason": "Weekend",
+  "next_session": "2026-11-16",
+  "generated_at": "2026-11-14T23:58:52+05:30",
+  "market": [],
+  "calls": [],
+  "notes": []
+}
