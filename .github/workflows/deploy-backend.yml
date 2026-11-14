@@ -52,7 +52,18 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git clone "https://user:${HF_TOKEN}@huggingface.co/spaces/${HF_SPACE}" hf_space || (mkdir hf_space && cd hf_space && git init -b main && git remote add origin "https://user:${HF_TOKEN}@huggingface.co/spaces/${HF_SPACE}")
+          rm -rf hf_space
+          if git clone "https://user:${HF_TOKEN}@huggingface.co/spaces/${HF_SPACE}" hf_space; then
+            echo "Successfully cloned Hugging Face Space."
+          else
+            echo "Clone failed or space is newly initialized; creating fresh repository directory."
+            rm -rf hf_space
+            mkdir -p hf_space
+            cd hf_space
+            git init -b main
+            git remote add origin "https://user:${HF_TOKEN}@huggingface.co/spaces/${HF_SPACE}"
+            cd ..
+          fi
 
       - name: Prepare back-end files
         run: |
@@ -88,6 +99,7 @@ jobs:
           HF_SPACE: ${{ vars.HF_SPACE }}
         run: |
           cd hf_space
+          git checkout -B main
           git add -A
           if git diff --staged --quiet; then
             echo "No changes to deploy to Hugging Face Space."
