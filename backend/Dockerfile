@@ -1,9 +1,8 @@
 # Back end (FastAPI) for the Stock Market Predictor.
 #
-# Built two ways from the same file:
-#   * locally:            docker compose up          (context = the repository root)
-#   * Hugging Face Space: .github/workflows/deploy-backend.yml copies this file to the Space,
-#                         next to the folders listed below.
+# Built for:
+#   * Render Web Service: render.yaml (or direct Docker Web Service on Render)
+#   * Local development:  docker compose up (context = repository root)
 FROM python:3.11-slim
 
 ENV PYTHONUNBUFFERED=1 \

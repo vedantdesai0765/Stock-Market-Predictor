@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: stock-predictor-api
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: backend/Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/v1/health
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: ENVIRONMENT
+        value: production
+      - key: MORNING_DATA_URL
+        value: https://raw.githubusercontent.com/vedantdesai0765/Stock-Market-Predictor/main/live
+      - key: CORS_ORIGINS
+        value: http://localhost:3000,http://127.0.0.1:3000
