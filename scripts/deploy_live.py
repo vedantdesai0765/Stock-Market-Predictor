@@ -13,7 +13,7 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_RENDER_URL = "https://stock-predictor-api.onrender.com"
+DEFAULT_RENDER_URL = "https://stock-predictor-api-5wwr.onrender.com"
 
 
 def check_auth():

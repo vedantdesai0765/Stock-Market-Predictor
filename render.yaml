@@ -16,4 +16,4 @@ services:
       - key: MORNING_DATA_URL
         value: https://raw.githubusercontent.com/vedantdesai0765/Stock-Market-Predictor/main/live
       - key: CORS_ORIGINS
-        value: http://localhost:3000,http://127.0.0.1:3000
+        value: http://localhost:3000,http://127.0.0.1:3000,https://stock-market-predictor-rouge.vercel.app,https://stock-market-predictor-bngveacmu.vercel.app,https://stock-market-predictor-vedant-desais-projects-2ceb68c1.vercel.app

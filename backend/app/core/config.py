@@ -49,6 +49,9 @@ class Settings:
             "http://127.0.0.1:3000",
             "http://localhost:8501",
             "http://127.0.0.1:8501",
+            "https://stock-market-predictor-rouge.vercel.app",
+            "https://stock-market-predictor-bngveacmu.vercel.app",
+            "https://stock-market-predictor-vedant-desais-projects-2ceb68c1.vercel.app",
         ]
 
 settings = Settings()
