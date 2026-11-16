@@ -51,9 +51,13 @@ class CallResult(BaseModel):
 class StockCall(BaseModel):
     ticker: str
     name: str
+    sector: Optional[str] = "General"
     available: bool
     reason: Optional[str] = None
     prev_close: Optional[float] = None
+    expected_open_price: Optional[float] = Field(None, description="Expected opening price reference")
+    expected_open_direction: Optional[str] = Field(None, description="HIGHER or LOWER relative to previous close")
+    model_type: Optional[str] = Field(None, description="Model source and universe description")
     prob_up: Optional[float] = Field(None, description="Model probability that the stock opens above yesterday's close")
     call: Optional[str] = Field(None, description="HIGHER or LOWER")
     baseline_call: Optional[str] = None
@@ -79,6 +83,8 @@ class TestedAccuracy(BaseModel):
 
 class ModelInfo(BaseModel):
     name: str
+    model_type: Optional[str] = None
+    universe_size: Optional[int] = None
     trained_through: Optional[str] = None
     tested: Optional[TestedAccuracy] = None
     after_study: Optional[TestedAccuracy] = None
@@ -87,9 +93,12 @@ class ModelInfo(BaseModel):
 
 
 class CallSummary(BaseModel):
+    total: int = 30
+    covered: int = 30
     higher: int = 0
     lower: int = 0
     unavailable: int = 0
+    coverage_pct: float = 100.0
 
 
 class MorningCallResponse(BaseModel):

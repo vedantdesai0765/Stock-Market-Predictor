@@ -54,7 +54,7 @@ export function Header({ onToggleMobileMenu }: HeaderProps) {
 
         {allStocksPage ? (
           <div className="leading-tight">
-            <div className="text-sm font-semibold text-slate-900">All 10 stocks</div>
+            <div className="text-sm font-semibold text-slate-900">All 30 stocks</div>
             <div className="text-[11px] text-slate-500">NSE, opening-price forecast</div>
           </div>
         ) : (

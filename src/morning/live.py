@@ -11,7 +11,7 @@ import pandas as pd
 
 from . import features as F, model as M
 from .sessions import IST, MARKET_OPEN
-from .panel import NAMES, STOCKS
+from .panel import NAMES, SECTORS, STOCKS
 
 ASIA_LABELS = {"^N225": ("n225", "Nikkei 225", "Japan"), "^KS11": ("ks11", "KOSPI", "South Korea"),
                "^TWII": ("twii", "Taiex", "Taiwan"), "^HSI": ("hsi", "Hang Seng", "Hong Kong")}
@@ -136,9 +136,15 @@ def make_forecast(px: dict, stock_px: dict, target_date: dt.date, model: dict,
     base_close = "HIGHER" if close_spec["base_rate_up"] > 0.5 else "LOWER"
     on_time = generated_at.astimezone(IST) < dt.datetime.combine(target_date, MARKET_OPEN, IST)
 
+    # Ensure all registered stocks in central config STOCKS are covered
+    target_stocks = list(dict.fromkeys((model.get("stocks") or []) + list(STOCKS)))
     calls = []
-    for key in model.get("stocks", list(STOCKS)):
-        entry = {"ticker": key, "name": NAMES.get(key, key)}
+    for key in target_stocks:
+        entry = {
+            "ticker": key,
+            "name": NAMES.get(key, key),
+            "sector": SECTORS.get(key, "General"),
+        }
         d = stock_px.get(key)
         problem = None
         if d is None or len(d) < MIN_HISTORY:
@@ -155,14 +161,28 @@ def make_forecast(px: dict, stock_px: dict, target_date: dt.date, model: dict,
         feats = x[F.FEATURES].astype(float)
         p_open = float(M.predict(open_spec, pd.DataFrame([feats]))[0])
         p_close = float(M.predict(close_spec, pd.DataFrame([feats]))[0])
+        prev_close = round(float(d.close.iloc[-1]), 2)
+        # Expected opening reference price based on directional model probability
+        est_gap_pct = round((p_open - 0.5) * 1.5, 2)
+        expected_open_price = round(prev_close * (1 + est_gap_pct / 100), 2)
         calls.append({
-            **entry, "available": True,
-            "prev_close": round(float(d.close.iloc[-1]), 2),
-            "prob_up": round(p_open, 4), "call": _call(p_open), "baseline_call": base_open,
+            **entry,
+            "available": True,
+            "prev_close": prev_close,
+            "expected_open_price": expected_open_price,
+            "expected_open_direction": "HIGHER" if p_open > 0.5 else "LOWER",
+            "model_type": "Pooled Logistic Regression (30 Stocks)",
+            "prob_up": round(p_open, 4),
+            "call": _call(p_open),
+            "baseline_call": base_open,
             "confidence": _confidence(model["evidence"]["open"], p_open),
             "drivers": _drivers(open_spec, feats, snap),
-            "close": {"prob_up": round(p_close, 4), "call": _call(p_close), "baseline_call": base_close,
-                      "confidence": _confidence(model["evidence"]["close"], p_close)},
+            "close": {
+                "prob_up": round(p_close, 4),
+                "call": _call(p_close),
+                "baseline_call": base_close,
+                "confidence": _confidence(model["evidence"]["close"], p_close),
+            },
         })
 
     ok = [c for c in calls if c["available"]]
@@ -174,15 +194,26 @@ def make_forecast(px: dict, stock_px: dict, target_date: dt.date, model: dict,
         "based_on": str(based_on.date()),
         "generated_at": generated_at.astimezone(IST).isoformat(timespec="seconds"),
         "on_time": bool(on_time),
-        "summary": {"higher": sum(c["call"] == "HIGHER" for c in ok),
-                    "lower": sum(c["call"] == "LOWER" for c in ok),
-                    "unavailable": len(calls) - len(ok)},
+        "summary": {
+            "total": len(calls),
+            "covered": len(ok),
+            "higher": sum(c["call"] == "HIGHER" for c in ok),
+            "lower": sum(c["call"] == "LOWER" for c in ok),
+            "unavailable": len(calls) - len(ok),
+            "coverage_pct": round(len(ok) / len(calls) * 100, 1) if calls else 0.0,
+        },
         "market": snap_list,
         "calls": calls,
-        "model": {"name": "Logistic regression, pooled across 10 stocks",
-                  "trained_through": open_spec["train_through"],
-                  "tested": ev["backtest"], "after_study": ev.get("after_study"),
-                  "simple_guess": base_open, "base_rate_up": round(open_spec["base_rate_up"], 4)},
+        "model": {
+            "name": f"Logistic regression, pooled across {len(calls)} stocks",
+            "model_type": "Pooled Logistic Regression (30 Stocks)",
+            "universe_size": len(calls),
+            "trained_through": open_spec["train_through"],
+            "tested": ev["backtest"],
+            "after_study": ev.get("after_study"),
+            "simple_guess": base_open,
+            "base_rate_up": round(open_spec["base_rate_up"], 4),
+        },
         "notes": notes,
     }
 

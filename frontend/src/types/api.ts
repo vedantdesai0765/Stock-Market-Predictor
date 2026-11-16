@@ -419,9 +419,13 @@ export interface MorningCallResult {
 export interface MorningStockCall {
   ticker: string;
   name: string;
+  sector?: string | null;
   available: boolean;
   reason?: string | null;
   prev_close?: number | null;
+  expected_open_price?: number | null;
+  expected_open_direction?: CallDirection | null;
+  model_type?: string | null;
   prob_up?: number | null;
   call?: CallDirection | null;
   baseline_call?: CallDirection | null;
@@ -455,11 +459,20 @@ export interface MorningCallResponse {
   on_time: boolean | null;
   reason: string | null;
   next_session: string | null;
-  summary: { higher: number; lower: number; unavailable: number } | null;
+  summary: {
+    total?: number;
+    covered?: number;
+    higher: number;
+    lower: number;
+    unavailable: number;
+    coverage_pct?: number;
+  } | null;
   market: MorningMarketInput[];
   calls: MorningStockCall[];
   model: {
     name: string;
+    model_type?: string | null;
+    universe_size?: number | null;
     trained_through: string | null;
     tested: TestedAccuracy | null;
     after_study: TestedAccuracy | null;
