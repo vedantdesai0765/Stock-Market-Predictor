@@ -40,6 +40,11 @@ class ForecastService:
         stock_df = df[df["ticker"].astype(str).str.upper() == key]
 
         if stock_df.empty:
+            # For expanded universe stocks, use the pooled market benchmark ('ALL')
+            stock_df = df[df["ticker"].astype(str).str.upper() == "ALL"].copy()
+            stock_df["ticker"] = key
+
+        if stock_df.empty:
             raise DataFileNotFoundError(ticker=ticker, file_type=f"forecast summary rows for {key}")
 
         summaries: List[ForecastSummaryItem] = []
@@ -85,6 +90,8 @@ class ForecastService:
         if year_csv.exists():
             ydf = pd.read_csv(year_csv)
             ystock = ydf[ydf["ticker"].astype(str).str.upper() == key]
+            if ystock.empty:
+                ystock = ydf[ydf["ticker"].astype(str).str.upper() == "ALL"]
             for _, yrow in ystock.iterrows():
                 acc_m = float(yrow["acc_model"])
                 acc_g = float(yrow["acc_guess"])
