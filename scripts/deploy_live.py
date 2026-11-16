@@ -1,7 +1,8 @@
 """
 scripts/deploy_live.py
-Automated end-to-end deployment script for Hugging Face Spaces (Backend) and Vercel (Frontend).
+Automated end-to-end deployment script for Render (Backend) and Vercel (Frontend).
 """
+import argparse
 import json
 import os
 import shutil
@@ -12,24 +13,13 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-BUILD_DIR = ROOT / "build" / "hf_space"
+DEFAULT_RENDER_URL = "https://stock-predictor-api-5wwr.onrender.com"
 
 
 def check_auth():
-    print("[1/6] Checking authentication status...")
-    hf_authed = False
-    hf_username = None
-    try:
-        from huggingface_hub import HfApi
-        api = HfApi()
-        user_info = api.whoami()
-        hf_username = user_info.get("name")
-        hf_authed = bool(hf_username)
-        print(f"  [+] Hugging Face: Authenticated as '{hf_username}'")
-    except Exception as exc:
-        print("  [-] Hugging Face: Not authenticated")
-
+    print("[1/5] Checking authentication & deployment configuration...")
     vc_authed = False
+    vc_user = None
     try:
         res = subprocess.run(["npx", "--yes", "vercel", "whoami"],
                              cwd=str(ROOT), capture_output=True, text=True, shell=True)
@@ -37,136 +27,64 @@ def check_auth():
         if res.returncode == 0 and "Logged out" not in out:
             vc_user = [line for line in out.splitlines() if line and not line.startswith("Vercel")][0]
             vc_authed = True
-            print(f"  [+] Vercel: Authenticated as '{vc_user}'")
+            print(f"  [+] Vercel CLI: Authenticated as '{vc_user}'")
         else:
-            print("  [-] Vercel: Not authenticated (Logged out)")
+            print("  [-] Vercel CLI: Not authenticated (Logged out)")
     except Exception as exc:
         print(f"  [-] Vercel check failed: {exc}")
 
-    return hf_authed, hf_username, vc_authed
+    render_hook = os.getenv("RENDER_DEPLOY_HOOK")
+    if render_hook:
+        print("  [+] Render Deploy Hook: Configured in environment")
+    else:
+        print("  [i] Render Deploy Hook: Not set in local environment (Git auto-deploy active)")
+
+    return vc_authed, vc_user
 
 
-def prepare_hf_payload():
-    print("[2/6] Preparing backend deployment package in build/hf_space...")
-    if BUILD_DIR.exists():
-        shutil.rmtree(BUILD_DIR)
-    BUILD_DIR.mkdir(parents=True, exist_ok=True)
+def verify_render_backend(backend_url, timeout=300):
+    backend_url = backend_url.rstrip("/")
+    health_url = f"{backend_url}/api/v1/health"
+    print(f"[2/5] Verifying Render backend health at {health_url}...")
+    print("  Waiting for Render web service to respond (free tier may take 30-60s on cold start)...")
 
-    # Core deployment manifests
-    shutil.copy2(ROOT / "deploy" / "huggingface" / "README.md", BUILD_DIR / "README.md")
-    shutil.copy2(ROOT / "backend" / "Dockerfile", BUILD_DIR / "Dockerfile")
-    shutil.copy2(ROOT / ".dockerignore", BUILD_DIR / ".dockerignore")
-
-    # Code and runtime directories
-    for folder in ["backend", "src", "models", "data", "reports", "sentiment_study", "live"]:
-        src_path = ROOT / folder
-        dst_path = BUILD_DIR / folder
-        if src_path.exists():
-            shutil.copytree(src_path, dst_path)
-
-    # Remove non-API study data and large parquet files to stay well within limits
-    for rm_dir in [
-        BUILD_DIR / "sentiment_study" / "data",
-        BUILD_DIR / "sentiment_study" / "src",
-        BUILD_DIR / "reports" / "screenshots",
-    ]:
-        if rm_dir.exists():
-            shutil.rmtree(rm_dir, ignore_errors=True)
-
-    for p in (BUILD_DIR / "sentiment_study" / "reports").glob("*.parquet"):
-        try:
-            p.unlink()
-        except OSError:
-            pass
-
-    app_db = BUILD_DIR / "data" / "app.db"
-    if app_db.exists():
-        app_db.unlink()
-
-    # Clean __pycache__ and .pyc
-    for pyc in BUILD_DIR.rglob("*.pyc"):
-        try:
-            pyc.unlink()
-        except OSError:
-            pass
-    for cache in BUILD_DIR.rglob("__pycache__"):
-        try:
-            shutil.rmtree(cache, ignore_errors=True)
-        except OSError:
-            pass
-
-    size_mb = sum(f.stat().st_size for f in BUILD_DIR.rglob("*") if f.is_file()) / (1024 * 1024)
-    print(f"  [+] Payload staged: {size_mb:.1f} MB total (clean & optimized for Docker build)")
-
-
-def deploy_huggingface(hf_username):
-    from huggingface_hub import HfApi
-    api = HfApi()
-    repo_id = f"{hf_username}/stock-predictor-api"
-    print(f"[3/6] Configuring and deploying Hugging Face Space: {repo_id}...")
-
-    # 1. Create or ensure Space exists
-    api.create_repo(
-        repo_id=repo_id,
-        repo_type="space",
-        space_sdk="docker",
-        exist_ok=True,
-    )
-    print("  [+] Space repository confirmed on Hugging Face.")
-
-    # 2. Configure environment variables
-    api.add_space_variable(repo_id=repo_id, key="ENVIRONMENT", value="production")
-    api.add_space_variable(
-        repo_id=repo_id,
-        key="MORNING_DATA_URL",
-        value=f"https://raw.githubusercontent.com/vedantdesai0765/Stock-Market-Predictor/main/live",
-    )
-    print("  [+] Space variables configured: ENVIRONMENT=production, MORNING_DATA_URL set.")
-
-    # 3. Upload deployment payload
-    print("  Uploading backend code and models to Hugging Face...")
-    api.upload_folder(
-        repo_id=repo_id,
-        folder_path=str(BUILD_DIR),
-        repo_type="space",
-        commit_message="Deploy Stock Market Predictor backend",
-    )
-    print("  [+] Backend package uploaded successfully!")
-
-    # 4. Wait for space to build and run
-    print("  Waiting for Space to build and reach RUNNING status (this typically takes 3-6 minutes)...")
-    direct_url = f"https://{hf_username}-stock-predictor-api.hf.space"
     start_time = time.time()
-    while time.time() - start_time < 900:  # 15 minutes timeout
+    last_status = None
+    while time.time() - start_time < timeout:
+        elapsed = int(time.time() - start_time)
         try:
-            runtime = api.get_space_runtime(repo_id=repo_id)
-            stage = getattr(runtime, "stage", "UNKNOWN")
-            print(f"  -> Space status: {stage} (elapsed: {int(time.time() - start_time)}s)")
-            if stage in ("RUNNING", "APP_STARTING"):
-                time.sleep(10)
-                # Verify health endpoint
-                try:
-                    req = urllib.request.Request(f"{direct_url}/api/v1/health", headers={"User-Agent": "AntigravityDeploy"})
-                    with urllib.request.urlopen(req, timeout=10) as resp:
-                        data = json.loads(resp.read().decode("utf-8"))
-                        if data.get("status") == "healthy":
-                            print(f"  [+] Backend is LIVE and healthy at: {direct_url}")
-                            return direct_url
-                except Exception:
-                    pass
-            elif "ERROR" in stage.upper() or "FAILED" in stage.upper():
-                print(f"  [-] Space build failed with status: {stage}")
-                break
+            req = urllib.request.Request(
+                health_url,
+                headers={"User-Agent": "AntigravityDeploy/2.0"},
+            )
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+                if data.get("status") == "healthy":
+                    print(f"\n  [+] Backend is LIVE and healthy! (took {elapsed}s)")
+                    print(f"      Project: {data.get('project')}")
+                    print(f"      Stocks registered: {data.get('registered_stocks')}")
+                    print(f"      Database: {data.get('database')}")
+                    return True
+        except urllib.error.HTTPError as err:
+            last_status = f"HTTP {err.code}"
+        except urllib.error.URLError as err:
+            last_status = f"Connection waiting: {err.reason}"
         except Exception as exc:
-            print(f"  Polling notice: {exc}")
-        time.sleep(15)
+            last_status = str(exc)
 
-    return direct_url
+        print(f"  -> Waiting for Render service... ({elapsed}s elapsed, last: {last_status})", end="\r")
+        time.sleep(10)
+
+    print(f"\n  [-] Warning: Backend health check did not pass within {timeout}s.")
+    print(f"      Last recorded response: {last_status}")
+    return False
 
 
 def deploy_vercel(backend_url):
-    print("[4/6] Deploying Next.js frontend to Vercel...")
+    backend_url = backend_url.rstrip("/")
     api_url = f"{backend_url}/api/v1"
+    print(f"[3/5] Deploying Next.js frontend to Vercel (API: {api_url})...")
+
     cmd = [
         "npx", "--yes", "vercel", "deploy", "frontend",
         "--prod",
@@ -179,11 +97,11 @@ def deploy_vercel(backend_url):
     print(f"  Running: {' '.join(cmd)}")
     res = subprocess.run(cmd, cwd=str(ROOT), capture_output=True, text=True, shell=True)
     out = (res.stdout + res.stderr).strip()
-    print("  Vercel output:")
+
+    print("  Vercel deployment logs:")
     for line in out.splitlines():
         print(f"    {line}")
 
-    # Extract production URL
     vercel_url = None
     for line in out.splitlines():
         clean = line.strip()
@@ -192,7 +110,6 @@ def deploy_vercel(backend_url):
             break
 
     if not vercel_url:
-        # Fallback to inspecting vercel project
         res_info = subprocess.run(["npx", "--yes", "vercel", "project", "ls"],
                                   cwd=str(ROOT), capture_output=True, text=True, shell=True)
         for line in (res_info.stdout + res_info.stderr).splitlines():
@@ -205,39 +122,40 @@ def deploy_vercel(backend_url):
     if vercel_url:
         print(f"  [+] Frontend deployed successfully: {vercel_url}")
     else:
-        print("  [-] Warning: Could not automatically parse Vercel production URL from output.")
+        print("  [-] Notice: Check Vercel dashboard for production domain.")
 
     return vercel_url
 
 
-def link_cors(hf_username, vercel_url):
-    if not vercel_url:
-        return
-    print(f"[5/6] Linking CORS on Hugging Face to Vercel domain: {vercel_url}...")
-    from huggingface_hub import HfApi
-    api = HfApi()
-    repo_id = f"{hf_username}/stock-predictor-api"
-    api.add_space_variable(repo_id=repo_id, key="CORS_ORIGINS", value=vercel_url)
-    print("  [+] CORS_ORIGINS updated on Hugging Face Space.")
+def trigger_deploy_hook(hook_url):
+    print(f"Triggering Render deploy hook: {hook_url[:35]}...")
+    try:
+        req = urllib.request.Request(hook_url, method="POST", headers={"User-Agent": "AntigravityDeploy"})
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            print(f"  [+] Deploy hook response code: {resp.status}")
+            return True
+    except Exception as exc:
+        print(f"  [-] Failed to trigger deploy hook: {exc}")
+        return False
 
 
 def verify_application(backend_url, vercel_url):
-    print("[6/6] Verifying end-to-end communication...")
+    backend_url = backend_url.rstrip("/")
+    print("[4/5] Verifying complete application connectivity...")
+
     # Test Backend Health
-    health_ok = False
     try:
         req = urllib.request.Request(f"{backend_url}/api/v1/health", headers={"User-Agent": "AntigravityDeploy"})
-        with urllib.request.urlopen(req, timeout=10) as resp:
+        with urllib.request.urlopen(req, timeout=15) as resp:
             data = json.loads(resp.read().decode("utf-8"))
-            health_ok = data.get("status") == "healthy"
-            print(f"  [+] Backend /health: {data}")
+            print(f"  [+] Backend /health: {data.get('status')} (DB: {data.get('database')})")
     except Exception as exc:
         print(f"  [-] Backend /health check failed: {exc}")
 
     # Test Morning Call endpoint
     try:
         req = urllib.request.Request(f"{backend_url}/api/v1/morning-call", headers={"User-Agent": "AntigravityDeploy"})
-        with urllib.request.urlopen(req, timeout=10) as resp:
+        with urllib.request.urlopen(req, timeout=15) as resp:
             data = json.loads(resp.read().decode("utf-8"))
             print(f"  [+] Backend /morning-call status: {data.get('status')}")
     except Exception as exc:
@@ -247,38 +165,48 @@ def verify_application(backend_url, vercel_url):
     if vercel_url:
         try:
             req = urllib.request.Request(vercel_url, headers={"User-Agent": "AntigravityDeploy"})
-            with urllib.request.urlopen(req, timeout=10) as resp:
-                print(f"  [+] Vercel homepage HTTP status: {resp.status}")
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                print(f"  [+] Vercel website HTTP response: {resp.status}")
         except Exception as exc:
             print(f"  [-] Vercel homepage check failed: {exc}")
 
-    print("\n================ DEPLOYMENT SUMMARY ================")
-    print(f"Backend API URL:    {backend_url}")
+    print("\n[5/5] Deployment Overview:")
+    print("====================================================")
+    print(f"Backend URL:        {backend_url}")
+    print(f"API Base URL:       {backend_url}/api/v1")
     print(f"Interactive Docs:   {backend_url}/docs")
-    print(f"Health Check:       {backend_url}/api/v1/health")
+    print(f"Health Endpoint:    {backend_url}/api/v1/health")
     if vercel_url:
-        print(f"Public Website URL: {vercel_url}")
+        print(f"Website URL:        {vercel_url}")
     print("====================================================")
 
 
 def main():
-    hf_authed, hf_username, vc_authed = check_auth()
-    if not hf_authed or not vc_authed:
-        print("\n[!] MISSING CLI AUTHENTICATION:")
-        if not hf_authed:
-            print("  * Hugging Face CLI is not authenticated.")
-            print("    Run in your PowerShell terminal:  .venv\\Scripts\\huggingface-cli.exe login")
-        if not vc_authed:
-            print("  * Vercel CLI is not authenticated.")
-            print("    Run in your PowerShell terminal:  npx vercel login")
-        print("\nAfter logging in to both CLIs in your terminal, rerun this script to complete the deployment.")
-        sys.exit(1)
+    parser = argparse.ArgumentParser(description="Deploy Stock Market Predictor to Render and Vercel.")
+    parser.add_argument("--backend-url", default=DEFAULT_RENDER_URL, help="Render backend URL")
+    parser.add_argument("--hook", default=os.getenv("RENDER_DEPLOY_HOOK"), help="Render deploy hook URL")
+    parser.add_argument("--skip-backend-check", action="store_true", help="Skip waiting for backend health")
+    parser.add_argument("--skip-vercel", action="store_true", help="Skip Vercel frontend deployment")
+    args = parser.parse_args()
 
-    prepare_hf_payload()
-    backend_url = deploy_huggingface(hf_username)
-    vercel_url = deploy_vercel(backend_url)
-    link_cors(hf_username, vercel_url)
-    verify_application(backend_url, vercel_url)
+    vc_authed, vc_user = check_auth()
+
+    if args.hook:
+        trigger_deploy_hook(args.hook)
+
+    if not args.skip_backend_check:
+        verify_render_backend(args.backend_url, timeout=120)
+
+    vercel_url = None
+    if not args.skip_vercel:
+        if not vc_authed:
+            print("\n[!] Vercel CLI is not authenticated.")
+            print("    Run in your PowerShell terminal:  npx vercel login")
+            print("    Then rerun this script.")
+        else:
+            vercel_url = deploy_vercel(args.backend_url)
+
+    verify_application(args.backend_url, vercel_url)
 
 
 if __name__ == "__main__":
