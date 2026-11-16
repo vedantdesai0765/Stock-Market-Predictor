@@ -17,7 +17,7 @@ def test_health(client: TestClient):
     data = response.json()
     assert data["status"] == "healthy"
     assert data["database"] == "connected"
-    assert data["registered_stocks"] == 10
+    assert data["registered_stocks"] == len(config.list_stocks())
     assert data["api_prefix"] == "/api/v1"
 
 
@@ -25,8 +25,8 @@ def test_stocks_list(client: TestClient):
     response = client.get("/api/v1/stocks")
     assert response.status_code == 200
     data = response.json()
-    assert data["total"] == 10
-    assert len(data["stocks"]) == 10
+    assert data["total"] == len(config.list_stocks())
+    assert len(data["stocks"]) == len(config.list_stocks())
     tickers = [s["ticker"] for s in data["stocks"]]
     expected = [
         "ADANIENT", "ADANIGREEN", "ETERNAL", "HDFCBANK", "INFY",

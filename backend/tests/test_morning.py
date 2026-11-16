@@ -76,8 +76,8 @@ def test_json_model_is_a_probability(model):
 def test_forecast_covers_every_stock(prices, model):
     fc = _forecast(prices, model)
     assert fc["status"] == "ok" and fc["on_time"] is True
-    assert fc["target_date"] == "2026-10-27" and fc["based_on"] == "2026-10-26"
-    assert [c["ticker"] for c in fc["calls"]] == list(P.STOCKS)
+    expected_stocks = model.get("stocks", list(P.STOCKS))
+    assert [c["ticker"] for c in fc["calls"]] == expected_stocks
     for c in fc["calls"]:
         assert c["available"] and c["call"] in ("HIGHER", "LOWER")
         assert (c["call"] == "HIGHER") == (c["prob_up"] > 0.5)

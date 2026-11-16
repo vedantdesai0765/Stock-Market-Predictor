@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useQueryClient } from "@tanstack/react-query";
+import { useStocks } from "@/hooks/useStockData";
 import { api } from "@/lib/api";
 import { OrderPreviewResponse, ExecuteOrderResponse } from "@/types/api";
 import { formatINR } from "@/lib/utils";
@@ -32,13 +33,33 @@ interface OrderModalProps {
 const SUPPORTED_STOCKS = [
   { ticker: "ADANIENT", name: "Adani Enterprises" },
   { ticker: "ADANIGREEN", name: "Adani Green Energy" },
+  { ticker: "APOLLOHOSP", name: "Apollo Hospitals Enterprise" },
+  { ticker: "ASIANPAINT", name: "Asian Paints" },
+  { ticker: "AXISBANK", name: "Axis Bank" },
+  { ticker: "BAJAJFINSV", name: "Bajaj Finserv" },
+  { ticker: "BAJFINANCE", name: "Bajaj Finance" },
+  { ticker: "BEL", name: "Bharat Electronics" },
+  { ticker: "BHARTIARTL", name: "Bharti Airtel" },
+  { ticker: "CIPLA", name: "Cipla" },
   { ticker: "ETERNAL", name: "Eternal Limited" },
   { ticker: "HDFCBANK", name: "HDFC Bank" },
+  { ticker: "HINDUNILVR", name: "Hindustan Unilever" },
+  { ticker: "ICICIBANK", name: "ICICI Bank" },
   { ticker: "INFY", name: "Infosys" },
   { ticker: "ITC", name: "ITC Limited" },
+  { ticker: "KOTAKBANK", name: "Kotak Mahindra Bank" },
+  { ticker: "LT", name: "Larsen & Toubro" },
+  { ticker: "M_M", name: "Mahindra & Mahindra" },
+  { ticker: "MARUTI", name: "Maruti Suzuki" },
+  { ticker: "NTPC", name: "NTPC" },
+  { ticker: "ONGC", name: "Oil & Natural Gas Corporation" },
+  { ticker: "POWERGRID", name: "Power Grid Corporation of India" },
   { ticker: "RELIANCE", name: "Reliance Industries" },
   { ticker: "SBI", name: "State Bank of India" },
+  { ticker: "SUNPHARMA", name: "Sun Pharmaceutical" },
   { ticker: "TCS", name: "Tata Consultancy Services" },
+  { ticker: "TITAN", name: "Titan Company" },
+  { ticker: "ULTRACEMCO", name: "UltraTech Cement" },
   { ticker: "VEDL", name: "Vedanta" },
 ];
 
@@ -54,6 +75,11 @@ export function OrderModal({
   onSuccess,
 }: OrderModalProps) {
   const queryClient = useQueryClient();
+  const { data: stocksData } = useStocks();
+  const availableStocks =
+    stocksData?.stocks && stocksData.stocks.length > 0
+      ? stocksData.stocks.map((s) => ({ ticker: s.ticker, name: s.display_name }))
+      : SUPPORTED_STOCKS;
 
   const [ticker, setTicker] = useState(defaultTicker);
   const [side, setSide] = useState<"BUY" | "SELL">(defaultSide);
@@ -237,7 +263,7 @@ export function OrderModal({
                   onChange={(e) => setTicker(e.target.value)}
                   className="w-full px-3 py-2 text-xs font-mono bg-slate-50 border border-slate-300 rounded-lg text-slate-900 outline-hidden focus:ring-2 focus:ring-sky-500/20"
                 >
-                  {SUPPORTED_STOCKS.map((s) => (
+                  {availableStocks.map((s) => (
                     <option key={s.ticker} value={s.ticker}>
                       {s.ticker} · {s.name}
                     </option>

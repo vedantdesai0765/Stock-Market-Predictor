@@ -196,20 +196,40 @@ export default function SettingsPage() {
             </thead>
             <tbody className="divide-y divide-slate-100 font-sans">
               {(stocks?.stocks || [
-                { ticker: "TCS", name: "Tata Consultancy Services", sector: "IT" },
-                { ticker: "RELIANCE", name: "Reliance Industries", sector: "Energy" },
-                { ticker: "INFY", name: "Infosys", sector: "IT" },
-                { ticker: "HDFCBANK", name: "HDFC Bank", sector: "Financial Services" },
-                { ticker: "SBI", name: "State Bank of India", sector: "Financial Services" },
-                { ticker: "ITC", name: "ITC Limited", sector: "Consumer Goods" },
                 { ticker: "ADANIENT", name: "Adani Enterprises", sector: "Energy & Infrastructure" },
-                { ticker: "VEDL", name: "Vedanta Limited", sector: "Metals & Mining" },
-                { ticker: "ETERNAL", name: "Eternal Limited (Zomato)", sector: "Consumer Tech" },
                 { ticker: "ADANIGREEN", name: "Adani Green Energy", sector: "Renewable Energy" },
+                { ticker: "APOLLOHOSP", name: "Apollo Hospitals Enterprise", sector: "Healthcare" },
+                { ticker: "ASIANPAINT", name: "Asian Paints", sector: "Consumer Goods" },
+                { ticker: "AXISBANK", name: "Axis Bank", sector: "Financial Services" },
+                { ticker: "BAJAJFINSV", name: "Bajaj Finserv", sector: "Financial Services" },
+                { ticker: "BAJFINANCE", name: "Bajaj Finance", sector: "Financial Services" },
+                { ticker: "BEL", name: "Bharat Electronics", sector: "Defence / Capital Goods" },
+                { ticker: "BHARTIARTL", name: "Bharti Airtel", sector: "Telecom" },
+                { ticker: "CIPLA", name: "Cipla", sector: "Pharmaceuticals" },
+                { ticker: "ETERNAL", name: "Eternal Limited (Zomato)", sector: "Consumer Tech" },
+                { ticker: "HDFCBANK", name: "HDFC Bank", sector: "Financial Services" },
+                { ticker: "HINDUNILVR", name: "Hindustan Unilever", sector: "FMCG" },
+                { ticker: "ICICIBANK", name: "ICICI Bank", sector: "Financial Services" },
+                { ticker: "INFY", name: "Infosys", sector: "IT" },
+                { ticker: "ITC", name: "ITC Limited", sector: "Consumer Goods" },
+                { ticker: "KOTAKBANK", name: "Kotak Mahindra Bank", sector: "Financial Services" },
+                { ticker: "LT", name: "Larsen & Toubro", sector: "Engineering & Construction" },
+                { ticker: "M_M", name: "Mahindra & Mahindra", sector: "Automobile" },
+                { ticker: "MARUTI", name: "Maruti Suzuki", sector: "Automobile" },
+                { ticker: "NTPC", name: "NTPC", sector: "Power" },
+                { ticker: "ONGC", name: "Oil & Natural Gas Corporation", sector: "Oil & Gas" },
+                { ticker: "POWERGRID", name: "Power Grid Corporation of India", sector: "Power" },
+                { ticker: "RELIANCE", name: "Reliance Industries", sector: "Energy & Conglomerate" },
+                { ticker: "SBI", name: "State Bank of India", sector: "Financial Services" },
+                { ticker: "SUNPHARMA", name: "Sun Pharmaceutical", sector: "Pharmaceuticals" },
+                { ticker: "TCS", name: "Tata Consultancy Services", sector: "IT" },
+                { ticker: "TITAN", name: "Titan Company", sector: "Consumer Goods" },
+                { ticker: "ULTRACEMCO", name: "UltraTech Cement", sector: "Materials / Cement" },
+                { ticker: "VEDL", name: "Vedanta Limited", sector: "Metals & Mining" },
               ]).map((stock: any) => (
                 <tr key={stock.ticker} className="hover:bg-slate-50/70">
                   <td className="py-2.5 px-3 font-mono font-bold text-slate-900">{stock.ticker}</td>
-                  <td className="py-2.5 px-3 font-medium text-slate-800">{stock.name}</td>
+                  <td className="py-2.5 px-3 font-medium text-slate-800">{stock.display_name || stock.name}</td>
                   <td className="py-2.5 px-3 text-slate-600">{stock.sector || "Large Cap"}</td>
                   <td className="py-2.5 px-3 font-mono text-slate-500">NSE India</td>
                   <td className="py-2.5 px-3 font-mono text-emerald-700">
