@@ -3,7 +3,7 @@
   "status": "ok",
   "target_date": "2026-11-16",
   "based_on": "2026-11-13",
-  "generated_at": "2026-11-16T15:03:13+05:30",
+  "generated_at": "2026-11-16T15:40:39+05:30",
   "on_time": false,
   "summary": {
     "higher": 10,
@@ -492,7 +492,7 @@
     },
     {
       "ticker": "ETERNAL",
-      "name": "Eternal (Zomato)",
+      "name": "Eternal Limited",
       "available": true,
       "prev_close": 363.65,
       "prob_up": 0.6269,
