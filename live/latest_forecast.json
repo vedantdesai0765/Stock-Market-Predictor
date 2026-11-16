@@ -1,11 +1,565 @@
 {
   "schema": 1,
-  "status": "market_closed",
-  "target_date": "2026-11-14",
-  "reason": "Weekend",
-  "next_session": "2026-11-16",
-  "generated_at": "2026-11-14T23:58:52+05:30",
-  "market": [],
-  "calls": [],
+  "status": "ok",
+  "target_date": "2026-11-16",
+  "based_on": "2026-11-13",
+  "generated_at": "2026-11-16T15:03:13+05:30",
+  "on_time": false,
+  "summary": {
+    "higher": 10,
+    "lower": 0,
+    "unavailable": 0
+  },
+  "market": [
+    {
+      "key": "sp500",
+      "label": "S&P 500",
+      "region": "United States",
+      "change_pct": -0.4,
+      "level": 7561.67,
+      "session": "2026-11-13",
+      "available": true
+    },
+    {
+      "key": "vix",
+      "label": "VIX",
+      "region": "US volatility index",
+      "change_pct": 3.21,
+      "level": 19.3,
+      "session": "2026-11-13",
+      "available": true
+    },
+    {
+      "key": "n225",
+      "label": "Nikkei 225",
+      "region": "Japan",
+      "change_pct": 0.34,
+      "level": 61348.21,
+      "session": "2026-11-16",
+      "available": true
+    },
+    {
+      "key": "ks11",
+      "label": "KOSPI",
+      "region": "South Korea",
+      "change_pct": 0.28,
+      "level": 5305.4,
+      "session": "2026-11-16",
+      "available": true
+    },
+    {
+      "key": "twii",
+      "label": "Taiex",
+      "region": "Taiwan",
+      "change_pct": -0.37,
+      "level": 43512.42,
+      "session": "2026-11-16",
+      "available": true
+    },
+    {
+      "key": "hsi",
+      "label": "Hang Seng",
+      "region": "Hong Kong",
+      "change_pct": 0.3,
+      "level": 23708.6,
+      "session": "2026-11-16",
+      "available": true
+    }
+  ],
+  "calls": [
+    {
+      "ticker": "RELIANCE",
+      "name": "Reliance Industries",
+      "available": true,
+      "prev_close": 1339.7,
+      "prob_up": 0.6096,
+      "call": "HIGHER",
+      "baseline_call": "HIGHER",
+      "confidence": {
+        "level": "Moderate",
+        "tested_accuracy": 0.665253617892121,
+        "tested_n": 6841
+      },
+      "drivers": [
+        {
+          "key": "us",
+          "label": "US market overnight",
+          "detail": "S&P 500 -0.40% overnight",
+          "direction": "down",
+          "weight": 0.309
+        },
+        {
+          "key": "nifty",
+          "label": "Nifty trend",
+          "detail": "Nifty -0.61% yesterday",
+          "direction": "up",
+          "weight": 0.293
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +0.00% yesterday, RSI 71",
+          "direction": "down",
+          "weight": 0.251
+        }
+      ],
+      "close": {
+        "prob_up": 0.5252,
+        "call": "HIGHER",
+        "baseline_call": "HIGHER",
+        "confidence": {
+          "level": "Low",
+          "tested_accuracy": 0.5367033383915023,
+          "tested_n": 21088
+        }
+      }
+    },
+    {
+      "ticker": "TCS",
+      "name": "Tata Consultancy Services",
+      "available": true,
+      "prev_close": 2407.5,
+      "prob_up": 0.6623,
+      "call": "HIGHER",
+      "baseline_call": "HIGHER",
+      "confidence": {
+        "level": "Moderate",
+        "tested_accuracy": 0.665253617892121,
+        "tested_n": 6841
+      },
+      "drivers": [
+        {
+          "key": "us",
+          "label": "US market overnight",
+          "detail": "S&P 500 -0.40% overnight",
+          "direction": "down",
+          "weight": 0.4
+        },
+        {
+          "key": "nifty",
+          "label": "Nifty trend",
+          "detail": "Nifty -0.61% yesterday",
+          "direction": "up",
+          "weight": 0.38
+        },
+        {
+          "key": "asia",
+          "label": "Asian markets this morning",
+          "detail": "Asian markets opened +0.14% on average",
+          "direction": "up",
+          "weight": 0.154
+        }
+      ],
+      "close": {
+        "prob_up": 0.5353,
+        "call": "HIGHER",
+        "baseline_call": "HIGHER",
+        "confidence": {
+          "level": "Low",
+          "tested_accuracy": 0.5367033383915023,
+          "tested_n": 21088
+        }
+      }
+    },
+    {
+      "ticker": "INFY",
+      "name": "Infosys",
+      "available": true,
+      "prev_close": 1141.5,
+      "prob_up": 0.6186,
+      "call": "HIGHER",
+      "baseline_call": "HIGHER",
+      "confidence": {
+        "level": "Moderate",
+        "tested_accuracy": 0.665253617892121,
+        "tested_n": 6841
+      },
+      "drivers": [
+        {
+          "key": "us",
+          "label": "US market overnight",
+          "detail": "S&P 500 -0.40% overnight",
+          "direction": "down",
+          "weight": 0.323
+        },
+        {
+          "key": "nifty",
+          "label": "Nifty trend",
+          "detail": "Nifty -0.61% yesterday",
+          "direction": "up",
+          "weight": 0.307
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -0.84% yesterday, RSI 56",
+          "direction": "down",
+          "weight": 0.215
+        }
+      ],
+      "close": {
+        "prob_up": 0.5116,
+        "call": "HIGHER",
+        "baseline_call": "HIGHER",
+        "confidence": {
+          "level": "Low",
+          "tested_accuracy": 0.5367033383915023,
+          "tested_n": 21088
+        }
+      }
+    },
+    {
+      "ticker": "HDFCBANK",
+      "name": "HDFC Bank",
+      "available": true,
+      "prev_close": 804.0,
+      "prob_up": 0.5859,
+      "call": "HIGHER",
+      "baseline_call": "HIGHER",
+      "confidence": {
+        "level": "Low",
+        "tested_accuracy": 0.559694364851958,
+        "tested_n": 7329
+      },
+      "drivers": [
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -1.02% yesterday, RSI 73",
+          "direction": "down",
+          "weight": 0.331
+        },
+        {
+          "key": "us",
+          "label": "US market overnight",
+          "detail": "S&P 500 -0.40% overnight",
+          "direction": "down",
+          "weight": 0.276
+        },
+        {
+          "key": "nifty",
+          "label": "Nifty trend",
+          "detail": "Nifty -0.61% yesterday",
+          "direction": "up",
+          "weight": 0.262
+        }
+      ],
+      "close": {
+        "prob_up": 0.5171,
+        "call": "HIGHER",
+        "baseline_call": "HIGHER",
+        "confidence": {
+          "level": "Low",
+          "tested_accuracy": 0.5367033383915023,
+          "tested_n": 21088
+        }
+      }
+    },
+    {
+      "ticker": "SBI",
+      "name": "State Bank of India",
+      "available": true,
+      "prev_close": 1080.0,
+      "prob_up": 0.6015,
+      "call": "HIGHER",
+      "baseline_call": "HIGHER",
+      "confidence": {
+        "level": "Moderate",
+        "tested_accuracy": 0.665253617892121,
+        "tested_n": 6841
+      },
+      "drivers": [
+        {
+          "key": "us",
+          "label": "US market overnight",
+          "detail": "S&P 500 -0.40% overnight",
+          "direction": "down",
+          "weight": 0.296
+        },
+        {
+          "key": "nifty",
+          "label": "Nifty trend",
+          "detail": "Nifty -0.61% yesterday",
+          "direction": "up",
+          "weight": 0.282
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -0.60% yesterday, RSI 72",
+          "direction": "down",
+          "weight": 0.281
+        }
+      ],
+      "close": {
+        "prob_up": 0.5451,
+        "call": "HIGHER",
+        "baseline_call": "HIGHER",
+        "confidence": {
+          "level": "Low",
+          "tested_accuracy": 0.5367033383915023,
+          "tested_n": 21088
+        }
+      }
+    },
+    {
+      "ticker": "ITC",
+      "name": "ITC",
+      "available": true,
+      "prev_close": 285.0,
+      "prob_up": 0.5623,
+      "call": "HIGHER",
+      "baseline_call": "HIGHER",
+      "confidence": {
+        "level": "Low",
+        "tested_accuracy": 0.559694364851958,
+        "tested_n": 7329
+      },
+      "drivers": [
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +0.33% yesterday, RSI 66",
+          "direction": "down",
+          "weight": 0.394
+        },
+        {
+          "key": "us",
+          "label": "US market overnight",
+          "detail": "S&P 500 -0.40% overnight",
+          "direction": "down",
+          "weight": 0.25
+        },
+        {
+          "key": "nifty",
+          "label": "Nifty trend",
+          "detail": "Nifty -0.61% yesterday",
+          "direction": "up",
+          "weight": 0.237
+        }
+      ],
+      "close": {
+        "prob_up": 0.5209,
+        "call": "HIGHER",
+        "baseline_call": "HIGHER",
+        "confidence": {
+          "level": "Low",
+          "tested_accuracy": 0.5367033383915023,
+          "tested_n": 21088
+        }
+      }
+    },
+    {
+      "ticker": "ADANIENT",
+      "name": "Adani Enterprises",
+      "available": true,
+      "prev_close": 2688.0,
+      "prob_up": 0.6122,
+      "call": "HIGHER",
+      "baseline_call": "HIGHER",
+      "confidence": {
+        "level": "Moderate",
+        "tested_accuracy": 0.665253617892121,
+        "tested_n": 6841
+      },
+      "drivers": [
+        {
+          "key": "us",
+          "label": "US market overnight",
+          "detail": "S&P 500 -0.40% overnight",
+          "direction": "down",
+          "weight": 0.313
+        },
+        {
+          "key": "nifty",
+          "label": "Nifty trend",
+          "detail": "Nifty -0.61% yesterday",
+          "direction": "up",
+          "weight": 0.297
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -1.95% yesterday, RSI 49",
+          "direction": "down",
+          "weight": 0.241
+        }
+      ],
+      "close": {
+        "prob_up": 0.5399,
+        "call": "HIGHER",
+        "baseline_call": "HIGHER",
+        "confidence": {
+          "level": "Low",
+          "tested_accuracy": 0.5367033383915023,
+          "tested_n": 21088
+        }
+      }
+    },
+    {
+      "ticker": "VEDL",
+      "name": "Vedanta",
+      "available": true,
+      "prev_close": 259.68,
+      "prob_up": 0.5689,
+      "call": "HIGHER",
+      "baseline_call": "HIGHER",
+      "confidence": {
+        "level": "Low",
+        "tested_accuracy": 0.559694364851958,
+        "tested_n": 7329
+      },
+      "drivers": [
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -0.28% yesterday, RSI 58",
+          "direction": "down",
+          "weight": 0.378
+        },
+        {
+          "key": "us",
+          "label": "US market overnight",
+          "detail": "S&P 500 -0.40% overnight",
+          "direction": "down",
+          "weight": 0.256
+        },
+        {
+          "key": "nifty",
+          "label": "Nifty trend",
+          "detail": "Nifty -0.61% yesterday",
+          "direction": "up",
+          "weight": 0.244
+        }
+      ],
+      "close": {
+        "prob_up": 0.5076,
+        "call": "HIGHER",
+        "baseline_call": "HIGHER",
+        "confidence": {
+          "level": "Low",
+          "tested_accuracy": 0.5367033383915023,
+          "tested_n": 21088
+        }
+      }
+    },
+    {
+      "ticker": "ADANIGREEN",
+      "name": "Adani Green Energy",
+      "available": true,
+      "prev_close": 1403.0,
+      "prob_up": 0.6845,
+      "call": "HIGHER",
+      "baseline_call": "HIGHER",
+      "confidence": {
+        "level": "Moderate",
+        "tested_accuracy": 0.665253617892121,
+        "tested_n": 6841
+      },
+      "drivers": [
+        {
+          "key": "us",
+          "label": "US market overnight",
+          "detail": "S&P 500 -0.40% overnight",
+          "direction": "down",
+          "weight": 0.345
+        },
+        {
+          "key": "nifty",
+          "label": "Nifty trend",
+          "detail": "Nifty -0.61% yesterday",
+          "direction": "up",
+          "weight": 0.328
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -1.34% yesterday, RSI 59",
+          "direction": "up",
+          "weight": 0.163
+        }
+      ],
+      "close": {
+        "prob_up": 0.559,
+        "call": "HIGHER",
+        "baseline_call": "HIGHER",
+        "confidence": {
+          "level": "Low",
+          "tested_accuracy": 0.5367033383915023,
+          "tested_n": 21088
+        }
+      }
+    },
+    {
+      "ticker": "ETERNAL",
+      "name": "Eternal (Zomato)",
+      "available": true,
+      "prev_close": 363.65,
+      "prob_up": 0.6269,
+      "call": "HIGHER",
+      "baseline_call": "HIGHER",
+      "confidence": {
+        "level": "Moderate",
+        "tested_accuracy": 0.665253617892121,
+        "tested_n": 6841
+      },
+      "drivers": [
+        {
+          "key": "us",
+          "label": "US market overnight",
+          "detail": "S&P 500 -0.40% overnight",
+          "direction": "down",
+          "weight": 0.338
+        },
+        {
+          "key": "nifty",
+          "label": "Nifty trend",
+          "detail": "Nifty -0.61% yesterday",
+          "direction": "up",
+          "weight": 0.322
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -0.19% yesterday, RSI 68",
+          "direction": "down",
+          "weight": 0.179
+        }
+      ],
+      "close": {
+        "prob_up": 0.5416,
+        "call": "HIGHER",
+        "baseline_call": "HIGHER",
+        "confidence": {
+          "level": "Low",
+          "tested_accuracy": 0.5367033383915023,
+          "tested_n": 21088
+        }
+      }
+    }
+  ],
+  "model": {
+    "name": "Logistic regression, pooled across 10 stocks",
+    "trained_through": "2026-10-29",
+    "tested": {
+      "n": 27179,
+      "accuracy": 0.7062437911622944,
+      "baseline": 0.6350123256926303,
+      "edge": 0.07123146546966408,
+      "years": "2013-2025",
+      "years_beating_guess": 13,
+      "years_tested": 13
+    },
+    "after_study": {
+      "n": 1801,
+      "accuracy": 0.6479733481399222,
+      "baseline": 0.5535813436979455,
+      "edge": 0.0943920044419767,
+      "from": "2026-01-01",
+      "to": "2026-10-29"
+    },
+    "simple_guess": "HIGHER",
+    "base_rate_up": 0.6229
+  },
   "notes": []
 }
