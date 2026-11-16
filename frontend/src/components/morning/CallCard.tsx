@@ -36,28 +36,43 @@ export function CallCard({ call, awaitingResult, baseRateUp }: CallCardProps) {
       <div className="p-4 pb-3">
         <div className="flex items-start justify-between gap-3">
           <Title call={call} />
-          <span
-            className={cn(
-              "inline-flex items-center gap-1 rounded-md px-2.5 py-1 text-xs font-bold tracking-wide border shrink-0",
-              higher ? "bg-emerald-50 text-emerald-800 border-emerald-200" : "bg-rose-50 text-rose-800 border-rose-200"
-            )}
-          >
-            {higher ? <ArrowUpRight className="w-3.5 h-3.5" /> : <ArrowDownRight className="w-3.5 h-3.5" />}
-            {higher ? "HIGHER" : "LOWER"}
-          </span>
+          <div className="flex flex-col items-end gap-1 shrink-0">
+            <span
+              className={cn(
+                "inline-flex items-center gap-1 rounded-md px-2.5 py-1 text-xs font-bold tracking-wide border shrink-0",
+                higher ? "bg-emerald-50 text-emerald-800 border-emerald-200" : "bg-rose-50 text-rose-800 border-rose-200"
+              )}
+            >
+              {higher ? <ArrowUpRight className="w-3.5 h-3.5" /> : <ArrowDownRight className="w-3.5 h-3.5" />}
+              {higher ? "HIGHER" : "LOWER"}
+            </span>
+            <span className="text-[10px] text-slate-400 font-mono">
+              {call.model_type || "30-Stock Model"}
+            </span>
+          </div>
         </div>
 
         <ProbabilityBar probUp={call.prob_up} />
 
-        <p className="mt-2 text-sm text-slate-800">
-          <span className="font-semibold font-mono">{formatShare(chance, 0)}</span> chance of opening{" "}
-          {higher ? "higher" : "lower"} than {call.prev_close != null ? formatINR(call.prev_close) : "the last close"}
-        </p>
+        <div className="mt-2.5 space-y-1">
+          <p className="text-sm text-slate-800">
+            <span className="font-semibold font-mono">{formatShare(chance, 0)}</span> chance of opening{" "}
+            {higher ? "higher" : "lower"} than {call.prev_close != null ? formatINR(call.prev_close) : "the last close"}
+          </p>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500 font-mono">
+            <span>Last Close: {call.prev_close != null ? formatINR(call.prev_close) : "–"}</span>
+            {call.expected_open_price != null && (
+              <span className={cn("font-medium", higher ? "text-emerald-700" : "text-rose-700")}>
+                Exp. Ref: {higher ? ">" : "<"} {formatINR(call.expected_open_price)}
+              </span>
+            )}
+          </div>
+        </div>
         {call.confidence?.tested_accuracy != null && (
-          <p className="mt-0.5 text-xs text-slate-500">
+          <p className="mt-1 text-xs text-slate-500">
             {call.confidence.level} confidence. Calls like this were right{" "}
             <span className="font-medium text-slate-700">{formatShare(call.confidence.tested_accuracy, 0)}</span> of the
-            time in testing.
+            time in 12-year walk-forward testing.
           </p>
         )}
 
@@ -129,7 +144,14 @@ export function CallCard({ call, awaitingResult, baseRateUp }: CallCardProps) {
 function Title({ call }: { call: MorningStockCall }) {
   return (
     <div className="min-w-0">
-      <div className="font-mono text-sm font-bold text-slate-900">{call.ticker}</div>
+      <div className="flex items-center gap-2">
+        <span className="font-mono text-sm font-bold text-slate-900">{call.ticker}</span>
+        {call.sector && (
+          <span className="text-[10px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded font-sans">
+            {call.sector}
+          </span>
+        )}
+      </div>
       <div className="text-xs text-slate-500 truncate">{call.name}</div>
     </div>
   );

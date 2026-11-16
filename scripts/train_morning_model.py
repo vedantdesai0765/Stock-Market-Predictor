@@ -42,16 +42,20 @@ def load_prices(args):
         px = data.download(F.MARKET_TICKERS + list(P.STOCKS.values()), period="max")
         return {k: px[t] for k, t in P.STOCKS.items()}, {t: px[t] for t in F.MARKET_TICKERS}, "Yahoo Finance download"
     archive = Path(args.prices) if args.prices else ROOT / "sentiment_study" / "data" / "raw" / "yahoo_prices_v2.parquet"
-    if not archive.exists():
-        sys.exit(f"Price archive not found: {archive}\nRun again with --download, or pass --prices FILE.")
-    allpx = data.load_long_file(archive)
-    stock_px = {}
-    for key, tk in P.STOCKS.items():
-        if key in ("ADANIGREEN", "ETERNAL") or tk not in allpx:
-            stock_px[key] = data.load_raw_csv(ROOT / "data" / "raw" / f"{key}_raw.csv")
-        else:
-            stock_px[key] = allpx[tk]
-    return stock_px, {t: allpx[t] for t in F.MARKET_TICKERS}, f"archive {archive.name} + data/raw"
+    if archive.exists():
+        allpx = data.load_long_file(archive)
+        stock_px = {}
+        for key, tk in P.STOCKS.items():
+            if key in ("ADANIGREEN", "ETERNAL") or tk not in allpx:
+                stock_px[key] = data.load_raw_csv(ROOT / "data" / "raw" / f"{key}_raw.csv")
+            else:
+                stock_px[key] = allpx[tk]
+        return stock_px, {t: allpx[t] for t in F.MARKET_TICKERS}, f"archive {archive.name} + data/raw"
+    # When no parquet archive is present, use data/raw for all 30 stocks and download market tickers
+    print("Loading all 30 project stocks from data/raw/ and downloading 15y market indices...")
+    stock_px = {k: data.load_raw_csv(ROOT / "data" / "raw" / f"{k}_raw.csv") for k in P.STOCKS}
+    mkt = data.download(F.MARKET_TICKERS, period="15y")
+    return stock_px, mkt, "data/raw (30 stocks) + Yahoo Finance market indices"
 
 
 def summarise(oof, label):

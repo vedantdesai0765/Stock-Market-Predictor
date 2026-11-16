@@ -1,11 +1,11 @@
 """
-The 8:00 am job: make this morning's forecast for all 10 stocks.
+The 8:00 am job: make this morning's forecast for all 30 stocks.
 
 Runs automatically on GitHub Actions every weekday (.github/workflows/morning-call.yml).
 It downloads last night's US market, this morning's Asian opens and the latest Indian prices from
 Yahoo Finance, applies the saved model (models/morning/model.json) and writes:
 
-    live/latest_forecast.json     today's 10 calls, the inputs and the reasons
+    live/latest_forecast.json     today's 30 calls, the inputs and the reasons
     live/forecast_history.csv     one row per stock per morning (never rewritten once on time)
     live/scorecard.json           the live record so far (re-graded with the fresh prices)
 
@@ -32,8 +32,20 @@ def load_prices(args, period):
         for k, t in P.STOCKS.items():
             stock_px[k] = allpx[t] if t in allpx else data.load_raw_csv(ROOT / "data" / "raw" / f"{k}_raw.csv")
         return px, stock_px
-    got = data.download(F.MARKET_TICKERS + list(P.STOCKS.values()), period=period)
-    return {t: got[t] for t in F.MARKET_TICKERS}, {k: got[t] for k, t in P.STOCKS.items()}
+    try:
+        got = data.download(F.MARKET_TICKERS + list(P.STOCKS.values()), period=period)
+        return {t: got[t] for t in F.MARKET_TICKERS}, {k: got[t] for k, t in P.STOCKS.items()}
+    except Exception as exc:
+        print(f"Full batch download notice ({exc}); using market download + local data/raw fallback.", file=sys.stderr)
+        px = data.download(F.MARKET_TICKERS, period="3mo")
+        stock_px = {}
+        for k, t in P.STOCKS.items():
+            try:
+                single = data.download([t], period=period)
+                stock_px[k] = single[t]
+            except Exception:
+                stock_px[k] = data.load_raw_csv(ROOT / "data" / "raw" / f"{k}_raw.csv")
+        return px, stock_px
 
 
 def main():

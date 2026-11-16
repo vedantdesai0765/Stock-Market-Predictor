@@ -28,6 +28,19 @@ START = {
     for key, stock in config.STOCKS.items()
 }
 
+SECTORS = {
+    "HDFCBANK": "Financial Services", "ICICIBANK": "Financial Services", "SBI": "Financial Services",
+    "AXISBANK": "Financial Services", "KOTAKBANK": "Financial Services", "BAJFINANCE": "Financial Services",
+    "BAJAJFINSV": "Financial Services", "TCS": "Information Technology", "INFY": "Information Technology",
+    "RELIANCE": "Oil, Gas & Energy", "ONGC": "Oil, Gas & Energy", "NTPC": "Power & Renewables",
+    "POWERGRID": "Power & Renewables", "ADANIGREEN": "Power & Renewables", "ITC": "Consumer & FMCG",
+    "HINDUNILVR": "Consumer & FMCG", "ETERNAL": "Consumer & FMCG", "TITAN": "Consumer Durables",
+    "ASIANPAINT": "Consumer Durables", "MARUTI": "Automobile", "M_M": "Automobile",
+    "SUNPHARMA": "Healthcare & Pharma", "CIPLA": "Healthcare & Pharma", "APOLLOHOSP": "Healthcare & Pharma",
+    "ADANIENT": "Metals & Mining", "VEDL": "Metals & Mining", "BEL": "Capital Goods & Defence",
+    "LT": "Capital Goods & Defence", "ULTRACEMCO": "Capital Goods & Defence",
+}
+
 STUDY_FROM, STUDY_TO = "2008-06-01", "2025-12-31"
 MIN_ROWS = 300
 

@@ -42,10 +42,14 @@ def main():
             stock_px = {k: (allpx[t] if t in allpx else data.load_raw_csv(ROOT / "data" / "raw" / f"{k}_raw.csv")).loc[:today]
                         for k, t in P.STOCKS.items()}
         else:
-            got = data.download(list(P.STOCKS.values()), period="3mo")
-            stock_px = {k: got[t] for k, t in P.STOCKS.items()}
+            try:
+                got = data.download(list(P.STOCKS.values()), period="3mo")
+                stock_px = {k: got[t] for k, t in P.STOCKS.items()}
+            except Exception as dl_exc:
+                print(f"Batch price download failed ({dl_exc}). Loading available prices from data/raw...", file=sys.stderr)
+                stock_px = {k: data.load_raw_csv(ROOT / "data" / "raw" / f"{k}_raw.csv") for k in P.STOCKS}
     except Exception as exc:                                     # noqa: BLE001
-        print(f"Price download failed: {exc}", file=sys.stderr)
+        print(f"Price loading failed: {exc}", file=sys.stderr)
         return 1
 
     before = history.actual.notna().sum(), history.close_actual.notna().sum()

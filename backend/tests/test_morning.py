@@ -82,7 +82,7 @@ def test_forecast_covers_every_stock(prices, model):
         assert c["available"] and c["call"] in ("HIGHER", "LOWER")
         assert (c["call"] == "HIGHER") == (c["prob_up"] > 0.5)
         assert len(c["drivers"]) == 3 and abs(sum(d["weight"] for d in c["drivers"])) <= 1.0001
-    assert fc["summary"]["higher"] + fc["summary"]["lower"] == 10
+    assert fc["summary"]["higher"] + fc["summary"]["lower"] == len(expected_stocks)
     assert {m["key"] for m in fc["market"]} == {"sp500", "vix", "n225", "ks11", "twii", "hsi"}
 
 
@@ -139,7 +139,8 @@ def test_grading_and_scorecard(prices, model):
     px, stock_px = prices
     fc = _forecast(prices, model)
     hist = live.merge_history(pd.DataFrame(columns=live.HISTORY_COLUMNS), live.history_rows(fc))
-    assert len(hist) == 10
+    n_stocks = len(P.STOCKS)
+    assert len(hist) == n_stocks
 
     visible = {k: d.loc[:str(TARGET)] for k, d in stock_px.items()}
     early = live.grade(hist, visible, dt.datetime.combine(TARGET, dt.time(8, 30), IST))
@@ -156,9 +157,9 @@ def test_grading_and_scorecard(prices, model):
     assert done.close_actual.isin(["HIGHER", "LOWER", "FLAT"]).all()
 
     card = live.scorecard(done, dt.datetime.combine(TARGET, dt.time(16, 30), IST))
-    assert card["mornings"] == 1 and card["open"]["n"] == 10
+    assert card["mornings"] == 1 and card["open"]["n"] == n_stocks
     assert card["open"]["correct"] == int(done.correct.astype(str).str.lower().eq("true").sum())
-    assert card["days"] == [{"date": "2026-10-27", "n": 10, "correct": card["open"]["correct"]}]
+    assert card["days"] == [{"date": "2026-10-27", "n": n_stocks, "correct": card["open"]["correct"]}]
 
 
 def test_on_time_forecast_is_never_replaced(prices, model):
@@ -166,7 +167,7 @@ def test_on_time_forecast_is_never_replaced(prices, model):
     later = first.copy()
     later["prob_up"] = 0.99
     merged = live.merge_history(first, later)
-    assert len(merged) == 10 and (merged.prob_up != 0.99).all()
+    assert len(merged) == len(P.STOCKS) and (merged.prob_up != 0.99).all()
 
 
 def test_late_forecasts_do_not_count(prices, model):
@@ -220,7 +221,7 @@ def test_morning_call_endpoint(client: TestClient, live_dir):
     assert r.status_code == 200
     data = r.json()
     assert data["status"] == "ok" and data["target_date"] == "2026-10-27"
-    assert len(data["calls"]) == 10 and len(data["market"]) == 6
+    assert len(data["calls"]) == len(P.STOCKS) and len(data["market"]) == 6
     first = data["calls"][0]
     assert first["result"]["actual"] in ("HIGHER", "LOWER", "FLAT")
     assert first["confidence"]["tested_accuracy"] > 0.5
@@ -245,7 +246,7 @@ def test_scorecard_endpoint(client: TestClient, live_dir):
     r = client.get("/api/v1/morning-call/scorecard?recent_days=3")
     assert r.status_code == 200
     data = r.json()
-    assert data["mornings"] == 1 and data["open"]["n"] + 0 <= 10
+    assert data["mornings"] == 1 and data["open"]["n"] + 0 <= len(P.STOCKS)
     assert len(data["recent"]) == 1 and data["recent"][0]["date"] == "2026-10-27"
     assert data["tested"]["years"] == "2013-2025"
     assert [b["from"] for b in data["confidence_bands"]] == [0.5, 0.6, 0.7, 0.8]
