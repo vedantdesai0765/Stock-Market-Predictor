@@ -3,7 +3,7 @@
   "stock_key": "ADANIENT",
   "ticker": "ADANIENT.NS",
   "display_name": "Adani Enterprises",
-  "trained_at": "2026-11-01T05:21:17",
+  "trained_at": "2026-11-15T23:11:11",
   "config": {
     "model_name": "logistic",
     "horizon": 3,

@@ -204,6 +204,130 @@ STOCKS: dict[str, StockConfig] = {
         sentiment_filename=company_sentiment_file("ADANIGREEN"),
         notes="Added 2026-08-30. High-volatility stock.",
     ),
+
+    "ICICIBANK": StockConfig(
+        key="ICICIBANK", ticker="ICICIBANK.NS",
+        display_name="ICICI Bank", raw_filename="ICICIBANK_raw.csv",
+        start="2014-01-01", end="2026-11-16",
+        sentiment_filename=None, notes="Expanded stock universe.",
+    ),
+    "BHARTIARTL": StockConfig(
+        key="BHARTIARTL", ticker="BHARTIARTL.NS",
+        display_name="Bharti Airtel", raw_filename="BHARTIARTL_raw.csv",
+        start="2014-01-01", end="2026-11-16",
+        sentiment_filename=None, notes="Expanded stock universe.",
+    ),
+    "LT": StockConfig(
+        key="LT", ticker="LT.NS",
+        display_name="Larsen & Toubro", raw_filename="LT_raw.csv",
+        start="2014-01-01", end="2026-11-16",
+        sentiment_filename=None, notes="Expanded stock universe.",
+    ),
+    "AXISBANK": StockConfig(
+        key="AXISBANK", ticker="AXISBANK.NS",
+        display_name="Axis Bank", raw_filename="AXISBANK_raw.csv",
+        start="2014-01-01", end="2026-11-16",
+        sentiment_filename=None, notes="Expanded stock universe.",
+    ),
+    "KOTAKBANK": StockConfig(
+        key="KOTAKBANK", ticker="KOTAKBANK.NS",
+        display_name="Kotak Mahindra Bank", raw_filename="KOTAKBANK_raw.csv",
+        start="2014-01-01", end="2026-11-16",
+        sentiment_filename=None, notes="Expanded stock universe.",
+    ),
+    "M_M": StockConfig(
+        key="M_M", ticker="M&M.NS",
+        display_name="Mahindra & Mahindra", raw_filename="M_M_raw.csv",
+        start="2014-01-01", end="2026-11-16",
+        sentiment_filename=None, notes="Expanded stock universe.",
+    ),
+    "BAJFINANCE": StockConfig(
+        key="BAJFINANCE", ticker="BAJFINANCE.NS",
+        display_name="Bajaj Finance", raw_filename="BAJFINANCE_raw.csv",
+        start="2014-01-01", end="2026-11-16",
+        sentiment_filename=None, notes="Expanded stock universe.",
+    ),
+    "HINDUNILVR": StockConfig(
+        key="HINDUNILVR", ticker="HINDUNILVR.NS",
+        display_name="Hindustan Unilever", raw_filename="HINDUNILVR_raw.csv",
+        start="2014-01-01", end="2026-11-16",
+        sentiment_filename=None, notes="Expanded stock universe.",
+    ),
+    "MARUTI": StockConfig(
+        key="MARUTI", ticker="MARUTI.NS",
+        display_name="Maruti Suzuki", raw_filename="MARUTI_raw.csv",
+        start="2014-01-01", end="2026-11-16",
+        sentiment_filename=None, notes="Expanded stock universe.",
+    ),
+    "SUNPHARMA": StockConfig(
+        key="SUNPHARMA", ticker="SUNPHARMA.NS",
+        display_name="Sun Pharmaceutical", raw_filename="SUNPHARMA_raw.csv",
+        start="2014-01-01", end="2026-11-16",
+        sentiment_filename=None, notes="Expanded stock universe.",
+    ),
+    "TITAN": StockConfig(
+        key="TITAN", ticker="TITAN.NS",
+        display_name="Titan Company", raw_filename="TITAN_raw.csv",
+        start="2014-01-01", end="2026-11-16",
+        sentiment_filename=None, notes="Expanded stock universe.",
+    ),
+    "ULTRACEMCO": StockConfig(
+        key="ULTRACEMCO", ticker="ULTRACEMCO.NS",
+        display_name="UltraTech Cement", raw_filename="ULTRACEMCO_raw.csv",
+        start="2014-01-01", end="2026-11-16",
+        sentiment_filename=None, notes="Expanded stock universe.",
+    ),
+    "NTPC": StockConfig(
+        key="NTPC", ticker="NTPC.NS",
+        display_name="NTPC", raw_filename="NTPC_raw.csv",
+        start="2014-01-01", end="2026-11-16",
+        sentiment_filename=None, notes="Expanded stock universe.",
+    ),
+    "POWERGRID": StockConfig(
+        key="POWERGRID", ticker="POWERGRID.NS",
+        display_name="Power Grid Corporation of India",
+        raw_filename="POWERGRID_raw.csv",
+        start="2014-01-01", end="2026-11-16",
+        sentiment_filename=None, notes="Expanded stock universe.",
+    ),
+    "ONGC": StockConfig(
+        key="ONGC", ticker="ONGC.NS",
+        display_name="Oil & Natural Gas Corporation", raw_filename="ONGC_raw.csv",
+        start="2014-01-01", end="2026-11-16",
+        sentiment_filename=None, notes="Expanded stock universe.",
+    ),
+    "BAJAJFINSV": StockConfig(
+        key="BAJAJFINSV", ticker="BAJAJFINSV.NS",
+        display_name="Bajaj Finserv", raw_filename="BAJAJFINSV_raw.csv",
+        start="2014-01-01", end="2026-11-16",
+        sentiment_filename=None, notes="Expanded stock universe.",
+    ),
+    "BEL": StockConfig(
+        key="BEL", ticker="BEL.NS",
+        display_name="Bharat Electronics", raw_filename="BEL_raw.csv",
+        start="2014-01-01", end="2026-11-16",
+        sentiment_filename=None, notes="Expanded stock universe.",
+    ),
+    "ASIANPAINT": StockConfig(
+        key="ASIANPAINT", ticker="ASIANPAINT.NS",
+        display_name="Asian Paints", raw_filename="ASIANPAINT_raw.csv",
+        start="2014-01-01", end="2026-11-16",
+        sentiment_filename=None, notes="Expanded stock universe.",
+    ),
+    "APOLLOHOSP": StockConfig(
+        key="APOLLOHOSP", ticker="APOLLOHOSP.NS",
+        display_name="Apollo Hospitals Enterprise",
+        raw_filename="APOLLOHOSP_raw.csv",
+        start="2014-01-01", end="2026-11-16",
+        sentiment_filename=None, notes="Expanded stock universe.",
+    ),
+    "CIPLA": StockConfig(
+        key="CIPLA", ticker="CIPLA.NS",
+        display_name="Cipla", raw_filename="CIPLA_raw.csv",
+        start="2014-01-01", end="2026-11-16",
+        sentiment_filename=None, notes="Expanded stock universe.",
+    ),
+
 }
 
 

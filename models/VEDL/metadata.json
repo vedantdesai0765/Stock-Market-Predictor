@@ -3,7 +3,7 @@
   "stock_key": "VEDL",
   "ticker": "VEDL.NS",
   "display_name": "Vedanta",
-  "trained_at": "2026-11-01T05:21:19",
+  "trained_at": "2026-11-15T23:12:26",
   "config": {
     "model_name": "logistic",
     "horizon": 3,

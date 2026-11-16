@@ -1,3 +1,4 @@
+
 """
 backend/app/services/prediction_service.py
 Service adapter for directional prediction, confidence gating, and model metrics.

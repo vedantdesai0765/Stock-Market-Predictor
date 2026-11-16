@@ -3,7 +3,7 @@
   "stock_key": "HDFCBANK",
   "ticker": "HDFCBANK.NS",
   "display_name": "HDFC Bank",
-  "trained_at": "2026-11-01T05:21:10",
+  "trained_at": "2026-11-15T23:11:38",
   "config": {
     "model_name": "logistic",
     "horizon": 3,

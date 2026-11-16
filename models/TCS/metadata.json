@@ -3,7 +3,7 @@
   "stock_key": "TCS",
   "ticker": "TCS.NS",
   "display_name": "Tata Consultancy Services",
-  "trained_at": "2026-11-01T05:21:04",
+  "trained_at": "2026-11-15T23:12:18",
   "config": {
     "model_name": "logistic",
     "horizon": 3,

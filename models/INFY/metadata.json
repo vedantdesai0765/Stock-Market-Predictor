@@ -3,7 +3,7 @@
   "stock_key": "INFY",
   "ticker": "INFY.NS",
   "display_name": "Infosys",
-  "trained_at": "2026-11-01T05:21:08",
+  "trained_at": "2026-11-15T23:11:46",
   "config": {
     "model_name": "logistic",
     "horizon": 3,

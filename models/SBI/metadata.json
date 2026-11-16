@@ -3,7 +3,7 @@
   "stock_key": "SBI",
   "ticker": "SBIN.NS",
   "display_name": "State Bank of India",
-  "trained_at": "2026-11-01T05:21:13",
+  "trained_at": "2026-11-15T23:12:13",
   "config": {
     "model_name": "logistic",
     "horizon": 3,

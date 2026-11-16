@@ -20,7 +20,7 @@
 
 ## 1. Project Overview
 
-The **Stock Market Predictor** is an institutional-grade financial analytics and decision-support workstation designed for Indian equities traded on the National Stock Exchange (NSE). The platform evolved from an exploratory machine learning and Streamlit research codebase into a decoupled, high-performance web platform powered by a **FastAPI (Python)** backend and a **Next.js 14 (React 19 / TypeScript / Tailwind CSS)** frontend.
+The **Stock Market Predictor** is an institutional-grade financial analytics and decision-support workstation designed for Indian equities traded on the National Stock Exchange (NSE). The platform evolved from an exploratory machine learning and Streamlit research codebase into a decoupled, high-performance web platform powered by a **FastAPI (Python)** backend and a **Next.js 14 (React 18.3.1 / TypeScript / Tailwind CSS)** frontend.
 
 The system is engineered around econometric rigor:
 - **Walk-forward cross-validation** with a **52-trading-day training embargo** (17 rows of the 3-day-step data, `embargo=17` in `src/pipeline.py`) to eliminate lookahead bias.
@@ -67,7 +67,7 @@ The system is engineered around econometric rigor:
 |                                      SYSTEM ARCHITECTURE                                           |
 +----------------------------------------------------------------------------------------------------+
 |                                                                                                    |
-|    FRONTEND (Next.js 14 App Router, React 19, TypeScript, Tailwind CSS, shadcn/ui, Recharts)        |
+|    FRONTEND (Next.js 14 App Router, React 18.3.1, TypeScript, Tailwind CSS, shadcn/ui, Recharts)        |
 |    Port: 3000 | Client Base URL: http://localhost:3000                                             |
 |                                                                                                    |
 |          |  HTTP / REST (JSON API)                                                                 |
@@ -89,7 +89,7 @@ The system is engineered around econometric rigor:
 ```
 
 ### Stack Details
-- **Frontend:** Next.js 14.2.35, React 19, TypeScript 5, Tailwind CSS 3.4, Lucide React icons, TanStack React Query v5, Recharts 2.15.
+- **Frontend:** Next.js 14.2.15, React 18.3.1, TypeScript 5, Tailwind CSS 3.4, Lucide React icons, TanStack React Query v5, Recharts 2.15.
 - **Backend:** Python 3.11/3.13, FastAPI, Uvicorn, Pydantic v2, SQLAlchemy 2.0, AnyIO.
 - **Machine Learning & Analytics:** Scikit-learn, LightGBM, Pandas, NumPy, SciPy, Ta (Technical Analysis library).
 - **NLP & Sentiment:** PyTorch, HuggingFace Transformers, FinBERT, SEntFiN 1.0 entity disambiguation.

@@ -6,15 +6,28 @@ import pandas as pd
 from .features import WARMUP_ROWS, stock_frame
 
 # Yahoo tickers of the 10 project stocks (keys match src/config.py)
-STOCKS = {"RELIANCE": "RELIANCE.NS", "TCS": "TCS.NS", "INFY": "INFY.NS", "HDFCBANK": "HDFCBANK.NS",
-          "SBI": "SBIN.NS", "ITC": "ITC.NS", "ADANIENT": "ADANIENT.NS", "VEDL": "VEDL.NS",
-          "ADANIGREEN": "ADANIGREEN.NS", "ETERNAL": "ETERNAL.NS"}
-NAMES = {"RELIANCE": "Reliance Industries", "TCS": "Tata Consultancy Services", "INFY": "Infosys",
-         "HDFCBANK": "HDFC Bank", "SBI": "State Bank of India", "ITC": "ITC",
-         "ADANIENT": "Adani Enterprises", "VEDL": "Vedanta", "ADANIGREEN": "Adani Green Energy",
-         "ETERNAL": "Eternal (Zomato)"}
-# first usable date per stock (listing dates / start of clean history), as in the study
-START = {"TCS": "2004-08-25", "ADANIENT": "2004-07-01", "ADANIGREEN": "2018-06-18", "ETERNAL": "2021-07-23"}
+
+try:
+    import config
+except ImportError:
+    from src import config
+
+# Both the main application and Morning Call use the same registry.
+STOCKS = {
+    key: stock.ticker
+    for key, stock in config.STOCKS.items()
+}
+
+NAMES = {
+    key: stock.display_name
+    for key, stock in config.STOCKS.items()
+}
+
+START = {
+    key: stock.start
+    for key, stock in config.STOCKS.items()
+}
+
 STUDY_FROM, STUDY_TO = "2008-06-01", "2025-12-31"
 MIN_ROWS = 300
 

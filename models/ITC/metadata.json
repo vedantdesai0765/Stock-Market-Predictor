@@ -3,7 +3,7 @@
   "stock_key": "ITC",
   "ticker": "ITC.NS",
   "display_name": "ITC",
-  "trained_at": "2026-11-01T05:21:15",
+  "trained_at": "2026-11-15T23:11:49",
   "config": {
     "model_name": "logistic",
     "horizon": 3,

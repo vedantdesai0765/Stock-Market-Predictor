@@ -3,7 +3,7 @@
   "stock_key": "ETERNAL",
   "ticker": "ETERNAL.NS",
   "display_name": "Eternal Limited",
-  "trained_at": "2026-11-01T05:21:20",
+  "trained_at": "2026-11-15T23:11:36",
   "config": {
     "model_name": "logistic",
     "horizon": 3,

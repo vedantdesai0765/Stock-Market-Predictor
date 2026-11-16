@@ -3,7 +3,7 @@
   "stock_key": "RELIANCE",
   "ticker": "RELIANCE.NS",
   "display_name": "Reliance Industries",
-  "trained_at": "2026-11-01T05:21:06",
+  "trained_at": "2026-11-15T23:12:08",
   "config": {
     "model_name": "logistic",
     "horizon": 3,
