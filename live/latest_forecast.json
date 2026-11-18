@@ -3,15 +3,15 @@
   "status": "ok",
   "target_date": "2026-11-18",
   "based_on": "2026-11-17",
-  "generated_at": "2026-11-18T10:03:46+05:30",
+  "generated_at": "2026-11-18T15:34:08+05:30",
   "on_time": false,
   "summary": {
     "total": 30,
-    "covered": 29,
-    "higher": 29,
+    "covered": 30,
+    "higher": 30,
     "lower": 0,
-    "unavailable": 1,
-    "coverage_pct": 96.7
+    "unavailable": 0,
+    "coverage_pct": 100.0
   },
   "market": [
     {
@@ -1502,8 +1502,52 @@
       "ticker": "APOLLOHOSP",
       "name": "Apollo Hospitals Enterprise",
       "sector": "Healthcare & Pharma",
-      "available": false,
-      "reason": "Latest price is from 2026-11-16, expected 2026-11-17."
+      "available": true,
+      "prev_close": 8712.5,
+      "expected_open_price": 8736.02,
+      "expected_open_direction": "HIGHER",
+      "model_type": "Pooled Logistic Regression (30 Stocks)",
+      "prob_up": 0.677,
+      "call": "HIGHER",
+      "baseline_call": "HIGHER",
+      "confidence": {
+        "level": "Moderate",
+        "tested_accuracy": 0.6685675293658917,
+        "tested_n": 20517
+      },
+      "drivers": [
+        {
+          "key": "asia",
+          "label": "Asian markets this morning",
+          "detail": "Asian markets opened +1.03% on average",
+          "direction": "up",
+          "weight": 0.355
+        },
+        {
+          "key": "nifty",
+          "label": "Nifty trend",
+          "detail": "Nifty +0.38% yesterday",
+          "direction": "up",
+          "weight": 0.183
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -0.67% yesterday, RSI 62",
+          "direction": "down",
+          "weight": 0.174
+        }
+      ],
+      "close": {
+        "prob_up": 0.505,
+        "call": "HIGHER",
+        "baseline_call": "HIGHER",
+        "confidence": {
+          "level": "Low",
+          "tested_accuracy": 0.5299228404742488,
+          "tested_n": 63764
+        }
+      }
     },
     {
       "ticker": "CIPLA",
