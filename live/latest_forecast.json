@@ -1,15 +1,15 @@
 {
   "schema": 1,
   "status": "ok",
-  "target_date": "2026-11-18",
-  "based_on": "2026-11-17",
-  "generated_at": "2026-11-18T16:15:30+05:30",
+  "target_date": "2026-11-19",
+  "based_on": "2026-11-18",
+  "generated_at": "2026-11-19T15:44:37+05:30",
   "on_time": false,
   "summary": {
     "total": 30,
     "covered": 30,
-    "higher": 30,
-    "lower": 0,
+    "higher": 27,
+    "lower": 3,
     "unavailable": 0,
     "coverage_pct": 100.0
   },
@@ -18,54 +18,54 @@
       "key": "sp500",
       "label": "S&P 500",
       "region": "United States",
-      "change_pct": -1.03,
-      "level": 7340.53,
-      "session": "2026-11-17",
+      "change_pct": -0.23,
+      "level": 7323.63,
+      "session": "2026-11-18",
       "available": true
     },
     {
       "key": "vix",
       "label": "VIX",
       "region": "US volatility index",
-      "change_pct": 11.13,
-      "level": 25.46,
-      "session": "2026-11-17",
+      "change_pct": -3.53,
+      "level": 24.56,
+      "session": "2026-11-18",
       "available": true
     },
     {
       "key": "n225",
       "label": "Nikkei 225",
       "region": "Japan",
-      "change_pct": 0.25,
-      "level": 59007.4,
-      "session": "2026-11-18",
+      "change_pct": 0.0,
+      "level": 59025.19,
+      "session": "2026-11-19",
       "available": true
     },
     {
       "key": "ks11",
       "label": "KOSPI",
       "region": "South Korea",
-      "change_pct": 2.62,
-      "level": 5098.82,
-      "session": "2026-11-18",
+      "change_pct": 0.45,
+      "level": 5090.04,
+      "session": "2026-11-19",
       "available": true
     },
     {
       "key": "twii",
       "label": "Taiex",
       "region": "Taiwan",
-      "change_pct": 1.57,
-      "level": 40720.09,
-      "session": "2026-11-18",
+      "change_pct": -0.12,
+      "level": 40145.73,
+      "session": "2026-11-19",
       "available": true
     },
     {
       "key": "hsi",
       "label": "Hang Seng",
       "region": "Hong Kong",
-      "change_pct": -0.34,
-      "level": 23428.72,
-      "session": "2026-11-18",
+      "change_pct": -1.05,
+      "level": 23049.65,
+      "session": "2026-11-19",
       "available": true
     }
   ],
@@ -75,43 +75,43 @@
       "name": "Tata Consultancy Services",
       "sector": "Information Technology",
       "available": true,
-      "prev_close": 2406.6,
-      "expected_open_price": 2414.54,
+      "prev_close": 2379.5,
+      "expected_open_price": 2381.17,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.7195,
+      "prob_up": 0.548,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "High",
-        "tested_accuracy": 0.7546194400368531,
-        "tested_n": 19537
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.426
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.555
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.22
+          "weight": 0.209
         },
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 -1.03% overnight",
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -1.13% yesterday, RSI 47",
           "direction": "down",
-          "weight": 0.174
+          "weight": 0.126
         }
       ],
       "close": {
-        "prob_up": 0.4971,
+        "prob_up": 0.4193,
         "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -126,43 +126,43 @@
       "name": "Reliance Industries",
       "sector": "Oil, Gas & Energy",
       "available": true,
-      "prev_close": 1367.0,
-      "expected_open_price": 1370.55,
+      "prev_close": 1363.0,
+      "expected_open_price": 1363.82,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.6718,
+      "prob_up": 0.5375,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.348
-        },
-        {
-          "key": "stock",
-          "label": "The stock's own trend",
-          "detail": "Stock +1.65% yesterday, RSI 75",
+          "detail": "Asian markets opened -0.18% on average",
           "direction": "down",
-          "weight": 0.189
+          "weight": 0.537
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.179
+          "weight": 0.202
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -0.29% yesterday, RSI 73",
+          "direction": "down",
+          "weight": 0.154
         }
       ],
       "close": {
-        "prob_up": 0.4689,
+        "prob_up": 0.4136,
         "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -177,43 +177,43 @@
       "name": "Infosys",
       "sector": "Information Technology",
       "available": true,
-      "prev_close": 1130.0,
-      "expected_open_price": 1133.5,
+      "prev_close": 1108.8,
+      "expected_open_price": 1109.8,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.7043,
+      "prob_up": 0.558,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "High",
-        "tested_accuracy": 0.7546194400368531,
-        "tested_n": 19537
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.397
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.574
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.205
+          "weight": 0.216
         },
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 -1.03% overnight",
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -1.88% yesterday, RSI 48",
           "direction": "down",
-          "weight": 0.162
+          "weight": 0.097
         }
       ],
       "close": {
-        "prob_up": 0.4972,
+        "prob_up": 0.4333,
         "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -228,43 +228,43 @@
       "name": "HDFC Bank",
       "sector": "Financial Services",
       "available": true,
-      "prev_close": 814.95,
-      "expected_open_price": 816.74,
-      "expected_open_direction": "HIGHER",
+      "prev_close": 808.15,
+      "expected_open_price": 808.07,
+      "expected_open_direction": "LOWER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.6487,
-      "call": "HIGHER",
+      "prob_up": 0.4911,
+      "call": "LOWER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.321
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.47
         },
         {
           "key": "stock",
           "label": "The stock's own trend",
-          "detail": "Stock -0.19% yesterday, RSI 75",
+          "detail": "Stock -0.83% yesterday, RSI 71",
           "direction": "down",
-          "weight": 0.252
+          "weight": 0.259
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.165
+          "weight": 0.177
         }
       ],
       "close": {
-        "prob_up": 0.4741,
+        "prob_up": 0.4186,
         "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -279,43 +279,43 @@
       "name": "State Bank of India",
       "sector": "Financial Services",
       "available": true,
-      "prev_close": 1108.6,
-      "expected_open_price": 1111.59,
+      "prev_close": 1135.0,
+      "expected_open_price": 1135.57,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.6788,
+      "prob_up": 0.5356,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.357
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.534
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.184
+          "weight": 0.201
         },
         {
           "key": "stock",
           "label": "The stock's own trend",
-          "detail": "Stock +1.66% yesterday, RSI 76",
+          "detail": "Stock +2.38% yesterday, RSI 79",
           "direction": "down",
-          "weight": 0.168
+          "weight": 0.159
         }
       ],
       "close": {
-        "prob_up": 0.4909,
+        "prob_up": 0.4133,
         "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -330,43 +330,43 @@
       "name": "ITC",
       "sector": "Consumer & FMCG",
       "available": true,
-      "prev_close": 293.3,
-      "expected_open_price": 293.97,
-      "expected_open_direction": "HIGHER",
+      "prev_close": 296.6,
+      "expected_open_price": 296.6,
+      "expected_open_direction": "LOWER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.6557,
-      "call": "HIGHER",
+      "prob_up": 0.4972,
+      "call": "LOWER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.329
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.478
         },
         {
           "key": "stock",
           "label": "The stock's own trend",
-          "detail": "Stock -0.61% yesterday, RSI 70",
+          "detail": "Stock +1.13% yesterday, RSI 72",
           "direction": "down",
-          "weight": 0.235
+          "weight": 0.247
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.169
+          "weight": 0.18
         }
       ],
       "close": {
-        "prob_up": 0.4821,
+        "prob_up": 0.422,
         "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -381,44 +381,44 @@
       "name": "Adani Enterprises",
       "sector": "Metals & Mining",
       "available": true,
-      "prev_close": 2745.1,
-      "expected_open_price": 2754.71,
+      "prev_close": 2684.2,
+      "expected_open_price": 2686.62,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.7342,
+      "prob_up": 0.5582,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "High",
-        "tested_accuracy": 0.7546194400368531,
-        "tested_n": 19537
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.402
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.574
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.207
+          "weight": 0.216
         },
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 -1.03% overnight",
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -2.22% yesterday, RSI 49",
           "direction": "down",
-          "weight": 0.164
+          "weight": 0.096
         }
       ],
       "close": {
-        "prob_up": 0.5203,
-        "call": "HIGHER",
+        "prob_up": 0.4467,
+        "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
           "level": "Low",
@@ -432,43 +432,43 @@
       "name": "Vedanta",
       "sector": "Metals & Mining",
       "available": true,
-      "prev_close": 255.03,
-      "expected_open_price": 255.57,
+      "prev_close": 245.4,
+      "expected_open_price": 245.42,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.6417,
+      "prob_up": 0.5089,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.314
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.494
         },
         {
           "key": "stock",
           "label": "The stock's own trend",
-          "detail": "Stock +0.80% yesterday, RSI 53",
+          "detail": "Stock -3.78% yesterday, RSI 45",
           "direction": "down",
-          "weight": 0.269
+          "weight": 0.222
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.162
+          "weight": 0.186
         }
       ],
       "close": {
-        "prob_up": 0.495,
+        "prob_up": 0.4502,
         "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -483,44 +483,44 @@
       "name": "Eternal Limited",
       "sector": "Consumer & FMCG",
       "available": true,
-      "prev_close": 375.05,
-      "expected_open_price": 376.25,
+      "prev_close": 366.0,
+      "expected_open_price": 366.29,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.711,
+      "prob_up": 0.55,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "High",
-        "tested_accuracy": 0.7546194400368531,
-        "tested_n": 19537
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.409
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.559
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.211
+          "weight": 0.21
         },
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 -1.03% overnight",
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -2.41% yesterday, RSI 64",
           "direction": "down",
-          "weight": 0.167
+          "weight": 0.12
         }
       ],
       "close": {
-        "prob_up": 0.5008,
-        "call": "HIGHER",
+        "prob_up": 0.4468,
+        "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
           "level": "Low",
@@ -534,44 +534,44 @@
       "name": "Adani Green Energy",
       "sector": "Power & Renewables",
       "available": true,
-      "prev_close": 1429.9,
-      "expected_open_price": 1434.9,
+      "prev_close": 1404.1,
+      "expected_open_price": 1405.78,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.731,
+      "prob_up": 0.5817,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "High",
-        "tested_accuracy": 0.7546194400368531,
-        "tested_n": 19537
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.408
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.623
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.21
+          "weight": 0.234
         },
         {
           "key": "us",
           "label": "US market overnight",
-          "detail": "S&P 500 -1.03% overnight",
-          "direction": "down",
-          "weight": 0.167
+          "detail": "S&P 500 -0.23% overnight",
+          "direction": "up",
+          "weight": 0.064
         }
       ],
       "close": {
-        "prob_up": 0.5127,
-        "call": "HIGHER",
+        "prob_up": 0.4457,
+        "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
           "level": "Low",
@@ -585,43 +585,43 @@
       "name": "ICICI Bank",
       "sector": "Financial Services",
       "available": true,
-      "prev_close": 1598.7,
-      "expected_open_price": 1603.18,
+      "prev_close": 1601.3,
+      "expected_open_price": 1601.94,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.6853,
+      "prob_up": 0.5281,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.366
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.522
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.189
+          "weight": 0.197
         },
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 -1.03% overnight",
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +0.16% yesterday, RSI 77",
           "direction": "down",
-          "weight": 0.149
+          "weight": 0.178
         }
       ],
       "close": {
-        "prob_up": 0.4924,
+        "prob_up": 0.4139,
         "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -636,43 +636,43 @@
       "name": "Bharti Airtel",
       "sector": "General",
       "available": true,
-      "prev_close": 2138.3,
-      "expected_open_price": 2144.29,
+      "prev_close": 2132.0,
+      "expected_open_price": 2132.85,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.6854,
+      "prob_up": 0.5271,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.367
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.521
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.189
+          "weight": 0.196
         },
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 -1.03% overnight",
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -0.29% yesterday, RSI 69",
           "direction": "down",
-          "weight": 0.149
+          "weight": 0.18
         }
       ],
       "close": {
-        "prob_up": 0.4934,
+        "prob_up": 0.4333,
         "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -687,44 +687,44 @@
       "name": "Larsen & Toubro",
       "sector": "Capital Goods & Defence",
       "available": true,
-      "prev_close": 4155.5,
-      "expected_open_price": 4165.47,
+      "prev_close": 4159.0,
+      "expected_open_price": 4159.0,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.6588,
+      "prob_up": 0.5003,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.332
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.482
         },
         {
           "key": "stock",
           "label": "The stock's own trend",
-          "detail": "Stock +0.37% yesterday, RSI 71",
+          "detail": "Stock +0.08% yesterday, RSI 71",
           "direction": "down",
-          "weight": 0.226
+          "weight": 0.241
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.171
+          "weight": 0.182
         }
       ],
       "close": {
-        "prob_up": 0.5009,
-        "call": "HIGHER",
+        "prob_up": 0.4273,
+        "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
           "level": "Low",
@@ -738,43 +738,43 @@
       "name": "Axis Bank",
       "sector": "Financial Services",
       "available": true,
-      "prev_close": 1369.0,
-      "expected_open_price": 1372.83,
+      "prev_close": 1360.0,
+      "expected_open_price": 1360.41,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.6882,
+      "prob_up": 0.52,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.371
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.51
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -0.66% yesterday, RSI 69",
+          "direction": "down",
+          "weight": 0.197
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.191
-        },
-        {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 -1.03% overnight",
-          "direction": "down",
-          "weight": 0.151
+          "weight": 0.192
         }
       ],
       "close": {
-        "prob_up": 0.4813,
+        "prob_up": 0.4272,
         "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -789,43 +789,43 @@
       "name": "Kotak Mahindra Bank",
       "sector": "Financial Services",
       "available": true,
-      "prev_close": 497.25,
-      "expected_open_price": 498.59,
+      "prev_close": 494.85,
+      "expected_open_price": 495.25,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.6785,
+      "prob_up": 0.5518,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.357
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.562
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.184
+          "weight": 0.212
         },
         {
           "key": "stock",
           "label": "The stock's own trend",
-          "detail": "Stock +0.62% yesterday, RSI 77",
+          "detail": "Stock -0.48% yesterday, RSI 74",
           "direction": "down",
-          "weight": 0.169
+          "weight": 0.115
         }
       ],
       "close": {
-        "prob_up": 0.4817,
+        "prob_up": 0.4369,
         "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -840,43 +840,43 @@
       "name": "Mahindra & Mahindra",
       "sector": "Automobile",
       "available": true,
-      "prev_close": 3399.0,
-      "expected_open_price": 3408.86,
+      "prev_close": 3359.1,
+      "expected_open_price": 3360.11,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.6917,
+      "prob_up": 0.5178,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.376
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.507
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -1.17% yesterday, RSI 67",
+          "direction": "down",
+          "weight": 0.202
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.194
-        },
-        {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 -1.03% overnight",
-          "direction": "down",
-          "weight": 0.153
+          "weight": 0.191
         }
       ],
       "close": {
-        "prob_up": 0.4757,
+        "prob_up": 0.4239,
         "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -891,43 +891,43 @@
       "name": "Bajaj Finance",
       "sector": "Financial Services",
       "available": true,
-      "prev_close": 1121.1,
-      "expected_open_price": 1124.13,
+      "prev_close": 1093.85,
+      "expected_open_price": 1094.29,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.6826,
+      "prob_up": 0.5243,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.362
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.516
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.187
+          "weight": 0.194
         },
         {
           "key": "stock",
           "label": "The stock's own trend",
-          "detail": "Stock +1.00% yesterday, RSI 71",
+          "detail": "Stock -2.43% yesterday, RSI 64",
           "direction": "down",
-          "weight": 0.156
+          "weight": 0.187
         }
       ],
       "close": {
-        "prob_up": 0.4873,
+        "prob_up": 0.4267,
         "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -942,43 +942,43 @@
       "name": "Hindustan Unilever",
       "sector": "Consumer & FMCG",
       "available": true,
-      "prev_close": 2009.9,
-      "expected_open_price": 2014.32,
-      "expected_open_direction": "HIGHER",
+      "prev_close": 1993.0,
+      "expected_open_price": 1992.6,
+      "expected_open_direction": "LOWER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.6456,
-      "call": "HIGHER",
+      "prob_up": 0.4856,
+      "call": "LOWER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.318
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.463
         },
         {
           "key": "stock",
           "label": "The stock's own trend",
-          "detail": "Stock +0.48% yesterday, RSI 67",
+          "detail": "Stock -0.84% yesterday, RSI 63",
           "direction": "down",
-          "weight": 0.26
+          "weight": 0.27
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.164
+          "weight": 0.175
         }
       ],
       "close": {
-        "prob_up": 0.485,
+        "prob_up": 0.4284,
         "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -993,44 +993,44 @@
       "name": "Maruti Suzuki",
       "sector": "Automobile",
       "available": true,
-      "prev_close": 12625.0,
-      "expected_open_price": 12660.35,
+      "prev_close": 12632.0,
+      "expected_open_price": 12642.11,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.688,
+      "prob_up": 0.553,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.37
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.564
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.191
+          "weight": 0.212
         },
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 -1.03% overnight",
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +0.06% yesterday, RSI 60",
           "direction": "down",
-          "weight": 0.151
+          "weight": 0.111
         }
       ],
       "close": {
-        "prob_up": 0.5092,
-        "call": "HIGHER",
+        "prob_up": 0.4435,
+        "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
           "level": "Low",
@@ -1044,44 +1044,44 @@
       "name": "Sun Pharmaceutical",
       "sector": "Healthcare & Pharma",
       "available": true,
-      "prev_close": 1870.0,
-      "expected_open_price": 1874.49,
+      "prev_close": 1871.5,
+      "expected_open_price": 1872.25,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.6624,
+      "prob_up": 0.5262,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.336
-        },
-        {
-          "key": "stock",
-          "label": "The stock's own trend",
-          "detail": "Stock +0.13% yesterday, RSI 62",
+          "detail": "Asian markets opened -0.18% on average",
           "direction": "down",
-          "weight": 0.217
+          "weight": 0.519
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.173
+          "weight": 0.196
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +0.08% yesterday, RSI 62",
+          "direction": "down",
+          "weight": 0.182
         }
       ],
       "close": {
-        "prob_up": 0.5116,
-        "call": "HIGHER",
+        "prob_up": 0.4456,
+        "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
           "level": "Low",
@@ -1095,43 +1095,43 @@
       "name": "Titan Company",
       "sector": "Consumer Durables",
       "available": true,
-      "prev_close": 4908.0,
-      "expected_open_price": 4919.78,
+      "prev_close": 4648.1,
+      "expected_open_price": 4652.28,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.6615,
+      "prob_up": 0.558,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.335
-        },
-        {
-          "key": "stock",
-          "label": "The stock's own trend",
-          "detail": "Stock -0.04% yesterday, RSI 64",
+          "detail": "Asian markets opened -0.18% on average",
           "direction": "down",
-          "weight": 0.219
+          "weight": 0.574
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.173
+          "weight": 0.216
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -5.30% yesterday, RSI 47",
+          "direction": "down",
+          "weight": 0.097
         }
       ],
       "close": {
-        "prob_up": 0.4962,
+        "prob_up": 0.4881,
         "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -1146,43 +1146,43 @@
       "name": "UltraTech Cement",
       "sector": "Capital Goods & Defence",
       "available": true,
-      "prev_close": 12290.0,
-      "expected_open_price": 12323.18,
+      "prev_close": 12428.0,
+      "expected_open_price": 12431.73,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.6771,
+      "prob_up": 0.5213,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.355
-        },
-        {
-          "key": "nifty",
-          "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
-          "direction": "up",
-          "weight": 0.183
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.512
         },
         {
           "key": "stock",
           "label": "The stock's own trend",
-          "detail": "Stock +0.16% yesterday, RSI 67",
+          "detail": "Stock +1.12% yesterday, RSI 69",
           "direction": "down",
-          "weight": 0.173
+          "weight": 0.194
+        },
+        {
+          "key": "nifty",
+          "label": "Nifty trend",
+          "detail": "Nifty -0.63% yesterday",
+          "direction": "up",
+          "weight": 0.193
         }
       ],
       "close": {
-        "prob_up": 0.4915,
+        "prob_up": 0.4253,
         "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -1197,44 +1197,44 @@
       "name": "NTPC",
       "sector": "Power & Renewables",
       "available": true,
-      "prev_close": 321.8,
-      "expected_open_price": 322.6,
+      "prev_close": 320.4,
+      "expected_open_price": 320.5,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.6663,
+      "prob_up": 0.5181,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.341
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.507
         },
         {
           "key": "stock",
           "label": "The stock's own trend",
-          "detail": "Stock +0.17% yesterday, RSI 56",
+          "detail": "Stock -0.44% yesterday, RSI 54",
           "direction": "down",
-          "weight": 0.206
+          "weight": 0.202
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.176
+          "weight": 0.191
         }
       ],
       "close": {
-        "prob_up": 0.5018,
-        "call": "HIGHER",
+        "prob_up": 0.4441,
+        "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
           "level": "Low",
@@ -1248,44 +1248,44 @@
       "name": "Power Grid Corporation of India",
       "sector": "Power & Renewables",
       "available": true,
-      "prev_close": 258.0,
-      "expected_open_price": 258.7,
+      "prev_close": 259.1,
+      "expected_open_price": 259.26,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.6832,
+      "prob_up": 0.5367,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.363
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.536
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.187
+          "weight": 0.202
         },
         {
           "key": "stock",
           "label": "The stock's own trend",
-          "detail": "Stock -1.60% yesterday, RSI 52",
+          "detail": "Stock +0.43% yesterday, RSI 53",
           "direction": "down",
-          "weight": 0.154
+          "weight": 0.156
         }
       ],
       "close": {
-        "prob_up": 0.5105,
-        "call": "HIGHER",
+        "prob_up": 0.4491,
+        "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
           "level": "Low",
@@ -1299,44 +1299,44 @@
       "name": "Oil & Natural Gas Corporation",
       "sector": "Oil, Gas & Energy",
       "available": true,
-      "prev_close": 223.52,
-      "expected_open_price": 224.1,
+      "prev_close": 225.0,
+      "expected_open_price": 225.16,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.6756,
+      "prob_up": 0.5434,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.353
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.547
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.182
+          "weight": 0.206
         },
         {
           "key": "stock",
           "label": "The stock's own trend",
-          "detail": "Stock -1.53% yesterday, RSI 52",
+          "detail": "Stock +0.66% yesterday, RSI 54",
           "direction": "down",
-          "weight": 0.178
+          "weight": 0.138
         }
       ],
       "close": {
-        "prob_up": 0.5175,
-        "call": "HIGHER",
+        "prob_up": 0.4495,
+        "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
           "level": "Low",
@@ -1350,44 +1350,44 @@
       "name": "Bajaj Finserv",
       "sector": "Financial Services",
       "available": true,
-      "prev_close": 1870.8,
-      "expected_open_price": 1876.04,
+      "prev_close": 1856.2,
+      "expected_open_price": 1856.57,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.6884,
+      "prob_up": 0.516,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.371
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.504
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -0.78% yesterday, RSI 61",
+          "direction": "down",
+          "weight": 0.206
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.191
-        },
-        {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 -1.03% overnight",
-          "direction": "down",
-          "weight": 0.151
+          "weight": 0.19
         }
       ],
       "close": {
-        "prob_up": 0.5087,
-        "call": "HIGHER",
+        "prob_up": 0.4278,
+        "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
           "level": "Low",
@@ -1401,44 +1401,44 @@
       "name": "Bharat Electronics",
       "sector": "Capital Goods & Defence",
       "available": true,
-      "prev_close": 399.55,
-      "expected_open_price": 400.55,
+      "prev_close": 395.8,
+      "expected_open_price": 395.84,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.6694,
+      "prob_up": 0.5053,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.345
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.489
         },
         {
           "key": "stock",
           "label": "The stock's own trend",
-          "detail": "Stock -0.46% yesterday, RSI 61",
+          "detail": "Stock -0.94% yesterday, RSI 57",
           "direction": "down",
-          "weight": 0.197
+          "weight": 0.23
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.178
+          "weight": 0.184
         }
       ],
       "close": {
-        "prob_up": 0.506,
-        "call": "HIGHER",
+        "prob_up": 0.4309,
+        "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
           "level": "Low",
@@ -1452,44 +1452,44 @@
       "name": "Asian Paints",
       "sector": "Consumer Durables",
       "available": true,
-      "prev_close": 2625.0,
-      "expected_open_price": 2632.87,
+      "prev_close": 2580.3,
+      "expected_open_price": 2580.56,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.7026,
+      "prob_up": 0.505,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "High",
-        "tested_accuracy": 0.7546194400368531,
-        "tested_n": 19537
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.394
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.489
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -1.70% yesterday, RSI 64",
+          "direction": "down",
+          "weight": 0.231
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.203
-        },
-        {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 -1.03% overnight",
-          "direction": "down",
-          "weight": 0.161
+          "weight": 0.184
         }
       ],
       "close": {
-        "prob_up": 0.5069,
-        "call": "HIGHER",
+        "prob_up": 0.4309,
+        "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
           "level": "Low",
@@ -1503,44 +1503,44 @@
       "name": "Apollo Hospitals Enterprise",
       "sector": "Healthcare & Pharma",
       "available": true,
-      "prev_close": 8712.5,
-      "expected_open_price": 8736.02,
+      "prev_close": 8821.0,
+      "expected_open_price": 8828.06,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.677,
+      "prob_up": 0.5546,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.355
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.567
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.183
+          "weight": 0.214
         },
         {
           "key": "stock",
           "label": "The stock's own trend",
-          "detail": "Stock -0.67% yesterday, RSI 62",
+          "detail": "Stock +1.25% yesterday, RSI 64",
           "direction": "down",
-          "weight": 0.174
+          "weight": 0.107
         }
       ],
       "close": {
-        "prob_up": 0.505,
-        "call": "HIGHER",
+        "prob_up": 0.4578,
+        "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
           "level": "Low",
@@ -1554,44 +1554,44 @@
       "name": "Cipla",
       "sector": "Healthcare & Pharma",
       "available": true,
-      "prev_close": 1388.0,
-      "expected_open_price": 1391.75,
+      "prev_close": 1417.0,
+      "expected_open_price": 1418.56,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.6827,
+      "prob_up": 0.5734,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
-        "level": "Moderate",
-        "tested_accuracy": 0.6685675293658917,
-        "tested_n": 20517
+        "level": "Low",
+        "tested_accuracy": 0.5754488861449812,
+        "tested_n": 19437
       },
       "drivers": [
         {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened +1.03% on average",
-          "direction": "up",
-          "weight": 0.363
+          "detail": "Asian markets opened -0.18% on average",
+          "direction": "down",
+          "weight": 0.605
         },
         {
           "key": "nifty",
           "label": "Nifty trend",
-          "detail": "Nifty +0.38% yesterday",
+          "detail": "Nifty -0.63% yesterday",
           "direction": "up",
-          "weight": 0.187
+          "weight": 0.228
         },
         {
-          "key": "stock",
-          "label": "The stock's own trend",
-          "detail": "Stock -0.47% yesterday, RSI 54",
-          "direction": "down",
-          "weight": 0.155
+          "key": "us",
+          "label": "US market overnight",
+          "detail": "S&P 500 -0.23% overnight",
+          "direction": "up",
+          "weight": 0.062
         }
       ],
       "close": {
-        "prob_up": 0.5145,
-        "call": "HIGHER",
+        "prob_up": 0.4542,
+        "call": "LOWER",
         "baseline_call": "HIGHER",
         "confidence": {
           "level": "Low",
