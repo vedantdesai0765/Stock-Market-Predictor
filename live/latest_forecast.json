@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "status": "ok",
-  "target_date": "2026-11-25",
-  "based_on": "2026-11-23",
-  "generated_at": "2026-11-25T17:14:25+05:30",
+  "target_date": "2026-11-26",
+  "based_on": "2026-11-25",
+  "generated_at": "2026-11-26T16:18:44+05:30",
   "on_time": false,
   "summary": {
     "total": 30,
@@ -18,54 +18,54 @@
       "key": "sp500",
       "label": "S&P 500",
       "region": "United States",
-      "change_pct": 4.21,
-      "level": 7201.09,
-      "session": "2026-11-24",
+      "change_pct": -0.25,
+      "level": 7182.78,
+      "session": "2026-11-25",
       "available": true
     },
     {
       "key": "vix",
       "label": "VIX",
       "region": "US volatility index",
-      "change_pct": -0.98,
-      "level": 26.36,
-      "session": "2026-11-24",
+      "change_pct": 7.32,
+      "level": 28.29,
+      "session": "2026-11-25",
       "available": true
     },
     {
       "key": "n225",
       "label": "Nikkei 225",
       "region": "Japan",
-      "change_pct": -0.45,
-      "level": 58383.49,
-      "session": "2026-11-25",
+      "change_pct": 0.73,
+      "level": 57429.54,
+      "session": "2026-11-26",
       "available": true
     },
     {
       "key": "ks11",
       "label": "KOSPI",
       "region": "South Korea",
-      "change_pct": -3.94,
-      "level": 4809.0,
-      "session": "2026-11-25",
+      "change_pct": 1.01,
+      "level": 4745.1,
+      "session": "2026-11-26",
       "available": true
     },
     {
       "key": "twii",
       "label": "Taiex",
       "region": "Taiwan",
-      "change_pct": -0.35,
-      "level": 39983.91,
-      "session": "2026-11-25",
+      "change_pct": 0.63,
+      "level": 38435.99,
+      "session": "2026-11-26",
       "available": true
     },
     {
       "key": "hsi",
       "label": "Hang Seng",
       "region": "Hong Kong",
-      "change_pct": 0.15,
-      "level": 22252.81,
-      "session": "2026-11-25",
+      "change_pct": 1.22,
+      "level": 22234.89,
+      "session": "2026-11-26",
       "available": true
     }
   ],
@@ -75,11 +75,11 @@
       "name": "Tata Consultancy Services",
       "sector": "Information Technology",
       "available": true,
-      "prev_close": 2460.0,
-      "expected_open_price": 2475.01,
+      "prev_close": 2517.3,
+      "expected_open_price": 2530.89,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.9075,
+      "prob_up": 0.8579,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -89,30 +89,30 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.381
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.216
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.826
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +2.33% yesterday, RSI 63",
+          "direction": "up",
+          "weight": 0.083
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.185
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.081
         }
       ],
       "close": {
-        "prob_up": 0.4916,
-        "call": "LOWER",
+        "prob_up": 0.567,
+        "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
           "level": "Low",
@@ -126,11 +126,11 @@
       "name": "Reliance Industries",
       "sector": "Oil, Gas & Energy",
       "available": true,
-      "prev_close": 1351.0,
-      "expected_open_price": 1358.43,
+      "prev_close": 1373.9,
+      "expected_open_price": 1380.91,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8662,
+      "prob_up": 0.84,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -140,30 +140,30 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.403
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.229
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.883
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.196
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.086
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +1.70% yesterday, RSI 69",
+          "direction": "down",
+          "weight": 0.019
         }
       ],
       "close": {
-        "prob_up": 0.4913,
-        "call": "LOWER",
+        "prob_up": 0.5722,
+        "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
           "level": "Low",
@@ -177,11 +177,11 @@
       "name": "Infosys",
       "sector": "Information Technology",
       "available": true,
-      "prev_close": 1103.4,
-      "expected_open_price": 1110.02,
+      "prev_close": 1130.0,
+      "expected_open_price": 1136.44,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.897,
+      "prob_up": 0.8779,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -191,29 +191,29 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.398
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.226
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.733
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +2.41% yesterday, RSI 54",
+          "direction": "up",
+          "weight": 0.186
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.193
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.072
         }
       ],
       "close": {
-        "prob_up": 0.5022,
+        "prob_up": 0.5957,
         "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -228,11 +228,11 @@
       "name": "HDFC Bank",
       "sector": "Financial Services",
       "available": true,
-      "prev_close": 817.8,
-      "expected_open_price": 822.3,
+      "prev_close": 846.2,
+      "expected_open_price": 850.6,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8673,
+      "prob_up": 0.8462,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -242,29 +242,29 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.405
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.23
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.885
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.087
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +3.47% yesterday, RSI 70",
           "direction": "up",
-          "weight": 0.197
+          "weight": 0.017
         }
       ],
       "close": {
-        "prob_up": 0.5187,
+        "prob_up": 0.5958,
         "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -279,11 +279,11 @@
       "name": "State Bank of India",
       "sector": "Financial Services",
       "available": true,
-      "prev_close": 1132.65,
-      "expected_open_price": 1138.88,
+      "prev_close": 1138.15,
+      "expected_open_price": 1143.73,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.865,
+      "prob_up": 0.8248,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -293,29 +293,29 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.402
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.815
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +0.49% yesterday, RSI 71",
           "direction": "down",
-          "weight": 0.228
+          "weight": 0.095
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.195
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.08
         }
       ],
       "close": {
-        "prob_up": 0.5117,
+        "prob_up": 0.5794,
         "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -330,11 +330,11 @@
       "name": "ITC",
       "sector": "Consumer & FMCG",
       "available": true,
-      "prev_close": 301.0,
-      "expected_open_price": 302.63,
+      "prev_close": 309.25,
+      "expected_open_price": 310.77,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8578,
+      "prob_up": 0.827,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -344,30 +344,30 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.393
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.824
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +2.74% yesterday, RSI 77",
           "direction": "down",
-          "weight": 0.223
+          "weight": 0.085
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.191
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.081
         }
       ],
       "close": {
-        "prob_up": 0.4968,
-        "call": "LOWER",
+        "prob_up": 0.567,
+        "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
           "level": "Low",
@@ -381,11 +381,11 @@
       "name": "Adani Enterprises",
       "sector": "Metals & Mining",
       "available": true,
-      "prev_close": 2677.9,
-      "expected_open_price": 2693.16,
+      "prev_close": 2668.5,
+      "expected_open_price": 2683.18,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8828,
+      "prob_up": 0.8655,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -395,35 +395,35 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.42
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.238
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.789
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -0.35% yesterday, RSI 48",
+          "direction": "up",
+          "weight": 0.124
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.204
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.077
         }
       ],
       "close": {
-        "prob_up": 0.5283,
+        "prob_up": 0.6369,
         "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
-          "level": "Low",
-          "tested_accuracy": 0.5299228404742488,
-          "tested_n": 63764
+          "level": "Moderate",
+          "tested_accuracy": 0.6160872874904847,
+          "tested_n": 15764
         }
       }
     },
@@ -432,11 +432,11 @@
       "name": "Vedanta",
       "sector": "Metals & Mining",
       "available": true,
-      "prev_close": 235.53,
-      "expected_open_price": 236.83,
+      "prev_close": 232.8,
+      "expected_open_price": 233.94,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8675,
+      "prob_up": 0.8251,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -446,35 +446,35 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.405
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.816
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -1.16% yesterday, RSI 36",
           "direction": "down",
-          "weight": 0.23
+          "weight": 0.093
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.197
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.08
         }
       ],
       "close": {
-        "prob_up": 0.5242,
+        "prob_up": 0.6079,
         "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
-          "level": "Low",
-          "tested_accuracy": 0.5299228404742488,
-          "tested_n": 63764
+          "level": "Moderate",
+          "tested_accuracy": 0.6160872874904847,
+          "tested_n": 15764
         }
       }
     },
@@ -483,11 +483,11 @@
       "name": "Eternal Limited",
       "sector": "Consumer & FMCG",
       "available": true,
-      "prev_close": 362.1,
-      "expected_open_price": 364.16,
+      "prev_close": 371.7,
+      "expected_open_price": 373.78,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8805,
+      "prob_up": 0.8721,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -497,35 +497,35 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.423
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.24
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.759
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +2.65% yesterday, RSI 65",
+          "direction": "up",
+          "weight": 0.157
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.206
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.074
         }
       ],
       "close": {
-        "prob_up": 0.5117,
+        "prob_up": 0.6074,
         "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
-          "level": "Low",
-          "tested_accuracy": 0.5299228404742488,
-          "tested_n": 63764
+          "level": "Moderate",
+          "tested_accuracy": 0.6160872874904847,
+          "tested_n": 15764
         }
       }
     },
@@ -534,11 +534,11 @@
       "name": "Adani Green Energy",
       "sector": "Power & Renewables",
       "available": true,
-      "prev_close": 1391.0,
-      "expected_open_price": 1399.21,
+      "prev_close": 1364.5,
+      "expected_open_price": 1372.28,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.892,
+      "prob_up": 0.8817,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -548,35 +548,35 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.405
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.23
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.717
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -1.91% yesterday, RSI 50",
+          "direction": "up",
+          "weight": 0.204
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.197
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.07
         }
       ],
       "close": {
-        "prob_up": 0.5467,
+        "prob_up": 0.6562,
         "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
-          "level": "Low",
-          "tested_accuracy": 0.5299228404742488,
-          "tested_n": 63764
+          "level": "Moderate",
+          "tested_accuracy": 0.6160872874904847,
+          "tested_n": 15764
         }
       }
     },
@@ -585,11 +585,11 @@
       "name": "ICICI Bank",
       "sector": "Financial Services",
       "available": true,
-      "prev_close": 1585.5,
-      "expected_open_price": 1594.38,
+      "prev_close": 1640.0,
+      "expected_open_price": 1648.86,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8732,
+      "prob_up": 0.8584,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -599,29 +599,29 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.412
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.234
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.823
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +3.44% yesterday, RSI 71",
+          "direction": "up",
+          "weight": 0.086
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.201
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.08
         }
       ],
       "close": {
-        "prob_up": 0.5076,
+        "prob_up": 0.5864,
         "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -636,11 +636,11 @@
       "name": "Bharti Airtel",
       "sector": "General",
       "available": true,
-      "prev_close": 2128.5,
-      "expected_open_price": 2140.21,
+      "prev_close": 2117.5,
+      "expected_open_price": 2128.51,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8667,
+      "prob_up": 0.8463,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -650,35 +650,35 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.404
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.229
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.884
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.086
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -0.52% yesterday, RSI 63",
           "direction": "up",
-          "weight": 0.197
+          "weight": 0.018
         }
       ],
       "close": {
-        "prob_up": 0.5009,
+        "prob_up": 0.6018,
         "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
-          "level": "Low",
-          "tested_accuracy": 0.5299228404742488,
-          "tested_n": 63764
+          "level": "Moderate",
+          "tested_accuracy": 0.6160872874904847,
+          "tested_n": 15764
         }
       }
     },
@@ -687,11 +687,11 @@
       "name": "Larsen & Toubro",
       "sector": "Capital Goods & Defence",
       "available": true,
-      "prev_close": 4099.9,
-      "expected_open_price": 4122.04,
+      "prev_close": 4156.0,
+      "expected_open_price": 4177.2,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8582,
+      "prob_up": 0.8425,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -701,29 +701,29 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.393
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.223
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.897
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.191
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.088
+        },
+        {
+          "key": "nifty",
+          "label": "Nifty trend",
+          "detail": "Nifty +1.85% yesterday",
+          "direction": "down",
+          "weight": 0.007
         }
       ],
       "close": {
-        "prob_up": 0.5126,
+        "prob_up": 0.596,
         "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -738,11 +738,11 @@
       "name": "Axis Bank",
       "sector": "Financial Services",
       "available": true,
-      "prev_close": 1388.6,
-      "expected_open_price": 1396.38,
+      "prev_close": 1418.1,
+      "expected_open_price": 1425.33,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8704,
+      "prob_up": 0.8428,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -752,35 +752,35 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.409
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.232
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.898
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.199
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.088
+        },
+        {
+          "key": "nifty",
+          "label": "Nifty trend",
+          "detail": "Nifty +1.85% yesterday",
+          "direction": "down",
+          "weight": 0.007
         }
       ],
       "close": {
-        "prob_up": 0.5103,
+        "prob_up": 0.6009,
         "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
-          "level": "Low",
-          "tested_accuracy": 0.5299228404742488,
-          "tested_n": 63764
+          "level": "Moderate",
+          "tested_accuracy": 0.6160872874904847,
+          "tested_n": 15764
         }
       }
     },
@@ -789,11 +789,11 @@
       "name": "Kotak Mahindra Bank",
       "sector": "Financial Services",
       "available": true,
-      "prev_close": 502.85,
-      "expected_open_price": 505.67,
+      "prev_close": 509.0,
+      "expected_open_price": 511.65,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8708,
+      "prob_up": 0.8466,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -803,29 +803,29 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.409
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.232
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.882
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.086
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +1.22% yesterday, RSI 71",
           "direction": "up",
-          "weight": 0.199
+          "weight": 0.02
         }
       ],
       "close": {
-        "prob_up": 0.5057,
+        "prob_up": 0.5937,
         "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -840,11 +840,11 @@
       "name": "Mahindra & Mahindra",
       "sector": "Automobile",
       "available": true,
-      "prev_close": 3487.4,
-      "expected_open_price": 3505.88,
+      "prev_close": 3509.5,
+      "expected_open_price": 3527.05,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8555,
+      "prob_up": 0.8352,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -854,30 +854,30 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.39
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.222
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.86
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.19
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.084
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +0.63% yesterday, RSI 70",
+          "direction": "down",
+          "weight": 0.044
         }
       ],
       "close": {
-        "prob_up": 0.4886,
-        "call": "LOWER",
+        "prob_up": 0.5883,
+        "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
           "level": "Low",
@@ -891,11 +891,11 @@
       "name": "Bajaj Finance",
       "sector": "Financial Services",
       "available": true,
-      "prev_close": 1095.5,
-      "expected_open_price": 1101.63,
+      "prev_close": 1131.35,
+      "expected_open_price": 1137.46,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8709,
+      "prob_up": 0.8583,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -905,35 +905,35 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.409
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.232
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.823
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +3.27% yesterday, RSI 66",
+          "direction": "up",
+          "weight": 0.085
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.199
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.081
         }
       ],
       "close": {
-        "prob_up": 0.5049,
+        "prob_up": 0.6061,
         "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
-          "level": "Low",
-          "tested_accuracy": 0.5299228404742488,
-          "tested_n": 63764
+          "level": "Moderate",
+          "tested_accuracy": 0.6160872874904847,
+          "tested_n": 15764
         }
       }
     },
@@ -942,11 +942,11 @@
       "name": "Hindustan Unilever",
       "sector": "Consumer & FMCG",
       "available": true,
-      "prev_close": 2019.1,
-      "expected_open_price": 2029.6,
+      "prev_close": 2141.8,
+      "expected_open_price": 2153.37,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8477,
+      "prob_up": 0.8573,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -956,29 +956,29 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.382
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.217
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.828
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.081
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +6.08% yesterday, RSI 72",
           "direction": "up",
-          "weight": 0.186
+          "weight": 0.08
         }
       ],
       "close": {
-        "prob_up": 0.5039,
+        "prob_up": 0.5858,
         "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -993,11 +993,11 @@
       "name": "Maruti Suzuki",
       "sector": "Automobile",
       "available": true,
-      "prev_close": 14010.0,
-      "expected_open_price": 14085.65,
+      "prev_close": 14200.0,
+      "expected_open_price": 14272.42,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8616,
+      "prob_up": 0.8386,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -1007,30 +1007,30 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.397
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.226
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.877
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.193
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.086
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +1.36% yesterday, RSI 78",
+          "direction": "down",
+          "weight": 0.026
         }
       ],
       "close": {
-        "prob_up": 0.4911,
-        "call": "LOWER",
+        "prob_up": 0.5861,
+        "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
           "level": "Low",
@@ -1044,11 +1044,11 @@
       "name": "Sun Pharmaceutical",
       "sector": "Healthcare & Pharma",
       "available": true,
-      "prev_close": 1860.0,
-      "expected_open_price": 1870.04,
+      "prev_close": 1901.0,
+      "expected_open_price": 1910.89,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8616,
+      "prob_up": 0.8436,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -1058,29 +1058,29 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.397
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.226
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.898
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.193
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.088
+        },
+        {
+          "key": "nifty",
+          "label": "Nifty trend",
+          "detail": "Nifty +1.85% yesterday",
+          "direction": "down",
+          "weight": 0.007
         }
       ],
       "close": {
-        "prob_up": 0.5153,
+        "prob_up": 0.5942,
         "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -1095,11 +1095,11 @@
       "name": "Titan Company",
       "sector": "Consumer Durables",
       "available": true,
-      "prev_close": 4680.0,
-      "expected_open_price": 4706.21,
+      "prev_close": 4686.6,
+      "expected_open_price": 4711.44,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8744,
+      "prob_up": 0.8514,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -1109,35 +1109,35 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.414
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.235
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.858
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.084
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +0.14% yesterday, RSI 50",
           "direction": "up",
-          "weight": 0.202
+          "weight": 0.047
         }
       ],
       "close": {
-        "prob_up": 0.5039,
+        "prob_up": 0.6078,
         "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
-          "level": "Low",
-          "tested_accuracy": 0.5299228404742488,
-          "tested_n": 63764
+          "level": "Moderate",
+          "tested_accuracy": 0.6160872874904847,
+          "tested_n": 15764
         }
       }
     },
@@ -1146,11 +1146,11 @@
       "name": "UltraTech Cement",
       "sector": "Capital Goods & Defence",
       "available": true,
-      "prev_close": 12650.0,
-      "expected_open_price": 12719.58,
+      "prev_close": 12800.0,
+      "expected_open_price": 12862.72,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8661,
+      "prob_up": 0.8283,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -1160,30 +1160,30 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.403
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.229
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.829
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.196
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.081
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +1.19% yesterday, RSI 69",
+          "direction": "down",
+          "weight": 0.079
         }
       ],
       "close": {
-        "prob_up": 0.4987,
-        "call": "LOWER",
+        "prob_up": 0.5781,
+        "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
           "level": "Low",
@@ -1197,11 +1197,11 @@
       "name": "NTPC",
       "sector": "Power & Renewables",
       "available": true,
-      "prev_close": 315.45,
-      "expected_open_price": 317.22,
+      "prev_close": 318.0,
+      "expected_open_price": 319.62,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8713,
+      "prob_up": 0.8371,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -1211,35 +1211,35 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.41
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.233
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.869
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.199
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.085
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +0.81% yesterday, RSI 50",
+          "direction": "down",
+          "weight": 0.034
         }
       ],
       "close": {
-        "prob_up": 0.5332,
+        "prob_up": 0.6018,
         "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
-          "level": "Low",
-          "tested_accuracy": 0.5299228404742488,
-          "tested_n": 63764
+          "level": "Moderate",
+          "tested_accuracy": 0.6160872874904847,
+          "tested_n": 15764
         }
       }
     },
@@ -1248,11 +1248,11 @@
       "name": "Power Grid Corporation of India",
       "sector": "Power & Renewables",
       "available": true,
-      "prev_close": 264.85,
-      "expected_open_price": 266.33,
+      "prev_close": 266.75,
+      "expected_open_price": 267.98,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8757,
+      "prob_up": 0.8061,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -1262,29 +1262,29 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.416
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.749
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +0.72% yesterday, RSI 59",
           "direction": "down",
-          "weight": 0.236
+          "weight": 0.168
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.202
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.073
         }
       ],
       "close": {
-        "prob_up": 0.5277,
+        "prob_up": 0.5799,
         "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -1299,11 +1299,11 @@
       "name": "Oil & Natural Gas Corporation",
       "sector": "Oil, Gas & Energy",
       "available": true,
-      "prev_close": 222.85,
-      "expected_open_price": 224.1,
+      "prev_close": 222.0,
+      "expected_open_price": 223.13,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8723,
+      "prob_up": 0.8396,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -1313,29 +1313,29 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.411
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.233
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.881
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.2
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.086
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock -0.38% yesterday, RSI 48",
+          "direction": "down",
+          "weight": 0.021
         }
       ],
       "close": {
-        "prob_up": 0.5115,
+        "prob_up": 0.5968,
         "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -1350,11 +1350,11 @@
       "name": "Bajaj Finserv",
       "sector": "Financial Services",
       "available": true,
-      "prev_close": 1880.1,
-      "expected_open_price": 1890.25,
+      "prev_close": 1925.0,
+      "expected_open_price": 1935.01,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8633,
+      "prob_up": 0.8466,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -1364,35 +1364,35 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.399
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.227
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.883
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.086
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +2.39% yesterday, RSI 67",
           "direction": "up",
-          "weight": 0.194
+          "weight": 0.02
         }
       ],
       "close": {
-        "prob_up": 0.5092,
+        "prob_up": 0.6031,
         "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
-          "level": "Low",
-          "tested_accuracy": 0.5299228404742488,
-          "tested_n": 63764
+          "level": "Moderate",
+          "tested_accuracy": 0.6160872874904847,
+          "tested_n": 15764
         }
       }
     },
@@ -1401,11 +1401,11 @@
       "name": "Bharat Electronics",
       "sector": "Capital Goods & Defence",
       "available": true,
-      "prev_close": 395.8,
-      "expected_open_price": 397.9,
+      "prev_close": 404.3,
+      "expected_open_price": 406.36,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8562,
+      "prob_up": 0.8389,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -1415,29 +1415,29 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.391
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.222
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.878
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.19
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.086
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +2.15% yesterday, RSI 60",
+          "direction": "down",
+          "weight": 0.025
         }
       ],
       "close": {
-        "prob_up": 0.5136,
+        "prob_up": 0.5952,
         "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
@@ -1452,11 +1452,11 @@
       "name": "Asian Paints",
       "sector": "Consumer Durables",
       "available": true,
-      "prev_close": 2580.4,
-      "expected_open_price": 2594.08,
+      "prev_close": 2621.2,
+      "expected_open_price": 2633.78,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8541,
+      "prob_up": 0.8188,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -1466,30 +1466,30 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.389
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.792
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +1.58% yesterday, RSI 66",
           "direction": "down",
-          "weight": 0.221
+          "weight": 0.12
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.189
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.077
         }
       ],
       "close": {
-        "prob_up": 0.4892,
-        "call": "LOWER",
+        "prob_up": 0.5767,
+        "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
           "level": "Low",
@@ -1503,11 +1503,11 @@
       "name": "Apollo Hospitals Enterprise",
       "sector": "Healthcare & Pharma",
       "available": true,
-      "prev_close": 9257.0,
-      "expected_open_price": 9309.76,
+      "prev_close": 9300.0,
+      "expected_open_price": 9344.64,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8769,
+      "prob_up": 0.8192,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -1517,30 +1517,30 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.418
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.794
+        },
+        {
+          "key": "stock",
+          "label": "The stock's own trend",
+          "detail": "Stock +0.46% yesterday, RSI 72",
           "direction": "down",
-          "weight": 0.237
+          "weight": 0.119
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.203
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.078
         }
       ],
       "close": {
-        "prob_up": 0.495,
-        "call": "LOWER",
+        "prob_up": 0.5785,
+        "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {
           "level": "Low",
@@ -1554,11 +1554,11 @@
       "name": "Cipla",
       "sector": "Healthcare & Pharma",
       "available": true,
-      "prev_close": 1399.9,
-      "expected_open_price": 1407.6,
+      "prev_close": 1433.2,
+      "expected_open_price": 1440.65,
       "expected_open_direction": "HIGHER",
       "model_type": "Pooled Logistic Regression (30 Stocks)",
-      "prob_up": 0.8647,
+      "prob_up": 0.8435,
       "call": "HIGHER",
       "baseline_call": "HIGHER",
       "confidence": {
@@ -1568,29 +1568,29 @@
       },
       "drivers": [
         {
-          "key": "us",
-          "label": "US market overnight",
-          "detail": "S&P 500 +4.21% overnight",
-          "direction": "up",
-          "weight": 0.401
-        },
-        {
           "key": "asia",
           "label": "Asian markets this morning",
-          "detail": "Asian markets opened -1.15% on average",
-          "direction": "down",
-          "weight": 0.228
+          "detail": "Asian markets opened +0.90% on average",
+          "direction": "up",
+          "weight": 0.899
         },
         {
           "key": "vix",
           "label": "Market fear (VIX)",
-          "detail": "VIX at 26.4 (-1.0%)",
-          "direction": "up",
-          "weight": 0.195
+          "detail": "VIX at 28.3 (+7.3%)",
+          "direction": "down",
+          "weight": 0.088
+        },
+        {
+          "key": "nifty",
+          "label": "Nifty trend",
+          "detail": "Nifty +1.85% yesterday",
+          "direction": "down",
+          "weight": 0.007
         }
       ],
       "close": {
-        "prob_up": 0.5076,
+        "prob_up": 0.5877,
         "call": "HIGHER",
         "baseline_call": "HIGHER",
         "confidence": {

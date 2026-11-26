@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-26T01:56:30+05:30",
+  "updated_at": "2026-11-26T16:18:44+05:30",
   "since": null,
   "mornings": 0,
   "open": {
@@ -19,5 +19,5 @@
   },
   "days": [],
   "per_stock": [],
-  "excluded_late": 201
+  "excluded_late": 229
 }
